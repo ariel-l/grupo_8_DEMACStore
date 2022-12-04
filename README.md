@@ -60,4 +60,5 @@ Nuestra busqueda apuntó a referentes consolidados en la venta de productos elec
 
 -   [Logos](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/logos)
 -   [Colores](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/colors)
--   Fuente: -[WorkSans](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/fonts/WorkSans)
+-   Fuente:
+    -   [WorkSans](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/fonts/WorkSans)
