@@ -1,5 +1,7 @@
 # DEMAC Store
 
+![logo](/design/logos/LogoPrincipalDEMAC.png)
+
 ## Sprint I: 25-11 a 9-12
 
 ### [Tablero](https://trello.com/b/X3jxQVhz/pi-c19-grupo-8)
@@ -55,3 +57,8 @@ Nuestra busqueda apuntó a referentes consolidados en la venta de productos elec
 ## Wireframes (a completar)
 
 ## Logos, colores y fuentes
+
+-   [Logos](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/logos)
+-   [Colores]()
+-   Fuente:
+    -       [WorkSans](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/fonts/WorkSans)
