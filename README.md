@@ -6,6 +6,10 @@
 
 ### [Tablero](https://trello.com/b/X3jxQVhz/pi-c19-grupo-8)
 
+## ¿Por qué DEMAC?
+
+En la búsqueda de un nombre para nuestro sitio, se barajaron varios nombres y sin suerte ninguno iba con la temática, asi que se nos ocurrió la idea de usar las iniciales de nuestros nombres.
+
 ## Integrantes
 
 ### [Benitez, Diego](https://github.com/diegodanielb)
