@@ -39,7 +39,7 @@ En la búsqueda de un nombre para nuestro sitio, se barajaron varios nombres y s
 ### [Yñiguez, Camila](https://github.com/camila-yniguez)
 
 -   Edad: 20 años
--   Profesión: Estudiante de Ciencia Política
+-   Profesión: Estudiante de Ciencia Política - Estudiante de Programación
 -   Hobbies: Leer, escribir, ver series/películas
 
 ## Temática de la web y público objetivo
