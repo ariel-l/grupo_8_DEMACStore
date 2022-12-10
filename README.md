@@ -58,7 +58,15 @@ Nuestra web será un e-commerce centrado en la venta de dispositivos móviles as
 
 Nuestra busqueda apuntó a referentes consolidados en la venta de productos electrónicos, de esta forma tomamos de Fravega su estrúctura para adaptarla a nuestro objetivo. Las demás fueron elégidas por motivos estéticos y algunas funcionalidades extras para complementar.
 
-## Wireframes (a completar)
+## Wireframes
+
+-   [Home](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/Home)
+-   [Detalle de Producto](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/DetalleDeProducto)
+-   [Carrito de compras](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/CarritoDeCompras)
+-   [Formulario de registro](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/FormularioDeRegistro)
+-   [Formulario de login](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/FormularioDeLogin)
+-   [Header](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/Header)
+-   [Footer](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/Footer)
 
 ## Logos, colores y fuentes
 
