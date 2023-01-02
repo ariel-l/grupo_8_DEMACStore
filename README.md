@@ -34,7 +34,7 @@ En la búsqueda de un nombre para nuestro sitio, se barajaron varios nombres y s
 
 -   Edad: 25 años
 -   Profesión: Estudiante de Programación
--   Hobbies: Videjuegos, fútbol
+-   Hobbies: Videojuegos, fútbol
 
 ### [Yñiguez, Camila](https://github.com/camila-yniguez)
 
