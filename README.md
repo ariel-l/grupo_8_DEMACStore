@@ -60,13 +60,13 @@ Nuestra busqueda apuntó a referentes consolidados en la venta de productos elec
 
 ## Wireframes
 
--   [Home](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/Home)
--   [Detalle de Producto](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/DetalleDeProducto)
--   [Carrito de compras](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/CarritoDeCompras)
--   [Formulario de registro](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/FormularioDeRegistro)
--   [Formulario de login](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/FormularioDeLogin)
--   [Header](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/Header)
--   [Footer](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/wireframes/Footer)
+-   [Home](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/wireframes/Home)
+-   [Detalle de Producto](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/wireframes/DetalleDeProducto)
+-   [Carrito de compras](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/wireframes/CarritoDeCompras)
+-   [Formulario de registro](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/wireframes/FormularioDeRegistro)
+-   [Formulario de login](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/wireframes/FormularioDeLogin)
+-   [Header](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/wireframes/Header)
+-   [Footer](https://github.com/ariel-l/grupo_8_DEMACStore/tree/master/design/wireframes/Footer)
 
 ## Logos, colores y fuentes
 
