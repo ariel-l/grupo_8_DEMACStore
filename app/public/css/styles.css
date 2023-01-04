@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Work%20Sans:wght@100;400;700&display=swap%27');
+
+/* VARIABLES */
+:root {
+    /* Colores */
+    --azul: #004AAD;
+    --gris-oscuro: #737373;
+    --gris-claro: #8C9197;
+    --fondo: #F5F5F5;
+    --links: #00A650;
+    --destacado: #006AFD;
+    /* Fuente */
+    --fuente: "Work Sans", sans-serif;
+    /* Tamaños tipográficos */
+    --parrafos: 12px;
+    --titulos: 24px; /*faltaría agregar semiBold para títulos, el resto es regular*/
+    --descripcion: 16px;
+    --precio: 18px;
+    --descuento: 16px;
+}
+
+/* GENERALES */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fuente);
+}
+
+a {
+    color: black;
+}
+
+p {
+    font-size: var(--parrafos);
+}
+
 body {
-    background-color: aqua;
+    background-color: var(--fondo);
 }
