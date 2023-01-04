@@ -1,0 +1,22 @@
+{
+  "name": "grupo_8_demacstore",
+  "version": "1.0.0",
+  "description": "![logo](/design/logos/LogoPrincipalDEMAC.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ariel-l/grupo_8_DEMACStore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ariel-l/grupo_8_DEMACStore/issues"
+  },
+  "homepage": "https://github.com/ariel-l/grupo_8_DEMACStore#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
