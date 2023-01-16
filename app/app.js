@@ -5,13 +5,13 @@ const PORT = 3000;
 
 app.use(express.static("public"));
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/views/home.html"));
 });
 
 /* PRODUCT DETAIL */
 
-app.use("/productDetail", (req, res) => {
+app.get("/productDetail", (req, res) => {
     res.sendFile(path.join(__dirname, "/views/productDetail.html"));
 });
 

@@ -12,6 +12,11 @@
     /* Fuente */
     --fuente: "Work Sans", sans-serif;
     /* Tamaños tipográficos */
+    --parrafos: 12px;
+    /* --titulos: 24px; faltaría agregar semiBold para títulos, el resto es regular/ */
+    --descripcion: 16px;
+    --precio: 18px;
+    --descuento: 16px;
 }
 
 /* GENERALES */
@@ -21,15 +26,337 @@
     padding: 0;
     font-family: var(--fuente);
 }
-
 a {
-    color: black;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
 }
-
+ 
+ul {
+    list-style: none;
+}
 p {
     font-size: var(--parrafos);
 }
 
-body {
-    background-color: var(--fondo);
+.header__container--gray {
+    display: none;
 }
+
+
+
+
+header {
+    background-color: var(--azul);
+    width: 100%;
+    min-height: 35px;
+}
+
+/* BURGER MENU */
+
+header .burger-menu {
+    color: white;
+    font-size: 30px;
+    padding-left: 5px;
+    border: 0px;
+}
+
+header i.fas.fa-bars {
+    margin: 5px;
+    /* display: flex;
+    justify-content:stretch;
+    align-items: center; */
+
+}
+
+/* LOGOS */
+.logo__horizontal--1{
+    position: relative;
+    top: 1px;
+    width: 60px;
+    height: 27px;
+}
+
+.header__logo--main {
+    position: relative;
+    top: 10px; 
+    width: 70px;
+} 
+
+/* USER Y CARRITO */
+
+.header__container{
+    /* position: relative; */
+    min-height: 49px;
+}
+
+header .main-nav {
+    color: white;
+    font-size: 25px;
+    position: relative;
+    top: -40px;
+}
+
+header .main-nav ul {
+    display: flex;
+    justify-content: right;
+    
+}
+header .main-nav ul li {
+    
+    margin: 2px;
+    text-align: center;
+    
+}
+ 
+.carrito {
+    padding-right: 10px;
+}
+
+/* BARRA DE BUSQUEDA */
+
+.header__search {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 34px;
+    margin-bottom: 10px;
+    position: relative;
+    top: -30px;
+    padding-top: 2px;
+}
+.header__search::placeholder {
+    color: var(--gris-oscuro);
+    outline: none; 
+}
+.header__search--bar {
+    width: 230px;
+}
+
+
+
+/* CONTENEDOR FOOTER PRINCIPAL */
+
+.footer__container {
+    background-color: var(--azul);
+  }
+  
+  /* DISEÑO CONTENEDOR LOGO Y SUBSCRIPCION */
+  
+  .footer__logo-sub {
+    padding: 1rem 2rem;
+  }
+  
+  
+  /* DISEÑO LOGO */
+  
+  .footer__container-logo {
+    padding-bottom: 1rem;
+  }
+  
+  .footer__logo {
+    width: 8rem;
+  }
+  
+  
+  /* DISEÑO SUBSCRIPCIÓN */
+  
+  .footer__subs {
+    color: white;
+  }
+  
+  .input__subs {
+    display: flex;
+    padding-top: 0.3rem;
+  }
+  
+  .input__subs-register {
+    padding-left: 0.3rem;
+    height: 2.3rem;
+    width: 160px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+  }
+  
+  .btn__container {
+    padding-left: 0.2rem;
+  }
+  
+  .send__btn {
+    border: none;
+    border-radius: 3px;
+    height: 2.3rem;
+    width: 3rem;
+  }
+  
+  .send__btn:hover {
+    color: white;
+    background-color: var(--destacado);
+  }
+  
+  .send__btn:active {
+    transform: scale(1.1);
+  }
+  
+  
+  /* DISEÑO INFORMACIÓN Y CONTACTO */
+  
+  .footer__info {
+    margin: 0 2rem 0 2rem;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--gris-oscuro);
+  }
+  
+  .footer__info--individual {
+    padding: 0.3rem 0 0.3rem 1rem;
+  }
+  
+  .info__title {
+    display: block;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .info__item {
+    display: none;
+  }
+  
+  
+  /* DISEÑO REDES */
+  
+  .footer__social {
+    color: white;
+  }
+  
+  .footer__btns-social {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .btns__icon {
+    color: white;
+  }
+  
+  
+  .footer__copyright {
+    text-align: center;
+    padding: 10px 7px 20px;
+  }
+ /* HEADER */ 
+  /* TABLET  */
+
+
+  /*  DESKTOP */
+ 
+@media(min-width:780px) {
+    .header__container--gray {
+        background-color:#d3d1d1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--gris-oscuro);
+        font-weight: 400;
+        font-size: 0.7rem;
+        position: relative;
+        padding: 5px 1rem;
+        flex-direction: row;
+}
+    #header__icon--gray {
+        padding-right: 7px;
+    }
+    .header__search--bar{
+        /* width: 50%; */
+        position: initial;
+    }
+}
+
+/* BARRA DE BUSQUEDA TABLET Y DESKTOP */
+@media(min-width: 480px){
+    .header__search{
+        position: absolute;
+        top: 54px;
+        width: 100%;
+    }
+    .header__search--bar{
+        width: 69%;
+    }
+    .header__container{
+        max-height: -10px;
+    }
+    header{
+        max-height: -1px;
+    }
+}
+
+/* FOOTER */
+
+  
+  @media (min-width: 480px) {
+    .footer__logo-sub {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  
+    .footer__container-logo {
+      padding-bottom: 0;
+    }
+  
+    .footer__info {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  
+    .footer__info--individual {
+      text-align: center;
+      padding: 1.2rem 0;
+    }
+  
+    .info__title {
+      padding-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+  
+    .info__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+  
+    .info__title.icon-loc::before {
+      font: var(--fa-font-solid);
+      content: "\f3c5";
+      padding-right: 5px;
+    }
+  
+    .info__title.icon-mob::before {
+      font: var(--fa-font-solid);
+      content: "\f10b";
+      padding-right: 5px;
+    }
+  
+    .info__title.icon-tel::before {
+      font: var(--fa-font-solid);
+      content: "\f095";
+      padding-right: 5px;
+    }
+  
+    .info__item--link {
+      color: white;
+      font-size: 0.9rem;
+    }
+  
+    .info__item--link:hover {
+      color: var(--destacado)
+    }
+  }
+
+
+/* DESKTOP */
+
+
