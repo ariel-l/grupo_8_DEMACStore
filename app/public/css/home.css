@@ -113,6 +113,21 @@ header .main-nav ul li {
   padding-right: 10px;
 }
 
+.header__nav--categories ul{
+  display: flex;
+  background-color: var(--azul);
+  justify-content: space-between;
+  color: var(--fondo);
+  font-weight: 300;
+  flex-grow: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  }
+  
+.header__nav--categories {
+  display: none;
+}
+
 /* BARRA DE BUSQUEDA */
 
 .header__search {
@@ -133,6 +148,9 @@ header .main-nav ul li {
   width: 230px;
 }
 
+.a__btn--links{
+  color: var(--fondo);
+}
 
 /* SLIDER */
 
@@ -599,12 +617,20 @@ div.home__title--principal h2 {
     transition: all 450ms;
   }
   
-  article.home__products--phones  div.home__phone--container--1 {
+  article.home_products--phones  div.home_phone--container--1 {
     display: flex;
     min-width: 170px; 
     height: 150px;
     object-fit: contain;
   } 
+
+  .header__nav--categories {
+    display: flex;
+  }
+
+  .burger-menu {
+    display: none;
+  }
 }
 
 /* Desktop */
@@ -620,9 +646,15 @@ div.home__title--principal h2 {
     flex-grow: 1;
     transition: all 450ms;
   }
-  article.home__products--phones  div.home__phone--container--1 {
+  article.home_products--phones  div.home_phone--container--1 {
     display: flex;
     height: 288px;
     object-fit: contain;
   } 
+
+  .header__nav--categories {
+    display: flex;
+    margin: 0 2rem;
+    margin-bottom: 2rem;
+  }
 }

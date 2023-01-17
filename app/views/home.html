@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-    <header class="header__body--container"> 
+    <header> 
         <nav class="header__nav--userdesign">   
             <ul class="header__container--gray">
                 <li><i id="header__icon--gray" class="fa-solid fa-truck-fast"></i>Seguí tu compra</li>
@@ -18,42 +18,52 @@
                 <li class="header__btn--gray"><i id="header__icon--gray" class="fa-solid fa-headset"></i>Centro de ayuda</li>
                 <li><i id="header__icon--gray" class="fa-solid fa-circle-down"></i>Garantía</li>
             <div class="header__logo-horizontal-1">
-            <img class="logo__horizontal--1" src="../images/home/LogoSecundarioDEMAC.png" alt=""> </div>
+            <img class="logo__horizontal--1" src="./images/LogoSecundarioDEMAC.png" alt=""> </div>
             </ul>
-        </nav>
-            
-        <nav class="header__container">
         
-            <span class="burger-menu">
-                <i class="fas fa-bars"></i>
-            </span> 
-
-            <img class="header__logo--main" src="../images/home/LogoPrincipalDEMAC.png" alt=""> 
-            
-            <nav class="main-nav"> 
-                <ul> 
-                    <li> 
-                        <i class="fa-solid fa-circle-user"></i>
-                        <a href="/login"><p>Mi cuenta</p></a>
-                    </li>
-                    <li class="carrito">
-                        <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                        
-                </li>
-
-                </ul>
-            </nav>
-
-            <div class="header__search">
-                    <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas">
-                    <button>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button> 
-                </div>
-
-            
+        
         </nav>
+    
+<nav class="header__container">
    
+    <span class="burger-menu">
+        <i class="fas fa-bars"></i>
+    </span> 
+
+   <img class="header__logo--main" src="images/WhatsApp Image 2023-01-06 at 11.19.29 PM.jpeg" alt=""> 
+    
+    <nav class="main-nav"> 
+        <ul> 
+            <li> 
+                <a href="/login" class="a__btn--links">
+                <i class="fa-solid fa-circle-user"></i>
+                <p>Mi cuenta</p>
+                </a>
+            </li>
+            <li class="carrito">
+                <a href="/cart" class="a__btn--links"><i class="fa-solid fa-cart-shopping"></i></a>
+          </li>
+
+        </ul>
+    </nav>
+
+    <div class="header__search">
+            <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button> 
+        </div>
+</nav>
+
+<nav class="header__nav--categories">   
+    <ul class="header__container--sections">
+        <li>Categorías</li>
+        <li>Ofertas</li>
+        <li>Celulares Nuevos</li>
+        <li>Celulares Refubrished (Renovados)</li>
+    </ul>
+</nav>
+
     </header>
 
 
@@ -64,9 +74,7 @@
             <div class="slider">
 
                 <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
                 <img src="../images/home/Banner Motorola (1).png" style="width:100%">
-                <div class="text">Caption Text</div>
                 </div>
             
                 <div class="mySlides fade">
