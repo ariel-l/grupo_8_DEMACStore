@@ -70,6 +70,10 @@ header i.fas.fa-bars {
   margin: 5px;
 }
 
+
+/* Desplegable Categorias*/
+
+
 /* LOGOS */
 
 .logo__horizontal--1{
@@ -101,7 +105,8 @@ header .main-nav {
 header .main-nav ul {
   display: flex;
   justify-content: right;
-  
+  position: relative;
+  z-index: 10;
 }
 header .main-nav ul li {
   margin: 2px;
