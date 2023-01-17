@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Work%20Sans:wght@100;400;700&display=swap%27');
+
+/* VARIABLES */
+:root {
+    /* Colores */
+    --azul: #004AAD;
+    --gris-oscuro: #737373;
+    --gris-claro: #8C9197;
+    --fondo: #F5F5F5;
+    --links: #00A650;
+    --destacado: #006AFD;
+    /* Fuente */
+    --fuente: "Work Sans", sans-serif;
+    /* Tamaños tipográficos */
+    --parrafos: 12px;
+    /* --titulos: 24px; faltaría agregar semiBold para títulos, el resto es regular/ */
+    --descripcion: 16px;
+    --precio: 18px;
+    --descuento: 16px;
+}
+
+/* GENERALES */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fuente);
+}
+
+label.register__check--terms {
+    font-size: smaller;
+}
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+ 
+ul {
+    list-style: none;
+}
+p {
+    font-size: var(--parrafos);
+}
+body {
+    background: #f5f5f5;
+}
+
+.register__general{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.span__register{
+    color: #004aadcf;
+    font-size: 30px;
+}
+.register{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--fondo);
+}
+
+.card{
+    margin-top: 61px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-width: 318px;
+    align-items: center;
+    box-shadow: 1px 1px 2px 2px rgb(0, 0, 0, 0.5);
+    padding: 20px;
+    margin: 20px 20px;
+    outline: 1px solid #004aad;
+    border-radius: 40px;
+}
+
+.card-input{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-input label {
+    font-size: var(--parrafos);
+    margin-bottom: 10px;
+}
+
+.card-input .input {
+    padding: 6px 10px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: 1px solid #004aad;
+}
+
+.input__error{
+    padding: 6px 10px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: 1px solid #e91212;
+}
+
+.input__error::placeholder{
+    color:#e91212;
+}
+
+.card button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: lightblue;
+    width: 100%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid #004aad;
+    border-radius: 20px;
+    outline: var(--azul);
+}
+
+.card a {
+    font-size: var(--parrafos);
+    color: #004AAD;
+    text-decoration: none;
+}

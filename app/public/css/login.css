@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Work%20Sans:wght@100;400;700&display=swap%27');
+
+/* VARIABLES */
+:root {
+    /* Colores */
+    --azul: #004AAD;
+    --gris-oscuro: #737373;
+    --gris-claro: #8C9197;
+    --fondo: #F5F5F5;
+    --links: #00A650;
+    --destacado: #006AFD;
+    /* Fuente */
+    --fuente: "Work Sans", sans-serif;
+    /* Tamaños tipográficos */
+    --parrafos: 12px;
+    /* --titulos: 24px; faltaría agregar semiBold para títulos, el resto es regular/ */
+    --descripcion: 16px;
+    --precio: 18px;
+    --descuento: 16px;
+}
+
+/* GENERALES */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fuente);
+}
+
+label.login__icons--loginWith {
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+}
+
+label.form__input--label-remember {
+    position: absolute;
+    left: 16px;
+    font-size: 14px;
+}
+
+hr.login__container--hr {
+    width: 110px;
+    position: relative;
+    left: 15px;
+}
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+ 
+ul {
+    list-style: none;
+}
+p {
+    font-size: var(--parrafos);
+}
+body {
+    background: #f5f5f5;
+    padding: 0;
+    margin: 0;
+}
+
+
+.login{
+    background-color: #737373b5;
+}
+
+.login__container--general{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__container--login{
+    padding: 40px;
+    box-shadow: 15px 15px 15px rgb(0 0 0 / 50%);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background-color: var(--fondo);
+    outline: 1px solid var(--azul);
+    border: none;
+    border-radius: 40px;
+    margin: 20px 20px;
+}
+
+/* .form-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+    border-radius: 0.9rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    width:50%;
+} */
+
+.login__span{
+    font-size: larger;
+    color: var(--azul);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.login__hr--first{
+    width: 114px;
+    position: relative;
+    left: 40px;
+}
+
+.input__login--container{
+    width: fit-content;
+    position: relative;
+    margin-block: 1rem;
+}
+::placeholder {
+    padding: 25px;
+}
+
+
+.input__login--style{
+    outline: 1px solid var(--azul);
+    border: none;
+    border-radius: 12px;
+    padding: 5px 10px;
+    background:var(--fondo);
+    color: #004AAD;
+    width: 190px;
+    height: 24px;
+    text-decoration: underline 1.2px;
+    text-decoration-style: double;
+}
+
+/* .login__input--hr {
+    position: absolute;
+    bottom: 8px;
+    right: 14px;
+    width: 80%;
+    outline: 1px solid #004aadab;
+    border: none;
+    border-radius: 10px;
+} */
+
+.login__forgotYouPass{
+    font-size: 12px;
+    color: var(--azul);
+}
+
+.login__input--icon {
+    position: relative;
+    left: 10px;
+    top: 28px;
+}
+
+.login__check{
+    position: relative;
+    bottom: 10px;
+}
+.login__check--remember{
+    position: relative;
+    top: 2px;
+    display: flex;
+}
+
+.login__icons span{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 26px;
+    padding: 15px;
+ }
+
+.btn-submit{
+    outline: 1px solid var(--azul);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background: #004aad5e;
+    color: #0b0c0e;
+    width: 210px;
+}
