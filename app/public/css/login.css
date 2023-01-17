@@ -63,6 +63,10 @@ body {
 }
 
 
+.login__a--icons{
+    color: white;
+}
+
 .login{
     background-color: #737373b5;
 }

@@ -45,6 +45,11 @@ body {
     background: #f5f5f5;
 }
 
+
+.register__a--icons{
+    color: white;
+}
+
 .register__general{
     display: flex;
     justify-content: center;
