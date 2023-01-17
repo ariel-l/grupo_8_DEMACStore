@@ -1,4 +1,5 @@
 /* DECREMENT & INCREMENT BTN */
+
 const minusBtn = document.querySelector('.decr');
 const plusBtn = document.querySelector('.incr');
 const countInput = document.querySelector('.count__input');
@@ -18,7 +19,7 @@ function increment() {
   countInput.value = parseInt(countInput.value) + 1;
 }
 
-/* OCULTAR */
+/* OCULTAR CAJA DESC-ENVIO-PAGO */
 
 const acc = document.getElementsByClassName("input__title--container");
 let i;
