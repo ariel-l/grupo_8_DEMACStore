@@ -1,6 +1,6 @@
 /* HEADER MOBILE */
 
-.header__container {
+.header__container--cart {
     background-color: var(--azul);
 }
 
