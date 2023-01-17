@@ -1,0 +1,646 @@
+@import url('https://fonts.googleapis.com/css2?family=Work%20Sans:wght@100;400;700&display=swap%27');
+
+/* VARIABLES */
+:root {
+    /* Colores */
+    --azul: #004AAD;
+    --gris-oscuro: #737373;
+    --gris-claro: #8C9197;
+    --fondo: #F5F5F5;
+    --links: #00A650;
+    --destacado: #006AFD;
+    /* Fuente */
+    --fuente: "Work Sans", sans-serif;
+    /* Tamaños tipográficos */
+    --parrafos: 12px;
+    /* --titulos: 24px; faltaría agregar semiBold para títulos, el resto es regular/ */
+    --descripcion: 16px;
+    --precio: 18px;
+    --descuento: 16px;
+    --detalles: 10px;
+}
+
+/* GENERALES */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fuente);
+  box-sizing: border-box;
+}
+
+a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  font-size: var(--parrafos);
+}
+
+/* HEADER */
+
+.header__body--container{
+  min-width: 245px;
+}
+
+.header__container--gray {
+  display: none;
+}
+
+header {
+  background-color: var(--azul);
+  width: 100%;
+  min-height: 35px;
+}
+
+/* BURGER MENU */
+
+header .burger-menu {
+  color: white;
+  font-size: 30px;
+  padding-left: 5px;
+  border: 0px;
+}
+
+header i.fas.fa-bars {
+  margin: 5px;
+  /* display: flex;
+  justify-content:stretch;
+  align-items: center; */
+}
+
+/* LOGOS */
+
+.logo__horizontal--1{
+  position: relative;
+  top: 1px;
+  width: 60px;
+  height: 27px;
+}
+
+.header__logo--main {
+  position: relative;
+  top: 10px; 
+  width: 70px;
+} 
+
+/* USER Y CARRITO */
+
+.header__container{
+  /* position: relative; */
+  min-height: 49px;
+}
+
+header .main-nav {
+  color: white;
+  font-size: 25px;
+  position: relative;
+  top: -40px;
+}
+
+header .main-nav ul {
+  display: flex;
+  justify-content: right;
+  
+}
+header .main-nav ul li {
+  margin: 2px;
+  text-align: center;
+  
+}
+
+.carrito {
+  padding-right: 10px;
+}
+
+/* BARRA DE BUSQUEDA */
+
+.header__search {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 34px;
+  margin-bottom: 10px;
+  position: relative;
+  top: -30px;
+  padding-top: 2px;
+}
+.header__search::placeholder {
+  color: var(--gris-oscuro);
+  outline: none; 
+}
+.header__search--bar {
+  width: 230px;
+}
+
+
+/* SLIDER */
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.slider {
+  z-index: 1000;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+ 
+
+
+/* HOME */
+main.home__body-container {
+    background-color: var(--fondo);
+    min-width: 245px;
+}
+
+main section.home__oferts--container {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--azul);
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    width: 100%;
+    flex-wrap: wrap;
+    font-size: var(--descripcion);
+}
+
+main section.home__oferts--container article.home__oferts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  font-size: var(--detalles);
+  box-shadow: 5px 5px 15px rgba(0,0, 0, 0.4);
+  padding: 1rem 1rem;
+}
+
+
+.home__OFF {
+  font-size: x-large;
+  text-align: center;
+}
+
+#home__icons--creditCard {
+  padding-right: 4px;
+  font-size:xx-small;
+}
+
+#home__interest--free--fees {
+  font-weight: 500;
+}
+
+.home__text-green {
+    color: var(--links);
+    font-weight: 600;
+}
+
+.home__btn-off {
+    border-radius: 50%;
+    color: var(--fondo);
+    font-weight: 600;
+    /* object-fit: cover; */
+}
+
+section.home__phones--container--global {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--fondo);
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  width: 90%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  font-size: var(--descripcion);
+}
+
+.home__products--phones{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10%;
+  font-weight: 600;
+  box-shadow: 5px 5px 15px rgba(0,0, 0, 0.3);
+  padding: 1.5rem 0.5rem;
+  margin: 0.5rem;
+  max-width: 200px;
+  min-height: 236px;
+  flex-grow: 1;
+  transition: all 450ms;
+}
+
+.home__products--phones:hover {
+  box-shadow: 5px 5px 10px rgb(100, 100, 100);
+}
+
+/* Contenedor de las imagenes */
+article.home__products--phones  div.home__phone--container--1 {
+  display: flex;
+  min-width: 170px; 
+  height: 150px;
+  object-fit: contain;
+} 
+
+/* Imagenes */
+div.home__phone--container--1 img.home__img--cardProducts{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home__tablet {
+  display: none;
+}
+
+.home__desktop {
+  display: none;
+} 
+
+
+/* Estilos */
+
+a.home__second--title {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 0.5;
+  text-align: center;
+}
+
+div.home__product--descripction {
+  text-align: center;
+}
+
+.home__strikethrough {
+  text-decoration: line-through;
+  color: var(--gris-oscuro);
+}
+
+.home__price{
+  font-size: var(--precio);
+}
+
+a.home__btn--details {
+  color: var(--fondo);
+  font-size: var(--descripcion);
+  border: 1px solid rgb(0, 0, 0, 0.5);
+  border-radius: 10px;  
+  padding: 0.6rem;
+  margin-top: 1rem;
+  background-color: var(--destacado);
+  transition: all 450ms ease;
+}
+
+a.home__btn--details:hover {
+  background-color: var(--azul);
+}
+
+
+
+div.home__title--principal {
+  background-color: var(--azul);
+  border-radius: 10px;
+  min-width: 210px;
+  width: 100%;
+  color: var(--fondo);
+  border: 3px solid rgb(0, 0, 0, 0.5);  
+  text-align: center;
+}
+
+div.home__title--principal h2 {
+  width: 100%;
+}
+
+/* FIN DEL HOME */
+
+
+/* CONTENEDOR FOOTER PRINCIPAL */
+
+.footer__container {
+  background-color: var(--azul);
+  min-width: 245px;
+}
+
+/* DISEÑO CONTENEDOR LOGO Y SUBSCRIPCION */
+
+.footer__logo-sub {
+  padding: 1rem 2rem;
+}
+
+
+/* DISEÑO LOGO */
+
+.footer__container-logo {
+  padding-bottom: 1rem;
+}
+
+.footer__logo {
+  width: 8rem;
+}
+
+
+/* DISEÑO SUBSCRIPCIÓN */
+
+.footer__subs {
+  color: white;
+}
+
+.input__subs {
+  display: flex;
+  padding-top: 0.3rem;
+}
+
+.input__subs-register {
+  padding-left: 0.3rem;
+  height: 2.3rem;
+  width: 160px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+.btn__container {
+  padding-left: 0.2rem;
+}
+
+.send__btn {
+  border: none;
+  border-radius: 3px;
+  height: 2.3rem;
+  width: 3rem;
+}
+
+.send__btn:hover {
+  color: white;
+  background-color: var(--destacado);
+}
+
+.send__btn:active {
+  transform: scale(1.1);
+}
+
+
+/* DISEÑO INFORMACIÓN Y CONTACTO */
+
+.footer__info {
+  margin: 0 2rem 0 2rem;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: var(--gris-oscuro);
+}
+
+.footer__info--individual {
+  padding: 0.3rem 0 0.3rem 1rem;
+}
+
+.info__title {
+  display: block;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.info__item {
+  display: none;
+}
+
+
+/* DISEÑO REDES */
+
+.footer__social {
+  color: white;
+}
+
+.footer__btns-social {
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.btns__icon {
+  color: white;
+}
+
+
+.footer__copyright {
+  text-align: center;
+  padding: 10px 7px 20px;
+}
+
+
+
+
+/*  DESKTOP */
+
+@media(min-width:780px) {
+  .header__container--gray {
+      background-color:#d3d1d1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--gris-oscuro);
+      font-weight: 400;
+      font-size: 0.7rem;
+      position: relative;
+      padding: 5px 1rem;
+      flex-direction: row;
+}
+  #header__icon--gray {
+      padding-right: 7px;
+  }
+  .header__search--bar{
+      /* width: 50%; */
+      position: initial;
+  }
+}
+
+/* BARRA DE BUSQUEDA TABLET Y DESKTOP */
+@media(min-width: 480px){
+  .header__search{
+      position: absolute;
+      top: 54px;
+      width: 100%;
+  }
+  .header__search--bar{
+      width: 69%;
+  }
+  .header__container{
+      max-height: -10px;
+  }
+  header{
+      max-height: -1px;
+  }
+}
+
+/* FOOTER */
+
+
+@media (min-width: 480px) {
+  .footer__logo-sub {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer__container-logo {
+    padding-bottom: 0;
+  }
+
+  .footer__info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer__info--individual {
+    text-align: center;
+    padding: 1.2rem 0;
+  }
+
+  .info__title {
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .info__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .info__title.icon-loc::before {
+    font: var(--fa-font-solid);
+    content: "\f3c5";
+    padding-right: 5px;
+  }
+
+  .info__title.icon-mob::before {
+    font: var(--fa-font-solid);
+    content: "\f10b";
+    padding-right: 5px;
+  }
+
+  .info__title.icon-tel::before {
+    font: var(--fa-font-solid);
+    content: "\f095";
+    padding-right: 5px;
+  }
+
+  .info__item--link {
+    color: white;
+    font-size: 0.9rem;
+  }
+
+  .info__item--link:hover {
+    color: var(--destacado)
+  }
+}
+
+/* DESKTOP */
+
+
+/* Media queries HOME */
+
+/* Tablets*/
+
+@media (min-width: 679px) {
+  .home__tablet {
+    display: flex;
+  }
+
+  .home__products--phones{
+    padding: 3rem 1.5rem;
+    margin: 1rem;
+    max-width: 230px;
+    min-height: 236px;
+    flex-grow: 1;
+    transition: all 450ms;
+  }
+  
+  article.home__products--phones  div.home__phone--container--1 {
+    display: flex;
+    min-width: 170px; 
+    height: 150px;
+    object-fit: contain;
+  } 
+}
+
+/* Desktop */
+@media (min-width: 1310px) {
+  .home__desktop {
+    display: flex;
+  } 
+  .home__products--phones{
+    padding: 3rem 1.5rem;
+    margin: 1rem;
+    max-width: 262px;
+    min-height: 236px;
+    flex-grow: 1;
+    transition: all 450ms;
+  }
+  article.home__products--phones  div.home__phone--container--1 {
+    display: flex;
+    height: 288px;
+    object-fit: contain;
+  } 
+}
