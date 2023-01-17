@@ -19,4 +19,10 @@ app.get("/productDetail", (req, res) => {
     res.sendFile(path.join(__dirname, "/views/productDetail.html"));
 });
 
+/* CART */
+
+app.get("/cart", (req, res) => {
+    res.sendFile(path.join(__dirname, "/views/cart.html"));
+});
+
 app.listen(PORT, () => console.log(`Server listen in port ${PORT}\n http://localhost:${PORT}`));
