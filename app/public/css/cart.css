@@ -55,6 +55,7 @@
     border-bottom: 1px solid;
     color: #dedddd;
     margin: 0 0.5rem;
+    table-layout: fixed;
 }
 
 .table__header {
@@ -119,7 +120,7 @@
 }
 
 .table__item--del {
-    padding-left: 2rem;
+    padding-left: 1.5rem;
 }
 
 .del__icon {
@@ -447,6 +448,14 @@
 .footer__copyright {
     text-align: center;
     padding: 10px 7px 20px;
+}
+
+/* CORRECIÓN ICONO TACHO FLOTANDO EN DISPOSITIVOS MAS CHICOS */
+
+@media (max-width: 330px) {
+    .cart__table {
+        width: 100%;
+    }
 }
 
 /* TABLET */
