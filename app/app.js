@@ -36,4 +36,16 @@ app.get("/login", (req, res) => {
     res.sendFile(path.join(__dirname, "/views/login.html"));
 });
 
+app.get("/header", (req, res) => {
+    res.sendFile(path.join(__dirname, "/views/header.html"));
+});
+
+app.get("/create", (req, res) => {
+    res.sendFile(path.join(__dirname, "/views/productCreate.html"));
+});
+
+app.get("/modify", (req, res) => {
+    res.sendFile(path.join(__dirname, "/views/productModify.html"));
+});
+
 app.listen(PORT, () => console.log(`Server listen in port ${PORT}\nhttp://localhost:${PORT}`));

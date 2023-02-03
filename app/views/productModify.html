@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/form.css">
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
+        <title>Modify</title>
+    </head>
+    
+    <body class="productCreate">
+    
+        <div class="register__container--global register__first">
+            <h2 class="register__title">Modificación de productos</h2>
+            <hr>
+            <form action="" method="post" class="register__container">
+                <div class="container__desktop">
+                    <div class="box__datos">
+                        <div class="input__container">
+                            <label class="label-style" for="text">Nombre del producto</label>
+                            <input class="input-style" type="text" name="user" placeholder="Ej: Samsung Galaxy M13" id="">
+                        </div>
+                        <div class="input__container">
+                            <label class="label-style" for="text">Descuento</label>
+                            <input class="input-style" type="text" name="name__user" placeholder="Ej: 15" id="">
+                        </div>
+                    </div>
+                    <div class="box__profile">
+                        <div class="input__container">
+                            <label class="label-style" for="text">Precio</label>
+                            <input class="input-style" type="text" name="name__user" placeholder="Ej:$1500" id="">
+                        </div>
+                        <div class="input__container input__photo">
+                            <label class="label-style" for="text">Elija su foto del producto</label>
+                            <input class="input" type="file" name="photo" id="" accept=".jpg,.png">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="input__container">
+                    <label class="label-style" for="text">Categoría</label>
+                    <select name="type_phone-use" id="" class="input-style select-category">
+                        <option hidden selected>Selecciona una opción</option> 
+                        <option value="">Nuevo</option>
+                        <option value="">Refabricado</option>
+                    </select>
+                </div>   
+                <div class="input__container">
+                    <label class="label-style" for="text">Marca</label>
+                    <select name="type_phone" id="" class="input-style select-category"> 
+                        <option hidden selected>Selecciona una opción</option>
+                        <option value="">Samsung</option>
+                        <option value="">Motorola</option>
+                        <option value="">Xiaomi</option>
+                        <option value="">Apple</option>
+                        <option value="">Huawei</option>
+                        <option value="">LG</option>
+                        <option value="">Otros</option>
+                    </select>
+                </div>                        
+                <div class="input__container textarea__container--global">
+                    <label for="">Descripción del producto:</label>
+                    <div class="textarea__container">
+                        <textarea class="input-style textarea__descripction" name="description" id="" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+                
+                <div  class="button__container">
+                    <a href="#"></a><button type="submit" class="btn btn__submit"> Modificar producto </button></a>
+                </div>
+            </form>
+        </div>
+
+    </body>
+</html>

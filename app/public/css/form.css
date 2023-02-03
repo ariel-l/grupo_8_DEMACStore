@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+/* VARIABAES */ 
+:root {
+    /* Colores */
+    --azul: #004AAD;
+    --gris-oscuro: #737373;
+    --gris-claro: #8C9197;
+    --fondo: #F5F5F5;
+    --links: #00A650;
+    --destacado: #006AFD;
+    /* Fuente */
+    --fuente: "Work Sans", sans-serif;
+    /* Tamaños tipográficos */
+    --parrafos: 12px;
+    --descripcion: 16px;
+    --precio: 18px;
+    --descuento: 16px;
+    --detalles: 10px;
+}
+
+/* ESTILOS GENERALES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+}
+
+a {
+    color: darkblue;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    font-size: var(--parrafos)
+}
+
+body {
+    display: flex;
+    background-image: url("../images/form__fondo.jpg"); 
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* REGISTER */
+
+.register__title {
+    text-align: center;
+    font-family: var(--titulos);
+}
+
+hr{
+    margin-bottom: 1rem;  
+}
+
+.register__container--global{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gris-claro);
+    background-image: ;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    margin: 2rem auto;
+    border-radius: 2%;
+    background-color: white;
+    padding: 3.5rem;
+    width: auto;
+}
+
+
+.input__container, 
+.button__container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+/* Selectores */
+
+.input-style{
+    border: none;
+    border-radius: 0.2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    height: 3rem;
+    padding: 0 0.5rem;
+    outline: none;
+    color: black;
+}
+
+.select-category{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    
+}
+
+.label-style{
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+input.input-style::placeholder {
+    font-weight: 500;
+}
+
+textarea{
+    max-width: 37rem;
+    max-height: 25rem;
+    min-height: 5.25rem;
+    min-width: 16.8rem;
+}
+
+.textarea__descripction{
+    width: 100%;
+    height: 10rem;
+    margin: 2rem 0;
+    padding: 0.5rem;
+}
+
+/* BUTTONS */
+
+.btn{
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    height: 2.5rem;
+    font-size: var(--precio);
+}
+
+.btn__submit{
+    background-color: var(--azul);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    height: 2.5rem;
+    font-size: var(--precio);
+    color: white;
+    transition: all 1s;
+}
+
+.btn__submit:hover{
+    background-color: var(--celeste);
+}
+
+
+
+/* MEDIAS QUERIES */
+
+/* Desktop */
+@media(min-width: 980px){
+
+    .container__desktop{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .box__datos{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .box__profile{
+        width: 50%;
+        height: 228px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .input__photo{
+        margin-left: 4rem;
+        
+    }
+    input.input-style{
+        min-width: 16rem;
+    }
+    .register__first{
+        display: flex;
+        max-width: 700px;
+    }
+}
