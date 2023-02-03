@@ -2,8 +2,9 @@
   "name": "grupo_8_demacstore",
   "version": "1.0.0",
   "description": "![logo](/design/logos/LogoPrincipalDEMAC.png)",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
+    "start": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

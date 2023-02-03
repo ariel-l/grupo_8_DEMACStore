@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const { modify } = require("./controllers/modifyController");
 const PORT = 3000;
 
 app.use(express.static("public"));
 
 //Templates engine config
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 //Routers
 const cartRouter = require("./routes/cartRouter");
