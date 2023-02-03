@@ -425,7 +425,7 @@ header input.barra {
 /* DESKTOP PRODUCT DETAIL */
 
 @media (min-width: 769px) {
-
+    
     .detail___product--container {
     padding-top: 50px;
 }
