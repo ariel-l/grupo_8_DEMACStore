@@ -1,6 +1,6 @@
 const createController = {
     create: (req, res) => {
-        return res.render('productCreate')
+        return res.render('products/productCreate')
     }
 }
 

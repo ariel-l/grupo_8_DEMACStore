@@ -1,6 +1,6 @@
 const modifyController = {
     modify: (req, res) => {
-        return res.render('productModify')
+        return res.render('products/productModify')
     }
 }
 
