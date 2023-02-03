@@ -13,21 +13,13 @@ app.set("views", path.join(__dirname, "views"));
 const products = require("./routes/productsRouter");
 const home = require("./routes/homeRouter");
 const users = require("./routes/usersRoutes");
-// const productDetailRouter = require("./routes/productDetailRouter");
-// const registerRouter = require("./routes/registerRouter");
-// const modifyRouter = require("./routes/modifyRouter");
-// const createRouter = require("./routes/createRouter");
-// const headerRouter = require("./routes/headerRouter");
+
 
 
 app.use("/", home);
-app.use("/productos", products);
-app.use("/usuarios", users);
-// app.use("/productDetail", productDetailRouter)
-// app.use("/register", registerRouter);
-// app.use("/productModify", modifyRouter);
-// app.use("/productCreate", createRouter);
-// app.use("/header", headerRouter);
+app.use("/", products);
+app.use("/", users);
+
 
 
 app.listen(PORT, () => console.log(`Server listen in port ${PORT}\nhttp://localhost:${PORT}`));
