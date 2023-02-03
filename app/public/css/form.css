@@ -98,12 +98,12 @@ hr{
     color: black;
 }
 
-.select-category{
+/* .select-category{
     display: flex;
     width: 90%;
     justify-content: center;
     
-}
+} */
 
 .label-style{
     margin-bottom: 0.5rem;
