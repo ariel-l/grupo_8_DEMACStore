@@ -12,54 +12,7 @@
 </head>
 
 <body class="login__body">
-    <header>
-        <nav class="header__nav--userdesign">
-            <ul class="header__container--gray">
-                <li><i id="header__icon--gray" class="fa-solid fa-truck-fast"></i>Seguí tu compra</li>
-                <li class="header__btn--gray"><i id="header__icon--gray" class="fa-regular fa-building"></i>Sucursales</li>
-                <li class="header__btn--gray"><i id="header__icon--gray" class="fa-brands fa-whatsapp"></i>Comunicate por WhatsApp</li>
-                <li class="header__btn--gray"><i id="header__icon--gray" class="fa-solid fa-headset"></i>Centro de ayuda</li>
-                <li><i id="header__icon--gray" class="fa-solid fa-circle-down"></i>Garantía</li>
-                <div class="header__logo-horizontal-1">
-                    <img class="logo__horizontal--1" src="./images/LogoSecundarioDEMAC.png" alt="">
-                </div>
-            </ul>
-
-
-        </nav>
-
-        <nav class="header__container">
-
-            <span class="burger-menu">
-                <i class="fas fa-bars"></i>
-            </span>
-
-            <a href="/"><img class="header__logo--main" src="images/WhatsApp Image 2023-01-06 at 11.19.29 PM.jpeg" alt=""></a>
-
-            <nav class="main-nav">
-                <ul>
-                    <li>
-                        <a class="login__a--icons" href="/login"><i class="fa-solid fa-circle-user"></i>
-                        <p>Mi cuenta</p></a>
-                    </li>
-                    <a class="login__a--icons" href="/cart"><li class="carrito">
-                        <i class="fa-solid fa-cart-shopping"></i></a>
-                    </li>
-
-                </ul>
-            </nav>
-
-            <div class="header__search">
-                <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas">
-                <button>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-
-
-        </nav>
-
-    </header>
+    <%- include('../partials/header.ejs') %>
     <div class="login">
         <div class="login__container--general">
             <section class="form__container--login">
@@ -85,7 +38,7 @@
                             <input class="login__check--remember" type="checkbox" name="recordar" id="recordar">
                         </div>
                         <div class="button__login--container">
-                            <button type="submit" class="btn btn-submit">Iniciar sesión</button>
+                            <button type="submit" class="btn login__btn-submit">Iniciar sesión</button>
                         </div>
                         <label class="login__icons--loginWith" for="login_icons">Iniciar con</label>
                         <div class="login__icons">
@@ -96,7 +49,7 @@
                             </span>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-submit"> <a href="/register">Registarme</a></button>
+                            <button type="submit" class="btn login__btn-submit"> <a href="/register">Registarme</a></button>
                         </div>
                     </div>
                 </form>

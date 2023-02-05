@@ -1,82 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/header.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
-    <title>Document</title>
-</head>
+<header class="header__container">
 
-<body>
+    <!-- GRAY HEADER -->
+    <nav class="header__nav--userdesign">
+        <ul class="nav__container--gray">
+            <li>
+                <a href="" class="nav__icon--link"><i class="fa-solid fa-truck-fast nav__icon--gray"></i>Seguí tu compra</a>
+            </li>
+            <li class="nav__btn--gray">
+                <a href="" class="nav__icon--link"><i class="fa-regular fa-building nav__icon--gray"></i>Sucursales</a>
+            </li>
+            <li class="nav__btn--gray">
+                <a href="" class="nav__icon--link"><i class="fa-brands fa-whatsapp nav__icon--gray"></i>Comunicate por WhatsApp</a>
+            </li>
+            <li class="nav__btn--gray">
+                <a href="" class="nav__icon--link"><i class="fa-solid fa-headset nav__icon--gray"></i>Centro de ayuda</a>
+            </li>
+            <li>
+                <a href="" class="nav__icon--link"><i class="fa-solid fa-circle-down nav__icon--gray"></i>Garantía</a>
+            </li>
+            <li class="nav__logo__gray--container">
+                <img class="nav__logo--gray" src="images/logos/logoSecundario.svg" alt="">
+            </li>
+        </ul>
+    </nav>
 
-    <header class="header__body--container"> 
-        <nav class="header__nav--userdesign">   
-            <ul class="header__container--gray">
-                <li><i id="header__icon--gray" class="fa-solid fa-truck-fast"></i>Seguí tu compra</li>
-                <li class="header__btn--gray"><i id="header__icon--gray" class="fa-regular fa-building"></i>Sucursales</li>
-                <li class="header__btn--gray"><i id="header__icon--gray" class="fa-brands fa-whatsapp"></i>Comunicate por WhatsApp</li>
-                <li class="header__btn--gray"><i id="header__icon--gray" class="fa-solid fa-headset"></i>Centro de ayuda</li>
-                <li><i id="header__icon--gray" class="fa-solid fa-circle-down"></i>Garantía</li>
-            <div class="header__logo-horizontal-1">
-            <img class="logo__horizontal--1" src="./images/LogoSecundarioDEMAC.png" alt=""> </div>
-            </ul>
-        
-        </nav>
-    
-        <nav class="header__container">
-        
-            <span class="burger-menu">
+    <!-- HEADER MENU HAMBUGER, LOGO, SEARCH-BAR, MY-ACCOUNT, CART -->
+    <div class="header__bsi_container">
+
+        <!-- MENU HAMBUGER - LOGO -->
+        <div class="header__burger__logo--container">
+
+            <!-- MENU HAMBURGER -->
+            <div class="header__burger--menu">
                 <i class="fas fa-bars"></i>
-            </span> 
+            </div>
 
-            <nav class="header__nav--categories">  
-                <div class="btn__close--container">
-                    <i class="fa-regular fa-circle-xmark" id="btn__close"></i> 
-                </div>
-                    <ul class="header__container--sections">
-                        <li>Categorías</li>
-                        <li>Ofertas</li>
-                        <li>Celulares Nuevos</li>
-                        <li>Celulares Refubrished (Renovados)</li>
-                    </ul>
-            </nav>
-
-            <img class="header__logo--main" src="images/WhatsApp Image 2023-01-06 at 11.19.29 PM.jpeg" alt=""> 
+            <!-- LOGO -->
             
-            <nav class="main-nav"> 
-                <ul class="header__container--cart--login"> 
-                    <li> 
-                        <a href="/login" class="a__btn--links">
-                        <i class="fa-solid fa-circle-user"></i>
-                        <p>Mi cuenta</p>
-                        </a>
-                    </li>
-                    <li class="carrito">
-                        <a href="/cart" class="a__btn--links"><i class="fa-solid fa-cart-shopping"></i></a>
-                </li>
+            <div class="header__logo--container">
+                <a href="/">
+                <img src="images/logos/logoPrincipal.svg" class="header__logo" alt="Header Logo">
+                </a>
+            </div>
+        </div>
 
-                </ul>
-            </nav>
+        <!-- SEARCH-BAR -->
+        <div class="header__search--container">
+            <form class="header__search--form">
+                <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas...">
+                <button class="search__bar--btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
 
-                <div class="header__search">
-                    <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas">
-                    <button>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button> 
-                </div>
-        </nav>
+        <!-- MY-ACCOUNT - CART -->
+        <div class="header__acc__cart--container">
 
-        
+            <!-- MY-ACCOUNT -->
+            <div class="header__acc--container">
+                <a href="/login" class="acc__links">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span class="text__acc">Mi cuenta</span>
+                </a>
+            </div>
 
-    </header>
+            <!-- CARRT -->
+            <div class="header__cart--container">
+                <a href="/cart" class="acc__links">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
 
+        </div>
 
-    
-<h1>body</h1>
+    </div>
 
-<script src="../public/js/header.js"></script>
-</body>
+    <!-- HEADER NAV CATEGORIES -->
+    <nav class="header__nav--categories">
+        <ul class="header__container--sections">
+            <li>Categorías</li>
+            <li>Ofertas</li>
+            <li>Celulares Nuevos</li>
+            <li>Celulares Refubrished (Renovados)</li>
+        </ul>
+    </nav>
 
-</html>
+</header>

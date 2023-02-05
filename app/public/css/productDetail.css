@@ -1,120 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Work%20Sans:wght@100;400;700&display=swap%27');
-
-/* VARIABLES */
-:root {
-    /* Colores */
-    --azul: #004AAD;
-    --gris-oscuro: #737373;
-    --gris-claro: #8C9197;
-    --fondo: #F5F5F5;
-    --links: #00A650;
-    --destacado: #006AFD;
-    /* Fuente */
-    --fuente: "Work Sans", sans-serif;
-
-}
-
-/* GENERALES */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--fuente);
-}
-a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-}
- 
-ul {
-    list-style: none;
-}
-
-header {
-    background-color: var(--azul);
-    width: 100%;
-    min-height: 115px;
-}
-
-.header__container-gris {
-    background-color: #d3d1d1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--gris-oscuro);
-    font-weight: 400;
-    font-size: 0.7rem;
-    position: relative;
-}
-
-.header__circle {
-    position: relative;
-
-}
-
-
-/* BURGER MENU */
-
-header .burger-menu {
-    color: white;
-    font-size: 30px;
-    padding-left: 5px;
-    border: 0px;
-}
-
-header i.fas.fa-bars {
-    margin: 5px;
-
-}
-
-/* LOGO */
-header img {
-    position: relative;
-    top: 10px; 
-    width: 70px;
-} 
-
-/* USER */
-header .main-nav {
-    color: white;
-    font-size: 25px;
-    
-}
-
-header .main-nav ul {
-    display: flex;
-    justify-content: right;
-    
-}
-header .main-nav ul li {
-    
-    margin: 2px;
-    text-align: center;
-}
- 
-/* BARRA */
-
- header div.busqueda {
-    display: flex;
-    /* flex-direction:column; */
-    justify-content: center;
-    /* width: 100%;*/
-    height: 32px; 
-    margin-bottom: 10px;
-    position: relative;
-    top: 10px;
-    padding-top: 5px;
-    
-}
-header input.barra {
-    width: 230px;
-}
-
 /* PRODUCT DETAIL */
 
 .back {
@@ -148,13 +31,14 @@ header input.barra {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 
 .detail__img--product {
     margin: auto;
     background-color: white;
-    padding: 30px;
+    width: 100%;
 }
 
 
@@ -165,7 +49,7 @@ header input.barra {
     max-width: 400px;
     text-align: left;
     width: 100%;
-    padding: 10px 16px;
+    padding: 10px 0;
 }
 
 .detail___title--product {
@@ -323,7 +207,7 @@ header input.barra {
     margin-top: 20px;
     background-color: white;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    width: 100%;
+    width: auto;
     padding: 1rem 3rem;
     margin-left: auto;
     margin-right: auto;
@@ -367,29 +251,6 @@ header input.barra {
 }
 
 
-/* FOOTER */
-
-.footer__social {
-    background-color: var(--azul);
-    color: white;
-}
-
-.footer__buttons-social {
-    font-size: 30px;
-    text-align: right;
-    padding: 15px;
-}
-
-.footer__buttons-social a {
-    color: white;
-}
-
-.copyright {
-    text-align: center;
-    padding: 10px 0 20px;
-}
-
-
 /* TABLET PRODUCT DETAIL **/
 
 @media (min-width: 480px) {
@@ -406,6 +267,10 @@ header input.barra {
     padding: 32px 24px 24px;
 }
 
+.detail__img--product {
+    margin: auto;
+}
+
 .detail__main--product {
     margin-right: 1.8rem;
     margin-left: 1.8rem;
@@ -414,6 +279,7 @@ header input.barra {
 .detail___info--product {
     border-radius: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    padding-left: 1rem;
 }
 
 .detail__hr--product {
