@@ -1,50 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Work%20Sans:wght@100;400;700&display=swap%27');
-
-/* VARIABLES */
-:root {
-  /* Colores */
-  --azul: #004AAD;
-  --gris-oscuro: #737373;
-  --gris-claro: #8C9197;
-  --fondo: #F5F5F5;
-  --links: #00A650;
-  --destacado: #006AFD;
-  /* Fuente */
-  --fuente: "Work Sans", sans-serif;
-  /* Tamaños tipográficos */
-  --parrafos: 12px;
-  --descripcion: 16px;
-  --precio: 18px;
-  --descuento: 16px;
-  --detalles: 10px;
-}
-
-/* GENERALES */
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: var(--fuente);
-  box-sizing: border-box;
-}
-
-a {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-p {
-  font-size: var(--parrafos);
-}
-
 /* HEADER MOBILE */
 
 .header__container {
   background-color: var(--azul);
+  min-width: 245px;
 }
 
 /* GRAY HEADER */

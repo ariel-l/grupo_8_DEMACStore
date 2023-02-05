@@ -1,61 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Work%20Sans:wght@100;400;700&display=swap%27');
-
-/* VARIABLES */
-:root {
-    /* Colores */
-    --azul: #004AAD;
-    --gris-oscuro: #737373;
-    --gris-claro: #8C9197;
-    --fondo: #F5F5F5;
-    --links: #00A650;
-    --destacado: #006AFD;
-    /* Fuente */
-    --fuente: "Work Sans", sans-serif;
-    /* Tamaños tipográficos */
-    --parrafos: 12px;
-    /* --titulos: 24px; faltaría agregar semiBold para títulos, el resto es regular/ */
-    --descripcion: 16px;
-    --precio: 18px;
-    --descuento: 16px;
-}
-
-/* GENERALES */
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: var(--fuente);
-}
-
-label.login__icons--loginWith {
-    font-size: small;
-    display: flex;
-    justify-content: center;
-    padding: 7px;
-}
-
-label.form__input--label-remember {
-    position: absolute;
-    left: 16px;
-    font-size: 14px;
-}
-
-hr.login__container--hr {
-    width: 110px;
-    position: relative;
-    left: 15px;
-}
-a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-}
- 
-ul {
-    list-style: none;
-}
-p {
-    font-size: var(--parrafos);
-}
 .login__body {
     background-image: url("../images/form__fondo.jpg"); 
     padding: 0;
@@ -178,7 +120,7 @@ p {
     padding: 15px;
  }
 
-.btn-submit{
+ .login__btn-submit{
     outline: 1px solid var(--azul);
     border: none;
     border-radius: 10px;

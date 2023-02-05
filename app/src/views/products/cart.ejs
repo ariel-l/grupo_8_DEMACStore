@@ -1,29 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
-    <title>Carrito</title>
-</head>
-
+    <%- include('../partials/head.ejs') %>
+    <%- include('../partials/scripts.ejs') %>
 <body>
-    <header class="header__container--cart">
-        <div class="header__info">
-            <div class="header__container--back">
-                <a class="back--link" href="/"><span class="back--text">Volver a DemacStore</span></a>
-            </div>
-            <div class="header__container--logo">
-                <a href="/"><img class="logo__DEMAC" src="images/cart-imgs/logo.svg" alt="DEMAC LOGO"></a>
-            </div>
-            <div class="header__container--safeBuy">
-                <img class="logo__safeBuy" src="images/cart-imgs/buySafe-logo.svg" alt="SAFEBUY LOGO">
-            </div>
-        </div>
-    </header>
+    <%- include('../partials/header.ejs') %>
     <main>
         <article class="body__container">
             <div class="cart-recom__container">
@@ -196,21 +176,7 @@
             </div>
         </article>
     </main>
-    <footer class="footer__container">
-        <article class="footer__social">
-            <div class="footer__btns-social">
-                <a href="#" class="btns__icon"><i class="fa-brands fa-telegram"></i></a>
-                <a href="#" class="btns__icon"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="btns__icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="btns__icon"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="btns__icon"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <div class="footer__copyright">
-                <i class="fa-regular fa-copyright"></i> Copyright 2023 | Todos los derechos reservados Demac.com.ar
-            </div>
-        </article>
-    </footer>
-    <script src="js/cart.js"></script>
+    <%- include('../partials/footer.ejs') %>
 </body>
 
 </html>

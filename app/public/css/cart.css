@@ -1,29 +1,3 @@
-/* HEADER MOBILE */
-
-.header__container--cart {
-    background-color: var(--azul);
-}
-
-.header__info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem 2.5rem;
-}
-
-.header__container--back {
-    display: none;
-}
-
-.logo__DEMAC {
-    height: 4.2rem;
-}
-
-.header__container--safeBuy {
-    display: none;
-}
-
-
 /* BODY MOBILE */
 
 /* PRODUCTOS EN EL CARRITO */
