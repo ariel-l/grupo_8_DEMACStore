@@ -1,4 +1,15 @@
-body.productCreate {
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: darkblue;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.productCreate {
+    /* display: flex; */
     background-image: url("../images/form__fondo.jpg"); 
     background-size: cover;
     background-attachment: fixed;
@@ -17,20 +28,23 @@ hr{
 
 .register__container--global{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     background-color: var(--gris-claro);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     width: 90%;
-    margin: 2rem auto;
+    margin: 2rem 0.5rem;
     border-radius: 2%;
     background-color: white;
     padding: 3.5rem;
     width: auto;
 }
 
+.productForm__container{
+    width: 100%;
+}
 
 .input__container, 
 .button__container{
@@ -64,9 +78,9 @@ input.input-style::placeholder {
 
 textarea{
     max-width: 37rem;
-    max-height: 25rem;
-    min-height: 5.25rem;
-    min-width: 16.8rem;
+    max-height: 10rem;
+    min-width: 100%;
+    resize: none;
 }
 
 .textarea__descripction{
@@ -106,6 +120,9 @@ textarea{
 
 /* Desktop */
 @media(min-width: 980px){
+    .register__container--global{
+        margin: 2rem auto;
+    }
 
     .container__desktop{
         display: flex;
