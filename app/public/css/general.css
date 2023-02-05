@@ -19,3 +19,7 @@
     background-color: var(--fondo);
     min-width: 245px;
   }
+
+  ul {
+    list-style: none;
+  }
