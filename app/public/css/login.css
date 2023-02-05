@@ -32,6 +32,7 @@
     border: none;
     border-radius: 40px;
     margin: 20px 20px;
+    box-sizing: content-box;
 }
 
 /* .form-container {
@@ -81,6 +82,7 @@
     height: 24px;
     text-decoration: underline 1.2px;
     text-decoration-style: double;
+    box-sizing: initial;
 }
 
 /* .login__input--hr {
