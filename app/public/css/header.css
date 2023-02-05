@@ -17,7 +17,7 @@
 /* HEADER MENU HAMBUGER, LOGO, SEARCH-BAR, MY-ACCOUNT, CART */
 .header__bsi_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 1.3rem 1.3rem 3rem 1.3rem;
   position: relative;

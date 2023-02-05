@@ -1,182 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs') %>
     <%- include('../partials/scripts.ejs') %>
-<body>
-    <%- include('../partials/header.ejs') %>
-    <main>
-        <article class="body__container">
-            <div class="cart-recom__container">
-                <section class="cart__container">
-                    <span class="table__title">Mi Carrito</span>
-                    <table class="cart__table">
-                        <thead class="table__header">
-                            <tr>
-                                <th>ImgProd</th>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Subtotal</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table__body">
-                            <tr class="table__row--individual">
-                                <td>
-                                    <div class="table__item--img-container">
-                                        <img src="images/cart-imgs/galaxys20.svg" class="table__item--img" alt="Celular Samsung">
-                                    </div>
-                                </td>
-                                <td class="table__item--prod">
-                                    <span class="item__desc">Celular Samsung Galaxy S20</span>
-                                    <span class="item__price">$ 50.000 x1 un.</span>
-                                </td>
-                                <td class="table__item--qua">
-                                    <div class="btns__container"><button class="btn__mp decr">-</button>
-                                        <input type="text" value="0" class="count__input" />
-                                        <button class="btn__mp incr">+</button>
-                                    </div>
-                                </td>
-                                <td class="table__item--sub">
-                                    <span>$50.000</span>
-                                </td>
-                                <td class="table__item--del"><i class="fa-solid fa-trash del__icon"></i></td>
-                            </tr>
-                            <tr class="table__row--individual">
-                                <td>
-                                    <div class="table__item--img-container">
-                                        <img src="images/cart-imgs/motog42.svg" class="table__item--img" alt="Celular Motorola">
-                                    </div>
-                                </td>
-                                <td class="table__item--prod">
-                                    <span class="item__desc">Celular Motorola G42</span>
-                                    <span class="item__price">$ 58.999 x1 un.</span>
-                                </td>
-                                <td class="table__item--qua">
-                                    <div class="btns__container"><button class="btn__mp decr">-</button>
-                                        <input type="text" value="0" class="count__input" />
-                                        <button class="btn__mp incr">+</button>
-                                    </div>
-                                </td>
-                                <td class="table__item--sub">
-                                    <span>$58.999</span>
-                                </td>
-                                <td class="table__item--del"><i class="fa-solid fa-trash del__icon"></i></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="cart__addProd">
-                        <a href="/" class="cart__addProd--link">Agregar más productos</a>
-                    </div>
-                </section>
-                <section class="recom__container">
-                    <span class="recom__title">Llevate también:</span>
-                    <div class="recom__items--container">
-                        <ul class="list__items">
-                            <li class="list__items--individual">
-                                <div class="item__img--container">
-                                    <img class="recom__item--img" src="images/cart-imgs/galaxys20rojo.svg" alt="Celular Samsung">
+
+        <body>
+            <%- include('../partials/header.ejs') %>
+                <main>
+                    <article class="body__container">
+                        <div class="cart-recom__container">
+                            <section class="cart__container">
+                                <span class="table__title">Mi Carrito</span>
+                                <table class="cart__table">
+                                    <thead class="table__header">
+                                        <tr>
+                                            <th>ImgProd</th>
+                                            <th>Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table__body">
+                                        <tr class="table__row--individual">
+                                            <td>
+                                                <div class="table__item--img-container">
+                                                    <img src="images/cart-imgs/galaxys20.svg" class="table__item--img" alt="Celular Samsung">
+                                                </div>
+                                            </td>
+                                            <td class="table__item--prod">
+                                                <span class="item__desc">Celular Samsung Galaxy S20</span>
+                                                <span class="item__price">$ 50.000 x1 un.</span>
+                                            </td>
+                                            <td class="table__item--qua">
+                                                <div class="btns__container"><button class="btn__mp decr">-</button>
+                                                    <input type="text" value="0" class="count__input" />
+                                                    <button class="btn__mp incr">+</button>
+                                                </div>
+                                            </td>
+                                            <td class="table__item--sub">
+                                                <span>$50.000</span>
+                                            </td>
+                                            <td class="table__item--del"><i class="fa-solid fa-trash del__icon"></i></td>
+                                        </tr>
+                                        <tr class="table__row--individual">
+                                            <td>
+                                                <div class="table__item--img-container">
+                                                    <img src="images/cart-imgs/motog42.svg" class="table__item--img" alt="Celular Motorola">
+                                                </div>
+                                            </td>
+                                            <td class="table__item--prod">
+                                                <span class="item__desc">Celular Motorola G42</span>
+                                                <span class="item__price">$ 58.999 x1 un.</span>
+                                            </td>
+                                            <td class="table__item--qua">
+                                                <div class="btns__container"><button class="btn__mp decr">-</button>
+                                                    <input type="text" value="0" class="count__input" />
+                                                    <button class="btn__mp incr">+</button>
+                                                </div>
+                                            </td>
+                                            <td class="table__item--sub">
+                                                <span>$58.999</span>
+                                            </td>
+                                            <td class="table__item--del"><i class="fa-solid fa-trash del__icon"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="cart__addProd">
+                                    <a href="/" class="cart__addProd--link">Agregar más productos</a>
                                 </div>
-                                <span class="recom__item--prod"><a href="/productDetail">Celular Samsung Galaxy S20 FE</a>
-                                    <span class="recom__item--desc">$ 90.000</span>
-                                </span>
-                                <span class="recom__item--price">$50.000</span>
-                                <button class="recom__item--btn">Agregar</button>
-                            </li>
-                            <li class="list__items--individual">
-                                <div class="item__img--container">
-                                    <img class="recom__item--img" src="images/cart-imgs/galaxya13.svg" alt="Celular Samsung">
+                            </section>
+                            <section class="recom__container">
+                                <span class="recom__title">Llevate también:</span>
+                                <div class="recom__items--container">
+                                    <ul class="list__items">
+                                        <li class="list__items--individual">
+                                            <div class="item__img--container">
+                                                <img class="recom__item--img" src="images/cart-imgs/galaxys20rojo.svg" alt="Celular Samsung">
+                                            </div>
+                                            <span class="recom__item--prod"><a href="/productDetail">Celular Samsung Galaxy S20 FE</a>
+                                                <span class="recom__item--desc">$ 90.000</span>
+                                            </span>
+                                            <span class="recom__item--price">$50.000</span>
+                                            <button class="recom__item--btn">Agregar</button>
+                                        </li>
+                                        <li class="list__items--individual">
+                                            <div class="item__img--container">
+                                                <img class="recom__item--img" src="images/cart-imgs/galaxya13.svg" alt="Celular Samsung">
+                                            </div>
+                                            <span class="recom__item--prod"><a href="/productDetail">Celular Samsung Galaxy A13</a>
+                                                <span class="recom__item--desc no-desc">$ 90.000</span>
+                                            </span>
+                                            <span class="recom__item--price">$67.999</span>
+                                            <button class="recom__item--btn">Agregar</button>
+                                        </li>
+                                        <li class="list__items--individual-wea">
+                                            <div class="item__img--container">
+                                                <img class="recom__item--img" src="images/cart-imgs/galaxys20rojo.svg" alt="Celular Samsung">
+                                            </div>
+                                            <span class="recom__item--prod"><a href="/productDetail">Celular Samsung Galaxy S20 FE</a>
+                                                <span class="recom__item--desc">$ 90.000</span>
+                                            </span>
+                                            <span class="recom__item--price">$50.000</span>
+                                            <button class="recom__item--btn">Agregar</button>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <span class="recom__item--prod"><a href="/productDetail">Celular Samsung Galaxy A13</a>
-                                    <span class="recom__item--desc no-desc">$ 90.000</span>
-                                </span>
-                                <span class="recom__item--price">$67.999</span>
-                                <button class="recom__item--btn">Agregar</button>
-                            </li>
-                            <li class="list__items--individual-wea">
-                                <div class="item__img--container">
-                                    <img class="recom__item--img" src="images/cart-imgs/galaxys20rojo.svg" alt="Celular Samsung">
+                            </section>
+                        </div>
+                        <div class="total-desc-ship-pay__container">
+                            <div class="sub-desc-total__main--container">
+                                <div class="sdt__container">
+                                    <div class="sdt__individual--container">
+                                        <span class="sub__price">Subtotal</span>
+                                        <span class="sub__price">$ 167.998</span>
+                                    </div>
+                                    <div class="sdt__individual--container">
+                                        <span class="desc__price">Descuentos</span>
+                                        <span class="desc__price">$ 0</span>
+                                    </div>
+                                    <div class="sdt__individual--container">
+                                        <span class="total__price">TOTAL</span>
+                                        <span class="total__price">$ 167.998</span>
+                                    </div>
                                 </div>
-                                <span class="recom__item--prod"><a href="/productDetail">Celular Samsung Galaxy S20 FE</a>
-                                    <span class="recom__item--desc">$ 90.000</span>
-                                </span>
-                                <span class="recom__item--price">$50.000</span>
-                                <button class="recom__item--btn">Agregar</button>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-            <div class="total-desc-ship-pay__container">
-                <div class="sub-desc-total__main--container">
-                    <div class="sdt__container">
-                        <div class="sdt__individual--container">
-                            <span class="sub__price">Subtotal</span>
-                            <span class="sub__price">$ 167.998</span>
+                            </div>
+                            <div class="inputs__container">
+                                <div class="inputs__individuals--container">
+                                    <div class="input__title--container">
+                                        <span class="input__title">Cupón de Descuento</span>
+                                    </div>
+                                    <div class="input__coup--container">
+                                        <input class="input__text" type="text" placeholder="Ingresar cupón">
+                                        <button class="input__btn"></button>
+                                    </div>
+                                </div>
+                                <div class="inputs__individuals--container">
+                                    <div class="input__title--container">
+                                        <span class="input__title">Métodos de Envío</span>
+                                    </div>
+                                    <div class="checks__ship-pay--container">
+                                        <label class="checks__container" for="cp">
+                                            <input type="radio" name="envio" id="cp">
+                                            Ingresar C.P
+                                        </label>
+                                        <label class="checks__container" for="retiro">
+                                            <input type="radio" name="envio" id="retiro">
+                                            Retiro en Local
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs__individuals--container">
+                                    <div class="input__title--container">
+                                        <span class="input__title">Medios de Pago</span>
+                                    </div>
+                                    <div class="checks__ship-pay--container">
+                                        <label class="checks__container" for="efec">
+                                            <input type="radio" name="pago" id="efec">
+                                            Efectivo/Transferencia
+                                            <span class="text__prom-desc">(10% de <span class="text__prom-desc--blue">Descuento)</span></span>
+                                        </label>
+                                        <label class="checks__container" for="tarjeta">
+                                            <input type="radio" name="pago" id="tarjeta">
+                                            Tarjetas de Crédito
+                                            <span class="text__prom-desc">(Selecciona para ver <span
+                                                    class="text__prom-desc--blue">Promociones)</span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pay__btn--container">
+                                <button class="pay__btn">Pagar</button>
+                            </div>
+                            <div class="login__register--container">
+                                <span class="login--register"><a href="/login" class="log__reg--link">Ingresar</a> a mi cuenta</span>
+                                <span class="login--register"><a href="/register" class="log__reg--link">Registrarme</a></span>
+                            </div>
                         </div>
-                        <div class="sdt__individual--container">
-                            <span class="desc__price">Descuentos</span>
-                            <span class="desc__price">$ 0</span>
-                        </div>
-                        <div class="sdt__individual--container">
-                            <span class="total__price">TOTAL</span>
-                            <span class="total__price">$ 167.998</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="inputs__container">
-                    <div class="inputs__individuals--container">
-                        <div class="input__title--container">
-                            <span class="input__title">Cupón de Descuento</span>
-                        </div>
-                        <div class="input__coup--container">
-                            <input class="input__text" type="text" placeholder="Ingresar cupón">
-                            <button class="input__btn"></button>
-                        </div>
-                    </div>
-                    <div class="inputs__individuals--container">
-                        <div class="input__title--container">
-                            <span class="input__title">Métodos de Envío</span>
-                        </div>
-                        <div class="checks__ship-pay--container">
-                            <label class="checks__container" for="cp">
-                                <input type="radio" name="envio" id="cp">
-                                Ingresar C.P
-                            </label>
-                            <label class="checks__container" for="retiro">
-                                <input type="radio" name="envio" id="retiro">
-                                Retiro en Local
-                            </label>
-                        </div>
-                    </div>
-                    <div class="inputs__individuals--container">
-                        <div class="input__title--container">
-                            <span class="input__title">Medios de Pago</span>
-                        </div>
-                        <div class="checks__ship-pay--container">
-                            <label class="checks__container" for="efec">
-                                <input type="radio" name="pago" id="efec">
-                                Efectivo/Transferencia
-                                <span class="text__prom-desc">(10% de <span class="text__prom-desc--blue">Descuento)</span></span>
-                            </label>
-                            <label class="checks__container" for="tarjeta">
-                                <input type="radio" name="pago" id="tarjeta">
-                                Tarjetas de Crédito
-                                <span class="text__prom-desc">(Selecciona para ver <span class="text__prom-desc--blue">Promociones)</span></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="pay__btn--container">
-                    <button class="pay__btn">Pagar</button>
-                </div>
-                <div class="login__register--container">
-                    <span class="login--register"><a href="/login" class="log__reg--link">Ingresar</a> a mi cuenta</span>
-                    <span class="login--register"><a href="/register" class="log__reg--link">Registrarme</a></span>
-                </div>
-            </div>
-        </article>
-    </main>
-    <%- include('../partials/footer.ejs') %>
-</body>
+                    </article>
+                </main>
+                <%- include('../partials/footer.ejs') %>
+        </body>
 
 </html>
