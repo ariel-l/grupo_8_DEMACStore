@@ -1,12 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
-a {
-    color: darkblue;
-    text-decoration: none;
-    font-size: 0.8rem;
-}
 
 .productCreate {
     /* display: flex; */
@@ -114,6 +105,24 @@ textarea{
     background-color: var(--celeste);
 }
 
+.button__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+button.form__button-blue {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
 
 
 /* MEDIAS QUERIES */

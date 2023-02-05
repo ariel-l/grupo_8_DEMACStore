@@ -8,7 +8,7 @@
         <div class="register__container--global register__first">
             <h2 class="register__title">Creación de productos</h2>
             <hr>
-            <form action="" method="post" class="productForm__container">
+            <form action="" class="productForm__container">
                 <div class="container__desktop">
                     <div class="box__datos">
                         <div class="input__container">
@@ -130,10 +130,18 @@
                         <textarea class="input-style textarea__descripction" name="description" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
-
-                <div  class="button__container">
-                    <a href="#"></a><button type="submit" class="btn btn__submit"> Crear producto </button></a>
+                <button class="form__button-blue">
+                    <div  class="button__container">
+                    <a href="/productCreate" class="button__container btn btn__submit">Crear producto</a>
                 </div>
+                </button>
+                
+                <button class="form__button-blue">
+                    <div  class="button__container">
+                    <a href="/productModify" class="button__container btn btn__submit"> Modificar producto </a>
+                </div>
+                </button>
+                
             </form>
         </div>
     <!-- </div> -->
