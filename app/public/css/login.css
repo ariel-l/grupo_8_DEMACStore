@@ -1,25 +1,25 @@
 .login__body {
-    background-image: url("../images/form__fondo.jpg"); 
+    background-image: url("../images/form__fondo.jpg");
     padding: 0;
     margin: 0;
 }
 
 
-.login__a--icons{
+.login__a--icons {
     color: white;
 }
 
-.login{
+.login {
     background-color: #584b4ba1;
 }
 
-.login__container--general{
+.login__container--general {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.form__container--login{
+.form__container--login {
     padding: 40px;
     box-shadow: 15px 15px 15px rgb(0 0 0 / 50%);
     width: 200px;
@@ -45,35 +45,37 @@
     width:50%;
 } */
 
-.login__span{
+.login__span {
     font-size: larger;
     color: var(--azul);
     position: relative;
     display: flex;
     justify-content: center;
 }
-.login__hr--first{
+
+.login__hr--first {
     width: 114px;
     position: relative;
     left: 40px;
 }
 
-.input__login--container{
+.input__login--container {
     width: fit-content;
     position: relative;
     margin-block: 1rem;
 }
+
 ::placeholder {
     padding: 25px;
 }
 
 
-.input__login--style{
+.input__login--style {
     outline: 1px solid var(--azul);
     border: none;
     border-radius: 12px;
     padding: 5px 10px;
-    background:var(--fondo);
+    background: var(--fondo);
     color: #004AAD;
     width: 190px;
     height: 24px;
@@ -91,7 +93,7 @@
     border-radius: 10px;
 } */
 
-.login__forgotYouPass{
+.login__forgotYouPass {
     font-size: 12px;
     color: var(--azul);
 }
@@ -102,25 +104,26 @@
     top: 28px;
 }
 
-.login__check{
+.login__check {
     position: relative;
     bottom: 10px;
 }
-.login__check--remember{
+
+.login__check--remember {
     position: relative;
     top: 2px;
     display: flex;
 }
 
-.login__icons span{
-    display:flex;
+.login__icons span {
+    display: flex;
     justify-content: space-around;
     align-items: center;
     font-size: 26px;
     padding: 15px;
- }
+}
 
- .login__btn-submit{
+.login__btn-submit {
     outline: 1px solid var(--azul);
     border: none;
     border-radius: 10px;
