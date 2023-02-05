@@ -8,4 +8,10 @@
     --destacado: #006AFD;
     /* Fuente */
     --fuente: "Work Sans", sans-serif;
+    /* Tamaños tipográficos */
+    --parrafos: 12px;
+    --descripcion: 16px;
+    --precio: 18px;
+    --descuento: 16px;
+    --detalles: 10px;
   }
