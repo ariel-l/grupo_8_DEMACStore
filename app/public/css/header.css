@@ -41,13 +41,13 @@ p {
   font-size: var(--parrafos);
 }
 
-/* HEADER */
+/* HEADER MOBILE */
 
 .header__container {
   background-color: var(--azul);
-  /* min-height: 35px; */
 }
 
+/* GRAY HEADER */
 .nav__container--gray {
   display: none;
 }
@@ -56,6 +56,7 @@ p {
   width: 60px;
 }
 
+/* HEADER MENU HAMBUGER, LOGO, SEARCH-BAR, MY-ACCOUNT, CART */
 .header__bsi_container {
   display: flex;
   justify-content: space-between;
@@ -64,11 +65,13 @@ p {
   position: relative;
 }
 
+/* MENU HAMBUGER - LOGO CONTAINER */
 .header__burger__logo--container {
   display: flex;
   align-items: center;
 }
 
+/* MENU HAMBUGER */
 .header__burger--menu {
   margin-right: 10px;
   cursor: pointer;
@@ -76,13 +79,13 @@ p {
   font-size: 2rem;
 }
 
-.header__logo--container {}
-
+/* LOGO */
 .header__logo {
   width: 60px;
   padding: 0.4rem;
 }
 
+/* SEARCH BAR */
 .header__search--container {
   width: 70%;
   position: absolute;
@@ -123,12 +126,11 @@ p {
   font-size: 1.2rem;
 }
 
+/* MY-ACCOUNT, CART CONTAINER */
 .header__acc__cart--container {
   display: flex;
   align-items: center;
 }
-
-.header__acc--container {}
 
 .acc__links {
   display: flex;
@@ -161,8 +163,10 @@ p {
   padding-bottom: 7px;
 }
 
-
+/* HEADER TABLET */
 @media(min-width:768px) {
+
+  /* GRAY HEADER */
   .nav__container--gray {
     background-color: #d3d1d1;
     display: flex;
@@ -185,6 +189,7 @@ p {
     padding: 0.4rem;
   }
 
+  /* HEADER MENU, LOGO, SEARCH, ACC, CART */
   .header__bsi_container {
     padding: 0.8rem;
   }
@@ -198,6 +203,8 @@ p {
   }
 }
 
+
+/* HEADER DESKTOP */
 @media(min-width:1024px) {
   .header__burger--menu {
     display: none;
