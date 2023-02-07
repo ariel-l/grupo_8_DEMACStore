@@ -95,6 +95,7 @@
 }
 
 .detail__free {
+    font-size: 20px;
     font-weight: bold;
     display: flex;
     justify-content: center;
