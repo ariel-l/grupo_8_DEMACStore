@@ -155,6 +155,7 @@ section.home__phones--container--global {
   min-height: 236px;
   flex-grow: 1;
   transition: all 450ms;
+  background-color: white;
 }
 
 .home__products--phones:hover {
@@ -164,9 +165,9 @@ section.home__phones--container--global {
 /* Contenedor de las imagenes */
 article.home__products--phones div.home__phone--container--1 {
   display: flex;
-  min-width: 170px;
   height: 150px;
   object-fit: contain;
+  width: 170px;
 }
 
 /* Imagenes */
