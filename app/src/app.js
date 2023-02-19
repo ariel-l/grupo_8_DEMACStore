@@ -6,7 +6,7 @@ const PORT = 3000;
 
 /* APPLICATION-LEVEL MIDDLEWARE */
 app.use(express.static('public'))
-console.log(path.join(__dirname, 'public'));
+
 
 /* TEMPLATE ENGINE CONFIG */
 app.set("view engine", "ejs");
