@@ -19,7 +19,7 @@ router
 
 /* GET PRODUCT DETAIL PAGE */
 router
-    .get('/detail/:id', controller.productDetail)
+    .get('/:id', controller.productDetail)
 
 /* EXPORT ROUTER */
 module.exports = router;
