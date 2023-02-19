@@ -1,7 +1,16 @@
-const {readJSON, writeJSON} = require('../database/index')
+const {readJSON, writeJSON} = require('../database/index');
+const products = readJSON('products.json');
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 module.exports = {
     productDetail: (req, res) => {
-        return res.render('products/productDetail')
+        let productId = Number(req.params.id);
+        let product = products.find(product => product.id === productId);
+
+        res.render("products/productDetail", {
+            product,
+            toThousand
+        })
     },
     modify: (req, res) => {
         return res.render('products/productModify')
@@ -13,7 +22,6 @@ module.exports = {
         return res.render('products/productCreate')
     }, 
     store: (req, res) => {
-        const products = readJSON('products.json')
 
         let lastId = products[products.length -1].id;
 

@@ -1,150 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
-    
+<%- include('../partials/head.ejs') %>
+
     <body class="productCreate">
         <%- include('../partials/header.ejs') %>
-        <!-- <div class="productCreate"> -->
-        <div class="register__container--global register__first">
-            <h2 class="register__title">Modificación de productos</h2>
-            <hr>
-            <form action="" class="productForm__container">
-                <div class="container__desktop">
-                    <div class="box__datos">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Nombre del producto</label>
-                            <input class="input-style" type="text" name="user" placeholder="Ej: Samsung Galaxy M13" id="">
+            <!-- <div class="productCreate"> -->
+            <div class="register__container--global register__first">
+                <h2 class="register__title">Modificación de productos</h2>
+                <hr>
+                <form action="" class="productForm__container">
+                    <div class="container__desktop">
+                        <div class="box__datos">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Nombre del producto</label>
+                                <input class="input-style" type="text" name="user" placeholder="Ej: Samsung Galaxy M13" id="">
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="text">Descuento</label>
+                                <input class="input-style" type="text" name="name__user" placeholder="Ej: 15" id="">
+                            </div>
                         </div>
-                        <div class="input__container">
-                            <label class="label-style" for="text">Descuento</label>
-                            <input class="input-style" type="text" name="name__user" placeholder="Ej: 15" id="">
-                        </div>
-                    </div>
-                    <div class="box__profile">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Precio</label>
-                            <input class="input-style" type="text" name="name__user" placeholder="Ej:$1500" id="">
-                        </div>
-                        <div class="input__container input__photo">
-                            <label class="label-style" for="text">Elija su foto del producto</label>
-                            <input class="input" type="file" name="photo" id="" accept=".jpg,.png">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="input__container">
-                    <label class="label-style" for="text">Categoría</label>
-                    <select name="type_phone" id="" class="input-style select-category">
-                        <option hidden selected>Selecciona una opción</option> 
-                        <option value="">Nuevo</option>
-                        <option value="">Refabricado</option>
-                    </select>
-                </div>   
-                <div class="input__container">
-                    <label class="label-style" for="text">Marca</label>
-                    <select name="type_phone" id="" class="input-style select-category"> 
-                        <option hidden selected>Selecciona una opción</option>
-                        <option value="">Samsung</option>
-                        <option value="">Motorola</option>
-                        <option value="">Xiaomi</option>
-                        <option value="">Apple</option>
-                        <option value="">Huawei</option>
-                        <option value="">LG</option>
-                        <option value="">Otros</option>
-                    </select>
-                </div>                      
-                
-                <div class="container__desktop">
-                    <div class="box__datos">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Modelo</label>
-                            <input class="input-style" type="text" name="model" placeholder="Ej: S20 FE 5G" id="">
-                        </div>
-                        <div class="input__container">
-                            <label class="label-style" for="text">Sistema operativo</label>
-                            <input class="input-style" type="text" name="sistem" placeholder="Ej: Android" id="">
+                        <div class="box__profile">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Precio</label>
+                                <input class="input-style" type="text" name="name__user" placeholder="Ej:$1500" id="">
+                            </div>
+                            <div class="input__container input__photo">
+                                <label class="label-style" for="text">Elija su foto del producto</label>
+                                <input class="input" type="file" name="photo" id="" accept=".jpg,.png">
+                            </div>
                         </div>
                     </div>
-                    <div class="box__profile">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Pantalla</label>
-                            <input class="input-style" type="text" name="screen" placeholder="Ej: 6.5 " id="">
+
+                    <div class="input__container">
+                        <label class="label-style" for="text">Categoría</label>
+                        <select name="type_phone" id="" class="input-style select-category">
+                            <option hidden selected>Selecciona una opción</option>
+                            <option value="">Nuevo</option>
+                            <option value="">Refabricado</option>
+                        </select>
+                    </div>
+                    <div class="input__container">
+                        <label class="label-style" for="text">Marca</label>
+                        <select name="type_phone" id="" class="input-style select-category">
+                            <option hidden selected>Selecciona una opción</option>
+                            <option value="">Samsung</option>
+                            <option value="">Motorola</option>
+                            <option value="">Xiaomi</option>
+                            <option value="">Apple</option>
+                            <option value="">Huawei</option>
+                            <option value="">LG</option>
+                            <option value="">Otros</option>
+                        </select>
+                    </div>
+
+                    <div class="container__desktop">
+                        <div class="box__datos">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Modelo</label>
+                                <input class="input-style" type="text" name="model" placeholder="Ej: S20 FE 5G" id="">
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="text">Sistema operativo</label>
+                                <input class="input-style" type="text" name="sistem" placeholder="Ej: Android" id="">
+                            </div>
                         </div>
-                        <div class="input__container">
-                            <label class="label-style" for="text">Memoria interna</label>
-                            <input class="input-style" type="text" name="memory" placeholder="Ej: 128 GB" id="">
+                        <div class="box__profile">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Pantalla</label>
+                                <input class="input-style" type="text" name="screen" placeholder="Ej: 6.5 " id="">
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="text">Memoria interna</label>
+                                <input class="input-style" type="text" name="memory" placeholder="Ej: 128 GB" id="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container__desktop">
+                        <div class="box__datos">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Ram</label>
+                                <input class="input-style" type="text" name="memory" placeholder="Ej: 6 GB" id="">
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="text">Procesador </label>
+                                <input class="input-style" type="text" name="process" placeholder=" Ej: Snapdragon 865" id="">
+                            </div>
+                        </div>
+                        <div class="box__profile">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Cámara Frontal Principal</label>
+                                <input class="input-style" type="text" name="cam-front" placeholder="Ej: 32 Mpx" id="">
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="text">Cámara Trasera Principal</label>
+                                <input class="input-style" type="text" name="memory" placeholder="Ej: 12 Mpx" id="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container__desktop">
+                        <div class="box__datos">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Video</label>
+                                <input class="input-style" type="text" name="video" placeholder="Ej: 3840 px x 2160 px" id="">
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="text">Batería </label>
+                                <input class="input-style" type="text" name="batery" placeholder="Ej: 4500 mAh" id="">
+                            </div>
+                        </div>
+                        <div class="box__profile">
+                            <div class="input__container">
+                                <label class="label-style" for="text">Dimensiones</label>
+                                <input class="input-style" type="text" name="dimension" placeholder="Ej: 159.8 mm x 74.5 mm x 8.4 mm" id="">
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="text">Peso</label>
+                                <input class="input-style" type="text" name="" placeholder="Ej: 190 g" id="">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="input__container textarea__container--global">
+                        <label for="">Otras descripciones del producto:</label>
+                        <div class="textarea__container">
+                            <textarea class="input-style textarea__descripction" name="description" id="" cols="30" rows="10"></textarea>
                         </div>
                     </div>
-                    
-                </div>
-                <div class="container__desktop">
-                    <div class="box__datos">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Ram</label>
-                            <input class="input-style" type="text" name="memory" placeholder="Ej: 6 GB" id="">
+                    <button class="form__button-blue">
+                        <div class="button__container">
+                            <a href="/products/edit" class="button__container btn btn__submit"> Modificar producto </a>
                         </div>
-                        <div class="input__container">
-                            <label class="label-style" for="text">Procesador </label>
-                            <input class="input-style" type="text" name="process" placeholder=" Ej: Snapdragon 865" id="">
+                    </button>
+                    <button class="form__button-blue">
+                        <div class="button__container">
+                            <a href="/products/create" class="button__container btn btn__submit">Crear producto</a>
                         </div>
-                    </div>
-                    <div class="box__profile">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Cámara Frontal Principal</label>
-                            <input class="input-style" type="text" name="cam-front" placeholder="Ej: 32 Mpx" id="">
-                        </div>
-                        <div class="input__container">
-                            <label class="label-style" for="text">Cámara Trasera Principal</label>
-                            <input class="input-style" type="text" name="memory" placeholder="Ej: 12 Mpx" id="">
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="container__desktop">
-                    <div class="box__datos">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Video</label>
-                            <input class="input-style" type="text" name="video" placeholder="Ej: 3840 px x 2160 px" id="">
-                        </div>
-                        <div class="input__container">
-                            <label class="label-style" for="text">Batería </label>
-                            <input class="input-style" type="text" name="batery" placeholder="Ej: 4500 mAh" id="">
-                        </div>
-                    </div>
-                    <div class="box__profile">
-                        <div class="input__container">
-                            <label class="label-style" for="text">Dimensiones</label>
-                            <input class="input-style" type="text" name="dimension" placeholder="Ej: 159.8 mm x 74.5 mm x 8.4 mm" id="">
-                        </div>
-                        <div class="input__container">
-                            <label class="label-style" for="text">Peso</label>
-                            <input class="input-style" type="text" name="" placeholder="Ej: 190 g" id="">
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <div class="input__container textarea__container--global">
-                    <label for="">Otras descripciones del producto:</label>
-                    <div class="textarea__container">
-                        <textarea class="input-style textarea__descripction" name="description" id="" cols="30" rows="10"></textarea>
-                    </div>
-                </div>
-                <button class="form__button-blue">
-                    <div  class="button__container">
-                        <a href="/productModify" class="button__container btn btn__submit"> Modificar producto </a>
-                    </div>
-                </button>
-                <button class="form__button-blue">
-                    <div  class="button__container">
-                        <a href="/productCreate" class="button__container btn btn__submit">Crear producto</a>
-                    </div>
-                </button>
-                
-                
-            </form>
-        </div>
-    <!-- </div> -->
-        <%- include('../partials/footer.ejs') %>
+                    </button>
+
+
+                </form>
+            </div>
+            <!-- </div> -->
+            <%- include('../partials/footer.ejs') %>
     </body>
+
 </html>
