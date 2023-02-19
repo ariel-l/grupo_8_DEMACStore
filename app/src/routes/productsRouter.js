@@ -9,6 +9,6 @@ router.get('/productModify', controller.modify);
 router.get('/productDetail', controller.productDetail);
 
 router.get('/productCreate', controller.create);
-router.post('/', upLoadImageProduct.single("image"), controller.store);
+router.post('/productCreate', upLoadImageProduct.single("image"), controller.store);
 
 module.exports = router;

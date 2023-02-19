@@ -9,7 +9,7 @@
         <div class="register__container--global register__first">
             <h2 class="register__title">Creación de productos</h2>
             <hr>
-            <form action="" class="productForm__container" enctype="multipart/form-data">
+            <form action="/productCreate/" method="POST" class="productForm__container" enctype="multipart/form-data">
                 <div class="container__desktop">
                     <div class="box__datos">
                         <div class="input__container">
@@ -27,8 +27,8 @@
                             <input class="input-style" type="text" name="price" placeholder="Ej:$1500" id="">
                         </div>
                         <div class="input__container input__photo">
-                            <label class="label-style" for="text">Elija la imagen del producto</label>
-                            <input class="input" type="file" name="image" id="" accept=".jpg,.png">
+                            <label class="label-style" for="image">Elija la imagen del producto</label>
+                            <input class="input" type="file" name="image" id="image" >
                         </div>
                     </div>
                 </div>
@@ -45,13 +45,13 @@
                     <label class="label-style" for="text">Marca</label>
                     <select name="brand" id="" class="input-style select-category"> 
                         <option hidden selected>Selecciona una opción</option>
-                        <option value="">Samsung</option>
-                        <option value="">Motorola</option>
-                        <option value="">Xiaomi</option>
-                        <option value="">Apple</option>
-                        <option value="">Huawei</option>
-                        <option value="">LG</option>
-                        <option value="">Otros</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Motorola">Motorola</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Huawei">Huawei</option>
+                        <option value="LG">LG</option>
+                        <option value="Otros">Otros</option>
                     </select>
                 </div>                      
                 

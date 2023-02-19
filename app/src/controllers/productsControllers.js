@@ -22,28 +22,28 @@ module.exports = {
 			name: req.body.name,
 			discount: req.body.discount,
 			price: req.body.price,
-			image: req.file ? req.filename : null ,
-            subcategory: req.body.subcategory,
+			image: req.file ? req.file.filename : "default-image.png" ,
+            category: req.body.category,
             brand: req.body.brand,
             model: req.body.model,
-            sistem: req.body.sistem,
+            os: req.body.os,
             screen: req.body.screen,
             internalMemory: req.body.internalMemory,
             ram: req.body.ram,
-            processor: req.body.processor,
             frontCamera: req.body.frontCamera,
-            rearCamera: req.body.rearCamera,
+            chipset: req.body.chipset,
+            mainCamera: req.body.mainCamera,
             video: req.body.video,
-            battery: req.body.battery,
             dimensions: req.body.dimensions,
+            battery: req.body.battery,
             weight: req.body.weight,
+            cardSlot : req.body.cardSlot,
 			description:req.body.description,
-			category: req.body.category,
 		}
 
 		products.push(newProduct);
 
-		writeJson(products);
+		writeJSON('products.json', products);
 
 		res.redirect("/");    
     }
