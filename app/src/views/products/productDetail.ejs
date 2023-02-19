@@ -14,18 +14,18 @@
 <main class="detail__main--product">
     <section class="detail___product--container">
             <div class="detail___container--img">
-                <img class="detail__img--product" src="./images/productDetail/<%= product.image %>" alt="Product image">
+                <img class="detail__img--product" src="/images/products/<%= product.image %>" alt="Product image">
             </div>
         <article class="detail___info--product">
             <div class="detail___title--product">
-                <h3><%= product.name %></h3>
+                <h3 class="detail__title--h3"><%= product.name %></h3>
             </div>
             <div>
                 <% if (product.discount > 0) { %>
                 <del>$<%= toThousand(product.price) %></del><span class="detail___porcent--offer"><%= product.discount %>% OFF</span>
             </div>
             <div class="detail___price">
-                <span>$<%= toThousand(product.price - (price * product.discount / 100)) %></span>
+                <span>$<%= toThousand(product.price - (product.price * product.discount / 100)) %></span>
             </div>
             <% } else { %>
                 <span>$<%= toThousand(product.price) %></span>
@@ -37,8 +37,8 @@
                 <h3>3 cuotas sin interés de $39,666</h3>
             </div>
             <div>
-                <img class="detail__img--target" src="./images/productDetail/visa.svg" alt="visa">
-                <img class="detail__img--target" src="./images/productDetail/mastercard.svg" alt="visa">
+                <img class="detail__img--target" src="/images/productDetail/visa.svg" alt="visa">
+                <img class="detail__img--target" src="/images/productDetail/mastercard.svg" alt="visa">
             </div>
             <div class="detail__payment--methods">
                 <a href= "https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver todos los medios de pago</a>

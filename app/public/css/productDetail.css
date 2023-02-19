@@ -52,11 +52,12 @@
     margin: auto;
     max-width: 400px;
     text-align: left;
-    width: 100%;
-    padding: 10px 0;
+    padding: 20px 10px;
+
 }
 
 .detail___title--product {
+    display: flex;
     font-size: 18px;
     margin-bottom: 15px;
 }
@@ -270,6 +271,10 @@
     padding: 2rem 1rem;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     padding: 32px 24px 24px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: min-content;
+    max-width: 865px;
 }
 
 .detail__img--product {
@@ -285,6 +290,7 @@
     border-radius: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     padding-left: 1rem;
+    min-width: 450px;
 }
 
 .detail__hr--product {

@@ -9,9 +9,9 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 module.exports = {
     productDetail: (req, res) => {
         let productId = Number(req.params.id);
-        let product = products.find(product = product.id === productId);
+        let product = products.find(product => product.id === productId);
 
-        res.render("productDetail", {
+        res.render("products/productDetail", {
             product,
             toThousand
         })
