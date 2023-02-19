@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>  
+    <%- include('../partials/head.ejs', {title: product.name}) %>  
 <body>
     <%- include('../partials/header.ejs') %>
 
@@ -14,18 +14,22 @@
 <main class="detail__main--product">
     <section class="detail___product--container">
             <div class="detail___container--img">
-                <img class="detail__img--product" src="./images/productDetail/samsung-galaxy-s20-rojo-front 1.svg" alt="Samsung s20">
+                <img class="detail__img--product" src="./images/productDetail/<%= product.image %>" alt="Product image">
             </div>
         <article class="detail___info--product">
             <div class="detail___title--product">
-                <h3>Celular Samsung Galaxy s20 FE 5G 128GB</h3>
+                <h3><%= product.name %></h3>
             </div>
             <div>
-                <del>$169.999</del><span class="detail___porcent--offer">30% OFF</span>
+                <% if (product.discount > 0) { %>
+                <del>$<%= toThousand(product.price) %></del><span class="detail___porcent--offer"><%= product.discount %>% OFF</span>
             </div>
             <div class="detail___price">
-                <span>$118,999</span>
+                <span>$<%= toThousand(product.price - (price * product.discount / 100)) %></span>
             </div>
+            <% } else { %>
+                <span>$<%= toThousand(product.price) %></span>
+            <% } %>
             <div class="detail__promotions--cards">
                 <h3>¡Nuestras promociones bancarias!</h3>
             </div>
