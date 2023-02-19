@@ -1,110 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>  
-<body>
-    <%- include('../partials/header.ejs') %>
+<%- include('../partials/head.ejs') %>
 
-<div class="back">
-    <ul>
-        <li><a class="detail__a" href="/">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
-        <li>Celulares <i class="fa-solid fa-chevron-right"></i></li>
-        <li>Celulares Nuevos</li>
-    </ul>
-</div>
-<main class="detail__main--product">
-    <section class="detail___product--container">
-            <div class="detail___container--img">
-                <img class="detail__img--product" src="./images/productDetail/samsung-galaxy-s20-rojo-front 1.svg" alt="Samsung s20">
-            </div>
-        <article class="detail___info--product">
-            <div class="detail___title--product">
-                <h3>Celular Samsung Galaxy s20 FE 5G 128GB</h3>
-            </div>
-            <div>
-                <del>$169.999</del><span class="detail___porcent--offer">30% OFF</span>
-            </div>
-            <div class="detail___price">
-                <span>$118,999</span>
-            </div>
-            <div class="detail__promotions--cards">
-                <h3>¡Nuestras promociones bancarias!</h3>
-            </div>
-            <div class="detail__dues--card">
-                <h3>3 cuotas sin interés de $39,666</h3>
-            </div>
-            <div>
-                <img class="detail__img--target" src="./images/productDetail/visa.svg" alt="visa">
-                <img class="detail__img--target" src="./images/productDetail/mastercard.svg" alt="visa">
-            </div>
-            <div class="detail__payment--methods">
-                <a href= "https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver todos los medios de pago</a>
-            </div>
-            <hr class="detail__hr--shipping"></hr>
-            <div class="detail__shipping">
-                <p class="detail__free"><i class="fa-solid fa-truck-fast"></i>  Envío gratis a todo el país</p>
-                <p class="detail__free">¡Retiralo ya!</p>
-            </div>
-            <hr class="detail__hr--shipping--free"></hr>
-            <div>Color:</div>
-            <div>
-            <ul class="detail__button--colour">
-                <li><button class="detail__button--colour1"><i class="fa-solid fa-circle"></i></button></li>
-                <li><button class="detail__button--colour2"><i class="fa-solid fa-circle"></i></button></li>
-                <li><button class="detail__button--colour3"><i class="fa-solid fa-circle"></i></button></li>
-            </ul>
-        </div>
-                
-    <div class="detail___number--product">
-        <div class="detail___number--product">
-        <label for="number">Cantidad:</label>
-            <select name="number" id="number">
-            <option hidden selected>Unidades</option>
-            <option value="1">1 unidad</option>
-            <option value="2">2 unidades</option>
-            <option value="3">3 unidades</option>
-        </label>
-    </div>
-</div>
-        <div class="detail___add--cart">
-            <input class="detail__input--false"/>
-            </div>
-            <div class="detail___button--cart">
-            <a href="/cart" class="detail___btn--add--to--cart">COMPRAR</a>
-        </div>
-        <div class="detail___button--cart">
-            <a href="/productModify" class="detail___btn--add--to--cart">EDITAR</a>
-        </div>
-        </div>
-        </article>
-    </section>
-    <hr class="detail__hr--product"></hr>
+    <body>
+        <%- include('../partials/header.ejs') %>
 
-</main>
-<article class="detail___technical--specifications">
-    <div class="detail__tittle--characteristics">Especificaciones técnicas</div>
-    <div class="detail___characteristics">
-        <ul class="detail__ul--characteristics">
-            <li>Marca: Samsung</li>
-            <li>Modelo: S20 FE 5G</li>
-            <li>Sistema Operativo: Android</li>
-            <li>Pantalla: 6.5 "</li>
-            <li>Memoria Interna: 128 GB</li>
-            <li>Expandible hasta: 1 TB</li>
-            <li>Ram: 6 GB</li>
-        </ul>
+            <div class="back">
+                <ul>
+                    <li><a class="detail__a" href="/">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
+                    <li>Celulares <i class="fa-solid fa-chevron-right"></i></li>
+                    <li>Celulares Nuevos</li>
+                </ul>
+            </div>
+            <main class="detail__main--product">
+                <section class="detail___product--container">
+                    <div class="detail___container--img">
+                        <img class="detail__img--product" src="/images/productDetail/samsung-galaxy-s20-rojo-front 1.svg" alt="Samsung s20">
+                    </div>
+                    <article class="detail___info--product">
+                        <div class="detail___title--product">
+                            <h3>Celular Samsung Galaxy s20 FE 5G 128GB</h3>
+                        </div>
+                        <div>
+                            <del>$169.999</del><span class="detail___porcent--offer">30% OFF</span>
+                        </div>
+                        <div class="detail___price">
+                            <span>$118,999</span>
+                        </div>
+                        <div class="detail__promotions--cards">
+                            <h3>¡Nuestras promociones bancarias!</h3>
+                        </div>
+                        <div class="detail__dues--card">
+                            <h3>3 cuotas sin interés de $39,666</h3>
+                        </div>
+                        <div>
+                            <img class="detail__img--target" src="/images/productDetail/visa.svg" alt="visa">
+                            <img class="detail__img--target" src="/images/productDetail/mastercard.svg" alt="visa">
+                        </div>
+                        <div class="detail__payment--methods">
+                            <a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver todos los medios de pago</a>
+                        </div>
+                        <hr class="detail__hr--shipping">
+                        </hr>
+                        <div class="detail__shipping">
+                            <p class="detail__free"><i class="fa-solid fa-truck-fast"></i> Envío gratis a todo el país</p>
+                            <p class="detail__free">¡Retiralo ya!</p>
+                        </div>
+                        <hr class="detail__hr--shipping--free">
+                        </hr>
+                        <div>Color:</div>
+                        <div>
+                            <ul class="detail__button--colour">
+                                <li><button class="detail__button--colour1"><i class="fa-solid fa-circle"></i></button></li>
+                                <li><button class="detail__button--colour2"><i class="fa-solid fa-circle"></i></button></li>
+                                <li><button class="detail__button--colour3"><i class="fa-solid fa-circle"></i></button></li>
+                            </ul>
+                        </div>
 
-        <ul class="detail__ul--characteristics2">
-            <li>Procesador: Snapdragon 865</li>
-            <li>Cámara Frontal Principal: 32 Mpx</li>
-            <li>Cámara Trasera Principal: 12 Mpx</li>
-            <li>Video: 3840 px x 2160 px</li>
-            <li>Batería: 4500 mAh</li>
-            <li>Dimensiones: 159.8 mm x 74.5 mm x 8.4 mm</li>
-            <li>Peso(g): 190 g</li>
-        </ul>
-        <div class="detail__more">Leer más</div>
-    </div>
-</article>
-    <%- include('../partials/footer.ejs') %>
-</body>
+                        <div class="detail___number--product">
+                            <div class="detail___number--product">
+                                <label for="number">Cantidad:</label>
+                                <select name="number" id="number">
+                                    <option hidden selected>Unidades</option>
+                                    <option value="1">1 unidad</option>
+                                    <option value="2">2 unidades</option>
+                                    <option value="3">3 unidades</option>
+                                    </label>
+                            </div>
+                        </div>
+                        <div class="detail___add--cart">
+                            <input class="detail__input--false" />
+                        </div>
+                        <div class="detail___button--cart">
+                            <a href="/products/cart" class="detail___btn--add--to--cart">COMPRAR</a>
+                        </div>
+                        <div class="detail___button--cart">
+                            <a href="/products/edit" class="detail___btn--add--to--cart">EDITAR</a>
+                        </div>
+                        </div>
+                    </article>
+                </section>
+                <hr class="detail__hr--product">
+                </hr>
+
+            </main>
+            <article class="detail___technical--specifications">
+                <div class="detail__tittle--characteristics">Especificaciones técnicas</div>
+                <div class="detail___characteristics">
+                    <ul class="detail__ul--characteristics">
+                        <li>Marca: Samsung</li>
+                        <li>Modelo: S20 FE 5G</li>
+                        <li>Sistema Operativo: Android</li>
+                        <li>Pantalla: 6.5 "</li>
+                        <li>Memoria Interna: 128 GB</li>
+                        <li>Expandible hasta: 1 TB</li>
+                        <li>Ram: 6 GB</li>
+                    </ul>
+
+                    <ul class="detail__ul--characteristics2">
+                        <li>Procesador: Snapdragon 865</li>
+                        <li>Cámara Frontal Principal: 32 Mpx</li>
+                        <li>Cámara Trasera Principal: 12 Mpx</li>
+                        <li>Video: 3840 px x 2160 px</li>
+                        <li>Batería: 4500 mAh</li>
+                        <li>Dimensiones: 159.8 mm x 74.5 mm x 8.4 mm</li>
+                        <li>Peso(g): 190 g</li>
+                    </ul>
+                    <div class="detail__more">Leer más</div>
+                </div>
+            </article>
+            <%- include('../partials/footer.ejs') %>
+    </body>
+
 </html>

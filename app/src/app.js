@@ -3,23 +3,27 @@ const app = express();
 const path = require("path");
 const PORT = 3000;
 
-app.use(express.static("public"));
 
-//Templates engine config
+/* APPLICATION-LEVEL MIDDLEWARE */
+app.use(express.static('public'))
+console.log(path.join(__dirname, 'public'));
+
+/* TEMPLATE ENGINE CONFIG */
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-//Routers
-const products = require("./routes/productsRouter");
-const home = require("./routes/homeRouter");
-const users = require("./routes/usersRoutes");
+
+/* ROUTERS */
+const indexRouter = require("./routes");
+const productsRouter = require("./routes/products");
+const usersRoutes = require("./routes/users");
 
 
+/* MIDDLEWARES ROUTES */
+app.use("/", indexRouter);
+app.use("/products", productsRouter);
+app.use("/users", usersRoutes);
 
-app.use("/", home);
-app.use("/", products);
-app.use("/", users);
 
-
-
+/* START SERVER */
 app.listen(PORT, () => console.log(`Server listen in port ${PORT}\nhttp://localhost:${PORT}`));

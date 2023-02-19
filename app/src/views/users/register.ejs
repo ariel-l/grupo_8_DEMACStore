@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs') %>
 
-<body class="register__body">  
-    <%- include('../partials/header.ejs') %>
-<form> <div class="register">  <div class="register__general">
-    <div class="card">
-        <span class="span__register">registro</span>
-    
-    <div class="card-input">
-        <label for="text">Nombre de usuario</label>
-        <input class="input" type="text" name="usuario" placeholder="escribe aqui tu nombre" id="">
-        <label for="email">Correo electronico</label>
-        <input class="input" type="email" name="email" placeholder="Escribe aqui tu correo" id="">
-        <label for="pass">Contraseña</label>
-        <input class="input" type="password" name="pass" placeholder="Escribe aqui tu contraseña" id="">
-        <label for="pass2">Confirmar contraseña</label>
-        <input class="input__error" type="password" name="pass2" placeholder="Contraseña incorrecta" id=""> 
-    </div>
-    <div class="register__form--check" >
-        <input type="checkbox" name="terms" id="recordar"> 
-        <label class="register__check--terms" for="terms">  Acepto <a href="">términos y condiciones</a> </label>
-    <div class="register__form--btn">
-            <button type="submit" class="register__btn">Registrarme</button>
-        </div> 
-            <p class="register__form">Registrarme con</p>
-            <span class="registered__form--user"><a href="/login">¿Ya tiene una cuenta? Inicie sesión</a></span>
-        </div>
-    </div>
-</div>
-</div>
-</form>
+    <body class="register__body">
+        <%- include('../partials/header.ejs') %>
+            <form>
+                <div class="register">
+                    <div class="register__general">
+                        <div class="card">
+                            <span class="span__register">registro</span>
 
-    <%- include('../partials/footer.ejs') %>
-</body>       
-     
-        
+                            <div class="card-input">
+                                <label for="text">Nombre de usuario</label>
+                                <input class="input" type="text" name="usuario" placeholder="escribe aqui tu nombre" id="">
+                                <label for="email">Correo electronico</label>
+                                <input class="input" type="email" name="email" placeholder="Escribe aqui tu correo" id="">
+                                <label for="pass">Contraseña</label>
+                                <input class="input" type="password" name="pass" placeholder="Escribe aqui tu contraseña" id="">
+                                <label for="pass2">Confirmar contraseña</label>
+                                <input class="input__error" type="password" name="pass2" placeholder="Contraseña incorrecta" id="">
+                            </div>
+                            <div class="register__form--check">
+                                <input type="checkbox" name="terms" id="recordar">
+                                <label class="register__check--terms" for="terms"> Acepto <a href="">términos y condiciones</a> </label>
+                                <div class="register__form--btn">
+                                    <button type="submit" class="register__btn">Registrarme</button>
+                                </div>
+                                <p class="register__form">Registrarme con</p>
+                                <span class="registered__form--user"><a href="/users/login">¿Ya tiene una cuenta? Inicie sesión</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <%- include('../partials/footer.ejs') %>
+    </body>
+
+
 </html>
