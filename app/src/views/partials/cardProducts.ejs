@@ -6,10 +6,20 @@
         <span>
             <%= name %>
         </span>
-        <p class="home__strikethrough">$<%= price %>
-        </p>
-        <p class="home__price">$<%= formatNumber(price - (price * discount / 100)) %>
-        </p>
+        <% if (discount> 0) { %>
+
+            <p class="home__strikethrough">$<%= price %>
+            </p>
+
+            <p class="home__price">$<%= formatNumber(price - (price * discount / 100)) %>
+            </p>
+
+            <% } else { %>
+
+                <p class="home__price">$<%= formatNumber(price - (price * discount / 100)) %>
+                </p>
+
+                <% } %>
     </div>
-    <a href="/products/detail" class="home__btn--details">Ver detalle</a>
+    <a href="/products/<%= id %>" class="home__btn--details">Ver detalle</a>
 </article>
