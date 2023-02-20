@@ -34,7 +34,7 @@
                 <h3>¡Nuestras promociones bancarias!</h3>
             </div>
             <div class="detail__dues--card">
-                <h3>3 cuotas sin interés de $39,666</h3>
+                <h3>3 cuotas sin interés</h3>
             </div>
             <div>
                 <img class="detail__img--target" src="/images/productDetail/visa.svg" alt="visa">
@@ -88,27 +88,28 @@
                 <div class="detail__tittle--characteristics">Especificaciones técnicas</div>
                 <div class="detail___characteristics">
                     <ul class="detail__ul--characteristics">
-                        <li>Marca: Samsung</li>
-                        <li>Modelo: S20 FE 5G</li>
-                        <li>Sistema Operativo: Android</li>
-                        <li>Pantalla: 6.5 "</li>
-                        <li>Memoria Interna: 128 GB</li>
-                        <li>Expandible hasta: 1 TB</li>
-                        <li>Ram: 6 GB</li>
+                        <li>Marca: <%= product.brand %></li>
+                        <li>Modelo: <%= product.model %></li>
+                        <li>Sistema Operativo: <%= product.os %></li>
+                        <li>Pantalla: 6.5 "<%= product.screen %></li>
+                        <li>Memoria Interna: <%= product.internalMemory %> GB</li>
+                        <li>Expandible hasta: <%= product.cardSlot %> GB</li>
+                        <li>Ram: <%= product.ram %> GB</li>
                     </ul>
 
                     <ul class="detail__ul--characteristics2">
-                        <li>Procesador: Snapdragon 865</li>
-                        <li>Cámara Frontal Principal: 32 Mpx</li>
-                        <li>Cámara Trasera Principal: 12 Mpx</li>
-                        <li>Video: 3840 px x 2160 px</li>
-                        <li>Batería: 4500 mAh</li>
-                        <li>Dimensiones: 159.8 mm x 74.5 mm x 8.4 mm</li>
-                        <li>Peso(g): 190 g</li>
+                        <li>Procesador: <%= product.chipset %></li>
+                        <li>Cámara Frontal Principal: <%= product.frontCamera %></li>
+                        <li>Cámara Trasera Principal: <%= product.mainCamera %></li>
+                        <li>Video: <%= product.video %></li>
+                        <li>Batería: <%= product.battery %></li>
+                        <li>Dimensiones: <%= product.dimensions %></li>
+                        <li>Peso(g): <%= product.weight %></li>
                     </ul>
                     <div class="detail__more">Leer más</div>
                 </div>
             </article>
+            
             <%- include('../partials/footer.ejs') %>
     </body>
 
