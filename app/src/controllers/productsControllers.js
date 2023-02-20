@@ -1,4 +1,4 @@
-const {readJSON, writeJSON} = require('../database/index');
+const { readJSON, writeJSON } = require('../database/index');
 const products = readJSON('products.json');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});

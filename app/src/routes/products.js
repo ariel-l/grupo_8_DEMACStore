@@ -1,26 +1,31 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/productsControllers");
+const productsControllers = require("../controllers/productsControllers");
 const { upLoadImageProduct } = require('../middlewares/upload');
+
 
 /* GET CART PAGE */
 router
-    .get('/cart', controller.cart)
+    .get('/cart', productsControllers.cart)
 
 
-/* GET PRODUCT CREATE FORM */
+/* GET PRODUCT CREATE FORM PAGE */
 router
-    .get('/create', controller.create)
-    .post('/productCreate', upLoadImageProduct.single("image"), controller.store)
+    .get('/create', productsControllers.create)
+/* CREATE ONE PRODUCT */
+    .post('/create', upLoadImageProduct.single("image"), productsControllers.store)
 
-/* GET MODIFY PRODUCT FORM */
+
+/* GET PRODUCT MODIFY FORM */
 router
-    .get('/edit', controller.modify)
+    .get('/edit', productsControllers.modify)
 
 
 /* GET PRODUCT DETAIL PAGE */
 router
-    .get('/:id', controller.productDetail)
+    .get('/:id', productsControllers.productDetail)
+
+
 
 /* EXPORT ROUTER */
 module.exports = router;
