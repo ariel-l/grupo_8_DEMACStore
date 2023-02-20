@@ -1,0 +1,15 @@
+<article class="home__products--phones">
+    <div class="home__phone--container--1">
+        <img class="home__img--cardProducts" src="/images/products/<%= image %>" alt="">
+    </div>
+    <div class="home__product--descripction">
+        <span>
+            <%= name %>
+        </span>
+        <p class="home__strikethrough">$<%= price %>
+        </p>
+        <p class="home__price">$<%= formatNumber(price - (price * discount / 100)) %>
+        </p>
+    </div>
+    <a href="/products/detail" class="home__btn--details">Ver detalle</a>
+</article>
