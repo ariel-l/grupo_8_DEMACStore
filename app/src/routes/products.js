@@ -1,25 +1,31 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/productsControllers");
+const productsControllers = require("../controllers/productsControllers");
+
+
+/* GET ALL PRODUCTS */
+router
+    .get('/', productsControllers.index)
+
 
 /* GET CART PAGE */
 router
-    .get('/cart', controller.cart);
+    .get('/cart', productsControllers.cart)
 
 
 /* GET PRODUCT CREATE FORM */
 router
-    .get('/create', controller.create);
+    .get('/create', productsControllers.create);
 
 
 /* GET MODIFY PRODUCT FORM */
 router
-    .get('/edit', controller.modify);
+    .get('/edit', productsControllers.modify);
 
 
 /* GET PRODUCT DETAIL PAGE */
 router
-    .get('/detail', controller.productDetail);
+    .get('/detail', productsControllers.productDetail);
 
 
 
