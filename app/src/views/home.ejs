@@ -9,292 +9,88 @@
 
                 <!-- HOME -->
                 <main class="home__body-container">
-                    <div class="slideshow-container">
 
-                        <div class="slider">
+                    <%- include('partials/banner') %>
 
-                            <div class="mySlides fade">
-                                <img src="images/home/Banner Motorola (1).png" style="width:100%">
-                            </div>
+                        <section class="home__oferts--container">
+                            <article class="home__oferts">
+                                <a href="" class="home__btn-off">
+                                    <span class="home__OFF"> HASTA <span class="home__text-green">50%OFF</span></span>
+                                </a>
+                            </article>
 
-                            <div class="mySlides fade">
-                                <img src="images/home/Banner Samsung.png" style="width:100%">
-                            </div>
+                            <article class="home__oferts">
+                                <a href="" class="home__btn-off">
+                                    <span class="home__btn">12 <span class="home__text-green">SIN INTERES</span></span>
+                                </a>
+                            </article>
 
-                            <div class="mySlides fade">
-                                <img src="images/home/Banner-PreciosImperdibles.png" style="width:100%">
-                            </div>
+                            <article class="home__oferts">
+                                <a href="" class="home__btn-off" id="home__interest--free--fees">
+                                    <i class="fa-brands fa-cc-visa" id="home__icons--creditCard"></i>
+                                    <i class="fa-brands fa-cc-mastercard" id="home__icons--creditCard"></i>
+                                    <i class="fa-regular fa-credit-card" id="home__icons--creditCard"></i>
+                                    12 CUOTAS SIN INTERES EN TARJETAS SELECCIONADAS
+                                </a>
+                            </article>
 
-                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                        </div>
+                            <article class="home__oferts">
+                                <a href="" class="home__btn-off">
+                                    <span class="home__text-green">ENVIO GRATIS A TODO EL PAIS</span>
+                                </a>
+                            </article>
 
-                        <div class="home__dot--container" style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1)"></span>
-                            <span class="dot" onclick="currentSlide(2)"></span>
-                            <span class="dot" onclick="currentSlide(3)"></span>
-                        </div>
-                    </div>
+                        </section>
 
-                    <section class="home__oferts--container">
-                        <article class="home__oferts">
-                            <a href="" class="home__btn-off">
-                                <span class="home__OFF"> HASTA <span class="home__text-green">50%OFF</span></span>
+                        <section class="home__phones--container--global">
+
+                            <article class="home__products--phones">
+
+                                <div class="home__phone--container--1">
+                                    <img class="home__img--cardProducts" src="images/home/samsung-galaxy-a13 2.svg" alt="">
+                                </div>
+                                <a href="/products/detail" class="home__second--title"><span>CELULARES NUEVOS</span></a>
+
+                            </article>
+
+                            <article class="home__products--phones">
+
+                                <div class="home__phone--container--1">
+                                    <img class="home__img--cardProducts" src="images/home/samsung-galaxy-m13 2.svg" alt="">
+                                </div>
+                                <a href="/products/detail" class="home__second--title"><span>CELULARES REFABRICADOS</span></a>
+
+                            </article>
+
+                        </section>
+
+                        <section class="home__phones--container--global">
+                            <a href="" class="home__second--title">
+                                <div class="home__title--principal">
+                                    <h2>Productos en OFERTA</h2>
+                                </div>
                             </a>
-                        </article>
 
-                        <article class="home__oferts">
-                            <a href="" class="home__btn-off">
-                                <span class="home__btn">12 <span class="home__text-green">SIN INTERES</span></span>
+                            <% productsInSale.forEach(product=> { %>
+
+                                <%- include('partials/cardProducts', { ...product }) %>
+
+                                    <% }) %>
+                        </section>
+
+                        <section class="home__phones--container--global">
+                            <a href="" class="home__second--title">
+                                <div class="home__title--principal">
+                                    <h2>RECOMENDADOS</h2>
+                                </div>
                             </a>
-                        </article>
 
-                        <article class="home__oferts">
-                            <a href="" class="home__btn-off" id="home__interest--free--fees">
-                                <i class="fa-brands fa-cc-visa" id="home__icons--creditCard"></i>
-                                <i class="fa-brands fa-cc-mastercard" id="home__icons--creditCard"></i>
-                                <i class="fa-regular fa-credit-card" id="home__icons--creditCard"></i>
-                                12 CUOTAS SIN INTERES EN TARJETAS SELECCIONADAS
-                            </a>
-                        </article>
+                            <% productsRecommended.forEach(product=> { %>
 
-                        <article class="home__oferts">
-                            <a href="" class="home__btn-off">
-                                <span class="home__text-green">ENVIO GRATIS A TODO EL PAIS</span>
-                            </a>
-                        </article>
+                                <%- include('partials/cardProducts', { ...product }) %>
 
-                    </section>
-
-                    <section class="home__phones--container--global">
-
-                        <article class="home__products--phones">
-
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/samsung-galaxy-a13 2.svg" alt="">
-                            </div>
-                            <a href="/products/detail" class="home__second--title"><span>CELULARES NUEVOS</span></a>
-
-                        </article>
-
-                        <article class="home__products--phones">
-
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/samsung-galaxy-m13 2.svg" alt="">
-                            </div>
-                            <a href="" class="home__second--title"><span>CELULARES REFABRICADOS</span></a>
-
-                        </article>
-
-                    </section>
-
-                    <section class="home__phones--container--global">
-                        <a href="" class="home__second--title">
-                            <div class="home__title--principal">
-                                <h2>Productos en OFERTA</h2>
-                            </div>
-                        </a>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a03-64-negro-frente_1_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A03</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 67.999</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/samsung-galaxy-s20-rojo-front 3.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 67.999</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/samsung-galaxy-s20-fe-5g- 2.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones home__tablet">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a03-64-negro-frente_1_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A03</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 67.999</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-
-                        </article>
-
-                        <article class="home__products--phones home__tablet">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones home__desktop">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-                        <article class="home__products--phones home__desktop">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-                    </section>
-
-                    <section class="home__phones--container--global">
-                        <a href="" class="home__second--title">
-                            <div class="home__title--principal">
-                                <h2>RECOMENDADOS</h2>
-                            </div>
-                        </a>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/samsung-galaxy-s20-rojo-front 3.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 67.999</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/samsung-galaxy-s20-fe-5g- 2.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a03-64-negro-frente_1_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A13</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 67.999</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones home__tablet">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones home__tablet">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones home__desktop">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-
-                        <article class="home__products--phones home__desktop">
-                            <div class="home__phone--container--1">
-                                <img class="home__img--cardProducts" src="images/home/a22-gris-frente_2 1.svg" alt="">
-                            </div>
-                            <div class="home__product--descripction">
-                                <span>Samsung Galaxy A22</span>
-                                <p class="home__strikethrough">$ 90.000</p>
-                                <p class="home__price">$ 50.000</p>
-                            </div>
-                            <a href="/products/detail" class="home__btn--details">Ver detalle</a>
-                        </article>
-                    </section>
+                                    <% }) %>
+                        </section>
 
                 </main>
 
