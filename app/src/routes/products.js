@@ -4,6 +4,11 @@ const productsControllers = require("../controllers/productsControllers");
 const { upLoadImageProduct } = require('../middlewares/upload');
 
 
+/* GET ALL PRODUCTS PAGE */
+router
+    .get('/', productsControllers.index)
+
+
 /* GET CART PAGE */
 router
     .get('/cart', productsControllers.cart)
