@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/homeController");
+const { index, search } = require("../controllers/homeController");
 
 
 /* GET HOME PAGE */
-router.get('/', controller.index);
+router.get('/', index);
 
+/* GET RESULTS PRODUCTS PAGE */
+router.get('/search', search)
 
 
 /* EXPORT ROUTER */

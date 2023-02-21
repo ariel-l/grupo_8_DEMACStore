@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+    <body class="results__body">
+        <%- include('partials/header') %>
+
+            <% if (results.length===0) { %>
+                <!-- PRODUCT NOT FOUND -->
+                <section class="results__container">
+                    <div class="results__icon-text--container">
+                        <p class="results__text--container">
+                            No pudimos encontrar ningún resultado para: <span class="results__text--error">"<%= keywords %>"</span>.
+                        </p>
+                        <p class="results__text--container">Seguí navegando por nuestros <a class="results__text--link"
+                                href="/products">productos</a>.
+                        </p>
+                    </div>
+                </section>
+                <% } else { %>
+
+                    <!-- PRODUCT FOUND -->
+                    <section class="results__container">
+                        <div class="results__product-founded--container">
+                            <p class="results__product-founded-text">
+                                Resultados de la búsqueda: <span class="results__text--product">
+                                    <%= keywords %>
+                                </span>
+                            </p>
+                            <section class="home__phones--container--global">
+                                <% results.forEach(product=> { %>
+                                    <%- include('partials/cardProducts', { ...product }) %>
+                                        <% }) %>
+                            </section>
+                        </div>
+                    </section>
+                    <% } %>
+
+                        <%- include('partials/footer') %>
+    </body>
+
+</html>

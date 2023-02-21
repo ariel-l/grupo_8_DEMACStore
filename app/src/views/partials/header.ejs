@@ -46,9 +46,9 @@
 
         <!-- SEARCH-BAR -->
         <div class="header__search--container">
-            <form class="header__search--form">
-                <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas...">
-                <button class="search__bar--btn">
+            <form class="header__search--form" action="/search" method="GET">
+                <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas..." name="keywords">
+                <button class="search__bar--btn" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
