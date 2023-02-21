@@ -1,0 +1,51 @@
+.results__container {
+    background-image: url('../images/results-background.png');
+}
+
+.results__icon-text--container {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffffb8;
+    text-align: center;
+    justify-content: center;
+    min-height: 49vh;
+}
+
+.results__icon-text--container::before {
+    font: var(--fa-font-solid);
+    content: "\f002";
+    padding: 10px;
+    font-size: 2rem;
+    color: var(--azul);
+}
+
+.results__text--container {
+    font-size: var(--descripcion);
+    padding: 5px;
+}
+
+.results__text--error {
+    color: red;
+}
+
+.results__text--link {
+    color: var(--destacado);
+}
+
+.results__product-founded--container {
+    background-color: #ffffffb8;
+    padding: 1rem;
+}
+
+.results__product-founded-text {
+    font-size: 1.3rem;
+    border-bottom: 1px solid var(--gris-claro);
+    padding-bottom: 5px;
+}
+
+
+.results__text--product {
+    font-weight: 600;
+}
