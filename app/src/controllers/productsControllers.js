@@ -31,24 +31,24 @@ module.exports = {
 		const newProduct = {
 			id: lastId + 1,
 			name: req.body.name,
-			discount: req.body.discount,
-			price: req.body.price,
+			discount: +req.body.discount,
+			price: +req.body.price,
 			image: req.file ? req.file.filename : "default-image.png" ,
             category: req.body.category,
             brand: req.body.brand,
             model: req.body.model,
             os: req.body.os,
-            screen: req.body.screen,
-            internalMemory: req.body.internalMemory,
-            ram: req.body.ram,
-            frontCamera: req.body.frontCamera,
+            screen: +req.body.screen,
+            internalMemory: +req.body.internalMemory,
+            ram: +req.body.ram,
+            frontCamera: +req.body.frontCamera,
             chipset: req.body.chipset,
-            mainCamera: req.body.mainCamera,
+            mainCamera: +req.body.mainCamera,
             video: req.body.video,
-            dimensions: req.body.dimensions,
-            battery: req.body.battery,
-            weight: req.body.weight,
-            cardSlot : req.body.cardSlot,
+            dimensions: +req.body.dimensions,
+            battery: +req.body.battery,
+            weight: +req.body.weight,
+            cardSlot : +req.body.cardSlot,
 			description:req.body.description,
 		}
 
@@ -56,7 +56,7 @@ module.exports = {
 
 		writeJSON('products.json', products);
 
-		res.redirect("/");    
+		res.redirect("/products/" + newProduct.id);    
     },
     modify: (req, res) => {
         let productId = Number(req.params.id);
@@ -93,7 +93,7 @@ module.exports = {
      }
     });
     writeJSON('products.json', products);
-    res.redirect("/");
+    res.redirect("/products/" + productId);
 },
 
 destroy : (req, res) => {

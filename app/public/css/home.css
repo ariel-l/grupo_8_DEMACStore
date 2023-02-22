@@ -151,7 +151,7 @@ section.home__phones--container--global {
   padding: 1.5rem 0.5rem;
   margin: 0.5rem;
   max-width: 200px;
-  min-height: 236px;
+  min-height: 260px;
   flex-grow: 1;
   transition: all 450ms;
   background-color: white;
@@ -297,7 +297,7 @@ div.home__title--principal h2 {
     padding: 3rem 1.5rem;
     margin: 1rem;
     max-width: 230px;
-    min-height: 236px;
+    min-height: 260px;
     flex-grow: 1;
     transition: all 450ms;
   }
@@ -321,7 +321,7 @@ div.home__title--principal h2 {
     padding: 3rem 1.5rem;
     margin: 1rem;
     max-width: 262px;
-    min-height: 236px;
+    min-height: 260px;
     flex-grow: 1;
     transition: all 450ms;
   }
