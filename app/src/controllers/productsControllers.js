@@ -93,6 +93,6 @@ module.exports = {
      }
     });
     writeJSON('products.json', products);
-    res.redirect("/");
+    res.redirect("/products/" + productId);
 }
 }
