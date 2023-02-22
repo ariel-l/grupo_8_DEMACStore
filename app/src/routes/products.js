@@ -29,7 +29,8 @@ router
 router
     .get("/edit/:id", productsControllers.modify)
     .put("/edit/:id", upLoadImageProduct.single("image"), productsControllers.update)
+    .delete('/edit/delete/:id', productsControllers.destroy);
 
-
+/* DELETE ONE PRODUCT */
 /* EXPORT ROUTER */
 module.exports = router;
