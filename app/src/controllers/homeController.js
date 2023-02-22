@@ -26,6 +26,7 @@ module.exports = {
         const productsRecommended = shuffle(products.filter(product => product.category === 'refubrished'))
 
         return res.render('home', {
+            products,
             productsInSale,
             productsRecommended,
             formatNumber

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs', {title: 'Editando: ' + productToEdit.name }) %>
 
     <body class="productCreate">
         <%- include('../partials/header.ejs') %>
@@ -8,16 +8,19 @@
             <div class="register__container--global register__first">
                 <h2 class="register__title">Modificación de productos</h2>
                 <hr>
-                <form action="/products/edit/<%= productToEdit.id  %>?_method=PUT" method="post" class="productForm__container" enctype="multipart/form-data">
+                <form action="/products/edit/<%= productToEdit.id  %>?_method=PUT" method="post" class="productForm__container"
+                    enctype="multipart/form-data">
                     <div class="container__desktop">
                         <div class="box__datos">
                             <div class="input__container">
                                 <label class="label-style" for="name">Nombre del producto</label>
-                                <input class="input-style" value="<%= productToEdit.name%>" type="text" name="name" placeholder="Ej: Samsung Galaxy M13" id="">
+                                <input class="input-style" value="<%= productToEdit.name%>" type="text" name="name"
+                                    placeholder="Ej: Samsung Galaxy M13" id="">
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="discount">Descuento</label>
-                                <input class="input-style" type="text" value="<%= productToEdit.discount %>" name="discount" placeholder="Ej: 15" id="discount">
+                                <input class="input-style" type="text" value="<%= productToEdit.discount %>" name="discount" placeholder="Ej: 15"
+                                    id="discount">
                             </div>
                         </div>
                         <div class="box__profile">
@@ -36,20 +39,20 @@
                         <label class="label-style" for="category">Categoría</label>
                         <select name="category" id="" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="new" <%= productToEdit.category === "new" && "selected" %>>Nuevo</option>
-                            <option value="refubrished" <%= productToEdit.category === "refubrished" && "selected" %> >Refabricado</option>
+                            <option value="new" <%=productToEdit.category==="new" && "selected" %>>Nuevo</option>
+                            <option value="refubrished" <%=productToEdit.category==="refubrished" && "selected" %> >Refabricado</option>
                         </select>
                     </div>
                     <div class="input__container">
                         <label class="label-style" for="brand">Marca</label>
                         <select name="brand" id="" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="Samsung" <%= productToEdit.brand=== "Samsung" && "selected" %>>Samsung</option>
-                            <option value="Motorola" <%= productToEdit.brand === "Motorola" && "selected" %>>Motorola</option>
-                            <option value="Xiaomi" <%= productToEdit.brand === "Xiaomi" && "selected" %>>Xiaomi</option>
-                            <option value="Apple" <%= productToEdit.brand === "Apple" && "selected" %>>Apple</option>
-                            <option value="Huawei" <%= productToEdit.brand === "Huawei" && "selected" %>>Huawei</option>
-                            <option value="LG" <%= productToEdit.brand=== "LG" && "selected" %>>LG</option>
+                            <option value="Samsung" <%=productToEdit.brand==="Samsung" && "selected" %>>Samsung</option>
+                            <option value="Motorola" <%=productToEdit.brand==="Motorola" && "selected" %>>Motorola</option>
+                            <option value="Xiaomi" <%=productToEdit.brand==="Xiaomi" && "selected" %>>Xiaomi</option>
+                            <option value="Apple" <%=productToEdit.brand==="Apple" && "selected" %>>Apple</option>
+                            <option value="Huawei" <%=productToEdit.brand==="Huawei" && "selected" %>>Huawei</option>
+                            <option value="LG" <%=productToEdit.brand==="LG" && "selected" %>>LG</option>
                         </select>
                     </div>
 
@@ -57,7 +60,8 @@
                         <div class="box__datos">
                             <div class="input__container">
                                 <label class="label-style" for="model">Modelo</label>
-                                <input class="input-style" value="<%= productToEdit.model %>" type="text" name="model" placeholder="Ej: S20 FE 5G" id="">
+                                <input class="input-style" value="<%= productToEdit.model %>" type="text" name="model" placeholder="Ej: S20 FE 5G"
+                                    id="">
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="os">Sistema operativo</label>
@@ -71,7 +75,8 @@
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="internalMemory">Memoria interna</label>
-                                <input class="input-style" value="<%= productToEdit.internalMemory %>" type="text" name="internalMemory" placeholder="Ej: 128" id="">
+                                <input class="input-style" value="<%= productToEdit.internalMemory %>" type="text" name="internalMemory"
+                                    placeholder="Ej: 128" id="">
                             </div>
                         </div>
 
@@ -84,17 +89,20 @@
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="chipset">Procesador </label>
-                                <input class="input-style" value="<%= productToEdit.chipset %>" type="text" name="chipset" placeholder=" Ej: Snapdragon 865" id="">
+                                <input class="input-style" value="<%= productToEdit.chipset %>" type="text" name="chipset"
+                                    placeholder=" Ej: Snapdragon 865" id="">
                             </div>
                         </div>
                         <div class="box__profile">
                             <div class="input__container">
                                 <label class="label-style" for="frontCamera">Cámara Frontal Principal</label>
-                                <input class="input-style" value="<%= productToEdit.frontCamera %>" type="text" name="frontCamera" placeholder="Ej: 32" id="">
+                                <input class="input-style" value="<%= productToEdit.frontCamera %>" type="text" name="frontCamera"
+                                    placeholder="Ej: 32" id="">
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="mainCamera">Cámara Trasera Principal</label>
-                                <input class="input-style" value="<%= productToEdit.mainCamera %>" type="text" name="mainCamera" placeholder="Ej: 12" id="">
+                                <input class="input-style" value="<%= productToEdit.mainCamera %>" type="text" name="mainCamera" placeholder="Ej: 12"
+                                    id="">
                             </div>
                         </div>
 
@@ -103,34 +111,38 @@
                         <div class="box__datos">
                             <div class="input__container">
                                 <label class="label-style" for="video">Video</label>
-                                <input class="input-style" value="<%= productToEdit.video %>" type="text" name="video" placeholder="Ej: 3840 x 2160" id="">
+                                <input class="input-style" value="<%= productToEdit.video %>" type="text" name="video" placeholder="Ej: 3840 x 2160"
+                                    id="">
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="battery">Batería </label>
-                                <input class="input-style" value="<%= productToEdit.battery %>" type="text" name="battery" placeholder="Ej: 4500" id="">
+                                <input class="input-style" value="<%= productToEdit.battery %>" type="text" name="battery" placeholder="Ej: 4500"
+                                    id="">
                             </div>
                         </div>
                         <div class="box__profile">
                             <div class="input__container">
                                 <label class="label-style" for="dimensions">Dimensiones</label>
-                                <input class="input-style" value="<%= productToEdit.dimensions %>" type="text" name="dimensions" placeholder="Ej: 159.8 x 74.5 x 8.4 " id="">
+                                <input class="input-style" value="<%= productToEdit.dimensions %>" type="text" name="dimensions"
+                                    placeholder="Ej: 159.8 x 74.5 x 8.4 " id="">
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="weight">Peso</label>
                                 <input class="input-style" value="<%= productToEdit.weight %>" type="text" name="weight" placeholder="Ej: 190" id="">
                             </div>
                         </div>
-                        
+
 
                     </div>
-                        <div class="input__container  ">
-                            <label class="label-style" for="cardSlot">Expandible</label>
-                            <input class="input-style" type="text" name="cardSlot" placeholder="Ej: 1 gb " id="">
-                        </div>
+                    <div class="input__container  ">
+                        <label class="label-style" for="cardSlot">Expandible</label>
+                        <input class="input-style" type="text" name="cardSlot" placeholder="Ej: 1 gb " id="">
+                    </div>
                     <div class="input__container textarea__container--global">
                         <label for="descripciones">Otras descripciones del producto:</label>
                         <div class="textarea__container">
-                            <textarea class="input-style textarea__descripction" name="description" id="" cols="30" rows="10"><%= productToEdit.description %></textarea>
+                            <textarea class="input-style textarea__descripction" name="description" id="" cols="30"
+                                rows="10"><%= productToEdit.description %></textarea>
                         </div>
                     </div>
                     <button class="form__button-blue btn btn__submit" type="submit">
