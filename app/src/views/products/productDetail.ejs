@@ -76,7 +76,7 @@
             <a href="/cart" class="detail___btn--add--to--cart">COMPRAR</a>
         </div>
         <div class="detail___button--cart">
-            <a href="/productModify" class="detail___btn--add--to--cart">EDITAR</a>
+            <a href="/products/edit/<%= product.id %>" class="detail___btn--add--to--cart">EDITAR</a>
         </div>
         </div>
         </article>
@@ -91,19 +91,19 @@
                         <li>Marca: <%= product.brand %></li>
                         <li>Modelo: <%= product.model %></li>
                         <li>Sistema Operativo: <%= product.os %></li>
-                        <li>Pantalla: 6.5 "<%= product.screen %></li>
-                        <li>Memoria Interna: <%= product.internalMemory %> GB</li>
-                        <li>Expandible hasta: <%= product.cardSlot %> GB</li>
-                        <li>Ram: <%= product.ram %> GB</li>
+                        <li>Pantalla: <%= product.screen %>"</li>
+                        <li>Memoria Interna: <%= product.internalMemory %>GB</li>
+                        <li>Expandible hasta: <%= product.cardSlot %>GB</li>
+                        <li>Ram: <%= product.ram %>GB</li>
                     </ul>
 
                     <ul class="detail__ul--characteristics2">
                         <li>Procesador: <%= product.chipset %></li>
-                        <li>Cámara Frontal Principal: <%= product.frontCamera %></li>
-                        <li>Cámara Trasera Principal: <%= product.mainCamera %></li>
+                        <li>Cámara Frontal Principal: <%= product.frontCamera %>mp</li>
+                        <li>Cámara Trasera Principal: <%= product.mainCamera %>mp</li>
                         <li>Video: <%= product.video %></li>
-                        <li>Batería: <%= product.battery %></li>
-                        <li>Dimensiones: <%= product.dimensions %></li>
+                        <li>Batería: <%= product.battery %>mah</li>
+                        <li>Dimensiones: <%= product.dimensions %>mm</li>
                         <li>Peso(g): <%= product.weight %></li>
                     </ul>
                     <div class="detail__more">Leer más</div>

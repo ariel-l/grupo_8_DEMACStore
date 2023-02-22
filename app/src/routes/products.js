@@ -20,16 +20,15 @@ router
 /* CREATE ONE PRODUCT */
     .post('/create', upLoadImageProduct.single("image"), productsControllers.store)
 
-
-/* GET PRODUCT MODIFY FORM */
-router
-    .get('/edit', productsControllers.modify)
-
-
 /* GET PRODUCT DETAIL PAGE */
 router
     .get('/:id', productsControllers.productDetail)
 
+
+/* GET PRODUCT MODIFY FORM */
+router
+    .get("/edit/:id", productsControllers.modify)
+    .put("/edit/:id", upLoadImageProduct.single("image"), productsControllers.update)
 
 
 /* EXPORT ROUTER */
