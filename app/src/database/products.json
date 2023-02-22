@@ -24,7 +24,7 @@
   },
   {
     "id": 2,
-    "name": " Motorola Edge 30 5G",
+    "name": "Motorola Edge 30 5G",
     "price": 129999,
     "discount": 20,
     "image": "motorolae30.svg",
@@ -43,8 +43,7 @@
     "battery": 3400,
     "dimensions": null,
     "weight": 166,
-    "description": "ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit",
-    "internalMemory": 0
+    "description": "ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit"
   },
   {
     "id": 3,
@@ -71,7 +70,7 @@
   },
   {
     "id": 4,
-    "name": " Samsung Galaxy A23",
+    "name": "Samsung Galaxy A23",
     "price": "91749",
     "discount": "20",
     "image": "samsunga23.svg",
@@ -80,7 +79,7 @@
     "model": "A23",
     "os": "Android",
     "screen": "7",
-    "internalMemory": "128",
+    "internalMemory": 128,
     "cardSlot": "",
     "ram": "8",
     "chipset": "Exynos",
