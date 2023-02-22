@@ -1,6 +1,5 @@
 const { readJSON, writeJSON } = require('../database/index');
 const products = readJSON('products.json');
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
 
 module.exports = {
@@ -16,7 +15,7 @@ module.exports = {
 
         res.render("products/productDetail", {
             product,
-            toThousand
+            formatNumber
         })
     },
     cart: (req, res) => {
@@ -72,23 +71,23 @@ module.exports = {
     products.forEach((product) => {
           if (product.id === productId) {
                 product.name = req.body.name,
-                product.discount = req.body.discount,
-                product.price = req.body.price,
+                product.discount = +req.body.discount,
+                product.price = +req.body.price,
                 product.image = req.file ? req.file.filename : product.image,                   
                 product.category = req.body.category,
                 product.brand = req.body.brand,
                 product.model = req.body.model,
                 product.os = req.body.os,
-                product.screen = req.body.screen,
-                product.interal_memory = req.body.interal_memory,
-                product.ram = req.body.ram,
-                product.frontCamera = req.body.frontCamera,
+                product.screen = +req.body.screen,
+                product.internalMemory = +req.body.internalMemory,
+                product.ram = +req.body.ram,
+                product.frontCamera = +req.body.frontCamera,
                 product.chipset = req.body.chipset,
-                product.mainCamera = req.body.mainCamera,
+                product.mainCamera = +req.body.mainCamera,
                 product.video = req.body.video,
-                product.dimensions = req.body.dimensions,
-                product.battery = req.body.battery,
-                product.weight = req.body.weight,
+                product.dimensions = +req.body.dimensions,
+                product.battery = +req.body.battery,
+                product.weight = +req.body.weight,
                 product.cardSlot = req.body.cardSlot,
                 product.description = req.body.description                     
      }
