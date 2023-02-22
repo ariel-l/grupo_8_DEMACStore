@@ -6,8 +6,8 @@
 
 <div class="back">
     <ul>
-        <li><a class="detail__a" href="/">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
-        <li>Celulares <i class="fa-solid fa-chevron-right"></i></li>
+        <li><a class="detail__a" href="/products">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a class="detail__a" href="/products">Celulares <i class="fa-solid fa-chevron-right"></i></a></li>
         <li>Celulares Nuevos</li>
     </ul>
 </div>
@@ -22,13 +22,13 @@
             </div>
             <div>
                 <% if (product.discount > 0) { %>
-                <del>$<%= toThousand(product.price) %></del><span class="detail___porcent--offer"><%= product.discount %>% OFF</span>
+                <del>$<%= formatNumber(product.price) %></del><span class="detail___porcent--offer"><%= product.discount %>% OFF</span>
             </div>
             <div class="detail___price">
-                <span>$<%= toThousand(product.price - (product.price * product.discount / 100)) %></span>
+                <span>$<%= formatNumber(product.price - (product.price * product.discount / 100)) %></span>
             </div>
             <% } else { %>
-                <span>$<%= toThousand(product.price) %></span>
+                <span class="detail___price">$<%= formatNumber(product.price) %></span>
             <% } %>
             <div class="detail__promotions--cards">
                 <h3>¡Nuestras promociones bancarias!</h3>
@@ -73,7 +73,7 @@
             <input class="detail__input--false"/>
             </div>
             <div class="detail___button--cart">
-            <a href="/cart" class="detail___btn--add--to--cart">COMPRAR</a>
+            <a href="/products/cart" class="detail___btn--add--to--cart">COMPRAR</a>
         </div>
         <div class="detail___button--cart">
             <a href="/products/edit/<%= product.id %>" class="detail___btn--add--to--cart">EDITAR</a>

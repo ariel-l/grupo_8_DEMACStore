@@ -1,6 +1,5 @@
 const { readJSON, writeJSON } = require('../database/index');
 const products = readJSON('products.json');
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
 
 module.exports = {
@@ -16,7 +15,7 @@ module.exports = {
 
         res.render("products/productDetail", {
             product,
-            toThousand
+            formatNumber
         })
     },
     cart: (req, res) => {
