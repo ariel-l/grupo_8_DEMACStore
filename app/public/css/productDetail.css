@@ -43,6 +43,7 @@
     margin: auto;
     background-color: white;
     width: 100%;
+    max-width: 400px;
 }
 
 
@@ -53,7 +54,6 @@
     max-width: 400px;
     text-align: left;
     padding: 20px 10px;
-
 }
 
 .detail___title--product {
