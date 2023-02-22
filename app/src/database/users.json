@@ -25,5 +25,14 @@
         "password": "demac345",
         "category": "admin",
         "image": "photoProfile.png"
+    },
+    {
+        "id": 4,
+        "firstName": "Ariel",
+        "lastName": "Latour",
+        "email": "arielm.latour@gmail.com",
+        "password": "demacStore555#",
+        "category": "admin",
+        "image": "photoProfile.png"
     }
 ]
