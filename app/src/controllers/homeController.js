@@ -3,12 +3,30 @@ const { readJSON } = require('../database')
 const products = readJSON('products.json')
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
 
+function shuffle(array) {
+    let currentIndex = array.length; let  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex !== 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
+
 module.exports = {
     index: (req, res) => {
 
-        const productsInSale = products.filter(product => product.discount > 0)
-        const productsRecommended = products.filter(product => product.category === 'refurbished')
+        const productsInSale = shuffle(products.filter(product => product.discount > 0))
 
+        const productsRecommended = shuffle(products.filter(product => product.category === 'refubrished'))
 
         return res.render('home', {
             productsInSale,
@@ -24,7 +42,7 @@ module.exports = {
 
         const findWord = array => array.some(word => keywords.toLowerCase().includes(word))
 
-        const results = products.filter(product => findWord(toLowerAndArray(product.name)))
+        const results = shuffle(products.filter(product => findWord(toLowerAndArray(product.name))))
 
         res.render('results', {
             keywords,
