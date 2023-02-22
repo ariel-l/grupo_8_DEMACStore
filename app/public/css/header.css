@@ -114,11 +114,18 @@
 
 .header__container--sections {
   display: none;
-  color: white;
   font-weight: 400;
   justify-content: space-around;
   font-size: 14px;
-  padding-bottom: 7px;
+}
+
+.header__name--sections {
+  color: white;
+  padding: 12px 0;
+}
+
+.header__name--link {
+  color: white;
 }
 
 /* HEADER TABLET */
