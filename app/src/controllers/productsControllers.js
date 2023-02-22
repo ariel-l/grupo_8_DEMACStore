@@ -94,5 +94,18 @@ module.exports = {
     });
     writeJSON('products.json', products);
     res.redirect("/");
+},
+
+destroy : (req, res) => {
+    let productId = Number(req.params.id);
+
+    products.forEach(product => {
+        if (product.id === productId){
+            let productToDestroy = products.indexOf(product);
+            products.splice(productToDestroy, 1)
+        }
+    })
+    writeJSON('products.json', products)
+    res.redirect("/");
 }
-}
+};

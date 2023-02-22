@@ -57,20 +57,21 @@
         "os": "Android",
         "screen": 6,
         "interal_memory": 256,
-        "cardSlot": "256",
+        "cardSlot": "",
         "ram": 4,
         "chipset": "Snapdragon",
         "frontCamera": 5,
         "mainCamera": 12,
         "video": "1080p@30fps",
         "battery": 3400,
-        "dimensions": "159.6 x 74.8 x 8.1",
+        "dimensions": null,
         "weight": 198,
-        "description": "interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis"
+        "description": "interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis",
+        "internalMemory": 0
     },
     {
         "id": 4,
-        "name": " Samsung Galaxy A23",
+        "name": "Samsung Galaxy A23",
         "price": "91749",
         "discount": "20",
         "image": "samsunga23.svg",
@@ -172,15 +173,16 @@
         "os": "Android",
         "screen": 7,
         "interal_memory": 256,
-        "cardSlot": "128",
+        "cardSlot": "",
         "ram": 4,
         "chipset": "Snapdragon",
         "frontCamera": 5,
         "mainCamera": 50,
         "video": "1080p@30fps",
         "battery": 3900,
-        "dimensions": "162 x 75.5 x 8.9",
+        "dimensions": 0,
         "weight": 178,
-        "description": "in faucibus orci luctus et ultrices posuere cubilia curae donec"
+        "description": "in faucibus orci luctus et ultrices posuere cubilia curae donec",
+        "internalMemory": 0
     }
 ]

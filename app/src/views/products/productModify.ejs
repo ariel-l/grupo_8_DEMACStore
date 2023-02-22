@@ -13,7 +13,7 @@
                         <div class="box__datos">
                             <div class="input__container">
                                 <label class="label-style" for="name">Nombre del producto</label>
-                                <input class="input-style" value=" <%= productToEdit.name%>" type="text" name="name" placeholder="Ej: Samsung Galaxy M13" id="">
+                                <input class="input-style" value="<%= productToEdit.name%>" type="text" name="name" placeholder="Ej: Samsung Galaxy M13" id="">
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="discount">Descuento</label>
@@ -138,13 +138,13 @@
                             Modificar producto
                         </div>
                     </button>
-                    <button class="form__button-blue">
-                        <div class="button__container">
-                            <a href="/products/create" class="button__container btn btn__submit"> Crear producto </a>
+                </form>
+                <form action="/products/edit/delete/<%= productToEdit.id %>?_method=DELETE" method="POST" class="productForm__container">
+                    <button class="form__button-blue btn btn__submit" type="submit">
+                        <div class="button__container btn btn__submit">
+                            Eliminar producto
                         </div>
                     </button>
-
-
                 </form>
             </div>
             <!-- </div> -->
