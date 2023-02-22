@@ -7,5 +7,14 @@
         "password": "CamiYniguez2023",
         "category": "admin",
         "image": "photoProfile.png"
+    },
+    {
+        "id": 2,
+        "firstName": "Melina",
+        "lastName": "Labra",
+        "email": " melina.lb04@gmail.com",
+        "password": "algo123",
+        "category": "admin",
+        "image": "photoProfile.png"
     }
 ]

@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const methodOverride =  require('method-override')
 const PORT = 3000;
 
 
 /* APPLICATION-LEVEL MIDDLEWARE */
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 
 /* TEMPLATE ENGINE CONFIG */
