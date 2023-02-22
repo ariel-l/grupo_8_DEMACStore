@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "firstName": "Camila",
+        "lastName": "Yñiguez Quintana",
+        "email": "cami.yniguez@gmail.com",
+        "password": "CamiYniguez2023",
+        "category": "admin",
+        "image": "photoProfile.png"
+    }
+]
