@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* min-width: 255px; */
 }
 
 .form__container--login {
@@ -66,9 +67,6 @@
     margin-block: 1rem;
 }
 
-::placeholder {
-    padding: 25px;
-}
 
 
 .input__login--style {
@@ -83,6 +81,7 @@
     text-decoration: underline 1.2px;
     text-decoration-style: double;
     box-sizing: initial;
+    text-indent: 25px;
 }
 
 /* .login__input--hr {
@@ -96,7 +95,7 @@
 } */
 
 .login__forgotYouPass {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--azul);
 }
 
@@ -116,7 +115,13 @@
     top: 2px;
     display: flex;
 }
-
+.form__input--label-remember{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 16px;
+    right: 12px;
+}
 .login__icons span {
     display: flex;
     justify-content: space-around;
@@ -133,4 +138,12 @@
     background: #004aad5e;
     color: #0b0c0e;
     width: 210px;
+}
+
+.login__icons--loginWith {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 10px;
 }
