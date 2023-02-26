@@ -36,16 +36,6 @@
     box-sizing: content-box;
 }
 
-/* .form-container {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-   
-    border-radius: 0.9rem;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    width:50%;
-} */
 
 .login__span {
     font-size: larger;
@@ -67,8 +57,6 @@
     margin-block: 1rem;
 }
 
-
-
 .input__login--style {
     outline: 1px solid var(--azul);
     border: none;
@@ -81,18 +69,8 @@
     text-decoration: underline 1.2px;
     text-decoration-style: double;
     box-sizing: initial;
-    text-indent: 25px;
+    text-indent: 10px;
 }
-
-/* .login__input--hr {
-    position: absolute;
-    bottom: 8px;
-    right: 14px;
-    width: 80%;
-    outline: 1px solid #004aadab;
-    border: none;
-    border-radius: 10px;
-} */
 
 .login__forgotYouPass {
     font-size: 14px;

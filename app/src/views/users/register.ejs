@@ -7,18 +7,19 @@
             <form>
                 <div class="register">
                     <div class="register__general">
-                        <div class="card">
+                        <div class="register__card">
+                            <div class="register-container">
                             <span class="span__register">registro</span>
-
-                            <div class="card-input">
+                                <hr class="register__hr">
+                            <div class="register__card--input">
                                 <label for="text">Nombre de usuario</label>
-                                <input class="input" type="text" name="usuario" placeholder="escribe aqui tu nombre" id="">
+                                <input class="register__input" type="text" name="usuario" placeholder="escribe aqui tu nombre" id="">
                                 <label for="email">Correo electronico</label>
-                                <input class="input" type="email" name="email" placeholder="Escribe aqui tu correo" id="">
+                                <input class="register__input" type="email" name="email" placeholder="Escribe aqui tu correo" id="">
                                 <label for="pass">Contraseña</label>
-                                <input class="input" type="password" name="pass" placeholder="Escribe aqui tu contraseña" id="">
+                                <input class="register__input" type="password" name="pass" placeholder="Escribe aqui tu contraseña" id="">
                                 <label for="pass2">Confirmar contraseña</label>
-                                <input class="input__error" type="password" name="pass2" placeholder="Contraseña incorrecta" id="">
+                                <input class="register__input--error" type="password" name="pass2" placeholder="Contraseña incorrecta" id="">
                             </div>
                             <div class="register__form--check">
                                 <input type="checkbox" name="terms" id="recordar">
@@ -26,10 +27,13 @@
                                 <div class="register__form--btn">
                                     <button type="submit" class="register__btn">Registrarme</button>
                                 </div>
+                                <div class="register__p--span">
                                 <p class="register__form">Registrarme con</p>
                                 <span class="registered__form--user"><a href="/users/login">¿Ya tiene una cuenta? Inicie sesión</a></span>
+                                </div>
                             </div>
-                        </div>
+                            </div>
+                    </div>
                     </div>
                 </div>
             </form>

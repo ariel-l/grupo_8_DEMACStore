@@ -1,108 +1,152 @@
 .register__body {
-    background-image: url("../images/form__fondo.jpg"); 
-    margin: 0;
-    padding: 0;
+  background-image: url("../images/form__fondo.jpg");
+  margin: 0;
+  padding: 0;
+}
+
+.register__a--icons {
+  color: white;
+}
+
+.register__general {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.span__register {
+  font-size: 28px;
+  color: var(--azul);
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.register__hr {
+  width: 80px;
+  position: relative;
+  left: 58px;
+}
+.register {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #584b4ba1;
+}
+
+.register__card {
+  padding: 40px;
+  box-shadow: 15px 15px 15px rgb(0 0 0 / 50%);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background-color: var(--fondo);
+  outline: 1px solid var(--azul);
+  border: none;
+  border-radius: 40px;
+  margin: 20px 20px;
+  box-sizing: content-box;
+}
+
+.register__card--input {
+  /* margin-top: 0px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.register__card--input label {
+  width: fit-content;
+  position: relative;
+  margin-block: 1rem;
+  font-size: smaller;
+  /* top: -2px; */
+}
+
+.register__input {
+  outline: 1px solid var(--azul);
+  border: none;
+  border-radius: 12px;
+  padding: 5px 10px;
+  background: var(--fondo);
+  color: #004aad;
+  width: 190px;
+  height: 24px;
+  text-decoration: underline 1.2px;
+  text-decoration-style: double;
+  box-sizing: initial;
+  text-indent: 10px;
+  position: relative;
+  bottom: 13px;
+}
+
+.register__input--error {
+  outline: 1px solid #e91212;
+  border: none;
+  border-radius: 12px;
+  padding: 5px 10px;
+  background: var(--fondo);
+  color: #e91212;
+  width: 190px;
+  height: 24px;
+  text-decoration: underline 1.2px;
+  text-decoration-style: double;
+  box-sizing: initial;
+  text-indent: 10px;
+  position: relative;
+  bottom: 13px;
+}
+
+.register__input--error::placeholder {
+  color: #e91212;
 }
 
 
-.register__a--icons{
-    color: white;
+
+.register__card a {
+  font-size: var(--parrafos);
+  color: #004aad;
+  text-decoration: none;
+  /* position: relative; */
+  /* top: 1px; */
 }
 
-.register__general{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.register__form--check {
+  font-size: small;
+  width: max-content;
+  position: relative;
+  top: 5px;
 }
 
-.span__register{
-    color: #004aadcf;
-    font-size: 30px;
+#recordar {
+  position: relative;
+  top: 2px;
 }
-.register{
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #584b4ba1;
-    /* background: var(--fondo); */
-}
-
-.card{
-    margin-top: 61px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    min-width: 245px;
-    align-items: center;
-    box-shadow: 1px 1px 2px 2px rgb(0, 0, 0, 0.5);
-    padding: 20px;
-    margin: 20px 20px;
-    outline: 1px solid #004aad;
-    border-radius: 40px;
-    background-color: var(--fondo);
-    width: 90%;
+.register__btn {
+  outline: 1px solid var(--azul);
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background: #004aad5e;
+  color: #0b0c0e;
+  width: 210px;
+  position: relative;
+  top: 8px;
 }
 
-.card-input{
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.register__p--span {
+    position: relative;
+    top: 15px;
 }
-
-.card-input label {
-    font-size: var(--parrafos);
-    margin-bottom: 10px;
-}
-
-.card-input .input {
-    padding: 6px 10px;
-    font-weight: 400;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    border: none;
-    outline: 1px solid #004aad;
-}
-
-.input__error{
-    padding: 6px 10px;
-    font-weight: 400;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    border: none;
-    outline: 1px solid #e91212;
-}
-
-.input__error::placeholder{
-    color:#e91212;
-}
-
-.card button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: lightblue;
-    width: 100%;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 500;
-    border: 1px solid #004aad;
-    border-radius: 20px;
-    outline: var(--azul);
-}
-
-.card a {
-    font-size: var(--parrafos);
-    color: #004AAD;
-    text-decoration: none;
-}
-
 @media (max-width: 325px) {
-   .card {
+  .register__card {
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-   }
+  }
 }
