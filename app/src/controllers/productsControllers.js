@@ -22,10 +22,11 @@ module.exports = {
 
     index: (req, res) => {
 
-        shuffle(products)
+        const shuffleProducts = [...products]
+        shuffle(shuffleProducts)
 
         return res.render('products/products', {
-            products,
+            shuffleProducts,
             formatNumber,
         })
     },
