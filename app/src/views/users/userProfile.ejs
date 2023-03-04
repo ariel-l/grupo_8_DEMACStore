@@ -1,12 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <%- include('../partials/head.ejs', {title: 'Mi Perfil' }) %>
 <body>
+    <%- include('../partials/header.ejs') %>
     
+    <main class="profile__main--container">
+        <h2 class="profile__main--title">Mis Datos</h2>
+            <div class="profile__img">
+                <img src="" alt="img-profile">
+            </div>
+            <div class="profile__title">
+                <h3>Datos de cuenta</h3>
+            </div>
+                <div class="profile__edit--button--account">
+                    <a href="/users/profile" class="profile___btn--edit--account">Modificar datos de cuenta</a>
+                </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Usuario</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span">stefyluddeni</span>
+                        </div>
+                        <div class="profile__chevron--btn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">E-mail</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span">stefyluddeni@gmail.com</span>
+                        </div>
+                        <div class="profile__chevron--btn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </div>
+            <div class="profile__title">
+                <h3 class="profile__main--title">Datos Personales</h3>
+            </div>
+                <div class="profile__edit--button--account">
+                    <a href="/users/profile" class="profile___btn--edit--account">Modificar datos personales</a>
+                </div>
+                <div class="profile__info--btn" role="button">
+                    <div class="profile--info">
+                        <span class="profile__span">Nombre</span>
+                    </div>
+                    <div class="profile--info">
+                        <span class="profile__span">Estefanía</span>
+                    </div>
+                    <div class="profile__chevron--btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                <div class="profile__info--btn" role="button">
+                    <div class="profile--info">
+                         <span class="profile__span">Apellido</span>
+                    </div>
+                    <div class="profile--info">
+                        <span class="profile__span">Luddeni</span>
+                    </div>
+                    <div class="profile__chevron--btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                <div class="profile__info--btn" role="button">
+                    <div class="profile--info">
+                        <span class="profile__span">E-mail</span>
+                    </div>
+                    <div class="profile--info">
+                        <span class="profile__span">stefyluddeni@gmail.com</span>
+                    </div>
+                    <div class="profile__chevron--btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>
