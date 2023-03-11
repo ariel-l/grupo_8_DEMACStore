@@ -10,23 +10,25 @@
 
                         <span class="login__span">INICIAR SESIÓN</span>
                         <hr class="login__hr--first">
-                        <form action="" method="">
+                        <form action="/users/login" method="POST">
                             <div class="form__start">
                                 <div class="input__login--container">
-                                    <!-- <span class="login__input--icon"><i class="fa-regular fa-envelope"></i></span> -->
                                     <input class="input__login--style" type="email" name="email" placeholder="Escribe aqui tu mail">
-                                    <!-- <hr class="login__input--hr"> -->
+                                    <% if (locals.errors && errors.email) { %>
+                                        <small class="text-danger"><%= errors.email.msg %> </small>
+                                    <% } %>
                                 </div>
                                 <div class="input__login--container">
-                                    <!-- <span class="login__input--icon"><i class="fa-regular fa-eye-slash"></i></span> -->
-                                    <input class="input__login--style" type="password" name="pass" placeholder="Contraseña">
-                                    <!-- <hr class="login__input--hr"> -->
+                                    <input class="input__login--style" type="password" name="password" placeholder="Contraseña">
+                                    <% if (locals.errors && errors.password) { %>
+                                        <small class="text-danger"><%= errors.password.msg %> </small>
+                                    <% } %> 
                                     <span><a class="login__forgotYouPass" href="">¿Olvidaste tu contraseña?</a></span>
                                 </div>
 
                                 <div class="login__check">
-                                    <label class="form__input--label-remember" for="recordar"> Recordar sesión </label>
-                                    <input class="login__check--remember" type="checkbox" name="recordar" id="recordar">
+                                    <label class="form__input--label-remember" for="remember"> Recordar sesión </label>
+                                    <input class="login__check--remember" type="checkbox" name="remember" id="remember">
                                 </div>
                                 <div class="button__login--container">
                                     <button type="submit" class="btn login__btn-submit">Iniciar sesión</button>
@@ -40,7 +42,7 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn login__btn-submit"> <a href="/users/register">Registarme</a></button>
+                                    <button class="btn login__btn-submit"> <a href="/users/register">Registrarme</a></button>
                                 </div>
                             </div>
                         </form>

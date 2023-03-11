@@ -34,5 +34,14 @@
         "password": "demacStore555#",
         "category": "admin",
         "image": "photoProfile.png"
+    },
+    {
+        "id": 5,
+        "firstName": "Hola",
+        "lastName": "Latour",
+        "email": "hola@gmail.com",
+        "password": "123456789",
+        "category": "admin",
+        "image": "photoProfile.png"
     }
 ]
