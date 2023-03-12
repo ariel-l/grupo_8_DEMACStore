@@ -3,11 +3,17 @@ const app = express();
 const path = require("path");
 const methodOverride =  require('method-override')
 const PORT = 3030;
+const session = require("express-session");
 
 
 /* APPLICATION-LEVEL MIDDLEWARE */
-app.use(express.static('public'))
-app.use(methodOverride('_method'))
+app.use(express.static('public'));
+app.use(methodOverride('_method'));
+app.use(session({
+    secret: "demac",
+    resave: false,
+    saveUninitialized: true
+}))
 
 
 /* TEMPLATE ENGINE CONFIG */
