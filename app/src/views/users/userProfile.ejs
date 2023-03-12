@@ -3,27 +3,39 @@
     <%- include('../partials/head.ejs', {title: 'Mi Perfil' }) %>
 <body>
     <%- include('../partials/header.ejs') %>
-    
     <main class="profile__main--container">
+        <div class="profile__nav--container">
+            <nav class="profile__nav">
+                <ul class="profile__container--sections">
+                    <li class="profile__container--sections"><a href="/users/profile"><i class="fas fa-bars"></a></i></li>
+                    <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-bag-shopping"></a></i> <span>Compras</span></li>
+                    <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-tags"></a></i> <span>Ventas</span></li>
+                    <li class="profile__container--sections"><a href="/users"><i class="fa-solid fa-user-group"></a></i> <span>Usuarios</span></li>
+                    <li class="profile__container--sections"><a href="/users"><i class="fa-solid fa-gear"></a></i> <span>Ajustes</span></li>
+                </ul>
+            </nav>
+        </div>
+        <section class="profile__section--container">
         <h2 class="profile__main--title">Mis Datos</h2>
             <div class="profile__img">
-                <img src="" alt="img-profile">
+                <img class="profile_img" src="/images/user-default.png" alt="img-profile" width="100px" height="100px">
             </div>
-            <div class="profile__title">
-                <h3>Datos de cuenta</h3>
-            </div>
-                <div class="profile__edit--button--account">
-                    <a href="/users/profile" class="profile___btn--edit--account">Modificar datos de cuenta</a>
+            <article class="profile__account--data">
+                <div class="profile__title">
+                    <h3>Datos de cuenta</h3>
                 </div>
+                    <div class="profile__edit--button--account">
+                        <a href="/users/profile" class="profile___btn--edit--account">Modificar datos de cuenta</a>
+                    </div>
+            </article>
+                <article class="profile__info--container">
+                    <div class="profile___">
                     <div class="profile__info--btn" role="button">
                         <div class="profile--info">
                             <span class="profile__span">Usuario</span>
                         </div>
                         <div class="profile--info">
-                            <span class="profile__span">stefyluddeni</span>
-                        </div>
-                        <div class="profile__chevron--btn">
-                            <i class="fa-solid fa-chevron-right"></i>
+                            <span class="profile__span--data">stefyluddeni</span>
                         </div>
                     </div>
                     <div class="profile__info--btn" role="button">
@@ -31,51 +43,46 @@
                             <span class="profile__span">E-mail</span>
                         </div>
                         <div class="profile--info">
-                            <span class="profile__span">stefyluddeni@gmail.com</span>
-                        </div>
-                        <div class="profile__chevron--btn">
-                            <i class="fa-solid fa-chevron-right"></i>
+                            <span class="profile__span--data">stefyluddeni@gmail.com</span>
                         </div>
                     </div>
+                </div>
+                </article>
+            <article class="profile__account--data">
             <div class="profile__title">
-                <h3 class="profile__main--title">Datos Personales</h3>
+                <h3>Datos Personales</h3>
             </div>
                 <div class="profile__edit--button--account">
                     <a href="/users/profile" class="profile___btn--edit--account">Modificar datos personales</a>
                 </div>
-                <div class="profile__info--btn" role="button">
-                    <div class="profile--info">
-                        <span class="profile__span">Nombre</span>
+            </article>
+                <article class="profile__info--container">
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Nombre</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data">Estefanía</span>
+                        </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Apellido</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data">Luddeni</span>
+                        </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">E-mail</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data">stefyluddeni@gmail.com</span>
+                        </div>
                     </div>
-                    <div class="profile--info">
-                        <span class="profile__span">Estefanía</span>
+                        </div>
                     </div>
-                    <div class="profile__chevron--btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                <div class="profile__info--btn" role="button">
-                    <div class="profile--info">
-                         <span class="profile__span">Apellido</span>
-                    </div>
-                    <div class="profile--info">
-                        <span class="profile__span">Luddeni</span>
-                    </div>
-                    <div class="profile__chevron--btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                <div class="profile__info--btn" role="button">
-                    <div class="profile--info">
-                        <span class="profile__span">E-mail</span>
-                    </div>
-                    <div class="profile--info">
-                        <span class="profile__span">stefyluddeni@gmail.com</span>
-                    </div>
-                    <div class="profile__chevron--btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </div>
-                    </div>
-                </div>
+                </article>
+            </section>
 
     </main>
 
