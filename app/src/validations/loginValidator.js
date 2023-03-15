@@ -25,7 +25,7 @@ module.exports = [
     .custom((value, { req }) => {
         let user = users.find(user => user.email === req.body.email);
 
-        return user.pass === value
+        return user.password === value
     })
     .withMessage("Contraseña inválida")
 ]

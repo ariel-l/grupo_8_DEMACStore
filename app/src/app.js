@@ -10,6 +10,8 @@ const cookieCheck = require("./middlewares/cookieCheck");
 
 /* APPLICATION-LEVEL MIDDLEWARE */
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(session({
     secret: "DEMAC_Store",
