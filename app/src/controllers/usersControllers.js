@@ -1,5 +1,6 @@
 const { users } = require("../database");
 const { validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
     login: (req, res) => {
