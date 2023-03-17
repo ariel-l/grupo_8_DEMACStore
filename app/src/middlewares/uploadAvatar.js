@@ -3,7 +3,7 @@ const path = require('path');
 
 const storeImageAvatar = multer.diskStorage({
     destination: function(req, file, callback){
-        const folder = "public/images/avatar"
+        const folder = "public/images/users"
         callback(null, folder)
     },
     filename: function(req, file, callback){

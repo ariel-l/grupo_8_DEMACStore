@@ -30,7 +30,7 @@ module.exports = {
             name: '',
             lastName: '',
             avatar: req.file ? req.file.filename : 'default-image.png',
-            rol: 'USER',
+            rol: 'user',
             tel: '',
             address: '',
             postal_code: '',
