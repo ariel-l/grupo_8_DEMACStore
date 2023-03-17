@@ -7,7 +7,6 @@
         <div class="profile__nav--container">
             <nav class="profile__nav">
                 <ul class="profile__container--sections">
-                    <li class="profile__container--sections"><a href="/users/profile"><i class="fas fa-bars"></a></i></li>
                     <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-bag-shopping"></a></i> <span>Compras</span></li>
                     <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-tags"></a></i> <span>Ventas</span></li>
                     <li class="profile__container--sections"><a href="/users/profile"><i class="fa-solid fa-user-group"></a></i> <span>Usuarios</span></li>
@@ -17,9 +16,9 @@
         </div>
         <section class="profile__section--container">
         <h2 class="profile__main--title">Mis Datos</h2>
-            <div class="profile__img">
-                <img class="profile_img" src="/images/user-default.png" alt="img-profile" width="100px" height="100px">
-            </div>
+            <div class="profile__avatar">
+                    <img class="profile_img" src="/images/tefi.jpg" alt="img-profile">
+                </div>
             <article class="profile__account--data">
                 <div class="profile__title">
                     <h3>Datos de cuenta</h3>
@@ -35,7 +34,7 @@
                             <span class="profile__span">Usuario</span>
                         </div>
                         <div class="profile--info">
-                            <span class="profile__span--data">stefyluddeni</span>
+                            <span class="profile__span--data"><%= user.firstName %></span>
                         </div>
                     </div>
                     <div class="profile__info--btn" role="button">
@@ -43,7 +42,13 @@
                             <span class="profile__span">E-mail</span>
                         </div>
                         <div class="profile--info">
-                            <span class="profile__span--data">stefyluddeni@gmail.com</span>
+                            <span>
+                                <% if (user.email.length > 20) { %>
+                                    <%- `${user.email.slice(0, 20)}...` %>
+                                <% } else { %>
+                                <%= user.email %>
+                                <% } %>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -57,30 +62,32 @@
                 </div>
             </article>
                 <article class="profile__info--container">
+                    <div class="profile___">
                     <div class="profile__info--btn" role="button">
                         <div class="profile--info">
                             <span class="profile__span">Nombre</span>
                         </div>
                         <div class="profile--info">
-                            <span class="profile__span--data">Estefanía</span>
+                            <span class="profile__span--data"><%= user.firstName %></span>
                         </div>
+                    </div>
                     <div class="profile__info--btn" role="button">
                         <div class="profile--info">
                             <span class="profile__span">Apellido</span>
                         </div>
                         <div class="profile--info">
-                            <span class="profile__span--data">Luddeni</span>
+                            <span class="profile__span--data"><%= user.lastName %></span>
                         </div>
+                    </div>
                     <div class="profile__info--btn" role="button">
                         <div class="profile--info">
                             <span class="profile__span">E-mail</span>
                         </div>
                         <div class="profile--info">
-                            <span class="profile__span--data">stefyluddeni@gmail.com</span>
+                            <span class="profile__span--data"><%= user.email %></span>
                         </div>
                     </div>
-                        </div>
-                    </div>
+                </div>
                 </article>
             </section>
 

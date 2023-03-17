@@ -15,11 +15,11 @@
                             <li>Celulares</li>
                         </ul>
                     </div>
-
+                    <% if ( session.user.category === "admin") { %>
                     <div class="create__btn">
                         <a class="create__btn--redirect" href="/products/create">Crear Producto</a>
                     </div>
-
+                    <% } %>
                     <section class="home__phones--container--global">
 
                         <% shuffleProducts.forEach(product=> { %>

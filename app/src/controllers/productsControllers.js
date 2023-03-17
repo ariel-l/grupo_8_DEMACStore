@@ -28,6 +28,7 @@ module.exports = {
         return res.render('products/products', {
             shuffleProducts,
             formatNumber,
+            session: req.session
         })
     },
 
@@ -39,16 +40,21 @@ module.exports = {
 
         res.render("products/productDetail", {
             product,
-            formatNumber
+            formatNumber,
+            session: req.session
         })
     },
 
     cart: (req, res) => {
-        return res.render('products/cart')
+        return res.render('products/cart', {
+            session: req.session
+        })
     },
 
     create: (req, res) => {
-        return res.render('products/productCreate')
+        return res.render('products/productCreate', {
+            session: req.session
+        })
     }, 
 
     store: (req, res) => {
@@ -57,8 +63,26 @@ module.exports = {
 
 		const newProduct = {
 			id: lastId + 1,
+			name: req.body.name,
+			discount: +req.body.discount,
+			price: +req.body.price,
 			image: req.file ? req.file.filename : "default-image.png" ,
-            ...req.body
+            category: req.body.category,
+            brand: req.body.brand,
+            model: req.body.model,
+            os: req.body.os,
+            screen: +req.body.screen,
+            internalMemory: +req.body.internalMemory,
+            ram: +req.body.ram,
+            frontCamera: +req.body.frontCamera,
+            chipset: req.body.chipset,
+            mainCamera: +req.body.mainCamera,
+            video: req.body.video,
+            dimensions: +req.body.dimensions,
+            battery: +req.body.battery,
+            weight: +req.body.weight,
+            cardSlot : +req.body.cardSlot,
+			description:req.body.description,
 		}
 
 		products.push(newProduct);
@@ -75,7 +99,7 @@ module.exports = {
         const productToEdit = products.find((product) => {
               return product.id === productId;
         });
-        res.render("products/productModify", { productToEdit });
+        res.render("products/productModify", { productToEdit, session: req.session });
     },
 
     update: (req, res) => {

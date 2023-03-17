@@ -59,11 +59,19 @@
 
             <!-- MY-ACCOUNT -->
             <div class="header__acc--container">
-                <a href="/users/login" class="acc__links">
+                <% if (typeof session.user != "undefined") { %>
+                <a href="/users/logout" class="acc__links">
                     <i class="fa-solid fa-circle-user"></i>
-                    <span class="text__acc">Mi cuenta</span>
+                    <span class="text__acc">Cerrar sesión</span>
                 </a>
+                <% } else { %>
+                    <a href="/users/login" class="acc__links">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span class="text__acc">Mi cuenta</span>
+                    </a>
+                <% } %>
             </div>
+
 
             <!-- CARRT -->
             <div class="header__cart--container">
