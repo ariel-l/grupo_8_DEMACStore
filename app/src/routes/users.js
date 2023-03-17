@@ -14,6 +14,8 @@ router.get('/register', controller.register);
 /* POST REGISTER USER */
 router.post('/register', upLoadImageAvatar.single('avatar'), registerValidator, controller.processRegister)
 
+/* GET USER PROFILE PAGE */
+router.get('/profile', controller.profile);
 
 /* EXPORT ROUTER */
 module.exports = router;
