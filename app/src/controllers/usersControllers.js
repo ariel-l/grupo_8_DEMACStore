@@ -1,4 +1,4 @@
-const { users } = require("../database");
+const { users, writeJSON} = require("../database");
 const { validationResult } = require("express-validator");
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
                 id: user.id,
                 firstName: user.firstName,
                 image: user.image,
-                category: user.category
+                rol: user.rol
             }
 
             let cookieLifeTime = new Date(Date.now() + 60000);
@@ -66,5 +66,21 @@ module.exports = {
             user: userInSession,
             session: req.session
         })
-    }
+    },
+    destroy : (req, res) => {
+
+        let userInSessionId = req.session.user.id;
+        
+        users.forEach(user => {
+            if (user.id === userInSessionId){
+                const userToDestroy = users.indexOf(user);
+                users.splice(userToDestroy, 1);
+                req.session.destroy()
+        }
+    });
+    
+    writeJSON('users.json', users)
+
+    res.redirect("/products");
+}
 }

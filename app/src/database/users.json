@@ -5,7 +5,7 @@
         "lastName": "Yñiguez Quintana",
         "email": "cami.yniguez@gmail.com",
         "password": "CamiYniguez2023",
-        "category": "admin",
+        "rol": "admin",
         "image": "photoProfile.png"
     },
     {
@@ -14,25 +14,16 @@
         "lastName": "Labra",
         "email": "melina.lb04@gmail.com",
         "password": "algo123",
-        "category": "admin",
-        "image": "photoProfile.png"
-    },
-    {
-        "id": 3,
-        "firstName": "Estefania",
-        "lastName": "Luddeni",
-        "email": "stefyluddeni@gmail.com",
-        "password": "demac345",
-        "category": "admin",
+        "rol": "admin",
         "image": "photoProfile.png"
     },
     {
         "id": 4,
         "firstName": "Ariel",
         "lastName": "Latour",
-        "email": "arielm.latour@gmail.com",
-        "password": "demacStore555#",
-        "category": "admin",
+        "email": "stefy@gmail.com",
+        "password": "stefy",
+        "rol": "admin",
         "image": "photoProfile.png"
     }
 ]
