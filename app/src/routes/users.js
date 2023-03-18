@@ -3,12 +3,14 @@ const router = express.Router();
 const { login, register, processLogin, logout, profile, destroy, processRegister} = require("../controllers/usersControllers")
 const loginValidator = require("../validations/loginValidator")
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
-const adminInSessionCheck = require("../middlewares/adminInSessionCheck");const { upLoadImageAvatar } = require('../middlewares/uploadAvatar');
-const registerValidator = require('../validations/registerValidator')
+const adminInSessionCheck = require("../middlewares/adminInSessionCheck");
+const sessionUserCheck = require('../middlewares/sessionUserCheck');
+const { upLoadImageAvatar } = require('../middlewares/uploadAvatar');
+const registerValidator = require('../validations/registerValidator');
 
 
 /* GET LOGIN PAGE  */
-router.get("/login", login); 
+router.get("/login", sessionUserCheck, login); 
 
 /* POST LOGIN USER */
 router.post("/login", loginValidator, processLogin);
@@ -17,7 +19,7 @@ router.post("/login", loginValidator, processLogin);
 router.get("/logout", logout)
 
 /* GET REGISTER PAGE */
-router.get('/register', userInSessionCheck, adminInSessionCheck, register);
+router.get('/register', sessionUserCheck, register);
 
 /* POST REGISTER USER */
 router.post('/register', upLoadImageAvatar.single('avatar'), registerValidator, processRegister)

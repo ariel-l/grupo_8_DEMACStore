@@ -4,7 +4,8 @@
     <nav class="header__nav--userdesign">
         <ul class="nav__container--gray">
             <li>
-                <a href="https://www.oca.com.ar/Busquedas/Envios" class="nav__icon--link"><i class="fa-solid fa-truck-fast nav__icon--gray"></i>Seguí tu compra</a>
+                <a href="https://www.oca.com.ar/Busquedas/Envios" class="nav__icon--link"><i class="fa-solid fa-truck-fast nav__icon--gray"></i>Seguí
+                    tu compra</a>
             </li>
             <li class="nav__btn--gray">
                 <a href="" class="nav__icon--link"><i class="fa-regular fa-building nav__icon--gray"></i>Sucursales</a>
@@ -59,17 +60,15 @@
 
             <!-- MY-ACCOUNT -->
             <div class="header__acc--container">
-                <% if (typeof session.user != "undefined") { %>
-                <a href="/users/logout" class="acc__links">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <span class="text__acc">Cerrar sesión</span>
-                </a>
-                <% } else { %>
-                    <a href="/users/login" class="acc__links">
-                        <i class="fa-solid fa-circle-user"></i>
-                        <span class="text__acc">Mi cuenta</span>
-                    </a>
-                <% } %>
+                <% if (typeof session.user !="undefined" ) { %>
+                    <a class="acc__links" href="/users/profile"><i class="fa-solid fa-circle-user"></i></a>
+                    <a class="acc__links" href="/users/logout"><span class="text__acc">Cerrar sesión</span></a>
+                    <% } else { %>
+                        <a href="/users/login" class="acc__links">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span class="text__acc">Mi cuenta</span>
+                        </a>
+                        <% } %>
             </div>
 
 
