@@ -5,10 +5,61 @@ const users = readJSON('users.json')
 
 
 module.exports = {
-    login: (req, res) => {
-        res.render("users/login", { session: req.session })
+
+    register: (req, res) => {
+        res.render('users/register', {
+            session: req.session
+        })
     },
+
+    processRegister: (req, res) => {
+
+        const errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+            
+            const lastId = users[users.length -1].id;
+
+            const { username, email, password } = req.body
+
+            const newUser = {
+            id: lastId + 1,
+            username,
+            email,
+            password: bcrypt.hashSync(password, 10),
+            name: '',
+            lastName: '',
+            avatar: req.file ? req.file.filename : 'default-image.png',
+            rol: 'user',
+            tel: '',
+            address: '',
+            postal_code: '',
+            province: '',
+            city: '',
+        }
+
+        users.push(newUser)
+
+        writeJSON('users.json', users)
+
+        res.redirect('/users/login')
+
+        } else {
+            res.render('users/register', {
+                errors: errors.mapped(),
+                old: req.body
+            })
+        }
+    },
+
+    login: (req, res) => {
+
+        res.render("users/login", { session: req.session })
+
+    },
+
     processLogin: (req, res) => {
+
         const errors = validationResult(req);
 
         if (errors.isEmpty()) {
@@ -44,21 +95,7 @@ module.exports = {
             })
         }
     },
-    logout: (req, res) => {
 
-        req.session.destroy();
-        if(req.cookies.userDemac){
-            res.cookie("userDemac", "", {maxAge: -1})
-        }
-
-        res.redirect("/");
-
-    },
-    register: (req, res) => {
-        res.render('users/register', {
-            session: req.session
-        })
-    },
     profile: (req, res) => {
 
         const userInSessionId = req.session.user.id;
@@ -70,7 +107,8 @@ module.exports = {
             session: req.session
         })
     },
-    destroy : (req, res) => {
+
+    destroy: (req, res) => {
 
         const userInSessionId = req.session.user.id;
         
@@ -80,50 +118,22 @@ module.exports = {
                 users.splice(userToDestroy, 1);
                 req.session.destroy()
         }
-    },
-
-    processRegister: (req, res) => {
-
-        const errors = validationResult(req);
-
-        if (errors.isEmpty()) {
-            
-            const lastId = users[users.length -1].id;
-
-            const { username, email, password } = req.body
-
-            const newUser = {
-            id: lastId + 1,
-            username,
-            email,
-            password: bcrypt.hashSync(password, 10),
-            name: '',
-            lastName: '',
-            avatar: req.file ? req.file.filename : 'default-image.png',
-            rol: 'user',
-            tel: '',
-            address: '',
-            postal_code: '',
-            province: '',
-            city: '',
-        }
-
-        users.push(newUser)
-
-        writeJSON('users.json', users)
-
-        res.redirect('/')
-
-        } else {
-            res.render('users/register', {
-                errors: errors.mapped(),
-                old: req.body
-            })
-        }
     });
     
     writeJSON('users.json', users)
 
     return res.redirect('/users/profile');
-}
+    },
+
+    logout: (req, res) => {
+        
+        req.session.destroy();
+        if(req.cookies.userDemac){
+            res.cookie("userDemac", "", {maxAge: -1})
+        }
+
+        res.redirect("/");
+
+    },
+
 }

@@ -1,5 +1,4 @@
 const { readJSON, writeJSON } = require('../database/index');
-
 const products = readJSON('products.json');
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
 

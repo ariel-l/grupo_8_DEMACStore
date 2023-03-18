@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { login, register, processLogin, logout, profile, destroy, } = require("../controllers/usersControllers")
+const { login, register, processLogin, logout, profile, destroy, processRegister} = require("../controllers/usersControllers")
 const loginValidator = require("../validations/loginValidator")
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
 const adminInSessionCheck = require("../middlewares/adminInSessionCheck");const { upLoadImageAvatar } = require('../middlewares/uploadAvatar');
@@ -20,7 +20,7 @@ router.get("/logout", logout)
 router.get('/register', userInSessionCheck, adminInSessionCheck, register);
 
 /* POST REGISTER USER */
-router.post('/register', upLoadImageAvatar.single('avatar'), registerValidator, controller.processRegister)
+router.post('/register', upLoadImageAvatar.single('avatar'), registerValidator, processRegister)
 
 /* GET USER PROFILE PAGE */
 router.get('/profile', userInSessionCheck, profile);
