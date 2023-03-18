@@ -69,7 +69,7 @@ module.exports = {
             req.session.user = {
                 id: user.id,
                 firstName: user.firstName,
-                image: user.image,
+                avatar: user.avatar,
                 rol: user.rol
             }
 
