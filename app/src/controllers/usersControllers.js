@@ -81,6 +81,10 @@ module.exports = {
     
     writeJSON('users.json', users)
 
-    res.redirect("/products");
+    delete user.pass;
+
+    req.session.user = user;
+
+    return res.redirect('/users/profile');
 }
 }

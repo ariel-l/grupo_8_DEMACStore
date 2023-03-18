@@ -8,9 +8,13 @@
             <nav class="profile__nav">
                 <ul class="profile__container--sections">
                     <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-bag-shopping"></a></i> <span>Compras</span></li>
-                    <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-tags"></a></i> <span>Ventas</span></li>
+                    <% if ( session.user.rol === "admin") { %>
+                    <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-tags"></a></i> <span>Productos</span></li>
+                    <% } %>
+                    <% if ( session.user.rol === "admin") { %>
                     <li class="profile__container--sections"><a href="/users/profile"><i class="fa-solid fa-user-group"></a></i> <span>Usuarios</span></li>
-                    <li class="profile__container--sections"><a href="/users/profile"><i class="fa-solid fa-gear"></a></i> <span>Ajustes</span></li>
+                    <% } %>
+                    <li class="profile__container--sections"><a href="/users/profile/edit"><i class="fa-solid fa-gear"></a></i> <span>Ajustes</span></li>
                 </ul>
             </nav>
         </div>
@@ -24,7 +28,7 @@
                     <h3>Datos de cuenta</h3>
                 </div>
                     <div class="profile__edit--button--account">
-                        <a href="/users/profile" class="profile___btn--edit--account">Modificar datos de cuenta</a>
+                        <a href="/users/profile/edit" class="profile___btn--edit--account">Modificar datos de cuenta</a>
                     </div>
             </article>
                 <article class="profile__info--container">
@@ -58,7 +62,7 @@
                 <h3>Datos Personales</h3>
             </div>
                 <div class="profile__edit--button--account">
-                    <a href="/users/profile" class="profile___btn--edit--account">Modificar datos personales</a>
+                    <a href="/users/profile/edit" class="profile___btn--edit--account">Modificar datos personales</a>
                 </div>
             </article>
                 <article class="profile__info--container">

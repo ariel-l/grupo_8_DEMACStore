@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { login, register, processLogin, logout, profile, destroy } = require("../controllers/usersControllers")
+const { login, register, processLogin, logout, profile, destroy, } = require("../controllers/usersControllers")
 const loginValidator = require("../validations/loginValidator")
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
 const adminInSessionCheck = require("../middlewares/adminInSessionCheck");
@@ -21,7 +21,5 @@ router.get('/register', userInSessionCheck, adminInSessionCheck, register);
 router.get('/profile', userInSessionCheck, profile);
 
 router.delete('/profile', adminInSessionCheck, destroy);
-/* GET - USER PROFILE EDIT FORM */
-
 /* EXPORT ROUTER */
 module.exports = router;

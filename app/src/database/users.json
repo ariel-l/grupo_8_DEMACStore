@@ -19,11 +19,20 @@
     },
     {
         "id": 4,
-        "firstName": "Ariel",
-        "lastName": "Latour",
+        "firstName": "Tefi",
+        "lastName": "tef",
         "email": "stefy@gmail.com",
         "password": "stefy",
         "rol": "admin",
+        "image": "photoProfile.png"
+    },
+    {
+        "id": 4,
+        "firstName": "Ari",
+        "lastName": "Ari",
+        "email": "ari@gmail.com",
+        "password": "ari",
+        "rol": "user",
         "image": "photoProfile.png"
     }
 ]
