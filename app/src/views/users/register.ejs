@@ -4,36 +4,68 @@
 
     <body class="register__body">
         <%- include('../partials/header.ejs') %>
-            <form>
+            <form action="/users/register" method="POST" enctype="multipart/form-data">
                 <div class="register">
                     <div class="register__general">
                         <div class="register__card">
                             <div class="register-container">
-                            <span class="span__register">registro</span>
+                                <span class="span__register">registro</span>
                                 <hr class="register__hr">
-                            <div class="register__card--input">
-                                <label for="text">Nombre de usuario</label>
-                                <input class="register__input" type="text" name="usuario" placeholder="escribe aqui tu nombre" id="">
-                                <label for="email">Correo electronico</label>
-                                <input class="register__input" type="email" name="email" placeholder="Escribe aqui tu correo" id="">
-                                <label for="pass">Contraseña</label>
-                                <input class="register__input" type="password" name="pass" placeholder="Escribe aqui tu contraseña" id="">
-                                <label for="pass2">Confirmar contraseña</label>
-                                <input class="register__input--error" type="password" name="pass2" placeholder="Contraseña incorrecta" id="">
-                            </div>
-                            <div class="register__form--check">
-                                <input type="checkbox" name="terms" id="recordar">
-                                <label class="register__check--terms" for="terms"> Acepto <a href="">términos y condiciones</a> </label>
-                                <div class="register__form--btn">
-                                    <button type="submit" class="register__btn">Registrarme</button>
+                                <div class="register__card--input">
+                                    <label for="username">Nombre de usuario</label>
+                                    <input class="register__input" type="text" name="username" placeholder="Escribe aquí tu usuario" id="">
+                                    <% if (locals.errors && errors.username) { %>
+                                        <p class="register__input--error">
+                                            <%= errors.username.msg %>
+                                        </p>
+                                        <% } %>
+                                            <label for="email">Correo electronico</label>
+                                            <input class="register__input" type="email" name="email" placeholder="Escribe aquí tu correo" id="">
+                                            <% if (locals.errors && errors.email) { %>
+                                                <p class="register__input--error">
+                                                    <%= errors.email.msg %>
+                                                </p>
+                                                <% } %>
+                                                    <label for="password">Contraseña</label>
+                                                    <input class="register__input" type="password" name="password"
+                                                        placeholder="Escribe aquí tu contraseña" id="">
+                                                    <% if (locals.errors && errors.password) { %>
+                                                        <p class="register__input--error">
+                                                            <%= errors.password.msg %>
+                                                        </p>
+                                                        <% } %>
+                                                            <label for="pass2">Confirmar contraseña</label>
+                                                            <input class="register__input" type="password" name="pass2"
+                                                                placeholder="Escribe aquí tu contraseña" id="">
+                                                            <% if (locals.errors && errors.pass2) { %>
+                                                                <p class="register__input--error">
+                                                                    <%= errors.pass2.msg %>
+                                                                </p>
+                                                                <% } %>
+                                                                    <div class="register__input--avatar">
+                                                                        <p class="register__input--textAvatar">Agregar foto de perfil</p>
+                                                                        <input type="file" name="avatar" class="register__input--file">
+                                                                    </div>
                                 </div>
-                                <div class="register__p--span">
-                                <p class="register__form">Registrarme con</p>
-                                <span class="registered__form--user"><a href="/users/login">¿Ya tiene una cuenta? Inicie sesión</a></span>
+                                <div class="register__form--check">
+                                    <input type="checkbox" name="terms" id="check">
+                                    <label class="register__check--terms" for="check"> Acepto <a href="">términos y condiciones</a> </label>
+                                    <% if (locals.errors && errors.terms) { %>
+                                        <p class="register__input--error">
+                                            <%= errors.terms.msg %>
+                                        </p>
+                                        <% } %>
+                                            <div class="register__form--btn">
+                                                <button type="submit" class="register__btn">Registrarme</button>
+                                            </div>
+                                            <div class="register__p--span">
+                                                <p class="register__form">Registrarme con</p>
+                                                <span class="registered__form--user"><a href="/users/login">¿Ya tiene una cuenta? Inicie
+                                                        sesión</a></span>
+                                            </div>
                                 </div>
                             </div>
-                            </div>
-                    </div>
+                        </div>
                     </div>
                 </div>
             </form>
