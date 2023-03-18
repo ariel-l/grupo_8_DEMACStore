@@ -1,6 +1,5 @@
 const { users, writeJSON } = require("../database");
 const { validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
 
 module.exports = {
     login: (req, res) => {
@@ -81,10 +80,6 @@ module.exports = {
     });
     
     writeJSON('users.json', users)
-
-    delete user.pass;
-
-    req.session.user = user;
 
     return res.redirect('/users/profile');
 }
