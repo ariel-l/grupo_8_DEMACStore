@@ -21,6 +21,7 @@ app.use(session({
 app.use(cookieParser());
 app.use(cookieCheck);
 
+
 /* TEMPLATE ENGINE CONFIG */
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

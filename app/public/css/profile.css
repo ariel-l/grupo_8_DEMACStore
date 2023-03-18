@@ -1,0 +1,122 @@
+.profile__main--container {
+    margin: auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile__nav {
+    width: max-content;
+    padding: 0.5rem;
+    display: flex;
+    color: var(--gris-claro);
+    background-color: white;
+    height: 100%;
+}
+
+.profile__container--sections{
+    padding: 1rem 0px;
+}
+
+.profile__container--sections a {
+    color: var(--gris-claro);
+}
+
+.profile__container--sections span{
+    display: none;
+}
+
+.profile__section--container {
+    min-width: 140px;
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+    padding-bottom: 3rem;
+}
+
+.profile__main--title {
+    margin: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__account--data {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.profile__avatar {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    margin: 1rem auto;
+}
+
+.profile_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile__edit--button--account a {
+    color: var(--destacado);
+}
+
+.profile__info--container {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    margin-top: 1rem;
+}
+
+.profile--info {
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 200px;
+}
+
+.profile__span--data {
+    color: var(--gris-claro);
+}
+
+@media (min-width: 468px) {
+
+    .profile__nav ul li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 0.2rem;
+    }
+    .profile__container--sections span{
+        display: flex;
+        padding-left: 0.5rem;
+    }
+    .profile__section--container {
+        width: 100%;
+    }
+
+    .profile__info--container {
+        margin: 0 auto;
+    }
+
+    .profile__info--btn {
+        display: flex;
+    }
+
+    .profile__account--data {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .profile__info--container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 800px;
+    }
+}

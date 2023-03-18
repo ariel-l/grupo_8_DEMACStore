@@ -4,7 +4,7 @@
     <nav class="header__nav--userdesign">
         <ul class="nav__container--gray">
             <li>
-                <a href="" class="nav__icon--link"><i class="fa-solid fa-truck-fast nav__icon--gray"></i>Seguí tu compra</a>
+                <a href="https://www.oca.com.ar/Busquedas/Envios" class="nav__icon--link"><i class="fa-solid fa-truck-fast nav__icon--gray"></i>Seguí tu compra</a>
             </li>
             <li class="nav__btn--gray">
                 <a href="" class="nav__icon--link"><i class="fa-regular fa-building nav__icon--gray"></i>Sucursales</a>
@@ -59,11 +59,19 @@
 
             <!-- MY-ACCOUNT -->
             <div class="header__acc--container">
-                <a href="/users/login" class="acc__links">
+                <% if (typeof session.user != "undefined") { %>
+                <a href="/users/logout" class="acc__links">
                     <i class="fa-solid fa-circle-user"></i>
-                    <span class="text__acc">Mi cuenta</span>
+                    <span class="text__acc">Cerrar sesión</span>
                 </a>
+                <% } else { %>
+                    <a href="/users/login" class="acc__links">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span class="text__acc">Mi cuenta</span>
+                    </a>
+                <% } %>
             </div>
+
 
             <!-- CARRT -->
             <div class="header__cart--container">
@@ -79,10 +87,10 @@
     <!-- HEADER NAV CATEGORIES -->
     <nav class="header__nav--categories">
         <ul class="header__container--sections">
-            <li class="header__name--sections">Categorías</li>
+            <li class="header__name--sections"><a class="header__name--link" href="/products">Categorías</a></li>
             <li class="header__name--sections"><a class="header__name--link" href="/products">Productos</a></li>
-            <li class="header__name--sections">Celulares Nuevos</li>
-            <li class="header__name--sections">Celulares Refubrished (Renovados)</li>
+            <li class="header__name--sections"><a class="header__name--link" href="/products">Celulares Nuevos</a></li>
+            <li class="header__name--sections"><a class="header__name--link" href="/products">Celulares Refubrished (Renovados)</a></li>
         </ul>
     </nav>
 

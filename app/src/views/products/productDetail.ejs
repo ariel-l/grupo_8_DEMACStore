@@ -75,9 +75,11 @@
             <div class="detail___button--cart">
             <a href="/products/cart" class="detail___btn--add--to--cart">COMPRAR</a>
         </div>
+        <% if (session.user.rol === 'admin') { %>
         <div class="detail___button--cart">
             <a href="/products/edit/<%= product.id %>" class="detail___btn--add--to--cart">EDITAR</a>
         </div>
+        <% } %>
         </div>
         </article>
     </section>

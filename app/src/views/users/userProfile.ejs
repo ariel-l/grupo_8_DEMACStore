@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs', {title: 'Mi Perfil' }) %>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main class="profile__main--container">
+        <div class="profile__nav--container">
+            <nav class="profile__nav">
+                <ul class="profile__container--sections">
+                    <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-bag-shopping"></a></i> <span>Compras</span></li>
+                    <% if ( session.user.rol === "admin") { %>
+                    <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-tags"></a></i> <span>Productos</span></li>
+                    <% } %>
+                    <% if ( session.user.rol === "admin") { %>
+                    <li class="profile__container--sections"><a href="/users/profile"><i class="fa-solid fa-user-group"></a></i> <span>Usuarios</span></li>
+                    <% } %>
+                    <li class="profile__container--sections"><a href="/users/profile/edit"><i class="fa-solid fa-gear"></a></i> <span>Ajustes</span></li>
+                </ul>
+            </nav>
+        </div>
+        <section class="profile__section--container">
+        <h2 class="profile__main--title">Mis Datos</h2>
+            <div class="profile__avatar">
+                    <img class="profile_img" src="/images/tefi.jpg" alt="img-profile">
+                </div>
+            <article class="profile__account--data">
+                <div class="profile__title">
+                    <h3>Datos de cuenta</h3>
+                </div>
+                    <div class="profile__edit--button--account">
+                        <a href="/users/profile/edit" class="profile___btn--edit--account">Modificar datos de cuenta</a>
+                    </div>
+            </article>
+                <article class="profile__info--container">
+                    <div class="profile___">
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Usuario</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.userName %></span>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">E-mail</span>
+                        </div>
+                        <div class="profile--info">
+                            <span>
+                                <% if (user.email.length > 20) { %>
+                                    <%- `${user.email.slice(0, 20)}...` %>
+                                <% } else { %>
+                                <%= user.email %>
+                                <% } %>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                </article>
+            <article class="profile__account--data">
+            <div class="profile__title">
+                <h3>Datos Personales</h3>
+            </div>
+                <div class="profile__edit--button--account">
+                    <a href="/users/profile/edit" class="profile___btn--edit--account">Modificar datos personales</a>
+                </div>
+            </article>
+                <article class="profile__info--container">
+                    <div class="profile___">
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Nombre</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.firstName %></span>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Apellido</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.lastName %></span>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">teléfono</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.tel ? user.tel : "---------------"  %></span>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Dirección</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.adress ? user.adress : "---------------" %></span>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Código Postal</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.postal_code ? user.postal_code : "---------------" %></span>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Provincia</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.province ? user.province : "---------------" %></span>
+                        </div>
+                    </div>
+                    <div class="profile__info--btn" role="button">
+                        <div class="profile--info">
+                            <span class="profile__span">Ciudad</span>
+                        </div>
+                        <div class="profile--info">
+                            <span class="profile__span--data"><%= user.city ? user.city : "---------------" %></span>
+                        </div>
+                    </div>
+                </div>
+                </article>
+                <form action="/users/profile/?_method=DELETE" method="POST" class="productForm__container">
+                    <button class="form__button-blue btn btn__submit" type="submit">
+                        <div class="button__container btn btn__submit">
+                            Eliminar cuenta
+                        </div>
+                    </button>
+                </form>
+            </section>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

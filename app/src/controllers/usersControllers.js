@@ -1,4 +1,4 @@
-const { users } = require("../database");
+const { users, writeJSON } = require("../database");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
@@ -7,20 +7,20 @@ module.exports = {
         res.render("users/login", { session: req.session })
     },
     processLogin: (req, res) => {
-        let errors = validationResult(req);
+        const errors = validationResult(req);
 
         if (errors.isEmpty()) {
 
-            let user = users.find(user => user.email === req.body.email);
+            const user = users.find(user => user.email === req.body.email);
 
             req.session.user = {
                 id: user.id,
                 firstName: user.firstName,
                 image: user.image,
-                category: user.category
+                rol: user.rol
             }
 
-            let cookieLifeTime = new Date(Date.now() + 60000);
+            const cookieLifeTime = new Date(Date.now() + 60000);
 
             if(req.body.remember) {
                 res.cookie(
@@ -34,7 +34,7 @@ module.exports = {
 
             res.locals.user = req.session.user;
 
-            res.redirect("/");
+            res.redirect("/users/profile");
         } else {
             return res.render("users/login", {
                 errors: errors.mapped(),
@@ -53,6 +53,39 @@ module.exports = {
 
     },
     register: (req, res) => {
-        return res.render('/users/register')
-    }
+        res.render('users/register', {
+            session: req.session
+        })
+    },
+    profile: (req, res) => {
+
+        const userInSessionId = req.session.user.id;
+
+        const userInSession = users.find(user => user.id === userInSessionId);
+        
+        res.render('users/userProfile', {
+            user: userInSession,
+            session: req.session
+        })
+    },
+    destroy : (req, res) => {
+
+        const userInSessionId = req.session.user.id;
+        
+        users.forEach(user => {
+            if (user.id === userInSessionId){
+                const userToDestroy = users.indexOf(user);
+                users.splice(userToDestroy, 1);
+                req.session.destroy()
+        }
+    });
+    
+    writeJSON('users.json', users)
+
+    delete user.pass;
+
+    req.session.user = user;
+
+    return res.redirect('/users/profile');
+}
 }

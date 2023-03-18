@@ -28,6 +28,7 @@ module.exports = {
         return res.render('products/products', {
             shuffleProducts,
             formatNumber,
+            session: req.session
         })
     },
 
@@ -39,16 +40,21 @@ module.exports = {
 
         res.render("products/productDetail", {
             product,
-            formatNumber
+            formatNumber,
+            session: req.session
         })
     },
 
     cart: (req, res) => {
-        return res.render('products/cart')
+        return res.render('products/cart', {
+            session: req.session
+        })
     },
 
     create: (req, res) => {
-        return res.render('products/productCreate')
+        return res.render('products/productCreate', {
+            session: req.session
+        })
     }, 
 
     store: (req, res) => {
@@ -93,7 +99,7 @@ module.exports = {
         const productToEdit = products.find((product) => {
               return product.id === productId;
         });
-        res.render("products/productModify", { productToEdit });
+        res.render("products/productModify", { productToEdit, session: req.session });
     },
 
     update: (req, res) => {

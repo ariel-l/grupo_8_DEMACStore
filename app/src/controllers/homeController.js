@@ -29,7 +29,8 @@ module.exports = {
             products,
             productsInSale,
             productsRecommended,
-            formatNumber
+            formatNumber,
+            session: req.session
         })
     },
 
@@ -45,7 +46,8 @@ module.exports = {
         res.render('results', {
             keywords,
             results,
-            formatNumber
+            formatNumber,
+            session: req.session
         })
     }
 }

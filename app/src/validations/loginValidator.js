@@ -11,7 +11,7 @@ module.exports = [
 
     body("email")
     .custom(value => {
-        let user = users.find(user => user.email === value)
+        const user = users.find(user => user.email === value)
 
         return user !== undefined;
     })
@@ -23,7 +23,7 @@ module.exports = [
 
     body("password")
     .custom((value, { req }) => {
-        let user = users.find(user => user.email === req.body.email);
+        const user = users.find(user => user.email === req.body.email);
 
         return bcrypt.compareSync(value, user.password);
     })
