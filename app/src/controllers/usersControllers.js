@@ -123,7 +123,7 @@ module.exports = {
     
     writeJSON('users.json', users)
 
-    return res.redirect('/users/profile');
+    return res.redirect('/');
     },
 
     logout: (req, res) => {

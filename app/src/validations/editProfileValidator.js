@@ -1,6 +1,5 @@
 const { check, body } = require("express-validator");
 const { users } = require("../database");
-const bcrypt = require("bcryptjs");
 const path = require("path");
 
 module.exports = [
@@ -12,7 +11,6 @@ module.exports = [
     body("username")
     .custom((value, {req}) => {
         const user = users.find(user => user.username === value)
-        console.log(user)
         return !(user && user.id !== req.session.user.id)
         
     })
@@ -48,13 +46,16 @@ module.exports = [
     check("avatar")
     .custom((value, {req}) => {
         const file = req.file;
-        const allowedExtensions = [".jpg", ".png", ".jpeg", ".svg"]
-        const fileExtension = path.extname(file.originalname);
-       
-        if(!allowedExtensions.includes(fileExtension)){
-            throw new Error("El formato debe ser .jpg , .png , .jpeg , .svg")
+        if(!file) {
+            return true
+        } else {
+            const allowedExtensions = [".jpg", ".png", ".jpeg", ".svg"]
+            const fileExtension = path.extname(file.originalname);
+            if(!allowedExtensions.includes(fileExtension)){
+                throw new Error("El formato debe ser .jpg , .png , .jpeg , .svg")
+            }
+            return true
         }
-        return true
     }),
 
     check("address")
