@@ -1,1 +1,47 @@
-[{"id":7,"username":"admin","email":"admin@mail.com","password":"$2a$10$slgWzUnv3oYRt2/wCr3mfeCUtgtDuamxZX6IlbE1HNBI4B.DC2/he","name":"Admin","lastName":"Formar","avatar":"default-image.png","rol":"admin","tel":"","address":"","postal_code":"","province":"","city":""},{"id":8,"username":"user","email":"user@mail.com","password":"$2a$10$yIvbeWwUhPiytFOaJIH3NuXyakKzjgTjLwMT6A7s9ERLHBvSIZkBC","name":"User","lastName":"Formar","avatar":"default-image.png","rol":"user","tel":"1415138586","address":"11112","postal_code":"1458","province":"bsas","city":"caba"}]
+[
+    {
+        "id": 7,
+        "username": "admin",
+        "email": "admin@mail.com",
+        "password": "$2a$10$slgWzUnv3oYRt2/wCr3mfeCUtgtDuamxZX6IlbE1HNBI4B.DC2/he",
+        "name": "Admin",
+        "lastName": "Formar",
+        "avatar": "default-image.png",
+        "rol": "admin",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
+    },
+    {
+        "id": 8,
+        "username": "user",
+        "email": "user@mail.com",
+        "password": "$2a$10$yIvbeWwUhPiytFOaJIH3NuXyakKzjgTjLwMT6A7s9ERLHBvSIZkBC",
+        "name": "User",
+        "lastName": "Formar",
+        "avatar": "default-image.png",
+        "rol": "user",
+        "tel": "1415138586",
+        "address": "11112",
+        "postal_code": "1458",
+        "province": "bsas",
+        "city": "caba"
+    },
+    {
+        "id": 9,
+        "username": "Nahiska",
+        "email": "stefyluddeni@gmail.com",
+        "password": "$2a$10$rO3gELmNYujsNU2PiBQ7xu5rDVC1DsQRyIkiPxKzfe.CChZMliBbK",
+        "name": "",
+        "lastName": "",
+        "avatar": "default-image.png",
+        "rol": "user",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
+    }
+]
