@@ -117,7 +117,9 @@ module.exports = {
             if (user.id === userInSessionId){
                 const userToDestroy = users.indexOf(user);
                 users.splice(userToDestroy, 1);
-                req.session.destroy()
+                req.session.destroy();
+                res.clearCookie("userDemac");
+
         }
     });
     
@@ -129,9 +131,7 @@ module.exports = {
     logout: (req, res) => {
         
         req.session.destroy();
-        if(req.cookies.userDemac){
-            res.cookie("userDemac", "", {maxAge: -1})
-        }
+        res.clearCookie("userDemac");
 
         res.redirect("/");
 
