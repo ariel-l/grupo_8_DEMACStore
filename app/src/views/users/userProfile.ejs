@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.firstName %>
+                                        <%= user.name %>
                                     </span>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.adress ? user.adress : "---------------" %>
+                                        <%= user.address ? user.address : "---------------" %>
                                     </span>
                                 </div>
                             </div>
@@ -149,13 +149,6 @@
                             </div>
                         </div>
                     </article>
-                    <form action="/users/profile/?_method=DELETE" method="POST" class="productForm__container">
-                        <button class="form__button-blue btn btn__submit" type="submit">
-                            <div class="button__container btn btn__submit">
-                                Eliminar cuenta
-                            </div>
-                        </button>
-                    </form>
                 </section>
             </main>
 

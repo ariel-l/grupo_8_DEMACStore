@@ -47,7 +47,8 @@ module.exports = {
         } else {
             res.render('users/register', {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                session: req.session
             })
         }
     },
@@ -73,7 +74,7 @@ module.exports = {
                 rol: user.rol
             }
 
-            const cookieLifeTime = new Date(Date.now() + 60000);
+            const cookieLifeTime = new Date(Date.now() + 6000000);
 
             if(req.body.remember) {
                 res.cookie(
@@ -116,24 +117,82 @@ module.exports = {
             if (user.id === userInSessionId){
                 const userToDestroy = users.indexOf(user);
                 users.splice(userToDestroy, 1);
-                req.session.destroy()
+                req.session.destroy();
+                res.clearCookie("userDemac");
+
         }
     });
     
     writeJSON('users.json', users)
 
-    return res.redirect('/users/profile');
+    return res.redirect('/');
     },
 
     logout: (req, res) => {
         
         req.session.destroy();
-        if(req.cookies.userDemac){
-            res.cookie("userDemac", "", {maxAge: -1})
-        }
+        res.clearCookie("userDemac");
 
         res.redirect("/");
 
     },
+
+    editProfile: (req, res) => {
+        const userInSessionId = req.session.user.id;
+
+        const userInSession = users.find(user => user.id === userInSessionId);
+
+        res.render('users/userEditProfile', {
+            user: userInSession,
+            session: req.session
+        })
+    },
+
+    updateProfile: (req, res) => {
+            const errors = validationResult(req);
+            if(errors.isEmpty()){
+                const userId = req.session.user.id;
+                const user = users.find(user => user.id === userId);
+        
+                const {
+                    username,
+                    name,
+                    lastName,
+                    tel,
+                    address,
+                    postal_code,
+                    province,
+                    city
+                } = req.body;
+        
+                user.username = username;
+                user.name = name;
+                user.lastName = lastName;
+                user.avatar = req.file ? req.file.filename : user.avatar;
+                user.tel = tel;
+                user.address = address;
+                user.postal_code = postal_code;
+                user.province = province;
+                user.city = city;
+
+            writeJSON('users.json', users)
+
+            delete user.pass;
+
+            req.session.user = user;
+
+            return res.redirect("/users/profile");
+     
+        }else {
+            const userInSessionId = req.session.user.id;
+            const userInSession = users.find(user => user.id === userInSessionId);
+
+             return res.render("users/userEditProfile", {
+                user: userInSession,
+                session: req.session,
+                errors: errors.mapped(),
+            })
+        }
+    }
 
 }
