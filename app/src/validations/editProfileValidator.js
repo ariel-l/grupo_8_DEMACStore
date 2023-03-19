@@ -2,7 +2,6 @@ const { check, body } = require("express-validator");
 const { users } = require("../database");
 const bcrypt = require("bcryptjs");
 const path = require("path");
-const { off } = require("process");
 
 module.exports = [
     
@@ -14,11 +13,9 @@ module.exports = [
     .custom((value, {req}) => {
         const user = users.find(user => user.username === value)
         console.log(user)
-        return user && user.id !== req.session.user.id ? false : true
+        return !(user && user.id !== req.session.user.id)
         
     })
-
-    
     .withMessage("Nombre de usuario en uso, elija otro"),
 
     check("email")
@@ -49,7 +46,6 @@ module.exports = [
     .isLength({min: 10}),
 
     check("avatar")
-    .optional({nullable: true})
     .custom((value, {req}) => {
         const file = req.file;
         const allowedExtensions = [".jpg", ".png", ".jpeg", ".svg"]
