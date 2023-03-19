@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs', {title: 'Editando: ' + user.name }) %>
+
+    <body class="productCreate">
+        <%- include('../partials/header.ejs') %>
+            <div class="register__container--global register__first">
+                <h2 class="register__title">Modificación de perfil</h2>
+                <hr>
+                <form action="/users/profile/edit?_method=PUT" method="POST" class="productForm__container" enctype="multipart/form-data">
+                    
+                        <div class="input__container">
+                            <label class="label-style" for="username">Usuario</label>
+                            <input class="input-style" value="<%= user.username %>" type="text" name="username"
+                                placeholder="" id="">
+                            <% if (locals.errors && errors.username) { %>
+                                <small class="text-danger"><%= errors.username.msg %> </small>
+                            <% } %>
+                        </div>
+                        <div class="input__container">
+                            <label class="label-style" for="email">Email</label>
+                            <input class="input-style" value="<%= user.email %>" type="email" name="email"
+                                placeholder="" id="">
+                            <% if (locals.errors && errors.email) { %>
+                                <small class="text-danger"><%= errors.email.msg %> </small>
+                            <% } %>
+                        </div>
+                    
+                    <div class="container__desktop">
+                        <div class="box__datos">
+                            <div class="input__container">
+                                <label class="label-style" for="name">Nombre</label>
+                                <input class="input-style" value="<%= user.name%>" type="text" name="name" id="name">
+                                <% if (locals.errors && errors.name) { %>
+                                    <small class="text-danger"><%= errors.name.msg %> </small>
+                                <% } %>
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="lastName">Apellido</label>
+                                <input class="input-style" type="text" value="<%= user.lastName %>" name="lastName" placeholder="" id="lastName">
+                                <% if (locals.errors && errors.lastName) { %>
+                                    <small class="text-danger"><%= errors.lastName.msg %> </small>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="box__profile">
+                            <div class="input__container">
+                                <label class="label-style" for="tel">Teléfono</label>
+                                <input class="input-style" value="<%= user.tel ? user.tel : "" %>" name="tel" type="text" placeholder="" id="tel">
+                                <% if (locals.errors && errors.tel) { %>
+                                    <small class="text-danger"><%= errors.tel.msg %> </small>
+                                <% } %>
+                            </div>
+                            <div class="input__container input__photo">
+                                <label class="label-style" for="avatar">Elija su foto de perfil</label>
+                                <input class="input" value="<%= user.avatar %>" type="file" name="avatar">
+                                <% if (locals.errors && errors.avatar) { %>
+                                    <small class="text-danger"><%= errors.avatar.msg %> </small>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container__desktop">
+                        <div class="box__datos">
+                            <div class="input__container">
+                                <label class="label-style" for="address">Dirección</label>
+                                <input class="input-style" value="<%= user.address %>" type="text" name="address" placeholder=""
+                                    id="">
+                                <% if (locals.errors && errors.address) { %>
+                                    <small class="text-danger"><%= errors.address.msg %> </small>
+                                <% } %>
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="postal_code">Código Postal</label>
+                                <input class="input-style" value="<%= user.postal_code %>" type="text" name="postal_code" placeholder="" id="">
+                                <% if (locals.errors && errors.postal_code) { %>
+                                    <small class="text-danger"><%= errors.postal_code.msg %> </small>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="box__profile">
+                            <div class="input__container">
+                                <label class="label-style" for="province">Provincia</label>
+                                <input class="input-style" value="<%= user.province %>" type="text" name="province" placeholder="" id="">
+                                <% if (locals.errors && errors.province) { %>
+                                    <small class="text-danger"><%= errors.province.msg %> </small>
+                                <% } %>
+                            </div>
+                            <div class="input__container">
+                                <label class="label-style" for="city">Ciudad</label>
+                                <input class="input-style" value="<%= user.city %>" type="text" name="city"
+                                    placeholder="" id="">
+                                <% if (locals.errors && errors.city) { %>
+                                    <small class="text-danger"><%= errors.city.msg %> </small>
+                                <% } %>
+                                </div>
+                        </div>
+
+                    </div>
+                        <button class="form__button-blue btn btn__submit" type="submit">
+                            <div class="button__container btn btn__submit">
+                                Modificar perfil
+                            </div>
+                        </button>
+                    </form>
+                    
+                <form action="/users/profile/edit?_method=DELETE" method="POST" class="productForm__container">
+                    <button class="form__button-blue btn btn__submit" type="submit">
+                        <div class="button__container btn btn__submit">
+                            Eliminar cuenta
+                        </div>
+                    </button>
+                </form>
+                
+            </div>
+            <%- include('../partials/footer.ejs') %>
+    </body>
+
+</html>

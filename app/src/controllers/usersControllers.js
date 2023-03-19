@@ -74,7 +74,7 @@ module.exports = {
                 rol: user.rol
             }
 
-            const cookieLifeTime = new Date(Date.now() + 60000);
+            const cookieLifeTime = new Date(Date.now() + 6000000);
 
             if(req.body.remember) {
                 res.cookie(
@@ -136,5 +136,63 @@ module.exports = {
         res.redirect("/");
 
     },
+
+    editProfile: (req, res) => {
+        let userInSessionId = req.session.user.id;
+
+        let userInSession = users.find(user => user.id === userInSessionId);
+
+        res.render('users/userEditProfile', {
+            user: userInSession,
+            session: req.session
+        })
+    },
+
+    updateProfile: (req, res) => {
+            let errors = validationResult(req);
+            if(errors.isEmpty()){
+                let userId = req.session.user.id;
+                let user = users.find(user => user.id === userId);
+        
+                const {
+                    username,
+                    name,
+                    lastName,
+                    tel,
+                    address,
+                    postal_code,
+                    province,
+                    city
+                } = req.body;
+        
+                user.username = username;
+                user.name = name;
+                user.lastName = lastName;
+                user.avatar = req.file ? req.file.filename : user.avatar;
+                user.tel = tel;
+                user.address = address;
+                user.postal_code = postal_code;
+                user.province = province;
+                user.city = city;
+
+            writeJSON('users.json', users)
+
+            delete user.pass;
+
+            req.session.user = user;
+
+            return res.redirect("/users/profile");
+     
+        }else {
+            const userInSessionId = req.session.user.id;
+            const userInSession = users.find(user => user.id === userInSessionId);
+
+             return res.render("users/userEditProfile", {
+                user: userInSession,
+                session: req.session,
+                errors: errors.mapped(),
+            })
+        }
+    }
 
 }
