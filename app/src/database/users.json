@@ -1,38 +1,17 @@
 [
     {
-        "id": 1,
-        "firstName": "Camila",
-        "lastName": "Yñiguez Quintana",
-        "email": "cami.yniguez@gmail.com",
-        "password": "CamiYniguez2023",
-        "category": "admin",
-        "image": "photoProfile.png"
-    },
-    {
-        "id": 2,
-        "firstName": "Melina",
-        "lastName": "Labra",
-        "email": "melina.lb04@gmail.com",
-        "password": "algo123",
-        "category": "admin",
-        "image": "photoProfile.png"
-    },
-    {
-        "id": 3,
-        "firstName": "Estefania",
-        "lastName": "Luddeni",
-        "email": "stefyluddeni@gmail.com",
-        "password": "demac345",
-        "category": "admin",
-        "image": "photoProfile.png"
-    },
-    {
-        "id": 4,
-        "firstName": "Ariel",
-        "lastName": "Latour",
-        "email": "arielm.latour@gmail.com",
-        "password": "demacStore555#",
-        "category": "admin",
-        "image": "photoProfile.png"
+        "id": 6,
+        "username": "ariel",
+        "email": "ariel@mail.com",
+        "password": "$2a$10$YaC3qk2FCGhONcfc7ezIOOKRM.jQgG3rs4yd9hyEbNoNOmtyliKIi",
+        "name": "",
+        "lastName": "",
+        "avatar": "default-image.png",
+        "rol": "admin",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
     }
 ]

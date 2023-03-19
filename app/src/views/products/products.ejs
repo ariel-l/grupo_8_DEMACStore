@@ -15,22 +15,24 @@
                             <li>Celulares</li>
                         </ul>
                     </div>
+                    <% if (typeof session.user !=='undefined' ) { %>
+                        <% if (session.user.rol==="admin" ) { %>
+                            <div class="create__btn">
+                                <a class="create__btn--redirect" href="/products/create">Crear Producto</a>
+                            </div>
+                            <% } %>
+                                <% } %>
+                                    <section class="home__phones--container--global">
 
-                    <div class="create__btn">
-                        <a class="create__btn--redirect" href="/products/create">Crear Producto</a>
-                    </div>
+                                        <% shuffleProducts.forEach(product=> { %>
 
-                    <section class="home__phones--container--global">
+                                            <%- include('../partials/cardProducts', { ...product }) %>
 
-                        <% shuffleProducts.forEach(product=> { %>
-
-                            <%- include('../partials/cardProducts', { ...product }) %>
-
-                                <% }) %>
-                    </section>
+                                                <% }) %>
+                                    </section>
 
 
-                    <%- include('../partials/footer.ejs') %>
+                                    <%- include('../partials/footer.ejs') %>
         </body>
 
 </html>
