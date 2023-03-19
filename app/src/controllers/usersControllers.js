@@ -47,7 +47,8 @@ module.exports = {
         } else {
             res.render('users/register', {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                session: req.session
             })
         }
     },
@@ -137,9 +138,9 @@ module.exports = {
     },
 
     editProfile: (req, res) => {
-        let userInSessionId = req.session.user.id;
+        const userInSessionId = req.session.user.id;
 
-        let userInSession = users.find(user => user.id === userInSessionId);
+        const userInSession = users.find(user => user.id === userInSessionId);
 
         res.render('users/userEditProfile', {
             user: userInSession,
@@ -148,10 +149,10 @@ module.exports = {
     },
 
     updateProfile: (req, res) => {
-            let errors = validationResult(req);
+            const errors = validationResult(req);
             if(errors.isEmpty()){
-                let userId = req.session.user.id;
-                let user = users.find(user => user.id === userId);
+                const userId = req.session.user.id;
+                const user = users.find(user => user.id === userId);
         
                 const {
                     username,
