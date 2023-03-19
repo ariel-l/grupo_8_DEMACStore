@@ -5,21 +5,11 @@ const users = readJSON('users.json')
 
 
 module.exports = {
-    login: (req, res) => {
-        return res.render('users/login')
-    },
+
     register: (req, res) => {
-        return res.render('users/register')
-    },
-    profile: (req, res) => {
-
-        const userId = Number(req.params.id);
-
-        const user = users.find(user => user.id === userId);
-
-        res.render('users/userProfile'), {
-            user
-        }
+        res.render('users/register', {
+            session: req.session
+        })
     },
 
     processRegister: (req, res) => {
@@ -52,13 +42,99 @@ module.exports = {
 
         writeJSON('users.json', users)
 
-        res.redirect('/')
+        res.redirect('/users/login')
 
         } else {
             res.render('users/register', {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                session: req.session
             })
         }
-    }
+    },
+
+    login: (req, res) => {
+
+        res.render("users/login", { session: req.session })
+
+    },
+
+    processLogin: (req, res) => {
+
+        const errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+
+            const user = users.find(user => user.email === req.body.email);
+
+            req.session.user = {
+                id: user.id,
+                firstName: user.firstName,
+                avatar: user.avatar,
+                rol: user.rol
+            }
+
+            const cookieLifeTime = new Date(Date.now() + 60000);
+
+            if(req.body.remember) {
+                res.cookie(
+                    "userDemac", 
+                    req.session.user, 
+                    {
+                        expires: cookieLifeTime,
+                        httpOnly: true
+                    })
+            }
+
+            res.locals.user = req.session.user;
+
+            res.redirect("/users/profile");
+        } else {
+            return res.render("users/login", {
+                errors: errors.mapped(),
+                session: req.session
+            })
+        }
+    },
+
+    profile: (req, res) => {
+
+        const userInSessionId = req.session.user.id;
+
+        const userInSession = users.find(user => user.id === userInSessionId);
+        
+        res.render('users/userProfile', {
+            user: userInSession,
+            session: req.session
+        })
+    },
+
+    destroy: (req, res) => {
+
+        const userInSessionId = req.session.user.id;
+        
+        users.forEach(user => {
+            if (user.id === userInSessionId){
+                const userToDestroy = users.indexOf(user);
+                users.splice(userToDestroy, 1);
+                req.session.destroy()
+        }
+    });
+    
+    writeJSON('users.json', users)
+
+    return res.redirect('/users/profile');
+    },
+
+    logout: (req, res) => {
+        
+        req.session.destroy();
+        if(req.cookies.userDemac){
+            res.cookie("userDemac", "", {maxAge: -1})
+        }
+
+        res.redirect("/");
+
+    },
+
 }
