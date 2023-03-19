@@ -1,6 +1,7 @@
 /* SLIDER */
 
 .slideshow-container {
+  max-width: 1000px;
   position: relative;
   margin: auto;
 }
@@ -11,11 +12,9 @@
 
 .mySlides {
   display: none;
-  max-height: 300px;
 }
 
-.prev,
-.next {
+.prev, .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -35,13 +34,8 @@
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.home__dot--container {
-  display: none;
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
 }
 
 .dot {
@@ -55,8 +49,7 @@
   transition: background-color 0.6s ease;
 }
 
-.active,
-.dot:hover {
+.active, .dot:hover {
   background-color: #717171;
 }
 
@@ -66,40 +59,35 @@
 }
 
 @keyframes fade {
-  from {
-    opacity: .4
-  }
-
-  to {
-    opacity: 1
-  }
+  from {opacity: .4}
+  to {opacity: 1}
 }
-
+ 
 
 
 /* HOME */
 main.home__body-container {
-  background-color: var(--fondo);
-  min-width: 245px;
+    background-color: var(--fondo);
+    min-width: 245px;
 }
 
 main section.home__oferts--container {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: var(--azul);
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
-  width: 100%;
-  flex-wrap: wrap;
-  font-size: var(--descripcion);
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--azul);
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    width: 100%;
+    flex-wrap: wrap;
+    font-size: var(--descripcion);
 }
 
 main section.home__oferts--container article.home__oferts {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; 
   font-size: var(--detalles);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 15px rgba(0,0, 0, 0.4);
   padding: 1rem 1rem;
 }
 
@@ -110,7 +98,7 @@ main section.home__oferts--container article.home__oferts {
 
 #home__icons--creditCard {
   padding-right: 4px;
-  font-size: xx-small;
+  font-size:xx-small;
 }
 
 #home__interest--free--fees {
@@ -118,20 +106,21 @@ main section.home__oferts--container article.home__oferts {
 }
 
 .home__text-green {
-  color: var(--links);
-  font-weight: 600;
+    color: var(--links);
+    font-weight: 600;
 }
 
 .home__btn-off {
-  border-radius: 50%;
-  color: var(--fondo);
-  font-weight: 600;
+    border-radius: 50%;
+    color: var(--fondo);
+    font-weight: 600;
 }
 
 section.home__phones--container--global {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background-color: var(--fondo);
   padding-top: 0.5vh;
   padding-bottom: 0.5vh;
   width: 90%;
@@ -140,19 +129,18 @@ section.home__phones--container--global {
   font-size: var(--descripcion);
 }
 
-.home__products--phones {
+.home__products--phones{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 10%;
   font-weight: 600;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 15px rgba(0,0, 0, 0.3);
   padding: 1.5rem 0.5rem;
   margin: 0.5rem;
-  max-width: 200px;
-  min-height: 260px;
-  flex-grow: 1;
+  width: 230px;
+  height: 310px;
   transition: all 450ms;
   background-color: white;
 }
@@ -162,15 +150,15 @@ section.home__phones--container--global {
 }
 
 /* Contenedor de las imagenes */
-article.home__products--phones div.home__phone--container--1 {
+article.home__products--phones  div.home__phone--container--1 {
   display: flex;
+  min-width: 170px; 
   height: 150px;
   object-fit: contain;
-  width: 170px;
-}
+} 
 
 /* Imagenes */
-div.home__phone--container--1 img.home__img--cardProducts {
+div.home__phone--container--1 img.home__img--cardProducts{
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -182,12 +170,13 @@ div.home__phone--container--1 img.home__img--cardProducts {
 
 .home__desktop {
   display: none;
-}
+} 
 
 
 /* Estilos */
 
 a.home__second--title {
+  display: flex;
   width: 90%;
   margin: 0 auto;
   padding-top: 0.5;
@@ -203,7 +192,7 @@ div.home__product--descripction {
   color: var(--gris-oscuro);
 }
 
-.home__price {
+.home__price{
   font-size: var(--precio);
 }
 
@@ -211,7 +200,7 @@ a.home__btn--details {
   color: var(--fondo);
   font-size: var(--descripcion);
   border: 1px solid rgb(0, 0, 0, 0.5);
-  border-radius: 10px;
+  border-radius: 10px;  
   padding: 0.6rem;
   margin-top: 1rem;
   background-color: var(--destacado);
@@ -228,7 +217,7 @@ div.home__title--principal {
   min-width: 210px;
   width: 100%;
   color: var(--fondo);
-  border: 3px solid rgb(0, 0, 0, 0.5);
+  border: 3px solid rgb(0, 0, 0, 0.5);  
   text-align: center;
 }
 
@@ -293,21 +282,20 @@ div.home__title--principal h2 {
     display: flex;
   }
 
-  .home__products--phones {
+  .home__products--phones{
     padding: 3rem 1.5rem;
     margin: 1rem;
-    max-width: 230px;
-    min-height: 260px;
-    flex-grow: 1;
+    width: 300px;
+    height: 400px;
     transition: all 450ms;
   }
-
-  article.home_products--phones div.home_phone--container--1 {
+  
+  article.home__products--phones div.home__phone--container--1 {
     display: flex;
-    min-width: 170px;
-    height: 150px;
+    width: 200px; 
+    height: 250px;
     object-fit: contain;
-  }
+  } 
 
 }
 
@@ -315,20 +303,17 @@ div.home__title--principal h2 {
 @media (min-width: 1310px) {
   .home__desktop {
     display: flex;
-  }
-
-  .home__products--phones {
+  } 
+  .home__products--phones{
     padding: 3rem 1.5rem;
     margin: 1rem;
-    max-width: 262px;
-    min-height: 260px;
-    flex-grow: 1;
+    width: 250px;
+    height: 350px;
     transition: all 450ms;
   }
-
-  article.home_products--phones div.home_phone--container--1 {
+  article.home__products--phones div.home__phone--container--1 {
     display: flex;
-    height: 288px;
+    height: 200px;
     object-fit: contain;
-  }
+  } 
 }

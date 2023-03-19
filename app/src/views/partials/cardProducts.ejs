@@ -4,7 +4,11 @@
     </div>
     <div class="home__product--descripction">
         <span>
+            <% if (name.length > 20) { %>
+                <%- `${name.slice(0, 20)}...` %>
+            <% } else { %>
             <%= name %>
+            <% } %>
         </span>
         <% if (discount> 0) { %>
 

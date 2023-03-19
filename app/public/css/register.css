@@ -27,6 +27,7 @@
   position: relative;
   left: 58px;
 }
+
 .register {
   box-sizing: border-box;
   display: flex;
@@ -85,24 +86,31 @@
 }
 
 .register__input--error {
-  outline: 1px solid #e91212;
-  border: none;
-  border-radius: 12px;
-  padding: 5px 10px;
-  background: var(--fondo);
-  color: #e91212;
-  width: 190px;
-  height: 24px;
-  text-decoration: underline 1.2px;
-  text-decoration-style: double;
-  box-sizing: initial;
-  text-indent: 10px;
-  position: relative;
-  bottom: 13px;
+  color: red;
+  margin-top: -3px;
+  padding-left: 5px;
 }
 
-.register__input--error::placeholder {
-  color: #e91212;
+.register__input--avatar {
+  display: flex;
+  text-align: center;
+  height: 2rem;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
+  margin: 10px 0;
+  width: 212px;
+}
+
+.register__input--textAvatar {
+  position: absolute;
+  font-size: 14px;
+}
+
+.register__input--file {
+  opacity: 0;
 }
 
 
@@ -126,6 +134,7 @@
   position: relative;
   top: 2px;
 }
+
 .register__btn {
   outline: 1px solid var(--azul);
   border: none;
@@ -139,9 +148,10 @@
 }
 
 .register__p--span {
-    position: relative;
-    top: 15px;
+  position: relative;
+  top: 15px;
 }
+
 @media (max-width: 325px) {
   .register__card {
     display: flex;

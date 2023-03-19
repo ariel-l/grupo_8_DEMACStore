@@ -125,3 +125,7 @@
     position: relative;
     top: 10px;
 }
+
+.text-danger {
+    color: #e91212;
+}

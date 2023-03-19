@@ -1,96 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs', {title: product.name}) %>  
-<body>
-    <%- include('../partials/header.ejs') %>
+<%- include('../partials/head.ejs', {title: product.name}) %>
 
-<div class="back">
-    <ul>
-        <li><a class="detail__a" href="/products">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
-        <li><a class="detail__a" href="/products">Celulares <i class="fa-solid fa-chevron-right"></i></a></li>
-        <li>Celulares Nuevos</li>
-    </ul>
-</div>
-<main class="detail__main--product">
-    <section class="detail___product--container">
-            <div class="detail___container--img">
-                <img class="detail__img--product" src="/images/products/<%= product.image %>" alt="Product image">
+    <body>
+        <%- include('../partials/header.ejs') %>
+
+            <div class="back">
+                <ul>
+                    <li><a class="detail__a" href="/products">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
+                    <li><a class="detail__a" href="/products">Celulares <i class="fa-solid fa-chevron-right"></i></a></li>
+                    <li>Celulares Nuevos</li>
+                </ul>
             </div>
-        <article class="detail___info--product">
-            <div class="detail___title--product">
-                <h3 class="detail__title--h3"><%= product.name %></h3>
-            </div>
-            <div>
-                <% if (product.discount > 0) { %>
-                <del>$<%= formatNumber(product.price) %></del><span class="detail___porcent--offer"><%= product.discount %>% OFF</span>
-            </div>
-            <div class="detail___price">
-                <span>$<%= formatNumber(product.price - (product.price * product.discount / 100)) %></span>
-            </div>
-            <% } else { %>
-                <span class="detail___price">$<%= formatNumber(product.price) %></span>
-            <% } %>
-            <div class="detail__promotions--cards">
-                <h3>¡Nuestras promociones bancarias!</h3>
-            </div>
-            <div class="detail__dues--card">
-                <h3>3 cuotas sin interés</h3>
-            </div>
-            <div>
-                <img class="detail__img--target" src="/images/productDetail/visa.svg" alt="visa">
-                <img class="detail__img--target" src="/images/productDetail/mastercard.svg" alt="visa">
-            </div>
-            <div class="detail__payment--methods">
-                <a href= "https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver todos los medios de pago</a>
-            </div>
-            <hr class="detail__hr--shipping"></hr>
-            <div class="detail__shipping">
-                <p class="detail__free"><i class="fa-solid fa-truck-fast"></i>  Envío gratis a todo el país</p>
-                <p class="detail__free">¡Retiralo ya!</p>
-            </div>
-            <hr class="detail__hr--shipping--free"></hr>
-            <div>Color:</div>
-            <div>
-            <ul class="detail__button--colour">
-                <li><button class="detail__button--colour1"><i class="fa-solid fa-circle"></i></button></li>
-                <li><button class="detail__button--colour2"><i class="fa-solid fa-circle"></i></button></li>
-                <li><button class="detail__button--colour3"><i class="fa-solid fa-circle"></i></button></li>
-            </ul>
-        </div>
-                
-    <div class="detail___number--product">
-        <div class="detail___number--product">
-        <label for="number">Cantidad:</label>
-            <select name="number" id="number">
-            <option hidden selected>Unidades</option>
-            <option value="1">1 unidad</option>
-            <option value="2">2 unidades</option>
-            <option value="3">3 unidades</option>
-        </label>
-    </div>
-</div>
-        <div class="detail___add--cart">
-            <input class="detail__input--false"/>
-            </div>
-            <div class="detail___button--cart">
-            <a href="/products/cart" class="detail___btn--add--to--cart">COMPRAR</a>
-        </div>
-        <div class="detail___button--cart">
-            <a href="/products/edit/<%= product.id %>" class="detail___btn--add--to--cart">EDITAR</a>
-        </div>
-        </div>
-        </article>
-    </section>
-    <hr class="detail__hr--product"></hr>
+            <main class="detail__main--product">
+                <section class="detail___product--container">
+                    <div class="detail___container--img">
+                        <img class="detail__img--product" src="/images/products/<%= product.image %>" alt="Product image">
+                    </div>
+                    <article class="detail___info--product">
+                        <div class="detail___title--product">
+                            <h3 class="detail__title--h3">
+                                <%= product.name %>
+                            </h3>
+                        </div>
+                        <div>
+                            <% if (product.discount> 0) { %>
+                                <del>$<%= formatNumber(product.price) %></del><span class="detail___porcent--offer">
+                                    <%= product.discount %>% OFF
+                                </span>
+                        </div>
+                        <div class="detail___price">
+                            <span>$<%= formatNumber(product.price - (product.price * product.discount / 100)) %></span>
+                        </div>
+                        <% } else { %>
+                            <span class="detail___price">$<%= formatNumber(product.price) %></span>
+                            <% } %>
+                                <div class="detail__promotions--cards">
+                                    <h3>¡Nuestras promociones bancarias!</h3>
+                                </div>
+                                <div class="detail__dues--card">
+                                    <h3>3 cuotas sin interés</h3>
+                                </div>
+                                <div>
+                                    <img class="detail__img--target" src="/images/productDetail/visa.svg" alt="visa">
+                                    <img class="detail__img--target" src="/images/productDetail/mastercard.svg" alt="visa">
+                                </div>
+                                <div class="detail__payment--methods">
+                                    <a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver todos los medios de
+                                        pago</a>
+                                </div>
+                                <hr class="detail__hr--shipping">
+                                </hr>
+                                <div class="detail__shipping">
+                                    <p class="detail__free"><i class="fa-solid fa-truck-fast"></i> Envío gratis a todo el país</p>
+                                    <p class="detail__free">¡Retiralo ya!</p>
+                                </div>
+                                <hr class="detail__hr--shipping--free">
+                                </hr>
+                                <div>Color:</div>
+                                <div>
+                                    <ul class="detail__button--colour">
+                                        <li><button class="detail__button--colour1"><i class="fa-solid fa-circle"></i></button></li>
+                                        <li><button class="detail__button--colour2"><i class="fa-solid fa-circle"></i></button></li>
+                                        <li><button class="detail__button--colour3"><i class="fa-solid fa-circle"></i></button></li>
+                                    </ul>
+                                </div>
+
+                                <div class="detail___number--product">
+                                    <div class="detail___number--product">
+                                        <label for="number">Cantidad:</label>
+                                        <select name="number" id="number">
+                                            <option hidden selected>Unidades</option>
+                                            <option value="1">1 unidad</option>
+                                            <option value="2">2 unidades</option>
+                                            <option value="3">3 unidades</option>
+                                            </label>
+                                    </div>
+                                </div>
+                                <div class="detail___add--cart">
+                                    <input class="detail__input--false" />
+                                </div>
+                                <div class="detail___button--cart">
+                                    <a href="/products/cart" class="detail___btn--add--to--cart">COMPRAR</a>
+                                </div>
+                                <% if (typeof session.user !=='undefined' ) { %>
+                                    <% if (session.user.rol==='admin' ) { %>
+                                        <div class="detail___button--cart">
+                                            <a href="/products/edit/<%= product.id %>" class="detail___btn--add--to--cart">EDITAR</a>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                                                </div>
+                    </article>
+                </section>
+                <hr class="detail__hr--product">
+                </hr>
 
             </main>
             <article class="detail___technical--specifications">
                 <div class="detail__tittle--characteristics">Especificaciones técnicas</div>
                 <div class="detail___characteristics">
                     <ul class="detail__ul--characteristics">
-                        <li>Marca: <%= product.brand %></li>
-                        <li>Modelo: <%= product.model %></li>
-                        <li>Sistema Operativo: <%= product.os %></li>
+                        <li>Marca: <%= product.brand %>
+                        </li>
+                        <li>Modelo: <%= product.model %>
+                        </li>
+                        <li>Sistema Operativo: <%= product.os %>
+                        </li>
                         <li>Pantalla: <%= product.screen %>"</li>
                         <li>Memoria Interna: <%= product.internalMemory %>GB</li>
                         <li>Expandible hasta: <%= product.cardSlot %>GB</li>
@@ -98,18 +114,21 @@
                     </ul>
 
                     <ul class="detail__ul--characteristics2">
-                        <li>Procesador: <%= product.chipset %></li>
+                        <li>Procesador: <%= product.chipset %>
+                        </li>
                         <li>Cámara Frontal Principal: <%= product.frontCamera %>mp</li>
                         <li>Cámara Trasera Principal: <%= product.mainCamera %>mp</li>
-                        <li>Video: <%= product.video %></li>
+                        <li>Video: <%= product.video %>
+                        </li>
                         <li>Batería: <%= product.battery %>mah</li>
                         <li>Dimensiones: <%= product.dimensions %>mm</li>
-                        <li>Peso(g): <%= product.weight %></li>
+                        <li>Peso(g): <%= product.weight %>
+                        </li>
                     </ul>
                     <div class="detail__more">Leer más</div>
                 </div>
             </article>
-            
+
             <%- include('../partials/footer.ejs') %>
     </body>
 
