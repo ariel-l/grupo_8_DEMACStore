@@ -26,14 +26,13 @@ DROP TABLE IF EXISTS `addresses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `addresses` (
-  `addressesID` int(11) NOT NULL AUTO_INCREMENT,
-  `userAddress` varchar(45) NOT NULL,
-  `userTel` varchar(14) NOT NULL,
-  `userPostal_code` int(4) NOT NULL,
-  `userProvince` varchar(40) NOT NULL,
-  `userCity` varchar(40) NOT NULL,
+  `addressID` int(11) NOT NULL AUTO_INCREMENT,
+  `address` varchar(45) NOT NULL,
+  `postal_code` int(4) NOT NULL,
+  `province` varchar(40) NOT NULL,
+  `city` varchar(40) NOT NULL,
   `userId` int(11) NOT NULL,
-  PRIMARY KEY (`addressesID`),
+  PRIMARY KEY (`addressID`),
   KEY `addresses_FK` (`userId`),
   CONSTRAINT `addresses_FK` FOREIGN KEY (`userId`) REFERENCES `users` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -275,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-08 15:36:48
+-- Dump completed on 2023-04-08 16:56:47
