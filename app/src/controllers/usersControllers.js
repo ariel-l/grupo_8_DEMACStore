@@ -47,7 +47,8 @@ module.exports = {
         } else {
             res.render('users/register', {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                session: req.session
             })
         }
     },
@@ -116,30 +117,30 @@ module.exports = {
             if (user.id === userInSessionId){
                 const userToDestroy = users.indexOf(user);
                 users.splice(userToDestroy, 1);
-                req.session.destroy()
+                req.session.destroy();
+                res.clearCookie("userDemac");
+
         }
     });
     
     writeJSON('users.json', users)
 
-    return res.redirect('/users/profile');
+    return res.redirect('/');
     },
 
     logout: (req, res) => {
         
         req.session.destroy();
-        if(req.cookies.userDemac){
-            res.cookie("userDemac", "", {maxAge: -1})
-        }
+        res.clearCookie("userDemac");
 
         res.redirect("/");
 
     },
 
     editProfile: (req, res) => {
-        let userInSessionId = req.session.user.id;
+        const userInSessionId = req.session.user.id;
 
-        let userInSession = users.find(user => user.id === userInSessionId);
+        const userInSession = users.find(user => user.id === userInSessionId);
 
         res.render('users/userEditProfile', {
             user: userInSession,
@@ -148,10 +149,10 @@ module.exports = {
     },
 
     updateProfile: (req, res) => {
-            let errors = validationResult(req);
+            const errors = validationResult(req);
             if(errors.isEmpty()){
-                let userId = req.session.user.id;
-                let user = users.find(user => user.id === userId);
+                const userId = req.session.user.id;
+                const user = users.find(user => user.id === userId);
         
                 const {
                     username,
