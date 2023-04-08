@@ -49,6 +49,52 @@ LOCK TABLES `addresses` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `brands`
+--
+
+DROP TABLE IF EXISTS `brands`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `brands` (
+  `brandID` int(20) NOT NULL AUTO_INCREMENT,
+  `brand` varchar(20) NOT NULL,
+  PRIMARY KEY (`brandID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `brands`
+--
+
+LOCK TABLES `brands` WRITE;
+/*!40000 ALTER TABLE `brands` DISABLE KEYS */;
+/*!40000 ALTER TABLE `brands` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
+  `categoriesID` int(11) NOT NULL AUTO_INCREMENT,
+  `typeProductName` varchar(11) NOT NULL,
+  PRIMARY KEY (`categoriesID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `order_products`
 --
 
@@ -93,6 +139,7 @@ CREATE TABLE `orders` (
   `updatedAt` timestamp NULL DEFAULT NULL,
   `userID` int(11) NOT NULL,
   `finalQuantity` int(20) NOT NULL,
+  `finalPrice` int(20) NOT NULL,
   PRIMARY KEY (`orderID`),
   KEY `orders_FK` (`userID`),
   CONSTRAINT `orders_FK` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`)
@@ -119,7 +166,7 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `image` varchar(100) DEFAULT NULL,
-  `brand` varchar(40) NOT NULL,
+  `brandID` int(20) NOT NULL,
   `price` int(11) NOT NULL,
   `discount` int(11) DEFAULT NULL,
   `subcategoryID` int(11) NOT NULL,
@@ -141,7 +188,9 @@ CREATE TABLE `products` (
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `products_FK` (`subcategoryID`),
-  CONSTRAINT `products_FK` FOREIGN KEY (`subcategoryID`) REFERENCES `products_subcategories` (`subcategoryID`)
+  KEY `products_FK_1` (`brandID`),
+  CONSTRAINT `products_FK` FOREIGN KEY (`subcategoryID`) REFERENCES `subcategories` (`subcategoryID`),
+  CONSTRAINT `products_FK_1` FOREIGN KEY (`brandID`) REFERENCES `brands` (`brandID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,52 +204,29 @@ LOCK TABLES `products` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `products_categories`
+-- Table structure for table `subcategories`
 --
 
-DROP TABLE IF EXISTS `products_categories`;
+DROP TABLE IF EXISTS `subcategories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `products_categories` (
-  `productCategoriesID` int(11) NOT NULL AUTO_INCREMENT,
-  `typeProductName` varchar(11) NOT NULL,
-  PRIMARY KEY (`productCategoriesID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `products_categories`
---
-
-LOCK TABLES `products_categories` WRITE;
-/*!40000 ALTER TABLE `products_categories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `products_categories` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `products_subcategories`
---
-
-DROP TABLE IF EXISTS `products_subcategories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `products_subcategories` (
+CREATE TABLE `subcategories` (
   `subcategoryID` int(11) NOT NULL AUTO_INCREMENT,
   `subcategoryName` varchar(10) NOT NULL,
-  `productCategoriesID` int(11) NOT NULL,
+  `categoriesID` int(11) NOT NULL,
   PRIMARY KEY (`subcategoryID`),
-  KEY `productsubcategories_FK` (`productCategoriesID`),
-  CONSTRAINT `productsubcategories_FK` FOREIGN KEY (`productCategoriesID`) REFERENCES `products_categories` (`productCategoriesID`)
+  KEY `productsubcategories_FK` (`categoriesID`),
+  CONSTRAINT `productsubcategories_FK` FOREIGN KEY (`categoriesID`) REFERENCES `categories` (`categoriesID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `products_subcategories`
+-- Dumping data for table `subcategories`
 --
 
-LOCK TABLES `products_subcategories` WRITE;
-/*!40000 ALTER TABLE `products_subcategories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `products_subcategories` ENABLE KEYS */;
+LOCK TABLES `subcategories` WRITE;
+/*!40000 ALTER TABLE `subcategories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subcategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -249,4 +275,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-08  3:11:09
+-- Dump completed on 2023-04-08 15:36:48
