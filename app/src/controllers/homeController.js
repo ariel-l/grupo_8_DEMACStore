@@ -1,6 +1,8 @@
-const { readJSON } = require('../database')
+//const { readJSON } = require('../database')
+//const products = readJSON('products.json')
+const { Product, Sequelize } = require("../database/models");
+const { Op } = Sequelize;
 
-const products = readJSON('products.json')
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
 
 function shuffle(array) {
@@ -20,19 +22,22 @@ function shuffle(array) {
 
 module.exports = {
     index: (req, res) => {
-
-        const productsInSale = shuffle(products.filter(product => product.discount > 0))
-
-        const productsRecommended = shuffle(products.filter(product => product.category === 'refubrished'))
-
-        return res.render('home', {
-            products,
-            productsInSale,
-            productsRecommended,
-            formatNumber,
-            session: req.session
+        Product.findAll()
+        .then(products => {
+            
+            res.render('home', {
+                products,
+                productsInSale,
+                productsRecommended,
+                formatNumber,
+                session: req.session
+            })
         })
+        .catch(error => console.log(error));
     },
+        //const productsInSale = shuffle(products.filter(product => product.discount > 0))
+
+        //const productsRecommended = shuffle(products.filter(product => product.category === 'refubrished'))
 
     search: (req, res) => {
         const { keywords } = req.query

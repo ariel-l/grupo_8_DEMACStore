@@ -1,7 +1,9 @@
-const { readJSON, writeJSON } = require('../database');
-const { validationResult } = require('express-validator')
-const bcrypt = require('bcryptjs')
-const users = readJSON('users.json')
+//const { readJSON, writeJSON } = require('../database');
+//const users = readJSON('users.json');
+const { User } = require("../database/models");
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+
 
 
 module.exports = {

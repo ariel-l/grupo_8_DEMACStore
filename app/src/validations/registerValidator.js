@@ -1,6 +1,7 @@
+const { User } = require("../database/models");
 const { check, body } = require('express-validator')
-const { readJSON } = require('../database')
-const users = readJSON('users.json')
+//const { readJSON } = require('../database')
+//const users = readJSON('users.json')
 
 module.exports = [
     check('username')

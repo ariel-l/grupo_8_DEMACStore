@@ -1,5 +1,6 @@
+const { User } = require("../database/models");
 const { check, body } = require("express-validator");
-const { users } = require("../database");
+//const { users } = require("../database");
 const path = require("path");
 
 module.exports = [

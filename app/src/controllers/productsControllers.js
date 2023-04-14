@@ -1,5 +1,8 @@
-const { readJSON, writeJSON } = require('../database/index');
-const products = readJSON('products.json');
+//const { readJSON, writeJSON } = require('../database/index');
+//const products = readJSON('products.json');
+const { Product, Sequelize } = require('../database/models');
+const { Op } = Sequelize;
+
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
 
 function shuffle(array) {
@@ -31,18 +34,31 @@ module.exports = {
         })
     },
 
-    productDetail: (req, res) => {
+    productDetail: async (req, res) => {
+        const { id } = req.params;
+        try {
+            console.log()
+          const product = await Product.findByPk(id);
+          if (product) {
+            res.render('home', {product});
+          } else {
+            res.send({ message: "Producto no encontrado" });
+          }
+        } catch (error) {
+          res.send( error );
+        }
+      },
+        /*const productId = Number(req.params.id);
 
-        const productId = Number(req.params.id);
-
-        const product = products.find(product => product.id === productId);
-
-        res.render("products/productDetail", {
-            product,
-            formatNumber,
-            session: req.session
+        Product.findByPk(productId)
+        .then(product => {
+            res.render("products/productDetail", {
+                product,
+                formatNumber,
+                session: req.session
+            })
         })
-    },
+    },*/
 
     cart: (req, res) => {
         return res.render('products/cart', {
