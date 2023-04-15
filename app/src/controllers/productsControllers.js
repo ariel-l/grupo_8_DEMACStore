@@ -1,6 +1,6 @@
 //const { readJSON, writeJSON } = require('../database/index');
 //const products = readJSON('products.json');
-const { Product, Sequelize } = require('../database/models');
+const { Product, Sequelize, Category, Subcategory } = require('../database/models');
 const { Op } = Sequelize;
 
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
@@ -35,22 +35,25 @@ module.exports = {
     },
 
     productDetail: async (req, res) => {
+        /*
         const { id } = req.params;
         try {
             console.log()
           const product = await Product.findByPk(id);
           if (product) {
-            res.render('home', {product});
+            res.render('products/productDetail', {product});
           } else {
             res.send({ message: "Producto no encontrado" });
           }
         } catch (error) {
           res.send( error );
         }
-      },
-        /*const productId = Number(req.params.id);
+      },*/
+        const productId = Number(req.params.id);
 
-        Product.findByPk(productId)
+        Product.findByPk(productId, {
+            include: [{ association: "brands" }]
+        })
         .then(product => {
             res.render("products/productDetail", {
                 product,
@@ -58,7 +61,31 @@ module.exports = {
                 session: req.session
             })
         })
-    },*/
+        .catch((error) => console.log(error));
+    },
+    category: (req, res) => {
+        const categoryID = req.params.id;
+
+        Category.findByPk(categoryID, {
+            include: [
+                { association: "subcategories",
+                include: { association: "products"},
+            }]
+        })
+        .then((category) => {
+            return res.send(category);
+            /*const PRODUCTS = category.subcategories.map(
+                (subcategory) => subcategory.products
+            );
+            return res.render("categories", {
+                category,
+                subcategories: category.subcategories,
+                products: PRODUCTS.flat(),
+                session: req.session,
+            });*/
+        })
+        .catch((error) => console.log(error));
+    },
 
     cart: (req, res) => {
         return res.render('products/cart', {

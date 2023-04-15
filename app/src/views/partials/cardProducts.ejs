@@ -1,29 +1,25 @@
 <article class="home__products--phones">
     <div class="home__phone--container--1">
-        <img class="home__img--cardProducts" src="/images/products/<%= image %>" alt="">
+        <img class="home__img--cardProducts" src="/images/products/default-image.png" alt="">
     </div>
     <div class="home__product--descripction">
         <span>
-            <% if (name.length > 20) { %>
-                <%- `${name.slice(0, 20)}...` %>
-            <% } else { %>
-            <%= name %>
-            <% } %>
+            
         </span>
-        <% if (discount> 0) { %>
+        <% if (products.discount> 0) { %>
 
             <p class="home__strikethrough">$<%= price %>
             </p>
 
-            <p class="home__price">$<%= formatNumber(price - (price * discount / 100)) %>
+            <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100)) %>
             </p>
 
             <% } else { %>
 
-                <p class="home__price">$<%= formatNumber(price - (price * discount / 100)) %>
+                <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100))%>
                 </p>
 
                 <% } %>
     </div>
-    <a href="/products/<%= id %>" class="home__btn--details">Ver detalle</a>
+    <a href="/products/<%= products.id %>" class="home__btn--details">Ver detalle</a>
 </article>

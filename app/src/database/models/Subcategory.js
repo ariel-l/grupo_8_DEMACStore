@@ -1,14 +1,14 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = "Subcategory";
     let cols = {
-        subcategoryID: {
+        id: {
             type: dataTypes.INTEGER(11),
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
         },
-        subcategoryName: {
-            type: dataTypes.STRING(10),
+        name: {
+            type: dataTypes.STRING(15),
             allowNull: false,
         },
         categoriesID: {
@@ -18,21 +18,25 @@ module.exports = (sequelize, dataTypes) => {
     }
     let config = {
         tableName: 'subcategories',
-        timestamps: false
+        c
     }
-        
+
     const Subcategory = sequelize.define(alias, cols, config);
+
     Subcategory.associate = (models) => {
-        Subcategory.belognsTo(models.categories, {
-            as:"categories",
+        Subcategory.belongsTo(models.Category, {
+            as: "category",
             foreignKey: "categoriesID"
-        }),
-    Subcategory.associate = function (models) {
-        Subcategory.hasMany(models.Product, {
+        });
+        Subcategory.belongsTo(models.Product, {
             as: "products",
             foreignKey: "subcategoryID"
-        })
+        });
+        Subcategory.belongsTo(models.Brand, {
+            as: "brands",
+            foreignKey: "brandID"
+        });
     }
-    }
-    return Subcategory
-    }
+
+    return Subcategory;
+}

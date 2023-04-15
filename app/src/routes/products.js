@@ -9,7 +9,6 @@ const adminInSessionCheck = require('../middlewares/adminInSessionCheck');
 router
     .get('/', productsControllers.index)
 
-
 /* GET CART PAGE */
 router
     .get('/cart', userInSessionCheck, productsControllers.cart)

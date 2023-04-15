@@ -71,11 +71,14 @@
                                 </div>
                             </a>
 
-                            <% productsInSale.forEach(product=> { %>
+                            <% products.forEach(product=> { %>
 
                                 <%- include('partials/cardProducts', { ...product }) %>
 
                                     <% }) %>
+
+                            <%- include("partials/cardProducts")%> 
+                            
                         </section>
 
                         <section class="home__phones--container--global">
@@ -85,11 +88,10 @@
                                 </div>
                             </a>
 
-                            <% productsRecommended.forEach(product=> { %>
-
+                            <% products.forEach(product=> { %>
                                 <%- include('partials/cardProducts', { ...product }) %>
-
                                     <% }) %>
+
                         </section>
 
                 </main>

@@ -22,22 +22,29 @@ function shuffle(array) {
 
 module.exports = {
     index: (req, res) => {
-        Product.findAll()
-        .then(products => {
-            
-            res.render('home', {
+        Product.findAll({
+            include: [
+                {
+                    association: "subcategory",
+                    include: {
+                        association: "category"
+                    }
+                }
+            ]
+        })
+        .then((products) => {
+            return res.render('home', {
+                //productsInSale,
                 products,
-                productsInSale,
-                productsRecommended,
                 formatNumber,
                 session: req.session
             })
         })
         .catch(error => console.log(error));
     },
-        //const productsInSale = shuffle(products.filter(product => product.discount > 0))
+    //const productsInSale = shuffle(products.filter(product => product.discount > 0))
 
-        //const productsRecommended = shuffle(products.filter(product => product.category === 'refubrished'))
+    //const productsRecommended = shuffle(products.filter(product => product.category === 'refubrished'))
 
     search: (req, res) => {
         const { keywords } = req.query

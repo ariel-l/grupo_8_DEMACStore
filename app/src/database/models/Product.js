@@ -80,23 +80,21 @@ module.exports = (sequelize, dataTypes) => {
     }
 
     let config = {
-           tableName: 'products',
-        // createdAt: "createdAt",
-        // updatedAt: "updatedAt",
+        tableName: 'products',
     }
 
     const Product = sequelize.define(alias, cols, config);
 
-    Product.associate = function (models) {
-         Product.belongsTo(models.subcategoryID, {
-             as: "subcategories",
-             foreignKey: "subcategoryID"
-         })
-         Product.belongsTo(models.brandID, {
-             as: "brands",
-             foreignKey: "brandID"
-         })
-        }
+    Product.associate = (models) => {
+        Product.belongsTo(models.Subcategory, {
+            as: "subcategory",
+            foreignKey: "subcategoryID"
+        });
+        Product.belongsTo(models.Brand, {
+            as: "brands",
+            foreignKey: "brandID"
+        });
+    }
 
     return Product;
 }
