@@ -14,7 +14,13 @@ module.exports = (sequelize, dataTypes) => {
         categoriesID: {
             type: dataTypes.INTEGER(11),
             allowNull: false,
-        }
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+        },
     }
     let config = {
         tableName: 'subcategories',

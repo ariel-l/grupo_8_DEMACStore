@@ -76,7 +76,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         updatedAt: {
             type: dataTypes.DATE,
-        }
+        },
     }
 
     let config = {
@@ -88,11 +88,11 @@ module.exports = (sequelize, dataTypes) => {
     const Product = sequelize.define(alias, cols, config);
 
     Product.associate = function (models) {
-         Product.belongsTo(models.subcategoryID, {
+         Product.belongsTo(models.Subcategory, {
              as: "subcategories",
              foreignKey: "subcategoryID"
          })
-         Product.belongsTo(models.brandID, {
+         Product.belongsTo(models.Brand, {
              as: "brands",
              foreignKey: "brandID"
          })
