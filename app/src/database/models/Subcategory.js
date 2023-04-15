@@ -8,7 +8,7 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
         },
         name: {
-            type: dataTypes.STRING(15),
+            type: dataTypes.STRING(20),
             allowNull: false,
         },
         categoriesID: {
@@ -18,23 +18,14 @@ module.exports = (sequelize, dataTypes) => {
     }
     let config = {
         tableName: 'subcategories',
-        c
     }
 
     const Subcategory = sequelize.define(alias, cols, config);
 
     Subcategory.associate = (models) => {
         Subcategory.belongsTo(models.Category, {
-            as: "category",
+            as: "categories",
             foreignKey: "categoriesID"
-        });
-        Subcategory.belongsTo(models.Product, {
-            as: "products",
-            foreignKey: "subcategoryID"
-        });
-        Subcategory.belongsTo(models.Brand, {
-            as: "brands",
-            foreignKey: "brandID"
         });
     }
 

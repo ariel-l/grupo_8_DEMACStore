@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: 'Nuestros Productos' }) %>
+    <%- include('../partials/scripts') %>
+        </head>
+
+        <body>
+            <%- include('../partials/header') %>
+
+                <%- include('../partials/banner') %>
+
+                    <div class="back">
+                        <ul>
+                            <li><a class="detail__a" href="/">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
+                            <li><%= category.name %>Celulares</li>
+                        </ul>
+                    </div>
+                    <% if (typeof session.user !=='undefined' ) { %>
+                        <% if (session.user.rol==="admin" ) { %>
+                            <div class="create__btn">
+                                <a class="create__btn--redirect" href="/products/create">Crear Producto</a>
+                            </div>
+                            <% } %>
+                                <% } %>
+                                    
+
+                                    <%- include('../partials/footer.ejs') %>
+        </body>
+
+</html>

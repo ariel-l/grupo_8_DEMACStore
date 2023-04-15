@@ -76,7 +76,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         updatedAt: {
             type: dataTypes.DATE,
-        }
+        },
     }
 
     let config = {
@@ -85,16 +85,16 @@ module.exports = (sequelize, dataTypes) => {
 
     const Product = sequelize.define(alias, cols, config);
 
-    Product.associate = (models) => {
-        Product.belongsTo(models.Subcategory, {
-            as: "subcategory",
-            foreignKey: "subcategoryID"
-        });
-        Product.belongsTo(models.Brand, {
-            as: "brands",
-            foreignKey: "brandID"
-        });
-    }
+    Product.associate = function (models) {
+         Product.belongsTo(models.Subcategory, {
+             as: "subcategories",
+             foreignKey: "subcategoryID"
+         })
+         Product.belongsTo(models.Brand, {
+             as: "brands",
+             foreignKey: "brandID"
+         })
+        }
 
     return Product;
 }

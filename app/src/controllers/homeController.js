@@ -25,9 +25,9 @@ module.exports = {
         Product.findAll({
             include: [
                 {
-                    association: "subcategory",
+                    association: "subcategories",
                     include: {
-                        association: "category"
+                        association: "categories"
                     }
                 }
             ]

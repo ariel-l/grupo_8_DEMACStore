@@ -1,14 +1,12 @@
 <article class="home__products--phones">
     <div class="home__phone--container--1">
-        <img class="home__img--cardProducts" src="/images/products/default-image.png" alt="">
+        <img class="home__img--cardProducts" src="/images/products/motoe32-gris-frente_1" alt="">
     </div>
     <div class="home__product--descripction">
-        <span>
-            
-        </span>
+        
         <% if (products.discount> 0) { %>
 
-            <p class="home__strikethrough">$<%= price %>
+            <p class="home__strikethrough">$<%= products.price %>
             </p>
 
             <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100)) %>
@@ -16,7 +14,7 @@
 
             <% } else { %>
 
-                <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100))%>
+                <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100)) %>
                 </p>
 
                 <% } %>
