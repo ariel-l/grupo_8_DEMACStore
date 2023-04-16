@@ -2,7 +2,7 @@
 //const users = readJSON('users.json');
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
-const { User } = require("../database/models");
+const { User, Address } = require("../database/models");
 
 
 
@@ -95,7 +95,9 @@ module.exports = {
 
         const userInSessionId = req.session.user.id;
 
-        User.findByPk(userInSessionId)
+        User.findByPk(userInSessionId, {
+        include: [{ association: "address" }]
+        })
         .then((user) => {
             res.render('users/userProfile', {
                 user,
@@ -136,7 +138,9 @@ module.exports = {
     editProfile: (req, res) => {
         const userInSessionId = req.session.user.id;
 
-        User.findByPk(userInSessionId)
+        User.findByPk(userInSessionId, {
+            include: [{ association: "address" }]
+        })
         .then((user) => {
             res.render('users/userEditProfile', {
                 user,
@@ -163,7 +167,7 @@ module.exports = {
                 } = req.body;
         
                 User.update({
-                username,
+                    username,
                     name,
                     lastName,
                     tel,
@@ -171,7 +175,7 @@ module.exports = {
                     postal_code,
                     province,
                     city,
-                    image,
+                    avatar: req.file ? req.file.filename : userId.avatar,
             },{
                 where:{
                     id: userId
@@ -179,28 +183,20 @@ module.exports = {
             })
             .then((response) => {
                 if(response){
-                    return res.redirect(`users/profileDetail${userId}`)
+                    return res.redirect(`/users/profileDetail/${userId}`)
                 } else {
                     throw new Error('Error al editar datos')
                 }
             })
             .catch(error => console.log(error))
-
-            delete user.pass;
-
-            req.session.user = user;
-
-            return res.redirect("/users/profile");
-     
         }else {
             const userInSessionId = req.session.user.id;
-            const userInSession = users.find(user => user.id === userInSessionId);
-
-             return res.render("users/userEditProfile", {
-                user: userInSession,
+            
+            return res.render("users/userEditProfile", {
+                user: userInSessionId,
                 session: req.session,
                 errors: errors.mapped(),
-            })
+            });
         }
     }
 

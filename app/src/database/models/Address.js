@@ -26,17 +26,25 @@ module.exports = (sequelize, dataTypes) => {
         userId: {
             type: dataTypes.INTEGER(11),
             allowNull: false,
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
         }
     }
 
     let config = {
         tableName: "addresses",
+        createdAt: "createdAt",
+        updatedAt: "updatedAt",
     }
 
     const Address = sequelize.define(alias, cols, config);
     Address.associate = function (models) {
         Address.belongsTo(models.User, {
-            as: "users",
+            as: "user",
             foreignKey: "userId"
         })
     }

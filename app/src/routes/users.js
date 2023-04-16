@@ -30,7 +30,7 @@ router.get('/profile', userInSessionCheck, profile);
 /* GET - USER PROFILE EDIT FORM */
 router.get('/profile/edit', userInSessionCheck, editProfile);
 /* PUT - USER PROFILE EDIT FORM */
-router.put('/profile/edit', upLoadImageAvatar.single('avatar'), editProfileValidator, updateProfile)
+router.put('/profile/edit', upLoadImageAvatar.single('avatar'),userInSessionCheck, editProfileValidator, updateProfile)
 
 router.delete('/profile', userInSessionCheck, destroy);
 /* EXPORT ROUTER */

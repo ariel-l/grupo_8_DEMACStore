@@ -32,6 +32,8 @@ CREATE TABLE `addresses` (
   `province` varchar(40) NOT NULL,
   `city` varchar(40) NOT NULL,
   `userId` int(11) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `addresses_FK` (`userId`),
   CONSTRAINT `addresses_FK` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)

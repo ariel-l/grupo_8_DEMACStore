@@ -6,16 +6,24 @@ const path = require("path");
 module.exports = [
     
     check("username")
+    /*.custom(value => {
+        return User.findOne({
+            where: {
+                username: value
+            }
+        })
+        .then(user => {
+            if(user) return Promise.reject("Nombre de usuario en uso");
+        })
+        .catch(error => console.log(error))
+    })*/
     .notEmpty()
     .withMessage("El nombre de usuario es obligatorio").bail(),
-
-    body("username")
-    .custom((value, {req}) => {
+    /*.custom((value, {req}) => {
         const user = users.find(user => user.username === value)
         return !(user && user.id !== req.session.user.id)
-        
     })
-    .withMessage("Nombre de usuario en uso, elija otro"),
+    .withMessage("Nombre de usuario en uso, elija otro"),*/
 
     check("email")
     .notEmpty()
@@ -24,12 +32,21 @@ module.exports = [
     .withMessage("Email inválido"),
     
     body("email")
-    .custom(value => {
-        const user = users.find(user => user.email === value)
-
-        return user !== undefined;
-    })
-    .withMessage("Email ya en uso"),
+    /*.custom(value => {
+        return User.findOne({
+            where: {
+                email: value
+            }
+        })
+        .then(user => {
+            if(user) return Promise.reject("Email ya en uso")
+        })
+        .catch(error => console.log(error))
+    }),*/
+    .notEmpty()
+    .withMessage("El email es obligatorio").bail()
+    .isEmail()
+    .withMessage("Email inválido"),
     
     check("name")
     .notEmpty()
@@ -39,7 +56,7 @@ module.exports = [
     .notEmpty()
     .withMessage("Por favor indique su apellido"),
 
-    check("tel")
+    check("phone")
     .notEmpty()
     .withMessage("Por favor indique su número de celular")
     .isLength({min: 10}),

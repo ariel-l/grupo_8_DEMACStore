@@ -51,6 +51,11 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: "updatedAt",
     }
         const User = sequelize.define(alias, cols, config)
-
+        User.associate = function (models) {
+            User.hasOne(models.Address, {
+                as: 'address',
+                foreignKey: 'userId'
+            })
+        }
         return User
     }
