@@ -13,11 +13,9 @@ module.exports = (sequelize, dataTypes) => {
         },
         name: {
             type: dataTypes.STRING(40),
-            allowNull: false,
         },
         lastName: {
             type: dataTypes.STRING(40),
-            allowNull: false,
         },
         email: {
             type: dataTypes.STRING(50),
@@ -29,7 +27,6 @@ module.exports = (sequelize, dataTypes) => {
         },
         phone: {
             type: dataTypes.INTEGER(14),
-            allowNull: false,
         },
         avatar: {
             type: dataTypes.STRING(100),
