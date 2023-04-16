@@ -192,7 +192,7 @@ CREATE TABLE `products` (
   KEY `products_FK_1` (`brandID`),
   CONSTRAINT `products_FK` FOREIGN KEY (`subcategoryID`) REFERENCES `subcategories` (`id`),
   CONSTRAINT `products_FK_1` FOREIGN KEY (`brandID`) REFERENCES `brands` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Samsung','default-image.png',1,90000,5,1,'A23','Android','7','128','8','Exynos	12','50','1080p@30/60fps','3900','159.6 x 74.8 x 8.1','199','199','240','Mejor samsung',NULL,NULL),(2,'Motorola','motorolae30.svg',2,90000,5,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `products` VALUES (1,'Samsung','default-image.png',1,90000,5,1,'A23','Android','7','128','8','Exynos	12','50','1080p@30/60fps','3900','159.6 x 74.8 x 8.1','199','199','240','Mejor samsung',NULL,NULL),(2,'Motorola','motorolae30.svg',2,90000,5,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'Motorola Edge 30 5G','motorolae30.svg',2,129999,20,1,'Edge 30','Android','6','64','12','Exynos','12','12','1080p@30fps','3400',NULL,'166',NULL,NULL,NULL,NULL),(4,'Motorola G22','motorolag22.svg',2,65000,7,1,'G22','Android','6','256','4','Snapdragon','5','12','1080p@30','3400',NULL,'198',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,11 +244,11 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(40) NOT NULL,
-  `name` varchar(40) NOT NULL,
-  `lastName` varchar(40) NOT NULL,
+  `name` varchar(40) DEFAULT NULL,
+  `lastName` varchar(40) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `tel` int(14) NOT NULL,
+  `phone` int(14) DEFAULT NULL,
   `avatar` varchar(100) DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
@@ -281,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-15 19:18:14
+-- Dump completed on 2023-04-15 23:16:30
