@@ -27,7 +27,7 @@ module.exports = {
                 {
                     association: "subcategories",
                     include: {
-                        association: "categories"
+                        association: "categories",
                     }
                 }
             ]

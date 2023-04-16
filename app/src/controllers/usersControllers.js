@@ -1,8 +1,8 @@
 //const { readJSON, writeJSON } = require('../database');
 //const users = readJSON('users.json');
-const { User } = require("../database/models");
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
+const { User } = require("../database/models");
 
 
 
@@ -19,33 +19,20 @@ module.exports = {
         const errors = validationResult(req);
 
         if (errors.isEmpty()) {
-            
-            const lastId = users[users.length -1].id;
-
-            const { username, email, password } = req.body
 
             const newUser = {
-            id: lastId + 1,
-            username,
-            email,
-            password: bcrypt.hashSync(password, 10),
-            name: '',
-            lastName: '',
+            username: req.body.username,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
             avatar: req.file ? req.file.filename : 'default-image.png',
-            rol: 'user',
-            tel: '',
-            address: '',
-            postal_code: '',
-            province: '',
-            city: '',
+            role: 'user',
         }
 
-        users.push(newUser)
-
-        writeJSON('users.json', users)
-
-        res.redirect('/users/login')
-
+        User.create(newUser)
+        .then(() => {
+          return res.redirect('/users/login');
+        })
+        .catch(error => console.log(error))
         } else {
             res.render('users/register', {
                 errors: errors.mapped(),
@@ -57,7 +44,7 @@ module.exports = {
 
     login: (req, res) => {
 
-        res.render("users/login", { session: req.session })
+        res.render('users/login', { session: req.session })
 
     },
 
@@ -66,15 +53,18 @@ module.exports = {
         const errors = validationResult(req);
 
         if (errors.isEmpty()) {
-
-            const user = users.find(user => user.email === req.body.email);
-
-            req.session.user = {
-                id: user.id,
-                firstName: user.firstName,
-                avatar: user.avatar,
-                rol: user.rol
-            }
+            User.findOne({
+                where: {
+                    email: req.body.email,
+                }
+            })
+            .then((user)  => {
+                req.session.user = {
+                    id: user.id,
+                    name: user.name,
+                    avatar: user.avatar,
+                    role: user.role
+                }
 
             const cookieLifeTime = new Date(Date.now() + 6000000);
 
@@ -91,8 +81,10 @@ module.exports = {
             res.locals.user = req.session.user;
 
             res.redirect("/users/profile");
+        }) 
+        .catch(error => console.log())
         } else {
-            return res.render("users/login", {
+            return res.render('users/login', {
                 errors: errors.mapped(),
                 session: req.session
             })
@@ -103,12 +95,14 @@ module.exports = {
 
         const userInSessionId = req.session.user.id;
 
-        const userInSession = users.find(user => user.id === userInSessionId);
-        
-        res.render('users/userProfile', {
-            user: userInSession,
-            session: req.session
+        User.findByPk(userInSessionId)
+        .then((user) => {
+            res.render('users/userProfile', {
+                user,
+                session: req.session
+            })
         })
+        .catch(error => console.log(error))
     },
 
     destroy: (req, res) => {
@@ -142,19 +136,20 @@ module.exports = {
     editProfile: (req, res) => {
         const userInSessionId = req.session.user.id;
 
-        const userInSession = users.find(user => user.id === userInSessionId);
-
-        res.render('users/userEditProfile', {
-            user: userInSession,
-            session: req.session
+        User.findByPk(userInSessionId)
+        .then((user) => {
+            res.render('users/userEditProfile', {
+                user,
+                session: req.session
+            })
         })
+        .catch(error => console.log(error))
     },
 
     updateProfile: (req, res) => {
             const errors = validationResult(req);
             if(errors.isEmpty()){
                 const userId = req.session.user.id;
-                const user = users.find(user => user.id === userId);
         
                 const {
                     username,
@@ -167,17 +162,29 @@ module.exports = {
                     city
                 } = req.body;
         
-                user.username = username;
-                user.name = name;
-                user.lastName = lastName;
-                user.avatar = req.file ? req.file.filename : user.avatar;
-                user.tel = tel;
-                user.address = address;
-                user.postal_code = postal_code;
-                user.province = province;
-                user.city = city;
-
-            writeJSON('users.json', users)
+                User.update({
+                username,
+                    name,
+                    lastName,
+                    tel,
+                    address,
+                    postal_code,
+                    province,
+                    city,
+                    image,
+            },{
+                where:{
+                    id: userId
+                },
+            })
+            .then((response) => {
+                if(response){
+                    return res.redirect(`users/profileDetail${userId}`)
+                } else {
+                    throw new Error('Error al editar datos')
+                }
+            })
+            .catch(error => console.log(error))
 
             delete user.pass;
 

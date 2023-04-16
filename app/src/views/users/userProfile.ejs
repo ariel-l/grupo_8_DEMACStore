@@ -11,12 +11,12 @@
                             <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-bag-shopping"></a></i>
                                 <span>Compras</span>
                             </li>
-                            <% if ( session.user.rol==="admin" ) { %>
+                            <% if ( session.user.role==="admin" ) { %>
                                 <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-tags"></a></i>
                                     <span>Productos</span>
                                 </li>
                                 <% } %>
-                                    <% if ( session.user.rol==="admin" ) { %>
+                                    <% if ( session.user.role==="admin" ) { %>
                                         <li class="profile__container--sections"><a href="/users/profile"><i class="fa-solid fa-user-group"></a></i>
                                             <span>Usuarios</span>
                                         </li>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.tel ? user.tel : "---------------" %>
+                                        <%= user.phone ? user.phone : "---------------" %>
                                     </span>
                                 </div>
                             </div>

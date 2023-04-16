@@ -1,19 +1,22 @@
+const { check, body } = require('express-validator');
 const { User } = require("../database/models");
-const { check, body } = require('express-validator')
 //const { readJSON } = require('../database')
 //const users = readJSON('users.json')
 
 module.exports = [
     check('username')
     .custom(value => {
-        const username = users.find(user => user.username === value)
-
-        return username === undefined
-    })
-    .withMessage('Nombre de usuario en uso').bail()
-    .notEmpty()
-    .withMessage('El nombre de usuario es obligatorio'),
-
+        return User.findOne({
+            where: {
+                username: value
+            }
+        })
+        .then(user => {
+            if(user) return Promise.reject("Nombre de usuario en uso");
+        })
+        .catch(error => console.log(error))
+    }),
+    
     check('email')
     .notEmpty()
     .withMessage('El email es obligatorio').bail()
@@ -22,11 +25,17 @@ module.exports = [
 
     body('email')
     .custom(value => {
-        const user = users.find(user => user.email === value)
-
-        return user === undefined
-    })
-    .withMessage('Email ya registrado'),
+        //const user = users.find(user => user.email === value)
+        return User.findOne({
+            where: {
+                email: value
+            }
+        })
+        .then(user => {
+            if(user) return Promise.reject("Email ya registrado")
+        })
+        .catch(error => console.log(error))
+    }),
 
     check('password')
     .notEmpty()

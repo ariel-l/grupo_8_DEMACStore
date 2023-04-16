@@ -46,7 +46,7 @@
                         <div class="box__profile">
                             <div class="input__container">
                                 <label class="label-style" for="tel">Teléfono</label>
-                                <input class="input-style" value="<%= user.tel ? user.tel : "" %>" name="tel" type="text" placeholder="" id="tel">
+                                <input class="input-style" value="<%= user.phone ? user.phone : "" %>" name="tel" type="text" placeholder="" id="tel">
                                 <% if (locals.errors && errors.tel) { %>
                                     <small class="text-danger"><%= errors.tel.msg %> </small>
                                 <% } %>

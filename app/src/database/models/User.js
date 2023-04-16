@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = "User";
     let cols = {
-        userID:{
+        id:{
             type: dataTypes.INTEGER(11),
             allowNull: false,
             autoIncrement: true,
@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(100),
             allowNull: false,
         },
-        tel: {
+        phone: {
             type: dataTypes.INTEGER(14),
             allowNull: false,
         },
@@ -40,22 +40,17 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: {
             type: dataTypes.DATE,
         },
-        rol: {
+        role: {
             type: dataTypes.STRING(14),
             allowNull: false,
         },
     }
     let config = {
-        tableName: 'products',
+        tableName: 'users',
         createdAt: "createdAt",
         updatedAt: "updatedAt",
     }
         const User = sequelize.define(alias, cols, config)
-    User.associate = function (models) {
-        User.hasMany(models.Product, {
-            as: "products",
-            foreignKey: "brandID"
-        })
-    }
+
         return User
     }
