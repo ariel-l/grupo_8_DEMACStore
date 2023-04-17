@@ -3,6 +3,7 @@ const router = express.Router();
 const productsControllers = require("../controllers/productsControllers");
 const { upLoadImageProduct } = require('../middlewares/upload');
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
+const productsValidator = require('../middlewares/productsValidator');
 const adminInSessionCheck = require('../middlewares/adminInSessionCheck');
 
 /* GET ALL PRODUCTS PAGE */
@@ -16,9 +17,9 @@ router
 
 /* GET PRODUCT CREATE FORM PAGE */
 router
-    .get('/create', adminInSessionCheck, productsControllers.create)
+    .get('/create', productsControllers.create, productsValidator)//saque temporalmente adminInSessionCheck
 /* CREATE ONE PRODUCT */
-    .post('/create', upLoadImageProduct.single("image"), productsControllers.store)
+    .post('/create', upLoadImageProduct.single("image"), productsControllers.store, productsValidator)
 
 /* GET PRODUCT DETAIL PAGE */
 router
@@ -27,9 +28,9 @@ router
 
 /* GET PRODUCT MODIFY FORM */
 router
-    .get("/edit/:id", adminInSessionCheck, productsControllers.modify)
-    .put("/edit/:id", adminInSessionCheck, upLoadImageProduct.single("image"), productsControllers.update)
-    .delete('/edit/delete/:id', adminInSessionCheck, productsControllers.destroy);
+    .get("/edit/:id", productsControllers.modify, productsValidator)//saque temporalmente adminInSessionCheck
+    .put("/edit/:id", upLoadImageProduct.single("image"), productsControllers.update)//saque temporalmente adminInSessionCheck
+    .delete('/edit/delete/:id', productsControllers.destroy);//saque temporalmente adminInSessionCheck
 
 /* DELETE ONE PRODUCT */
 /* EXPORT ROUTER */

@@ -3,7 +3,6 @@ const router = express.Router();
 const { login, register, processLogin, logout, profile, destroy, processRegister, editProfile, updateProfile} = require("../controllers/usersControllers")
 const loginValidator = require("../validations/loginValidator")
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
-const adminInSessionCheck = require("../middlewares/adminInSessionCheck");
 const sessionUserCheck = require('../middlewares/sessionUserCheck');
 const { upLoadImageAvatar } = require('../middlewares/uploadAvatar');
 const registerValidator = require('../validations/registerValidator');

@@ -53,7 +53,7 @@ module.exports = {
                 .then((user) => {
                     req.session.user = {
                         id: user.id,
-                        name: user.name,//o username VERIFICAR
+                        name: user.name,
                         avatar: user.avatar,
                         role: user.role
                     }
@@ -150,30 +150,30 @@ module.exports = {
                             city,
                             userId
                         })
-                        .then((newAddress) => {
-                            user.username = username;
-                            user.name = name;
-                            user.lastName = lastName;
-                            user.phone = phone;
-                            user.addressId = newAddress.id;
-                            if (req.file) {
-                                user.avatar = req.file.filename;
-                            }
-                            return user.save();
-                        });
+                            .then((newAddress) => {
+                                user.username = username;
+                                user.name = name;
+                                user.lastName = lastName;
+                                user.phone = phone;
+                                user.addressId = newAddress.id;
+                                if (req.file) {
+                                    user.avatar = req.file.filename;
+                                }
+                                return user.save();
+                            });
                     } else {
-                    user.username = username;
-                    user.name = name;
-                    user.lastName = lastName;
-                    user.phone = phone;
-                    user.address.address = address;
-                    user.address.postal_code = postal_code;
-                    user.address.province = province;
-                    user.address.city = city;
-                    if (req.file) {
-                        user.avatar = req.file.filename;
-                    }
-                    return Promise.all([user.save(), user.address.save()]);
+                        user.username = username;
+                        user.name = name;
+                        user.lastName = lastName;
+                        user.phone = phone;
+                        user.address.address = address;
+                        user.address.postal_code = postal_code;
+                        user.address.province = province;
+                        user.address.city = city;
+                        if (req.file) {
+                            user.avatar = req.file.filename;
+                        }
+                        return Promise.all([user.save(), user.address.save()]);
                     }
                 })
                 .then(() => {
@@ -218,24 +218,24 @@ module.exports = {
                     } else {
                         return null;
                     }
-                    } else {
-                        return null;
+                } else {
+                    return null;
+                }
+            })
+            .then(() => {
+                return User.destroy({
+                    where: {
+                        id: userId
                     }
-                })
-                .then(() => {
-                    return User.destroy({
-                        where: {
-                            id: userId
-                        }
-                    });
-                })
-                .then(() => {
-                    req.session.destroy();
-                    res.clearCookie('userDemac');
-                    return res.redirect('/');
-                })
-                .catch(error => {
-                    console.log(error);
                 });
+            })
+            .then(() => {
+                req.session.destroy();
+                res.clearCookie('userDemac');
+                return res.redirect('/');
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 }

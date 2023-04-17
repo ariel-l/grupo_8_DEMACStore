@@ -71,13 +71,9 @@
                                 </div>
                             </a>
 
-                            <% products.forEach(product=> { %>
-
+                            <% products.forEach(product => { %>
                                 <%- include('partials/cardProducts', { ...product }) %>
-
-                                    <% }) %>
-
-                            <%- include("partials/cardProducts")%> 
+                            <% }) %>
                             
                         </section>
 
@@ -88,9 +84,9 @@
                                 </div>
                             </a>
 
-                            <% products.forEach(product=> { %>
+                            <% products.forEach(product => { %>
                                 <%- include('partials/cardProducts', { ...product }) %>
-                                    <% }) %>
+                            <% }) %>
 
                         </section>
 

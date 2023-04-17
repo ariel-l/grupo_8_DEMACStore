@@ -1,10 +1,10 @@
-//const { readJSON, writeJSON } = require('../database/index');
-//const products = readJSON('products.json');
+const { validationResult } = require('express-validator');
 const { Product, Sequelize, Category, Subcategory } = require('../database/models');
+const productsValidator = require('../middlewares/productsValidator');
 const { Op } = Sequelize;
 
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
-
+/*
 function shuffle(array) {
     let currentIndex = array.length; let  randomIndex;
   
@@ -18,37 +18,35 @@ function shuffle(array) {
     }
   
     return array;
-  }
+  }*/
 
 module.exports = {
 
     index: (req, res) => {
-
-        const shuffleProducts = [...products]
-        shuffle(shuffleProducts)
-
-        return res.render('products/products', {
-            shuffleProducts,
-            formatNumber,
-            session: req.session
+        Product.findAll({
+            include: [
+                {
+                    association: "subcategories",
+                    include: {
+                        association: "categories",
+                    }
+                }
+            ]
         })
+        .then((products) => {
+            return res.render('products/products', {
+                //productsInSale,
+                //productsRecommended,
+                products,
+                //productsAccesories,
+                formatNumber,
+                session: req.session
+            })
+        })
+        .catch(error => console.log(error));
     },
 
     productDetail: async (req, res) => {
-        /*
-        const { id } = req.params;
-        try {
-            console.log()
-          const product = await Product.findByPk(id);
-          if (product) {
-            res.render('products/productDetail', {product});
-          } else {
-            res.send({ message: "Producto no encontrado" });
-          }
-        } catch (error) {
-          res.send( error );
-        }
-      },*/
         const productId = Number(req.params.id);
 
         Product.findByPk(productId, {
@@ -62,7 +60,7 @@ module.exports = {
             })
         })
         .catch((error) => console.log(error));
-    },
+    },/*
     category: (req, res) => {
         const categoryID = req.params.id;
 
@@ -73,8 +71,7 @@ module.exports = {
             }]
         })
         .then((category) => {
-            return res.send(category);
-            /*const PRODUCTS = category.subcategories.map(
+            const PRODUCTS = category.subcategories.map(
                 (subcategory) => subcategory.products
             );
             return res.render("categories", {
@@ -82,10 +79,10 @@ module.exports = {
                 subcategories: category.subcategories,
                 products: PRODUCTS.flat(),
                 session: req.session,
-            });*/
+            });
         })
         .catch((error) => console.log(error));
-    },
+    },*/
 
     cart: (req, res) => {
         return res.render('products/cart', {
@@ -100,17 +97,15 @@ module.exports = {
     }, 
 
     store: (req, res) => {
-
-        const lastId = products[products.length -1].id;
+        const errors = validationResult(req);
 
 		const newProduct = {
-			id: lastId + 1,
 			name: req.body.name,
 			discount: +req.body.discount,
 			price: +req.body.price,
 			image: req.file ? req.file.filename : "default-image.png" ,
-            category: req.body.category,
-            brand: req.body.brand,
+            subcategoryID: req.body.subCategory,
+            brandID: req.body.brand,
             model: req.body.model,
             os: req.body.os,
             screen: +req.body.screen,
@@ -127,70 +122,118 @@ module.exports = {
 			description:req.body.description,
 		}
 
-		products.push(newProduct);
-
-		writeJSON('products.json', products);
-
-		res.redirect("/products/" + newProduct.id);    
+        if(errors.isEmpty()){
+		Product.create(newProduct)
+        .then(() => {
+            res.redirect(`/products/${newProduct.id}`);
+        })  
+        .catch((error) => console.log(error))
+        
+        } else {
+            return res.render('products/productCreate', {errors: errors.mapped()})
+        }
     },
 
     modify: (req, res) => {
 
-        const productId = Number(req.params.id);
+        const productId = req.params.id;
 
-        const productToEdit = products.find((product) => {
-              return product.id === productId;
-        });
-        res.render("products/productModify", { productToEdit, session: req.session });
+        Product.findByPk(productId)
+        .then((productToEdit) => {
+            res.render("products/productModify", {
+                productToEdit,
+                 session: req.session 
+            })
+        })
+        .catch(error => console.log(error))
     },
 
     update: (req, res) => {
-
+        const errors = validationResult(req);
         const productId = Number(req.params.id);
 
-        products.forEach((product) => {
-            if (product.id === productId) {
-                product.name = req.body.name;
-                product.discount = +req.body.discount;
-                product.price = +req.body.price;
-                product.image = req.file ? req.file.filename : product.image;                   
-                product.category = req.body.category;
-                product.brand = req.body.brand;
-                product.model = req.body.model;
-                product.os = req.body.os;
-                product.screen = +req.body.screen;
-                product.internalMemory = +req.body.internalMemory;
-                product.ram = +req.body.ram;
-                product.frontCamera = +req.body.frontCamera;
-                product.chipset = req.body.chipset;
-                product.mainCamera = +req.body.mainCamera;
-                product.video = req.body.video;
-                product.dimensions = +req.body.dimensions;
-                product.battery = +req.body.battery;
-                product.weight = +req.body.weight;
-                product.cardSlot = req.body.cardSlot;
-                product.description = req.body.description;                
-     }
-    });
+        if(errors.isEmpty()){
+        const {
+            name,
+			discount,
+			price,
+			image,
+            subcategoryID,
+            brandID,
+            model,
+            os,
+            screen,
+            internalMemory,
+            ram,
+            frontCamera,
+            chipset,
+            mainCamera,
+            video,
+            dimensions,
+            battery,
+            weight,
+            cardSlot,
+			description,
+        } = req.body;
 
-    writeJSON('products.json', products);
-
-    res.redirect("/products/" + productId);
-},
-
-    destroy : (req, res) => {
-
-        const productId = Number(req.params.id);
-
-        products.forEach(product => {
-            if (product.id === productId){
-                const productToDestroy = products.indexOf(product);
-                products.splice(productToDestroy, 1)
+        Product.update({
+            name,
+			discount,
+			price,
+			image,
+            subcategoryID,
+            brandID,
+            model,
+            os,
+            screen,
+            internalMemory,
+            ram,
+            frontCamera,
+            chipset,
+            mainCamera,
+            video,
+            dimensions,
+            battery,
+            weight,
+            cardSlot,
+			description,
+        },{
+            where: {
+                id: productId,
+            },
+        })
+        .then((response) => {
+            if(response){
+                return res.redirect(`/products/${productId}`)
+            } else {
+                throw new Error('Mensaje de error')
+            }
+        })       
+        .catch(error => console.log(error));
+        } else {
+            Product.findByPk(productId)
+            .then(Product => {
+                return res.render('products/productModify', {
+                Product,
+                errors: errors.mapped()
+                })
+            })
+        .catch(error => console.log(error));
         }
-    });
-    
-    writeJSON('products.json', products)
+     },
 
-    res.redirect("/");
-}
+    destroy: (req, res) => {
+
+        const productId = Number(req.params.id);
+
+        Product.destroy({
+            where: {
+                id: productId
+            }
+        })
+        .then(() => {
+            return res.redirect("/"); 
+        })
+        .catch(error => console.log(error))
+    }
 };

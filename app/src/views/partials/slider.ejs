@@ -1,0 +1,36 @@
+<section class="special-offers">
+
+    <div class="gallery productSlider js-flickity"
+    data-flickity-options='{ "wrapAround": true }' >
+        <% sliderProducts.forEach(product => { %>
+            <div class="carousel-cell  productSlide">
+                <a href="/products/detail/<%- product.id %>">
+                    <% if (product.discount > 0) { %>
+                        <div class="productDiscount"><%- product.discount %>% OFF</div>
+                    <% } %>
+                    <img src="/images/productos/<%- product.image %>" alt="">
+                    <p class="productName"> 
+                            <%= product.name %>
+                    </p>
+                    <h4 class="productPrice">$<%- product.price %></h4>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</section>
+
+
+<% if (products.discount> 0) { %>
+
+    <p class="home__strikethrough">$<%= products.price %>
+    </p>
+
+    <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100)) %>
+    </p>
+
+    <% } else { %>
+
+        <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100)) %>
+        </p>
+
+        <% } %>

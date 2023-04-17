@@ -16,19 +16,16 @@
                         </ul>
                     </div>
                     <% if (typeof session.user !=='undefined' ) { %>
-                        <% if (session.user.rol==="admin" ) { %>
+                        <% if (session.user.role==="admin" ) { %>
                             <div class="create__btn">
                                 <a class="create__btn--redirect" href="/products/create">Crear Producto</a>
                             </div>
                             <% } %>
                                 <% } %>
                                     <section class="home__phones--container--global">
-
-                                        <% shuffleProducts.forEach(product=> { %>
-
+                                        <% products.forEach(product => { %>
                                             <%- include('../partials/cardProducts', { ...product }) %>
-
-                                                <% }) %>
+                                        <% }) %>
                                     </section>
 
 

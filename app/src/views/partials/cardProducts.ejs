@@ -1,23 +1,25 @@
+<% products.forEach(product => { %>
 <article class="home__products--phones">
     <div class="home__phone--container--1">
-        <img class="home__img--cardProducts" src="/images/products/motoe32-gris-frente_1" alt="">
+        <img class="home__img--cardProducts" src="/images/products/<%= product.image %>" alt="">
     </div>
     <div class="home__product--descripction">
         
-        <% if (products.discount> 0) { %>
-
-            <p class="home__strikethrough">$<%= products.price %>
+        <% if (product.discount> 0) { %>
+            <p><%= product.name %></p>
+            <p class="home__strikethrough">$<%= product.price %>
             </p>
 
-            <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100)) %>
+            <p class="home__price">$<%= formatNumber(product.price - (product.price * product.discount / 100)) %>
             </p>
 
             <% } else { %>
 
-                <p class="home__price">$<%= formatNumber(products.price - (products.price * products.discount / 100)) %>
+                <p class="home__price">$<%= formatNumber(product.price - (product.price * product.discount / 100)) %>
                 </p>
 
                 <% } %>
     </div>
-    <a href="/products/<%= products.id %>" class="home__btn--details">Ver detalle</a>
+    <a href="/products/<%= product.id %>" class="home__btn--details">Ver detalle</a>
 </article>
+<% }) %>
