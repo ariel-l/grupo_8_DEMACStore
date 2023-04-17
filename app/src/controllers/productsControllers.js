@@ -125,7 +125,7 @@ module.exports = {
         if(errors.isEmpty()){
 		Product.create(newProduct)
         .then(() => {
-            res.redirect(`/products/${newProduct.id}`);
+            res.redirect('/products');
         })  
         .catch((error) => console.log(error))
         
