@@ -180,7 +180,7 @@ module.exports = {
             name,
 			discount,
 			price,
-			image,
+            image: req.file ? req.file.filename : "default-image.png",
             subcategoryID,
             brandID,
             model,
