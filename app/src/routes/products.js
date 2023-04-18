@@ -10,6 +10,10 @@ const adminInSessionCheck = require('../middlewares/adminInSessionCheck');
 router
     .get('/', productsControllers.index)
 
+/* GET - List products for category */
+router
+    .get("/category/:id", productsControllers.category)
+
 /* GET CART PAGE */
 router
     .get('/cart', userInSessionCheck, productsControllers.cart)
@@ -17,7 +21,7 @@ router
 
 /* GET PRODUCT CREATE FORM PAGE */
 router
-    .get('/create', productsControllers.create, productsValidator)//saque temporalmente adminInSessionCheck
+    .get('/create', adminInSessionCheck, productsControllers.create, productsValidator)
 /* CREATE ONE PRODUCT */
     .post('/create', upLoadImageProduct.single("image"), productsControllers.store, productsValidator)
 
@@ -28,9 +32,9 @@ router
 
 /* GET PRODUCT MODIFY FORM */
 router
-    .get("/edit/:id", productsControllers.modify, productsValidator)//saque temporalmente adminInSessionCheck
-    .put("/edit/:id", upLoadImageProduct.single("image"), productsControllers.update)//saque temporalmente adminInSessionCheck
-    .delete('/edit/delete/:id', productsControllers.destroy);//saque temporalmente adminInSessionCheck
+    .get("/edit/:id", adminInSessionCheck, productsControllers.modify, productsValidator)
+    .put("/edit/:id", adminInSessionCheck, upLoadImageProduct.single("image"), productsControllers.update)
+    .delete('/edit/delete/:id', adminInSessionCheck, productsControllers.destroy);
 
 /* DELETE ONE PRODUCT */
 /* EXPORT ROUTER */
