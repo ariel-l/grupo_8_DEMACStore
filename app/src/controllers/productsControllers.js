@@ -250,6 +250,40 @@ module.exports = {
                     return res.redirect(`/products/${productId}`);
                 })
                 .catch(error => console.log(error));
+        Product.update({
+            name,
+			discount,
+			price,
+            image: req.file ? req.file.filename : image,
+            subcategoryID,
+            brandID,
+            model,
+            os,
+            screen,
+            internalMemory,
+            ram,
+            frontCamera,
+            chipset,
+            mainCamera,
+            video,
+            dimensions,
+            battery,
+            weight,
+            cardSlot,
+			description,
+        },{
+            where: {
+                id: productId,
+            },
+        })
+        .then((response) => {
+            if(response){
+                return res.redirect(`/products/${productId}`)
+            } else {
+                throw new Error('Mensaje de error')
+            }
+        })       
+        .catch(error => console.log(error));
         } else {
             const categoriesPromise = Category.findAll();
             const subcategoriesPromise = Subcategory.findAll();

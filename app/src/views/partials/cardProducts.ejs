@@ -4,12 +4,12 @@
         <img class="home__img--cardProducts" src="/images/products/<%= product.image %>" alt="">
     </div>
     <div class="home__product--descripction">
+        <p><%= product.name %></p>
         
         <% if (product.discount> 0) { %>
-            <p><%= product.name %></p>
+            
             <p class="home__strikethrough">$<%= product.price %>
             </p>
-
             <p class="home__price">$<%= formatNumber(product.price - (product.price * product.discount / 100)) %>
             </p>
 
