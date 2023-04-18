@@ -20,70 +20,73 @@ function shuffle(array) {
   }
   
 module.exports = {
-    index: (req, res) => {
-        Product.findAll({
+    index: async (req, res) => {
+        try {
+          const productsInSale = await Product.findAll({
+            where: {
+              discount: {
+                [Op.gte]: 0,
+              },
+            },
+            order: sequelize.random(),
+          });
+    
+          const productsRecommended = await Product.findAll({
             include: [
-                {
-                    association: "subcategories",
-                    include: {
-                        association: "categories",
-                    }
-                }
+              {
+                association: 'subcategories',
+                include: {
+                  association: 'categories',
+                  where: {
+                    name: 'Accessories',
+                  },
+                },
+              },
+            ],
+            order: sequelize.random(),
+            limit: 10,
+          });
+    
+          const productsAccessories = await Product.findAll({
+            include: [
+              {
+                association: 'subcategories',
+                include: {
+                  association: 'categories',
+                  where: {
+                    name: 'Accessories',
+                  },
+                },
+              },
+            ],
+            order: sequelize.random(),
+            limit: 10,
+          });
+    
+          const products = await Product.findAll({
+            include: [
+              {
+                association: 'subcategories',
+                include: {
+                  association: 'categories',
+                },
+              },
             ],
             distinct: true,
-        })
-        .then((products) => {
-            return res.render('home', {
-                //productsInSale,
-                //productsRecommended,
-                products,
-                //productsAccesories,
-                formatNumber,
-                session: req.session
-            })
-        })
-        .catch(error => console.log(error));
-    /*
-    const productsInSale = Product.findAll({
-        where: {
-            discount: {
-                [Op.gte]: 0
-            }
-        },
-        order: sequelize.random(),
-    });
-
-    const productsRecommended = Product.findAll({
-        include: [
-            {
-                model: Subcategory,
-                include: {
-                    model: Category,
-                    where: {
-                        name: 'Accesories'
-                    }
-                }
-            }
-        ],
-        order: sequelize.random(),
-        limit: 10
-    })
-    const productsAccesories = Product.findAll({
-        include: [
-            {
-                model: Subcategory,
-                include: {
-                    model: Category,
-                    where: {
-                        name: 'Accesories'
-                    }
-                }
-            }
-        ],
-        order: sequelize.random(),
-        limit: 10
-    })*/
-},
+          });
+    
+          return res.render('home', {
+            productsInSale,
+            productsRecommended,
+            products,
+            productsAccessories,
+            formatNumber,
+            session: req.session,
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
     search: async (req, res) => {
         const { keywords } = req.query;
