@@ -3,6 +3,7 @@ const { Op } = Sequelize;
 
 const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
 
+
 function shuffle(array) {
     let currentIndex = array.length; let  randomIndex;
   
@@ -17,7 +18,7 @@ function shuffle(array) {
   
     return array;
   }
-
+  
 module.exports = {
     index: (req, res) => {
         Product.findAll({
