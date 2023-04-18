@@ -36,7 +36,7 @@
                     </div>
                     
                     <div class="input__container">
-                        <label class="label-style" for="text">Categoría</label>
+                        <label class="label-style" for="category">Categoría</label>
                         <select name="category" id="" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
                             <option value="1">Celulares</option>
@@ -45,11 +45,11 @@
                     </div>
 
                     <div class="input__container">
-                        <label class="label-style" for="category">Categoría</label>
-                        <select name="category" id="" class="input-style select-category">
+                        <label class="label-style" for="subCategory">Subcategoría</label>
+                        <select name="subCategory" id="" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="new" <%=productToEdit.category==="new" && "selected" %>>Nuevo</option>
-                            <option value="refubrished" <%=productToEdit.category==="refubrished" && "selected" %> >Refabricado</option>
+                            <option value="1" <%=productToEdit.category==="new" && "selected" %>>Nuevo</option>
+                            <option value="2" <%=productToEdit.category==="refubrished" && "selected" %> >Refabricado</option>
                         </select>
                     </div>
                     <div class="input__container">
