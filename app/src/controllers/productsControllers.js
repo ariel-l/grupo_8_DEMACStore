@@ -1,6 +1,5 @@
 const { validationResult } = require('express-validator');
 const { Product, Sequelize, Category, Subcategory } = require('../database/models');
-const productsValidator = require('../middlewares/productsValidator');
 const { Op } = Sequelize;
 
 const formatNumber = number => number.toLocaleString('es-AR', { maximumFractionDigits: 0 });
@@ -74,18 +73,19 @@ module.exports = {
             .then((category) => {
                 if (!category) {
                     return res.status(404).send('Categoría no encontrada');
-                  }
+                }
 
                 const PRODUCTS = category.subcategories.map(
                     (subcategory) => subcategory.products
                 );
                 console.log(category)
-                //return res.send(category)
+                return res.send(category)
                 return res.render('products/categories', {
                     category,
                     subcategories: category.subcategories,
                     products: PRODUCTS.flat(),
                     session: req.session,
+                    formatNumber,
                 });
             })
             .catch((error) => console.log(error));
@@ -99,7 +99,7 @@ module.exports = {
 
     create: (req, res) => {
         const CATEGORIES_PROMISE = Category.findAll();
-        const SUBCATEGORIES_PROMISE = Subcategory.findAll;
+        const SUBCATEGORIES_PROMISE = Subcategory.findAll();
 
         Promise.all([CATEGORIES_PROMISE, SUBCATEGORIES_PROMISE])
             .then(([categories, subcategories]) => {
@@ -156,6 +156,14 @@ module.exports = {
 
             Product.create(newProduct)
                 .then((product) => {
+                    Subcategory.findByPk(req.body.subCategory)
+                        .then((subcategory) => {
+                            subcategory.update({ categoryID: req.body.category })
+                                .then(() => console.log("Subcategoría actualizada con éxito"))
+                                .catch((error) => console.log(error));
+                        })
+                        .catch((error) => console.log(error));
+
                     const files = req.files || [];
                     const images = files.map((file) => {
                         return {
@@ -250,40 +258,40 @@ module.exports = {
                     return res.redirect(`/products/${productId}`);
                 })
                 .catch(error => console.log(error));
-        Product.update({
-            name,
-			discount,
-			price,
-            image: req.file ? req.file.filename : image,
-            subcategoryID,
-            brandID,
-            model,
-            os,
-            screen,
-            internalMemory,
-            ram,
-            frontCamera,
-            chipset,
-            mainCamera,
-            video,
-            dimensions,
-            battery,
-            weight,
-            cardSlot,
-			description,
-        },{
-            where: {
-                id: productId,
-            },
-        })
-        .then((response) => {
-            if(response){
-                return res.redirect(`/products/${productId}`)
-            } else {
-                throw new Error('Mensaje de error')
-            }
-        })       
-        .catch(error => console.log(error));
+            Product.update({
+                name,
+                discount,
+                price,
+                image: req.file ? req.file.filename : image,
+                subcategoryID,
+                brandID,
+                model,
+                os,
+                screen,
+                internalMemory,
+                ram,
+                frontCamera,
+                chipset,
+                mainCamera,
+                video,
+                dimensions,
+                battery,
+                weight,
+                cardSlot,
+                description,
+            }, {
+                where: {
+                    id: productId,
+                },
+            })
+                .then((response) => {
+                    if (response) {
+                        return res.redirect(`/products/${productId}`)
+                    } else {
+                        throw new Error('Mensaje de error')
+                    }
+                })
+                .catch(error => console.log(error));
         } else {
             const categoriesPromise = Category.findAll();
             const subcategoriesPromise = Subcategory.findAll();

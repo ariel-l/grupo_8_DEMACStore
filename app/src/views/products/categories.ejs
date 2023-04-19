@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head', {title: 'Nuestros Productos' }) %>
+<%- include('../partials/head', {title: 'Categorías' }) %>
     <%- include('../partials/scripts') %>
-        </head>
 
         <body>
             <%- include('../partials/header') %>
@@ -15,7 +14,7 @@
                             <li>Celulares</li>
                         </ul>
                     </div>
-
+                    <main>
                     <% if (typeof session.user !=='undefined' ) { %>
                         <% if (session.user.role==="admin" ) { %>
                             <div class="create__btn">
@@ -30,17 +29,18 @@
                                             <a href="#"><%- subcategory.name %></a>
                                         <% }) %>
                                     </aside>
-                                    <section class="home__phones--container--global">
-                                        <% products.forEach(product => { %>
-                                            <div class="product-card">
-                                                <img src="<%- product.image %>" alt="<%- product.name %>">
-                                                <h2><%- product.name %></h2>
-                                                <p><%- product.description %></p>
-                                                <span class="price">$<%- product.price %></span>
-                                            </div>
-                                        <% }) %>
+                                    <section class="results__container">
+                                        <div class="results__product-founded--container">
+                                        
+                                            <section class="home__phones--container--global">
+                                                
+                                                    <%- include('../partials/cardProducts') %>
+                                                
+                                            </section>
+                                        </div>
                                     </section>
                                 </div>
+                            </main>
 
                                     <%- include('../partials/footer.ejs') %>
         </body>
