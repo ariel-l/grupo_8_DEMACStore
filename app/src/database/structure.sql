@@ -19,9 +19,6 @@
 -- Table structure for table `addresses`
 --
 
-CREATE DATABASE IF NOT exists demacStore_db;
-USE demacStore_db;
-
 DROP TABLE IF EXISTS `addresses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -194,7 +191,7 @@ CREATE TABLE `products` (
   KEY `products_FK_1` (`brandID`),
   CONSTRAINT `products_FK` FOREIGN KEY (`subcategoryID`) REFERENCES `subcategories` (`id`),
   CONSTRAINT `products_FK_1` FOREIGN KEY (`brandID`) REFERENCES `brands` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +200,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Samsung','default-image.png',1,90000,5,1,'A23','Android','7','128','8','Exynos	12','50','1080p@30/60fps','3900','159.6 x 74.8 x 8.1','199','199','240','Mejor samsung',NULL,NULL),(2,'Motorola','motorolae30.svg',2,90000,5,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'Motorola Edge 30 5G','motorolae30.svg',2,129999,20,1,'Edge 30','Android','6','64','12','Exynos','12','12','1080p@30fps','3400',NULL,'166',NULL,NULL,NULL,NULL),(4,'Motorola G22','motorolag22.svg',2,65000,7,1,'G22','Android','6','256','4','Snapdragon','5','12','1080p@30','3400',NULL,'198',NULL,NULL,NULL,NULL);
+INSERT INTO `products` VALUES (1,'Motorola E32','1681864005252_products_.png',2,60000,10,1,'E32','Android 11','6.5','64','4','Unisoc T606  1.6 GHz','8','16','1920 px x 1080 px','5000','163.95 x 74.94 x 8.49 ','184','','Mayor rendimiento\r\nSu memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.\r\n\r\nDesbloqueo facial y dactilar\r\nMáxima seguridad para que solo vos puedas acceder al equipo. Podrás elegir entre el sensor de huella dactilar para habilitar el teléfono en un toque, o el reconocimiento facial que permite un desbloqueo hasta un 30% más rápido.',NULL,'2023-04-19 00:47:39'),(2,'Motorola Edge 30 5G','1681864435409_products_.svg',2,138699,3,1,'Moto Edge 30','Android 12','OLED de 6.5','128','8','Snapdragon 778G+ 5G ','32','50','3840 x 2160 ','4020','159.38 x 74.236 x 6.76 ','155','','Capacidad y eficiencia\r\nCon su potente procesador y memoria RAM de 8 GB tu equipo alcanzará un alto rendimiento con gran velocidad de transmisión de contenidos y ejecutará múltiples aplicaciones a la vez sin demoras.\r\n',NULL,'2023-04-19 00:33:55'),(3,'Motorola G22 128 GB','1681864706601_products_.svg',2,70999,3,1,'G22 ','Android 12','6.5','128','4','Mediatek MT6765V/CB ','16','50','1920 x 1080 ','5000','163.95 x 74.94 x 8.49 ','185','1000','Mayor rendimiento\r\nSu memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.',NULL,'2023-04-19 00:38:26'),(4,'Motorola Moto G52 Xt2221 128gb ','1681864941406_products_.svg',2,100999,5,1,'G52','Android 12','6.6','128 ','4','Snapdragon 680','16','50 ','1920 x 1080 ','5000','160.98 x 74.46 x 7.99 ','169','1000','El Motorola Moto G52 es un nuevo miembro de la familia Moto G de smartphones económicos. El Moto G52 cuenta con una pantalla OLED de 6.6 pulgadas a resolución Full HD+ y tasa de refresco de 90Hz, y está potenciado por un procesador Qualcomm Snapdragon 680 con 4GB de RAM y 128GB de almacenamiento interno. Con una cámara triple de 50MP en su dorsal, el Moto G52 tiene una cámara selfie de 16MP, batería de 5000 mAh de carga rápida TurboPower de 30W, ',NULL,'2023-04-19 00:42:21'),(6,'Funda Para Motorola E32 Anti Golpes','1681865176755_products_.webp',2,1499,5,1,'','','0','0','0','','0','0','','0','0','0','','Funda Anti golpes disponibles para Motorola E32. Super estéticas\r\nExcelente protección. Puntas reforzadas.\r\nTotalmente transparente.\r\n','2023-04-18 22:36:23','2023-04-19 00:47:23'),(8,'Funda Para Motorola Moto G22 Antigolpe A','1681865813540_products_.webp',2,4899,25,1,'','','0','0','0','','0','0','','0','0','0','0','Sencillo, cómodo, fácil de llevar. Protege adecuadamente los dispositivos contra raspaduras, suciedad, rasgaduras y desgaste normales. Fácil acceso a todos los puertos y botones sin quitar la funda.\r\nEl soporte de anillo magnético hace que sea más conveniente usar su teléfono.\r\nHecho de material PC y TPU, es resistente y duradero.','2023-04-19 00:56:53','2023-04-19 00:56:53'),(9,'Motorola G72 128 GB ','1681866323192_products_.webp',2,119999,15,1,'G72 ','Android 12','0','128','6','MediaTek Helio G99 2','16','108','1920 x 1080 ','5000','0','173','','Fotografía profesional en tu bolsillo. Descubrí infinitas posibilidades para tus fotos con las 3 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.\r\nAdemás, el dispositivo cuenta con cámara frontal de 16 Mpx para que puedas sacarte divertidas selfies o hacer videollamadas.\r\nCon su potente procesador y memoria RAM de 6 GB tu equipo alcanzará un alto','2023-04-19 01:01:50','2023-04-19 01:05:23');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-15 23:16:30
+-- Dump completed on 2023-04-18 22:07:45
