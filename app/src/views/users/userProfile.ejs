@@ -9,20 +9,20 @@
                     <nav class="profile__nav">
                         <ul class="profile__container--sections">
                             <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-bag-shopping"></a></i>
-                                <span>Compras</span>
+                                <span><a href="/products">Compras</a></span>
                             </li>
-                            <% if ( session.user.rol==="admin" ) { %>
+                            <% if ( session.user.role==="admin" ) { %>
                                 <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-tags"></a></i>
-                                    <span>Productos</span>
+                                    <span><a href="/products">Productos</a></span>
                                 </li>
                                 <% } %>
-                                    <% if ( session.user.rol==="admin" ) { %>
+                                    <% if ( session.user.role==="admin" ) { %>
                                         <li class="profile__container--sections"><a href="/users/profile"><i class="fa-solid fa-user-group"></a></i>
-                                            <span>Usuarios</span>
+                                            <span><a href="/users/profile">Usuarios</a></span>
                                         </li>
                                         <% } %>
                                             <li class="profile__container--sections"><a href="/users/profile/edit"><i
-                                                        class="fa-solid fa-gear"></a></i> <span>Ajustes</span></li>
+                                                        class="fa-solid fa-gear"></a></i> <span><a href="/users/profile/edit">Ajustes</a></span></li>
                         </ul>
                     </nav>
                 </div>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.tel ? user.tel : "---------------" %>
+                                        <%= user.phone ? user.phone : "---------------" %>
                                     </span>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.address ? user.address : "---------------" %>
+                                        <%= user && user.address ? user.address.address : "---------------" %>
                                     </span>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.postal_code ? user.postal_code : "---------------" %>
+                                        <%= user && user.address ? user.address.postal_code : "---------------" %>
                                     </span>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.province ? user.province : "---------------" %>
+                                        <%=  user && user.address ? user.address.province : "---------------" %>
                                     </span>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="profile--info">
                                     <span class="profile__span--data">
-                                        <%= user.city ? user.city : "---------------" %>
+                                        <%=  user && user.address ? user.address.city : "---------------" %>
                                     </span>
                                 </div>
                             </div>

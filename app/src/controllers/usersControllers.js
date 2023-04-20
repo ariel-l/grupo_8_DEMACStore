@@ -1,8 +1,6 @@
-const { readJSON, writeJSON } = require('../database');
-const { validationResult } = require('express-validator')
-const bcrypt = require('bcryptjs')
-const users = readJSON('users.json')
-
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const { User, Address } = require("../database/models");
 
 module.exports = {
 
@@ -13,84 +11,72 @@ module.exports = {
     },
 
     processRegister: (req, res) => {
-
         const errors = validationResult(req);
 
         if (errors.isEmpty()) {
-            
-            const lastId = users[users.length -1].id;
-
-            const { username, email, password } = req.body
 
             const newUser = {
-            id: lastId + 1,
-            username,
-            email,
-            password: bcrypt.hashSync(password, 10),
-            name: '',
-            lastName: '',
-            avatar: req.file ? req.file.filename : 'default-image.png',
-            rol: 'user',
-            tel: '',
-            address: '',
-            postal_code: '',
-            province: '',
-            city: '',
-        }
+                username: req.body.username,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+                avatar: req.file ? req.file.filename : 'default-image.png',
+                role: 'user',
+            };
 
-        users.push(newUser)
-
-        writeJSON('users.json', users)
-
-        res.redirect('/users/login')
-
+            User.create(newUser)
+                .then(() => {
+                    return res.redirect('/users/login');
+                })
+                .catch(error => console.log(error));
         } else {
             res.render('users/register', {
                 errors: errors.mapped(),
                 old: req.body,
                 session: req.session
-            })
+            });
         }
     },
 
     login: (req, res) => {
-
-        res.render("users/login", { session: req.session })
-
+        res.render('users/login', { session: req.session })
     },
 
     processLogin: (req, res) => {
-
         const errors = validationResult(req);
 
         if (errors.isEmpty()) {
+            User.findOne({
+                where: {
+                    email: req.body.email,
+                }
+            })
+                .then((user) => {
+                    req.session.user = {
+                        id: user.id,
+                        name: user.name,
+                        avatar: user.avatar,
+                        role: user.role
+                    }
 
-            const user = users.find(user => user.email === req.body.email);
+                    const cookieLifeTime = new Date(Date.now() + 6000000);
 
-            req.session.user = {
-                id: user.id,
-                firstName: user.firstName,
-                avatar: user.avatar,
-                rol: user.rol
-            }
+                    if (req.body.remember) {
+                        res.cookie(
+                            "userDemac",
+                            req.session.user,
+                            {
+                                expires: cookieLifeTime,
+                                httpOnly: true
+                            })
+                    }
 
-            const cookieLifeTime = new Date(Date.now() + 6000000);
+                    res.locals.user = req.session.user;
 
-            if(req.body.remember) {
-                res.cookie(
-                    "userDemac", 
-                    req.session.user, 
-                    {
-                        expires: cookieLifeTime,
-                        httpOnly: true
-                    })
-            }
-
-            res.locals.user = req.session.user;
-
-            res.redirect("/users/profile");
+                    res.redirect("/users/profile");
+                })
+                .catch(error => console.log())
         } else {
-            return res.render("users/login", {
+            return res.render('users/login', {
                 errors: errors.mapped(),
                 session: req.session
             })
@@ -101,35 +87,112 @@ module.exports = {
 
         const userInSessionId = req.session.user.id;
 
-        const userInSession = users.find(user => user.id === userInSessionId);
-        
-        res.render('users/userProfile', {
-            user: userInSession,
-            session: req.session
+        User.findByPk(userInSessionId, {
+            include: [{ association: "address" }]
         })
+            .then((user) => {
+                res.render('users/userProfile', {
+                    user,
+                    session: req.session
+                })
+            })
+            .catch(error => console.log(error))
     },
 
-    destroy: (req, res) => {
-
+    editProfile: (req, res) => {
         const userInSessionId = req.session.user.id;
-        
-        users.forEach(user => {
-            if (user.id === userInSessionId){
-                const userToDestroy = users.indexOf(user);
-                users.splice(userToDestroy, 1);
-                req.session.destroy();
-                res.clearCookie("userDemac");
 
+        User.findByPk(userInSessionId, {
+            include: [{ association: "address" }]
+        })
+            .then((user) => {
+                res.render('users/userEditProfile', {
+                    user,
+                    session: req.session
+                })
+            })
+            .catch(error => console.log(error))
+    },
+
+    updateProfile: (req, res) => {
+        const errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+            const userId = req.session.user.id;
+
+            const {
+                username,
+                name,
+                lastName,
+                phone,
+                address,
+                postal_code,
+                province,
+                city
+            } = req.body;
+
+            User.findByPk(userId, {
+                include: [{
+                    model: Address,
+                    as: 'address'
+                }]
+            })
+                .then((user) => {
+                    if (!user) {
+                        throw new Error('Usuario no encontrado');
+                    }
+
+                    if (!user.address) {
+                        return Address.create({
+                            address,
+                            postal_code,
+                            province,
+                            city,
+                            userId
+                        })
+                            .then((newAddress) => {
+                                user.username = username;
+                                user.name = name;
+                                user.lastName = lastName;
+                                user.phone = phone;
+                                user.addressId = newAddress.id;
+                                if (req.file) {
+                                    user.avatar = req.file.filename;
+                                }
+                                return user.save();
+                            });
+                    } else {
+                        user.username = username;
+                        user.name = name;
+                        user.lastName = lastName;
+                        user.phone = phone;
+                        user.address.address = address;
+                        user.address.postal_code = postal_code;
+                        user.address.province = province;
+                        user.address.city = city;
+                        if (req.file) {
+                            user.avatar = req.file.filename;
+                        }
+                        return Promise.all([user.save(), user.address.save()]);
+                    }
+                })
+                .then(() => {
+                    return res.redirect('/users/profile');
+                })
+                .catch(error => console.log(error))
+        } else {
+            const userInSessionId = req.session.user.id;
+
+            return res.render('users/userEditProfile', {
+                user: userInSessionId,
+                session: req.session,
+                errors: errors.mapped(),
+            });
         }
-    });
-    
-    writeJSON('users.json', users)
-
-    return res.redirect('/');
     },
 
     logout: (req, res) => {
-        
+
         req.session.destroy();
         res.clearCookie("userDemac");
 
@@ -137,62 +200,42 @@ module.exports = {
 
     },
 
-    editProfile: (req, res) => {
-        const userInSessionId = req.session.user.id;
+    destroy: (req, res) => {
 
-        const userInSession = users.find(user => user.id === userInSessionId);
+        const userId = req.session.user.id;
 
-        res.render('users/userEditProfile', {
-            user: userInSession,
-            session: req.session
+        User.findByPk(userId, {
+            include: [{
+                model: Address,
+                as: 'address'
+            }]
         })
-    },
-
-    updateProfile: (req, res) => {
-            const errors = validationResult(req);
-            if(errors.isEmpty()){
-                const userId = req.session.user.id;
-                const user = users.find(user => user.id === userId);
-        
-                const {
-                    username,
-                    name,
-                    lastName,
-                    tel,
-                    address,
-                    postal_code,
-                    province,
-                    city
-                } = req.body;
-        
-                user.username = username;
-                user.name = name;
-                user.lastName = lastName;
-                user.avatar = req.file ? req.file.filename : user.avatar;
-                user.tel = tel;
-                user.address = address;
-                user.postal_code = postal_code;
-                user.province = province;
-                user.city = city;
-
-            writeJSON('users.json', users)
-
-            delete user.pass;
-
-            req.session.user = user;
-
-            return res.redirect("/users/profile");
-     
-        }else {
-            const userInSessionId = req.session.user.id;
-            const userInSession = users.find(user => user.id === userInSessionId);
-
-             return res.render("users/userEditProfile", {
-                user: userInSession,
-                session: req.session,
-                errors: errors.mapped(),
+            .then(userToDestroy => {
+                if (userToDestroy) {
+                    const address = userToDestroy.address;
+                    if (address) {
+                        return address.destroy();
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
             })
-        }
+            .then(() => {
+                return User.destroy({
+                    where: {
+                        id: userId
+                    }
+                });
+            })
+            .then(() => {
+                req.session.destroy();
+                res.clearCookie('userDemac');
+                return res.redirect('/');
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
-
 }

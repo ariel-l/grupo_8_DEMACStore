@@ -84,7 +84,7 @@
                                     <a href="/products/cart" class="detail___btn--add--to--cart">COMPRAR</a>
                                 </div>
                                 <% if (typeof session.user !=='undefined' ) { %>
-                                    <% if (session.user.rol==='admin' ) { %>
+                                    <% if (session.user.role==='admin' ) { %>
                                         <div class="detail___button--cart">
                                             <a href="/products/edit/<%= product.id %>" class="detail___btn--add--to--cart">EDITAR</a>
                                         </div>
@@ -98,10 +98,10 @@
 
             </main>
             <article class="detail___technical--specifications">
-                <div class="detail__tittle--characteristics">Especificaciones técnicas</div>
+                <div class="detail__tittle--characteristics" style="color:#004AAD">Especificaciones técnicas</div>
                 <div class="detail___characteristics">
                     <ul class="detail__ul--characteristics">
-                        <li>Marca: <%= product.brand %>
+                        <li>Marca: <%= product.brands.name %>
                         </li>
                         <li>Modelo: <%= product.model %>
                         </li>
@@ -127,7 +127,15 @@
                     </ul>
                     <div class="detail__more">Leer más</div>
                 </div>
+                
             </article>
+        
+            <article class="detail___technical--specifications">
+                <div class="detail__tittle--characteristics " style="color:#004AAD">Descripción:</div>
+                <div class="detail___description"><%= product.description %></div>
+                
+            </article>
+            
 
             <%- include('../partials/footer.ejs') %>
     </body>

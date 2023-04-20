@@ -1,48 +1,118 @@
-const { readJSON, writeJSON } = require('../database/index');
-const products = readJSON('products.json');
-const formatNumber = number => number.toLocaleString('es-AR', {maximumFractionDigits:0});
+const { validationResult } = require('express-validator');
+const { Product, Sequelize, Category, Subcategory } = require('../database/models');
+const { Op } = Sequelize;
+
+const formatNumber = number => number.toLocaleString('es-AR', { maximumFractionDigits: 0 });
 
 function shuffle(array) {
-    let currentIndex = array.length; let  randomIndex;
-  
+    let currentIndex = array.length; let randomIndex;
+
     while (currentIndex !== 0) {
-  
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
     }
-  
+
     return array;
-  }
+}
 
 module.exports = {
 
     index: (req, res) => {
-
-        const shuffleProducts = [...products]
-        shuffle(shuffleProducts)
-
-        return res.render('products/products', {
-            shuffleProducts,
-            formatNumber,
-            session: req.session
+        Product.findAll({
+            include: [
+                {
+                    association: "subcategories",
+                    include: {
+                        association: "categories",
+                    }
+                }
+            ]
         })
+            .then((products) => {
+                return res.render('products/products', {
+                    //productsInSale,
+                    //productsRecommended,
+                    products,
+                    //productsAccesories,
+                    formatNumber,
+                    session: req.session
+                })
+            })
+            .catch(error => console.log(error));
     },
 
-    productDetail: (req, res) => {
-
+    productDetail: async (req, res) => {
         const productId = Number(req.params.id);
 
-        const product = products.find(product => product.id === productId);
-
-        res.render("products/productDetail", {
-            product,
-            formatNumber,
-            session: req.session
+        Product.findByPk(productId, {
+            include: [{ association: "brands" }]
         })
+            .then(product => {
+                res.render("products/productDetail", {
+                    product,
+                    formatNumber,
+                    session: req.session
+                })
+            })
+            .catch((error) => console.log(error));
     },
+    category: (req, res) => {
+        const categoryID = req.params.id;
+
+        Category.findByPk(categoryID, {
+            include: [
+                {
+                    association: "subcategories",
+                    include: { association: "products" },
+                }]
+        })
+            .then((category) => {
+                if (!category) {
+                    return res.status(404).send('Categoría no encontrada');
+                }
+
+                const PRODUCTS = category.subcategories.map(
+                    (subcategory) => subcategory.products
+                );
+                console.log(category)
+                return res.render('products/categories', {
+                    category,
+                    subcategories: category.subcategories,
+                    products: PRODUCTS.flat(),
+                    session: req.session,
+                    formatNumber,
+                });
+            })
+            .catch((error) => console.log(error));
+    },
+    subcategory: async (req, res) => {
+        try {
+          const subcategory = await Subcategory.findByPk(req.params.id, {
+            include: [{ association: "products" }]
+          });
+      
+          if (!subcategory) {
+            return res.status(404).send('Esta subcategoría no encontrada');
+          }
+      
+          const products = subcategory.products.flat();
+      
+          return res.render('products/subcategories', {
+            ...subcategory.dataValues,
+            subcategories: subcategory.subcategories,
+            products,
+            session: req.session,
+            formatNumber,
+            subcategory,
+        });
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
     cart: (req, res) => {
         return res.render('products/cart', {
@@ -51,103 +121,238 @@ module.exports = {
     },
 
     create: (req, res) => {
-        return res.render('products/productCreate', {
-            session: req.session
-        })
-    }, 
+        const CATEGORIES_PROMISE = Category.findAll();
+        const SUBCATEGORIES_PROMISE = Subcategory.findAll();
+
+        Promise.all([CATEGORIES_PROMISE, SUBCATEGORIES_PROMISE])
+            .then(([categories, subcategories]) => {
+                return res.render('products/productCreate', {
+                    session: req.session,
+                    categories,
+                    subcategories,
+                });
+            })
+            .catch((error) => console.log(error));
+    },
 
     store: (req, res) => {
+        const errors = validationResult(req);
 
-        const lastId = products[products.length -1].id;
+        if (!errors.isEmpty()) {
+            const CATEGORIES_PROMISE = Category.findAll();
+            const SUBCATEGORIES_PROMISE = Subcategory.findAll();
 
-		const newProduct = {
-			id: lastId + 1,
-			name: req.body.name,
-			discount: +req.body.discount,
-			price: +req.body.price,
-			image: req.file ? req.file.filename : "default-image.png" ,
-            category: req.body.category,
-            brand: req.body.brand,
-            model: req.body.model,
-            os: req.body.os,
-            screen: +req.body.screen,
-            internalMemory: +req.body.internalMemory,
-            ram: +req.body.ram,
-            frontCamera: +req.body.frontCamera,
-            chipset: req.body.chipset,
-            mainCamera: +req.body.mainCamera,
-            video: req.body.video,
-            dimensions: +req.body.dimensions,
-            battery: +req.body.battery,
-            weight: +req.body.weight,
-            cardSlot : +req.body.cardSlot,
-			description:req.body.description,
-		}
+            Promise.all([CATEGORIES_PROMISE, SUBCATEGORIES_PROMISE])
+                .then(([categories, subcategories]) => {
+                    return res.render('products/productCreate', {
+                        session: req.session,
+                        categories,
+                        subcategories,
+                        errors: errors.mapped(),
+                        old: req.body,
+                    });
+                })
+                .catch((error) => console.log(error));
+        } else {
+            const newProduct = {
+                name: req.body.name,
+                discount: +req.body.discount,
+                price: +req.body.price,
+                image: req.file ? req.file.filename : "default-image.png",
+                subcategoryID: req.body.subCategory,
+                brandID: req.body.brand,
+                model: req.body.model,
+                os: req.body.os,
+                screen: +req.body.screen,
+                internalMemory: +req.body.internalMemory,
+                ram: +req.body.ram,
+                frontCamera: +req.body.frontCamera,
+                chipset: req.body.chipset,
+                mainCamera: +req.body.mainCamera,
+                video: req.body.video,
+                dimensions: +req.body.dimensions,
+                battery: +req.body.battery,
+                weight: +req.body.weight,
+                cardSlot: +req.body.cardSlot,
+                description: req.body.description,
+            };
 
-		products.push(newProduct);
+            Product.create(newProduct)
+                .then((product) => {
+                    Subcategory.findByPk(req.body.subCategory)
+                        .then((subcategory) => {
+                            subcategory.update({ categoryID: req.body.category })
+                                .then(() => console.log("Subcategoría actualizada con éxito"))
+                                .catch((error) => console.log(error));
+                        })
+                        .catch((error) => console.log(error));
 
-		writeJSON('products.json', products);
+                    const files = req.files || [];
+                    const images = files.map((file) => {
+                        return {
+                            image: file.filename,
+                            productId: product.id,
+                        };
+                    });
+                    const defaultImage = {
+                        image: "default-image.png",
+                        productId: product.id,
+                    };
 
-		res.redirect("/products/" + newProduct.id);    
+                    Product.update({ images: files.length ? images : [defaultImage] }, { where: { id: product.id } })
+                        .then(() => {
+                            return res.redirect('/products');
+                        })
+                        .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
+        }
     },
 
     modify: (req, res) => {
 
-        const productId = Number(req.params.id);
+        const productId = req.params.id;
 
-        const productToEdit = products.find((product) => {
-              return product.id === productId;
-        });
-        res.render("products/productModify", { productToEdit, session: req.session });
+        Product.findByPk(productId)
+            .then((productToEdit) => {
+                res.render("products/productModify", {
+                    productToEdit,
+                    session: req.session
+                })
+            })
+            .catch(error => console.log(error))
     },
 
     update: (req, res) => {
-
+        const errors = validationResult(req);
         const productId = Number(req.params.id);
 
-        products.forEach((product) => {
-            if (product.id === productId) {
-                product.name = req.body.name;
-                product.discount = +req.body.discount;
-                product.price = +req.body.price;
-                product.image = req.file ? req.file.filename : product.image;                   
-                product.category = req.body.category;
-                product.brand = req.body.brand;
-                product.model = req.body.model;
-                product.os = req.body.os;
-                product.screen = +req.body.screen;
-                product.internalMemory = +req.body.internalMemory;
-                product.ram = +req.body.ram;
-                product.frontCamera = +req.body.frontCamera;
-                product.chipset = req.body.chipset;
-                product.mainCamera = +req.body.mainCamera;
-                product.video = req.body.video;
-                product.dimensions = +req.body.dimensions;
-                product.battery = +req.body.battery;
-                product.weight = +req.body.weight;
-                product.cardSlot = req.body.cardSlot;
-                product.description = req.body.description;                
-     }
-    });
+        if (errors.isEmpty()) {
+            const {
+                name,
+                discount,
+                price,
+                image,
+                subcategoryID,
+                brandID,
+                model,
+                os,
+                screen,
+                internalMemory,
+                ram,
+                frontCamera,
+                chipset,
+                mainCamera,
+                video,
+                dimensions,
+                battery,
+                weight,
+                cardSlot,
+                description,
+            } = req.body;
 
-    writeJSON('products.json', products);
+            Product.update({
+                name,
+                discount,
+                price,
+                image: req.file ? req.file.filename : "default-image.png",
+                subcategoryID,
+                brandID,
+                model,
+                os,
+                screen,
+                internalMemory,
+                ram,
+                frontCamera,
+                chipset,
+                mainCamera,
+                video,
+                dimensions,
+                battery,
+                weight,
+                cardSlot,
+                description,
+            }, {
+                where: {
+                    id: productId,
+                },
+            })
+                .then(() => {
+                    return res.redirect(`/products/${productId}`);
+                })
+                .catch(error => console.log(error));
+            Product.update({
+                name,
+                discount,
+                price,
+                image: req.file ? req.file.filename : image,
+                subcategoryID,
+                brandID,
+                model,
+                os,
+                screen,
+                internalMemory,
+                ram,
+                frontCamera,
+                chipset,
+                mainCamera,
+                video,
+                dimensions,
+                battery,
+                weight,
+                cardSlot,
+                description,
+            }, {
+                where: {
+                    id: productId,
+                },
+            })
+                .then((response) => {
+                    if (response) {
+                        return res.redirect(`/products/${productId}`)
+                    } else {
+                        throw new Error('Mensaje de error')
+                    }
+                })
+                .catch(error => console.log(error));
+        } else {
+            const categoriesPromise = Category.findAll();
+            const subcategoriesPromise = Subcategory.findAll();
 
-    res.redirect("/products/" + productId);
-},
-
-    destroy : (req, res) => {
-
-        const productId = Number(req.params.id);
-
-        products.forEach(product => {
-            if (product.id === productId){
-                const productToDestroy = products.indexOf(product);
-                products.splice(productToDestroy, 1)
+            Promise.all([categoriesPromise, subcategoriesPromise])
+                .then(([categories, subcategories]) => {
+                    Product.findByPk(productId)
+                        .then(product => {
+                            if (product) {
+                                return res.render('products/productModify', {
+                                    session: req.session,
+                                    product,
+                                    categories,
+                                    subcategories,
+                                    errors: errors.mapped(),
+                                });
+                            } else {
+                                throw new Error('Producto no encontrado')
+                            }
+                        })
+                        .catch(error => console.log(error));
+                })
+                .catch(error => console.log(error));
         }
-    });
-    
-    writeJSON('products.json', products)
+    },
 
-    res.redirect("/");
-}
+    destroy: (req, res) => {
+
+        const productId = Number(req.params.id);
+
+        Product.destroy({
+            where: {
+                id: productId
+            }
+        })
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch(error => console.log(error))
+    }
 };

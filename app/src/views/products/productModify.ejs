@@ -34,25 +34,35 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="input__container">
                         <label class="label-style" for="category">Categoría</label>
                         <select name="category" id="" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="new" <%=productToEdit.category==="new" && "selected" %>>Nuevo</option>
-                            <option value="refubrished" <%=productToEdit.category==="refubrished" && "selected" %> >Refabricado</option>
+                            <option value="1">Celulares</option>
+                            <option value="2">Accesorios</option>
+                        </select>
+                    </div>
+
+                    <div class="input__container">
+                        <label class="label-style" for="subCategory">Subcategoría</label>
+                        <select name="subCategory" id="" class="input-style select-category">
+                            <option hidden selected>Selecciona una opción</option>
+                            <option value="1" <%=productToEdit.category==="new" && "selected" %>>Nuevo</option>
+                            <option value="2" <%=productToEdit.category==="refubrished" && "selected" %> >Refabricado</option>
                         </select>
                     </div>
                     <div class="input__container">
                         <label class="label-style" for="brand">Marca</label>
                         <select name="brand" id="" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="Samsung" <%=productToEdit.brand==="Samsung" && "selected" %>>Samsung</option>
-                            <option value="Motorola" <%=productToEdit.brand==="Motorola" && "selected" %>>Motorola</option>
-                            <option value="Xiaomi" <%=productToEdit.brand==="Xiaomi" && "selected" %>>Xiaomi</option>
-                            <option value="Apple" <%=productToEdit.brand==="Apple" && "selected" %>>Apple</option>
-                            <option value="Huawei" <%=productToEdit.brand==="Huawei" && "selected" %>>Huawei</option>
-                            <option value="LG" <%=productToEdit.brand==="LG" && "selected" %>>LG</option>
+                            <option value="1" <%=productToEdit.brand==="1" && "selected" %>>Samsung</option>
+                            <option value="2" <%=productToEdit.brand==="2" && "selected" %>>Motorola</option>
+                            <option value="3" <%=productToEdit.brand==="3" && "selected" %>>Xiaomi</option>
+                            <option value="4" <%=productToEdit.brand==="4" && "selected" %>>Apple</option>
+                            <option value="5" <%=productToEdit.brand==="5" && "selected" %>>Huawei</option>
+                            <option value="6" <%=productToEdit.brand==="6" && "selected" %>>LG</option>
+                            <option value="7" <%=productToEdit.brand==="7" && "selected" %>>Otra</option>
                         </select>
                     </div>
 
@@ -139,7 +149,7 @@
                         <input class="input-style" type="text" name="cardSlot" placeholder="Ej: 1 gb " id="">
                     </div>
                     <div class="input__container textarea__container--global">
-                        <label for="descripciones">Otras descripciones del producto:</label>
+                        <label for="description">Otras descripciones del producto:</label>
                         <div class="textarea__container">
                             <textarea class="input-style textarea__descripction" name="description" id="" cols="30"
                                 rows="10"><%= productToEdit.description %></textarea>

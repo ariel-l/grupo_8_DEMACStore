@@ -45,10 +45,10 @@
                         </div>
                         <div class="box__profile">
                             <div class="input__container">
-                                <label class="label-style" for="tel">Teléfono</label>
-                                <input class="input-style" value="<%= user.tel ? user.tel : "" %>" name="tel" type="text" placeholder="" id="tel">
-                                <% if (locals.errors && errors.tel) { %>
-                                    <small class="text-danger"><%= errors.tel.msg %> </small>
+                                <label class="label-style" for="phone">Teléfono</label>
+                                <input class="input-style" value="<%= user.phone ? user.phone : "" %>" name="phone" type="text" placeholder="" id="phone">
+                                <% if (locals.errors && errors.phone) { %>
+                                    <small class="text-danger"><%= errors.phone.msg %> </small>
                                 <% } %>
                             </div>
                             <div class="input__container input__photo">
@@ -65,7 +65,7 @@
                         <div class="box__datos">
                             <div class="input__container">
                                 <label class="label-style" for="address">Dirección</label>
-                                <input class="input-style" value="<%= user.address %>" type="text" name="address" placeholder=""
+                                <input class="input-style" value="<%= user && user.address ? user.address.address : '' %>" type="text" name="address" placeholder=""
                                     id="">
                                 <% if (locals.errors && errors.address) { %>
                                     <small class="text-danger"><%= errors.address.msg %> </small>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="postal_code">Código Postal</label>
-                                <input class="input-style" value="<%= user.postal_code %>" type="text" name="postal_code" placeholder="" id="">
+                                <input class="input-style" value="<%= user && user.address ? user.address.postal_code : '' %>" type="text" name="postal_code" placeholder="" id="">
                                 <% if (locals.errors && errors.postal_code) { %>
                                     <small class="text-danger"><%= errors.postal_code.msg %> </small>
                                 <% } %>
@@ -82,14 +82,14 @@
                         <div class="box__profile">
                             <div class="input__container">
                                 <label class="label-style" for="province">Provincia</label>
-                                <input class="input-style" value="<%= user.province %>" type="text" name="province" placeholder="" id="">
+                                <input class="input-style" value="<%= user && user.address ? user.address.province : '' %>" type="text" name="province" placeholder="" id="">
                                 <% if (locals.errors && errors.province) { %>
                                     <small class="text-danger"><%= errors.province.msg %> </small>
                                 <% } %>
                             </div>
                             <div class="input__container">
                                 <label class="label-style" for="city">Ciudad</label>
-                                <input class="input-style" value="<%= user.city %>" type="text" name="city"
+                                <input class="input-style" value="<%= user && user.address ?  user.address.city : '' %>" type="text" name="city"
                                     placeholder="" id="">
                                 <% if (locals.errors && errors.city) { %>
                                     <small class="text-danger"><%= errors.city.msg %> </small>

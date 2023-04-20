@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: 'Categorías' }) %>
+    <%- include('../partials/scripts') %>
+
+        <body>
+            <%- include('../partials/header') %>
+
+
+                    <div class="back">
+                        <ul>
+                            <li><a class="detail__a" href="/">Volver al listado</a></li>
+                        </ul>
+                    </div>
+                    <main>
+                    <% if (typeof session.user !=='undefined' ) { %>
+                        <% if (session.user.role==="admin" ) { %>
+                            <div class="create__btn">
+                                <a class="create__btn--redirect" href="/products/create">Crear Producto</a>
+                            </div>
+                            <% } %>
+                                <% } %>
+
+                                <div class="container products-container">
+                                    <aside class="subcategories_menu-desktop">
+                                        <% category.subcategories.forEach(subcategory => { %>
+                                        <% }) %>
+                                    </aside>
+                                    <section class="results__container">
+                                        <div class="results__product-founded--container">
+                                        
+                                            <section class="home__phones--container--global">
+                                                
+                                                    <%- include('../partials/cardProducts') %>
+                                                
+                                            </section>
+                                        </div>
+                                    </section>
+                                </div>
+                            </main>
+
+                                    <%- include('../partials/footer.ejs') %>
+        </body>
+
+</html>
