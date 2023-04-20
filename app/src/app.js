@@ -38,6 +38,10 @@ app.use("/", indexRouter);
 app.use("/products", productsRouter);
 app.use("/users", usersRoutes);
 
+/* ERROR */
+app.use(function(req, res, next) {
+    next(createError(404));
+  });
 
 /* START SERVER */
 app.listen(PORT, () => console.log(`Server listen in port ${PORT}\nhttp://localhost:${PORT}`));
