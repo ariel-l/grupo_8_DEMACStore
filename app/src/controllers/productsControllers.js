@@ -79,7 +79,6 @@ module.exports = {
                     (subcategory) => subcategory.products
                 );
                 console.log(category)
-                return res.send(category)
                 return res.render('products/categories', {
                     category,
                     subcategories: category.subcategories,
@@ -90,6 +89,30 @@ module.exports = {
             })
             .catch((error) => console.log(error));
     },
+    subcategory: async (req, res) => {
+        try {
+          const subcategory = await Subcategory.findByPk(req.params.id, {
+            include: [{ association: "products" }]
+          });
+      
+          if (!subcategory) {
+            return res.status(404).send('Esta subcategoría no encontrada');
+          }
+      
+          const products = subcategory.products.flat();
+      
+          return res.render('products/subcategories', {
+            ...subcategory.dataValues,
+            subcategories: subcategory.subcategories,
+            products,
+            session: req.session,
+            formatNumber,
+            subcategory,
+        });
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
     cart: (req, res) => {
         return res.render('products/cart', {

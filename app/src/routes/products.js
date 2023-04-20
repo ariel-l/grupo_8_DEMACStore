@@ -14,6 +14,9 @@ router
 router
     .get("/category/:id", productsControllers.category)
 
+router
+    .get("/subcategory/:id", productsControllers.subcategory)
+
 /* GET CART PAGE */
 router
     .get('/cart', userInSessionCheck, productsControllers.cart)
@@ -34,8 +37,10 @@ router
 router
     .get("/edit/:id", adminInSessionCheck, productsControllers.modify, productsValidator)
     .put("/edit/:id", adminInSessionCheck, upLoadImageProduct.single("image"), productsControllers.update)
-    .delete('/edit/delete/:id', adminInSessionCheck, productsControllers.destroy);
 
 /* DELETE ONE PRODUCT */
+    .delete('/edit/delete/:id', adminInSessionCheck, productsControllers.destroy);
+
+
 /* EXPORT ROUTER */
 module.exports = router;

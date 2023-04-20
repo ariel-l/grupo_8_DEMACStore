@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head', {title: 'Categorías' }) %>
+    <%- include('../partials/head', {title: 'Subcategorías' }) %>
     <%- include('../partials/scripts') %>
 
         <body>
@@ -23,10 +23,12 @@
                                 <% } %>
 
                                 <div class="container products-container">
-                                    <aside class="subcategories_menu-desktop">
-                                        <% category.subcategories.forEach(subcategory => { %>
-                                        <% }) %>
-                                    </aside>
+                                    <% if (subcategory && subcategory.subcategories) { %>
+                                        <aside class="subcategories_menu-desktop">
+                                            <% subcategory.subcategories.forEach(subcategory => { %>
+                                            <% }) %>
+                                        </aside>
+                                    <% } %>
                                     <section class="results__container">
                                         <div class="results__product-founded--container">
                                         
