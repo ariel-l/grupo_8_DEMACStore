@@ -131,7 +131,6 @@ section.home__phones--container--global {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: var(--fondo);
   padding-top: 0.5vh;
   padding-bottom: 0.5vh;
   width: 90%;
