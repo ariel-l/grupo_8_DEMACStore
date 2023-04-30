@@ -1,0 +1,38 @@
+.admin__container {
+        margin: auto 0;
+        display: flex;
+}
+
+.admin__section--container {
+    min-width: 140px;
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+    padding-bottom: 3rem;
+    width: 100%;
+}
+
+.admin___btn--add {
+    background-color: var(--azul);
+    color: white;
+    padding: 5px;
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+td {
+    padding: 10px;
+}
+
+tr.even {
+    background-color: #a1bdf1b4;
+}
+
+tr.odd {
+    background-color: #ffffff;
+}

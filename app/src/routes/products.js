@@ -21,6 +21,9 @@ router
 router
     .get('/cart', userInSessionCheck, productsControllers.cart)
 
+/* GET PRODUCT ADMIN PAGE */
+router
+     .get('/adminList', adminInSessionCheck, productsControllers.productsList)
 
 /* GET PRODUCT CREATE FORM PAGE */
 router
