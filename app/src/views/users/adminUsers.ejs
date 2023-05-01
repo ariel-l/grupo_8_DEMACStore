@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: 'Dashboard' }) %>
+    <%- include('../partials/scripts') %>
+
+        <body>
+            <%- include('../partials/header') %>
+
+                <%- include('../partials/banner') %>
+                    <main class="admin__container">
+                        <%- include('../partials/navUsers') %>
+                            <section class="admin__section--container">
+                                <h2 class="admin__title">Usuarios</h2>
+                                <article class="col-12">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Apellido</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Rol</th>
+                                            <th scope="col">Borrar</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% users.forEach(({id, name, lastName, email, role}) => { %>
+                                                <tr class="<%= id % 2 == 0 ? 'even' : 'odd' %>">
+                                                    <td><%= id %> </td>
+                                                    <td><%= name %> </td>
+                                                    <td><%= lastName %></td>
+                                                    <td><%= email %> </td>
+                                                    <td><%= role %> </td>
+                                                    <td><form action="/users/admin/"<%= id %>?_method=PUT" method="POST">
+                                                        <button type="submit" style="border: none; background: none;"><ion-icon name="trash-outline"></ion-icon></button>
+                                                    </form></td>
+                                                </tr>
+                                                <% }); %>
+                                              </tbody>
+                                            </table> 
+                                          </article>       
+                                        </section>
+                                        <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+                                      </main>
+
+        </body>
+
+</html>

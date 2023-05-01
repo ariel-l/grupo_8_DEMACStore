@@ -56,7 +56,7 @@ module.exports = {
              ]
          })
             .then((products) => {
-                return res.render('products/adminList', {
+                return res.render('products/adminProducts', {
                     products,
                     formatNumber,
                     session: req.session

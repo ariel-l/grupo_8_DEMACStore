@@ -11,6 +11,18 @@
     width: 100%;
 }
 
+.admin__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+article.col-12 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .admin___btn--add {
     background-color: var(--azul);
     color: white;
