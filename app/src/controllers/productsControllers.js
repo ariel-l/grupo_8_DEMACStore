@@ -44,6 +44,26 @@ module.exports = {
             })
             .catch(error => console.log(error));
     },
+    productsList: (req, res) => {
+        Product.findAll({
+             include: [
+                 {
+                    association: "subcategories",
+                     include: {
+                         association: "categories",
+                     }
+                 }
+             ]
+         })
+            .then((products) => {
+                return res.render('products/adminProducts', {
+                    products,
+                    formatNumber,
+                    session: req.session
+                })
+            })
+            .catch(error => console.log(error));
+     },
 
     productDetail: async (req, res) => {
         const productId = Number(req.params.id);

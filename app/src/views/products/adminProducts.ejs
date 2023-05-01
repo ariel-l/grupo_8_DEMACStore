@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', {title: 'Dashboard' }) %>
+    <%- include('../partials/scripts') %>
+
+        <body>
+            <%- include('../partials/header') %>
+
+                <%- include('../partials/banner') %>
+
+                <main class="admin__container">
+                    <%- include('../partials/navUsers') %>
+                    <section class="admin__section--container">
+                      <h2 class="admin__title">Productos</h2>
+                        <form class="header__search--form" action="/search" method="GET">
+                            <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas..." name="keywords">
+                            <button class="search__bar--btn" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                        <article class="col-12">
+                            <a href="/products/create"><button type="button" class="admin___btn--add">Agregar</button></a>
+                          </article>
+                          <article class="col-12" >
+                          <table class="table-responsive">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Id</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Categoría</th>
+                                  <th scope="col">Subcategoría</th>
+                                  <th scope="col">Precio</th>
+                                  <th scope="col">Descuento</th>
+                                  <th scope="col">Ver</th>
+                                  <th scope="col">Editar</th>
+                                  <th scope="col">Borrar</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <% products.forEach((product, index) => { %>
+                                    <tr class="<%= index % 2 == 0 ? 'even' : 'odd' %>">
+                                        <td><%- product.id%></td>
+                                        <td><%- product.name%></td>
+                                        <td><%- product.category%></td>
+                                        <td><%- product.subCategory%></td>
+                                        <td>$<%= formatNumber(product.price) %></td>
+                                        <td><%- product.discount%>%</td>
+                                        <td><a href="/products/<%= product.id%> "><i class="fa-regular fa-eye"></i></a></td>
+                                  <td><a href="/products/edit/<%= product.id%> "><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                  <form action="/products/edit/delete/<%= product.id %>?_method=DELETE" method="POST">
+                                    <td><button type="submit" style="border: none; background: none;"><i class="fa-regular fa-trash-can"></i></td>
+                                  </form>
+                                </tr>
+                                <% }); %>
+                              </tbody>
+                            </table> 
+                          </article>       
+                        </section>
+                    </section>
+                </main>
+                                    <%- include('../partials/footer.ejs') %>
+        </body>
+
+</html>
