@@ -81,6 +81,8 @@ module.exports = (sequelize, dataTypes) => {
 
     let config = {
         tableName: 'products',
+        // brand : "brandID",
+        // subCategory: "subcategoryID"
     }
 
     const Product = sequelize.define(alias, cols, config);
