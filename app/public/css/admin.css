@@ -1,6 +1,8 @@
 .admin__container {
-        margin: auto 0;
-        display: flex;
+    margin: auto 0;
+    min-width: 245px;
+    display: flex;
+    box-sizing: border-box;
 }
 
 .admin__section--container {
@@ -16,29 +18,39 @@
     align-items: center;
     justify-content: center;
 }
+
 article.col-12 {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 .admin___btn--add {
     background-color: var(--azul);
     color: white;
     padding: 5px;
-    height: 40px;
-    width: 120px;
+    margin: 0.5rem 0;
+    height: 30px;
+    width: 100px;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-td {
-    padding: 10px;
+
+.table-responsive{
+    width: 100%;
+    margin: 0 auto;
+    min-width: 100px;
+}
+
+.control__admin-responsive{
+    display: none;
 }
 
 tr.even {
@@ -47,4 +59,34 @@ tr.even {
 
 tr.odd {
     background-color: #ffffff;
+}
+
+td {
+    padding: 7px;
+}
+
+article.col-12 {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+}
+
+@media(min-width:820px) {
+
+    .control__admin-responsive{
+        display: table-cell;
+    }
+
+
+    .admin___btn--add {
+        height: 40px;
+        width: 120px;
+        font-size: 1.2rem;
+    }
+    td {
+        padding: 10px;
+    }
+
 }

@@ -44,6 +44,38 @@ hr {
     margin-top: 1rem;
 }
 
+.form__input--specification{
+    max-width: 272px;
+}
+
+.input__photo{
+    display: flex;
+    text-align: center;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .form__product--textImage {
+    font-size: 14px;
+  }
+  
+  .form__product--inputImage {
+    opacity: 0;
+  }
+
+  .text__danger--form{
+    display: flex;
+    text-align: justify;
+    justify-self: flex-start;
+    color: red;
+    margin-top: 9px;
+    padding-left: 5px;
+  }
 /* Selectores */
 
 .input-style {
@@ -150,16 +182,25 @@ textarea {
 
     .box__profile {
         width: 50%;
-        height: 228px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .input__photo {
-        margin-left: 4rem;
-
+    .input__container--boxImage{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 307px; 
     }
+
+    .input__photo{
+        display: flex;
+        width: 80%;
+        margin-top: 3.5rem;
+        height: 2.5rem;
+      }
 
     input.input-style {
         min-width: 16rem;

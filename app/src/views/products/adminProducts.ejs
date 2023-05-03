@@ -27,10 +27,10 @@
                                 <tr>
                                   <th scope="col">Id</th>
                                   <th scope="col">Nombre</th>
-                                  <th scope="col">Categoría</th>
-                                  <th scope="col">Subcategoría</th>
-                                  <th scope="col">Precio</th>
-                                  <th scope="col">Descuento</th>
+                                  <th scope="col" class="control__admin-responsive">Categoría</th>
+                                  <th scope="col" class="control__admin-responsive">Subcategoría</th>
+                                  <th scope="col" class="control__admin-responsive">Precio</th>
+                                  <th scope="col" class="control__admin-responsive">Descuento</th>
                                   <th scope="col">Ver</th>
                                   <th scope="col">Editar</th>
                                   <th scope="col">Borrar</th>
@@ -41,10 +41,10 @@
                                     <tr class="<%= index % 2 == 0 ? 'even' : 'odd' %>">
                                         <td><%- product.id%></td>
                                         <td><%- product.name%></td>
-                                        <td><%- product.category%></td>
-                                        <td><%- product.subCategory%></td>
-                                        <td>$<%= formatNumber(product.price) %></td>
-                                        <td><%- product.discount%>%</td>
+                                        <td class="control__admin-responsive"><%- product.category%></td>
+                                        <td class="control__admin-responsive"><%- product.subCategory%></td>
+                                        <td class="control__admin-responsive">$<%= formatNumber(product.price) %></td>
+                                        <td class="control__admin-responsive"><%- product.discount%>%</td>
                                         <td><a href="/products/<%= product.id%> "><i class="fa-regular fa-eye"></i></a></td>
                                   <td><a href="/products/edit/<%= product.id%> "><i class="fa-regular fa-pen-to-square"></i></a></td>
                                   <form action="/products/edit/delete/<%= product.id %>?_method=DELETE" method="POST">
@@ -58,7 +58,8 @@
                         </section>
                     </section>
                 </main>
-                                    <%- include('../partials/footer.ejs') %>
+                
+            <%- include('../partials/footer.ejs') %>
         </body>
 
 </html>

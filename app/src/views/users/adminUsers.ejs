@@ -12,26 +12,26 @@
                             <section class="admin__section--container">
                                 <h2 class="admin__title">Usuarios</h2>
                                 <article class="col-12">
-                                    <table class="table">
+                                    <table class="table-responsive">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Apellido</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Rol</th>
-                                            <th scope="col">Borrar</th>
-                                          </tr>
+                                            <tr>
+                                                <th scope="col" class="control__admin-responsive">Id</th>
+                                                <th scope="col" class="control__admin-responsive">Nombre</th>
+                                                <th scope="col" class="control__admin-responsive">Apellido</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Rol</th>
+                                                <th scope="col">Borrar</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <% users.forEach(({id, name, lastName, email, role}) => { %>
                                                 <tr class="<%= id % 2 == 0 ? 'even' : 'odd' %>">
-                                                    <td><%= id %> </td>
-                                                    <td><%= name %> </td>
-                                                    <td><%= lastName %></td>
+                                                    <td class="control__admin-responsive"><%= id %> </td>
+                                                    <td class="control__admin-responsive"><%= name %> </td>
+                                                    <td class="control__admin-responsive"><%= lastName %></td>
                                                     <td><%= email %> </td>
                                                     <td><%= role %> </td>
-                                                    <td><form action="/users/admin/"<%= id %>?_method=PUT" method="POST">
+                                                    <td><form action="/users/admin/"<%= id %>?_method=PUT method="POST">
                                                         <button type="submit" style="border: none; background: none;"><ion-icon name="trash-outline"></ion-icon></button>
                                                     </form></td>
                                                 </tr>

@@ -3,7 +3,7 @@ const router = express.Router();
 const productsControllers = require("../controllers/productsControllers");
 const { upLoadImageProduct } = require('../middlewares/upload');
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
-const productsValidator = require('../middlewares/productsValidator');
+const productsValidator = require('../validations/productValidator');
 const adminInSessionCheck = require('../middlewares/adminInSessionCheck');
 
 /* GET ALL PRODUCTS PAGE */
@@ -27,9 +27,9 @@ router
 
 /* GET PRODUCT CREATE FORM PAGE */
 router
-    .get('/create', adminInSessionCheck, productsControllers.create, productsValidator)
+    .get('/create', adminInSessionCheck, productsControllers.create)
 /* CREATE ONE PRODUCT */
-    .post('/create', upLoadImageProduct.single("image"), productsControllers.store, productsValidator)
+    .post('/create', upLoadImageProduct.single("image"), productsValidator,  productsControllers.store)
 
 /* GET PRODUCT DETAIL PAGE */
 router

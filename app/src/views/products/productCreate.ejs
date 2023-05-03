@@ -11,37 +11,37 @@
                 <hr>
                 <form action="/products/create" method="POST" class="productForm__container" enctype="multipart/form-data">
                     <div class="container__desktop">
-                        <div class="box__datos">
-                            <div class="input__container">
+                        <div class="box__datos input__container--boxImage">
+                            <div class="input__container form__input--specification">
                                 <label class="label-style" for="name">Nombre del producto</label>
                                 <input class="input-style" type="text" name="name" placeholder="Ej: Samsung Galaxy M13" id="">
                                 <% if (locals.errors && errors.name) { %>
-                                    <small class="text-danger"><%= errors.name.msg %> </small>
+                                    <small class="text__danger--form"><%= errors.name.msg %> </small>
                                 <% } %>
                             </div>
-                            <div class="input__container">
+                            <div class="input__container form__input--specification">
                                 <label class="label-style" for="discount">Descuento</label>
                                 <input class="input-style" type="text" name="discount" placeholder="Ej: 15" id="">
                                 <% if (locals.errors && errors.discount) { %>
-                                    <small class="text-danger"><%= errors.discount.msg %> </small>
+                                    <small class="text__danger--form"><%= errors.discount.msg %> </small>
                                 <% } %>
                             </div>
                         </div>
-                        <div class="box__profile">
-                            <div class="input__container">
+                        <div class="box__profile input__container--boxImage">
+                            <div class="input__container form__input--specification">
                                 <label class="label-style" for="price">Precio</label>
                                 <input class="input-style" type="text" name="price" placeholder="Ej:1500" id="">
                                 <% if (locals.errors && errors.price) { %>
-                                    <small class="text-danger"><%= errors.price.msg %> </small>
+                                    <small class="text__danger--form"><%= errors.price.msg %> </small>
                                 <% } %>
                             </div>
-                            <div class="input__container input__photo">
-                                <label class="label-style" for="image">Elija la imagen del producto</label>
-                                <input class="input" type="file" name="image" id="image">
-                                <% if (locals.errors && errors.image) { %>
-                                    <small class="text-danger"><%= errors.image.msg %> </small>
-                                <% } %>
+                            <div class="input__container input__photo form__input--specification">
+                                <label class="label-style form__product--textImage" for="image">Elija la imagen del producto</label>
+                                <input class="input form__product--inputImage" type="file" name="image" id="image">
                             </div>
+                            <% if (locals.errors && errors.image) { %>
+                                <small class="text__danger--form"><%= errors.image.msg %> </small>
+                            <% } %>
                         </div>
                     </div>
                     <div class="input__container">
@@ -52,7 +52,7 @@
                             <option value="2">Accesorios</option>
                         </select>
                         <% if (locals.errors && errors.category) { %>
-                            <small class="text-danger"><%= errors.category.msg %> </small>
+                            <small class="text__danger--form"><%= errors.category.msg %> </small>
                         <% } %>
                     </div>
                     <div class="input__container">
@@ -63,7 +63,7 @@
                             <option value="2">Refabricado</option>
                         </select>
                         <% if (locals.errors && errors.subCategory) { %>
-                            <small class="text-danger"><%= errors.subCategory.msg %> </small>
+                            <small class="text__danger--form"><%= errors.subCategory.msg %> </small>
                         <% } %>
                     </div>
                     <div class="input__container">
@@ -79,7 +79,7 @@
                             <option value="7">Otra</option>
                         </select>
                         <% if (locals.errors && errors.brand) { %>
-                            <small class="text-danger"><%= errors.brand.msg %> </small>
+                            <small class="text__danger--form"><%= errors.brand.msg %> </small>
                         <% } %>
                     </div>
 
@@ -162,7 +162,7 @@
                         <div class="textarea__container">
                             <textarea class="input-style textarea__descripction" name="description" id="" cols="30" rows="10"></textarea>
                             <% if (locals.errors && errors.description) { %>
-                                <small class="text-danger"><%= errors.description.msg %> </small>
+                                <small class="text__danger--form"><%= errors.description.msg %> </small>
                             <% } %>
                         </div>
                     </div>

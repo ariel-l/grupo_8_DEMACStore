@@ -11,26 +11,38 @@
                 <form action="/products/edit/<%= productToEdit.id  %>?_method=PUT" method="post" class="productForm__container"
                     enctype="multipart/form-data">
                     <div class="container__desktop">
-                        <div class="box__datos">
-                            <div class="input__container">
+                        <div class="box__datos input__container--boxImage">
+                            <div class="input__container form__input--specification">
                                 <label class="label-style" for="name">Nombre del producto</label>
                                 <input class="input-style" value="<%= productToEdit.name%>" type="text" name="name"
                                     placeholder="Ej: Samsung Galaxy M13" id="">
-                            </div>
-                            <div class="input__container">
+                                    <% if (locals.errors && errors.name) { %>
+                                        <small class="text__danger--form"><%= errors.name.msg %> </small>
+                                    <% } %>
+                                </div>
+                            <div class="input__container form__input--specification">
                                 <label class="label-style" for="discount">Descuento</label>
                                 <input class="input-style" type="text" value="<%= productToEdit.discount %>" name="discount" placeholder="Ej: 15"
                                     id="discount">
+                                <% if (locals.errors && errors.discount) { %>
+                                    <small class="text__danger--form"><%= errors.discount.msg %> </small>
+                                <% } %>
                             </div>
                         </div>
-                        <div class="box__profile">
-                            <div class="input__container">
+                        <div class="box__profile input__container--boxImage">
+                            <div class="input__container form__input--specification">
                                 <label class="label-style" for="price">Precio</label>
                                 <input class="input-style" value="<%= productToEdit.price%>" name="price" placeholder="Ej:1500" id="">
+                                <% if (locals.errors && errors.price) { %>
+                                    <small class="text__danger--form"><%= errors.price.msg %> </small>
+                                <% } %>
                             </div>
-                            <div class="input__container input__photo">
-                                <label class="label-style" for="image">Elija su foto del producto</label>
-                                <input class="input" value="<%= productToEdit.image %>" type="file" name="image" id="">
+                            <div class="input__container form__input--specification input__photo">
+                                <label class="label-style form__product--textImage" for="image">Elija su foto del producto</label>
+                                <input class="input form__product--inputImage" value="<%= productToEdit.image %>" type="file" name="image" id="">
+                                <% if (locals.errors && errors.image) { %>
+                                    <small class="text__danger--form"><%= errors.image.msg %> </small>
+                                <% } %>
                             </div>
                         </div>
                     </div>
@@ -153,6 +165,9 @@
                         <div class="textarea__container">
                             <textarea class="input-style textarea__descripction" name="description" id="" cols="30"
                                 rows="10"><%= productToEdit.description %></textarea>
+                                <% if (locals.errors && errors.description) { %>
+                                    <small class="text__danger--form"><%= errors.description.msg %> </small>
+                                <% } %>
                         </div>
                     </div>
                     <button class="form__button-blue btn btn__submit" type="submit">
