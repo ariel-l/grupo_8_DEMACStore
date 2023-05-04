@@ -6,8 +6,8 @@ module.exports = [
     check('name')
     .notEmpty()
     .withMessage("Por favor ingrese el nombre del producto").bail()
-    .isLength({ min: 3 , max: 40})
-    .withMessage("Por favor ingrese más de 3 caracteres, y menos de 40"),
+    .isLength({ min: 5 , max: 40})
+    .withMessage("Por favor ingrese más de 5 caracteres, y menos de 40"),
 
     check('discount')
     .isInt({ min: 0, max: 75 })
@@ -64,6 +64,6 @@ module.exports = [
     .withMessage('Por favor seleccione una marca'),
 
     check('description')
-    .isLength({ min: 0 , max: 450})
-    .withMessage("Por favor ingrese como máximo 450 caracteres"),
+    .isLength({ min: 20 , max: 450})
+    .withMessage("Por favor ingrese como máximo 450 caracteres, y como minimo 20"),
 ]

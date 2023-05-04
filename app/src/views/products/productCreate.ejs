@@ -14,61 +14,61 @@
                         <div class="box__datos input__container--boxImage">
                             <div class="input__container form__input--specification">
                                 <label class="label-style" for="name">Nombre del producto</label>
-                                <input class="input-style" type="text" name="name" placeholder="Ej: Samsung Galaxy M13" id="">
+                                <input class="input-style" type="text" name="name" id="name" placeholder="Ej: Samsung Galaxy M13" >
                                 <% if (locals.errors && errors.name) { %>
-                                    <small class="text__danger--form"><%= errors.name.msg %> </small>
+                                    <small class="text__danger--form" id="nameErrors"><%= errors.name.msg %> </small>
                                 <% } %>
+                                <small id="nameErrors text__danger--form"></small>
                             </div>
                             <div class="input__container form__input--specification">
                                 <label class="label-style" for="discount">Descuento</label>
-                                <input class="input-style" type="text" name="discount" placeholder="Ej: 15" id="">
+                                <input class="input-style" type="text" name="discount" placeholder="Ej: 15" id="discount">
                                 <% if (locals.errors && errors.discount) { %>
-                                    <small class="text__danger--form"><%= errors.discount.msg %> </small>
+                                    <small class="text__danger--form" id="discountErrors"><%= errors.discount.msg %> </small>
                                 <% } %>
+                                <small id="discountErrors" class="text__danger--form"></small>
                             </div>
                         </div>
                         <div class="box__profile input__container--boxImage">
                             <div class="input__container form__input--specification">
                                 <label class="label-style" for="price">Precio</label>
-                                <input class="input-style" type="text" name="price" placeholder="Ej:1500" id="">
+                                <input class="input-style" type="text" name="price" placeholder="Ej:1500" id="price">
                                 <% if (locals.errors && errors.price) { %>
-                                    <small class="text__danger--form"><%= errors.price.msg %> </small>
+                                    <small class="text__danger--form" id="priceErrors"><%= errors.price.msg %> </small>
                                 <% } %>
+                                <small id="priceErrors" class="text__danger--form"></small>
                             </div>
                             <div class="input__container input__photo form__input--specification">
                                 <label class="label-style form__product--textImage" for="image">Elija la imagen del producto</label>
                                 <input class="input form__product--inputImage" type="file" name="image" id="image">
                             </div>
                             <% if (locals.errors && errors.image) { %>
-                                <small class="text__danger--form"><%= errors.image.msg %> </small>
+                                <small class="text__danger--form" id="imageErrors"><%= errors.image.msg %> </small>
                             <% } %>
+                            <small id="imageErrors" class="text__danger--form"></small>
                         </div>
                     </div>
                     <div class="input__container">
                         <label class="label-style" for="category">Categoría</label>
-                        <select name="category" id="" class="input-style select-category">
+                        <select name="category" id="selectSubCategory" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
                             <option value="1">Celulares</option>
                             <option value="2">Accesorios</option>
                         </select>
-                        <% if (locals.errors && errors.category) { %>
-                            <small class="text__danger--form"><%= errors.category.msg %> </small>
-                        <% } %>
+                        <small id="categoryErrors" class="text__danger--form"></small>
                     </div>
                     <div class="input__container">
                         <label class="label-style" for="subCategory">Subcategoría</label>
-                        <select name="subCategory" id="" class="input-style select-category">
+                        <select name="subCategory" id="subCategory" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
                             <option value="1">Nuevo</option>
                             <option value="2">Refabricado</option>
                         </select>
-                        <% if (locals.errors && errors.subCategory) { %>
-                            <small class="text__danger--form"><%= errors.subCategory.msg %> </small>
-                        <% } %>
+                        <small id="subCategoryErrors" class="text__danger--form"></small>
                     </div>
                     <div class="input__container">
                         <label class="label-style" for="brand">Marca</label>
-                        <select name="brand" id="" class="input-style select-category">
+                        <select name="brand" id="brand" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
                             <option value="1">Samsung</option>
                             <option value="2">Motorola</option>
@@ -78,9 +78,7 @@
                             <option value="6">LG</option>
                             <option value="7">Otra</option>
                         </select>
-                        <% if (locals.errors && errors.brand) { %>
-                            <small class="text__danger--form"><%= errors.brand.msg %> </small>
-                        <% } %>
+                        <small id="brandErrors" class="text__danger--form"></small>
                     </div>
 
                     <div class="container__desktop">
@@ -160,12 +158,11 @@
                     <div class="input__container textarea__container--global">
                         <label for="">Otras descripciones del producto:</label>
                         <div class="textarea__container">
-                            <textarea class="input-style textarea__descripction" name="description" id="" cols="30" rows="10"></textarea>
-                            <% if (locals.errors && errors.description) { %>
-                                <small class="text__danger--form"><%= errors.description.msg %> </small>
-                            <% } %>
+                            <textarea class="input-style textarea__descripction" name="description" id="description" cols="30" rows="10"></textarea>
                         </div>
+                        <small id="brandErrors" class="text__danger--form"></small>
                     </div>
+
                     <button class="form__button-blue btn btn__submit" type="submit">
                         <div class="button__container btn btn__submit">
                             Crear producto
@@ -175,6 +172,10 @@
                 </form>
             </div>
             <%- include('../partials/footer.ejs') %>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+            <script src="/js/productCreate.js"></script>
+            <script src="http://momentjs.com/downloads/moment.min.js"></script>
     </body>
 
 </html>

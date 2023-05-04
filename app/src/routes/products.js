@@ -38,8 +38,8 @@ router
 
 /* GET PRODUCT MODIFY FORM */
 router
-    .get("/edit/:id", adminInSessionCheck, productsControllers.modify, productsValidator)
-    .put("/edit/:id", adminInSessionCheck, upLoadImageProduct.single("image"), productsControllers.update)
+    .get("/edit/:id", adminInSessionCheck, productsControllers.modify)
+    .put("/edit/:id", adminInSessionCheck, upLoadImageProduct.single("image"), productsValidator, productsControllers.update)
 
 /* DELETE ONE PRODUCT */
     .delete('/edit/delete/:id', adminInSessionCheck, productsControllers.destroy);

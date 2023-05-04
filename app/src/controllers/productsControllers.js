@@ -349,6 +349,7 @@ module.exports = {
                                     product,
                                     categories,
                                     subcategories,
+                                    productToEdit,
                                     errors: errors.mapped(),
                                 });
                             } else {
