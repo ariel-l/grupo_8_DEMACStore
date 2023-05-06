@@ -13,7 +13,7 @@ router
 /* GET - List products for category */
 router
     .get("/category/:id", productsControllers.category)
-
+/* GET - List products for subcategory */
 router
     .get("/subcategory/:id", productsControllers.subcategory)
 

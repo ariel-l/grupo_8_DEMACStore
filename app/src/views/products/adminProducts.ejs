@@ -12,7 +12,7 @@
                     <%- include('../partials/navUsers') %>
                     <section class="admin__section--container">
                       <h2 class="admin__title">Productos</h2>
-                        <form class="header__search--form" action="/search" method="GET">
+                        <form class="header__search--form" action="/searchProduct" method="GET">
                             <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas..." name="keywords">
                             <button class="search__bar--btn" type="submit">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -27,7 +27,7 @@
                                 <tr>
                                   <th scope="col">Id</th>
                                   <th scope="col">Nombre</th>
-                                  <th scope="col" class="control__admin-responsive">Categoría</th>
+                                  <th scope="col" class="control__admin-responsive">Marca</th>
                                   <th scope="col" class="control__admin-responsive">Subcategoría</th>
                                   <th scope="col" class="control__admin-responsive">Precio</th>
                                   <th scope="col" class="control__admin-responsive">Descuento</th>
@@ -41,8 +41,8 @@
                                     <tr class="<%= index % 2 == 0 ? 'even' : 'odd' %>">
                                         <td><%- product.id%></td>
                                         <td><%- product.name%></td>
-                                        <td class="control__admin-responsive"><%- product.category%></td>
-                                        <td class="control__admin-responsive"><%- product.subCategory%></td>
+                                        <td class="control__admin-responsive"><%- product.brands.name%></td>
+                                        <td class="control__admin-responsive"><%- product.subcategories.name%></td>
                                         <td class="control__admin-responsive">$<%= formatNumber(product.price) %></td>
                                         <td class="control__admin-responsive"><%- product.discount%>%</td>
                                         <td><a href="/products/<%= product.id%> "><i class="fa-regular fa-eye"></i></a></td>

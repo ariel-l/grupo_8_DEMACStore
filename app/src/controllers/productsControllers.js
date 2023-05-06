@@ -46,16 +46,30 @@ module.exports = {
     },
     productsList: (req, res) => {
         Product.findAll({
-             include: [
-                 {
+            include: [
+                {
                     association: "subcategories",
-                     include: {
-                         association: "categories",
-                     }
-                 }
-             ]
-         })
+                    include: {
+                        association: "categories",
+                    }
+                },
+                {
+                    association: "brands"
+                }
+            ]
+        })
             .then((products) => {
+                const spanishSubcategories = {
+                    'News': 'Nuevo',
+                    'Refubrishes': 'Refabricado'
+                }
+                const modifyProducts = products.map((product) => {
+                    const subcategoryName = product.subcategories.name;
+                    if (spanishSubcategories[subcategoryName]) {
+                        product.subcategories.name = spanishSubcategories[subcategoryName];
+                    }
+                    return product;
+                })
                 return res.render('products/adminProducts', {
                     products,
                     formatNumber,
@@ -63,13 +77,23 @@ module.exports = {
                 })
             })
             .catch(error => console.log(error));
-     },
+    },
 
     productDetail: async (req, res) => {
         const productId = Number(req.params.id);
 
         Product.findByPk(productId, {
-            include: [{ association: "brands" }]
+            include: [
+                {
+                    association: "subcategories",
+                    include: {
+                        association: "categories",
+                    }
+                },
+                {
+                    association: "brands"
+                }
+            ]
         })
             .then(product => {
                 res.render("products/productDetail", {
@@ -111,28 +135,28 @@ module.exports = {
     },
     subcategory: async (req, res) => {
         try {
-          const subcategory = await Subcategory.findByPk(req.params.id, {
-            include: [{ association: "products" }]
-          });
-      
-          if (!subcategory) {
-            return res.status(404).send('Esta subcategoría no encontrada');
-          }
-      
-          const products = subcategory.products.flat();
-      
-          return res.render('products/subcategories', {
-            ...subcategory.dataValues,
-            subcategories: subcategory.subcategories,
-            products,
-            session: req.session,
-            formatNumber,
-            subcategory,
-        });
+            const subcategory = await Subcategory.findByPk(req.params.id, {
+                include: [{ association: "products" }]
+            });
+
+            if (!subcategory) {
+                return res.status(404).send('Esta subcategoría no encontrada');
+            }
+
+            const products = subcategory.products.flat();
+
+            return res.render('products/subcategories', {
+                ...subcategory.dataValues,
+                subcategories: subcategory.subcategories,
+                products,
+                session: req.session,
+                formatNumber,
+                subcategory,
+            });
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      },
+    },
 
     cart: (req, res) => {
         return res.render('products/cart', {
@@ -179,7 +203,7 @@ module.exports = {
                 discount: +req.body.discount,
                 price: +req.body.price,
                 image: req.file ? req.file.filename : "default-image.png",
-                subcategoryID: req.body.subCategory,
+                subcategoryId: req.body.subcategoryId,
                 brandID: req.body.brand,
                 model: req.body.model,
                 os: req.body.os,
@@ -199,9 +223,9 @@ module.exports = {
 
             Product.create(newProduct)
                 .then((product) => {
-                    Subcategory.findByPk(req.body.subCategory)
+                    Subcategory.findByPk(req.body.subcategoryId)
                         .then((subcategory) => {
-                            subcategory.update({ categoryID: req.body.category })
+                            subcategory.update({ categoriesID: req.body.category })
                                 .then(() => console.log("Subcategoría actualizada con éxito"))
                                 .catch((error) => console.log(error));
                         })
@@ -221,6 +245,7 @@ module.exports = {
 
                     Product.update({ images: files.length ? images : [defaultImage] }, { where: { id: product.id } })
                         .then(() => {
+                            res.send(newProduct)
                             return res.redirect('/products');
                         })
                         .catch((error) => console.log(error));
@@ -233,10 +258,23 @@ module.exports = {
 
         const productId = req.params.id;
 
-        Product.findByPk(productId)
-            .then((productToEdit) => {
+        Product.findByPk(productId, {
+            include: [
+                {
+                    association: "subcategories",
+                    include: {
+                        association: "categories",
+                    }
+                },
+                {
+                    association: "brands"
+                }
+            ]
+        })
+            .then((product) => {
                 res.render("products/productModify", {
-                    productToEdit,
+                    product,
+                    formatNumber,
                     session: req.session
                 })
             })
@@ -269,6 +307,7 @@ module.exports = {
                 weight,
                 cardSlot,
                 description,
+                categoriesID,
             } = req.body;
 
             Product.update({
@@ -292,6 +331,7 @@ module.exports = {
                 weight,
                 cardSlot,
                 description,
+                categoriesID,
             }, {
                 where: {
                     id: productId,
@@ -299,40 +339,6 @@ module.exports = {
             })
                 .then(() => {
                     return res.redirect(`/products/${productId}`);
-                })
-                .catch(error => console.log(error));
-            Product.update({
-                name,
-                discount,
-                price,
-                image: req.file ? req.file.filename : image,
-                subcategoryID,
-                brandID,
-                model,
-                os,
-                screen,
-                internalMemory,
-                ram,
-                frontCamera,
-                chipset,
-                mainCamera,
-                video,
-                dimensions,
-                battery,
-                weight,
-                cardSlot,
-                description,
-            }, {
-                where: {
-                    id: productId,
-                },
-            })
-                .then((response) => {
-                    if (response) {
-                        return res.redirect(`/products/${productId}`)
-                    } else {
-                        throw new Error('Mensaje de error')
-                    }
                 })
                 .catch(error => console.log(error));
         } else {
@@ -349,7 +355,6 @@ module.exports = {
                                     product,
                                     categories,
                                     subcategories,
-                                    productToEdit,
                                     errors: errors.mapped(),
                                 });
                             } else {
@@ -361,6 +366,7 @@ module.exports = {
                 .catch(error => console.log(error));
         }
     },
+
 
     destroy: (req, res) => {
 
