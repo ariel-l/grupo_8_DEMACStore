@@ -29,6 +29,7 @@
                                   <th scope="col">Nombre</th>
                                   <th scope="col" class="control__admin-responsive">Marca</th>
                                   <th scope="col" class="control__admin-responsive">Subcategoría</th>
+                                  <th scope="col" class="control__admin-responsive">Categoría</th>
                                   <th scope="col" class="control__admin-responsive">Precio</th>
                                   <th scope="col" class="control__admin-responsive">Descuento</th>
                                   <th scope="col">Ver</th>
@@ -43,6 +44,16 @@
                                         <td><%- product.name%></td>
                                         <td class="control__admin-responsive"><%- product.brands.name%></td>
                                         <td class="control__admin-responsive"><%- product.subcategories.name%></td>
+                                        <td class="control__admin-responsive">
+                                          <% const categoryID = product.subcategories.categoriesID %>
+                                          <% if (categoryID === 1) { %>
+                                            Celular
+                                          <% } else if (categoryID === 2) { %>
+                                            Accesorio
+                                          <% } else { %>
+                                            <%= categoryID %>
+                                          <% } %>
+                                        </td>                                        
                                         <td class="control__admin-responsive">$<%= formatNumber(product.price) %></td>
                                         <td class="control__admin-responsive"><%- product.discount%>%</td>
                                         <td><a href="/products/<%= product.id%> "><i class="fa-regular fa-eye"></i></a></td>

@@ -272,11 +272,18 @@ module.exports = {
             ]
         })
             .then((product) => {
-                res.render("products/productModify", {
-                    product,
-                    formatNumber,
-                    session: req.session
-                })
+                const categoriesPromise = Category.findAll();
+                const subcategoriesPromise = Subcategory.findAll();
+
+                Promise.all([categoriesPromise, subcategoriesPromise])
+                    .then(([categories, subcagories]) => {
+                        res.render("products/productModify", {
+                            product,
+                            formatNumber,
+                            session: req.session
+                        })
+                    })
+                    .catch(error => console.log(error))
             })
             .catch(error => console.log(error))
     },
@@ -307,37 +314,62 @@ module.exports = {
                 weight,
                 cardSlot,
                 description,
-                categoriesID,
             } = req.body;
 
-            Product.update({
-                name,
-                discount,
-                price,
-                image: req.file ? req.file.filename : image,
-                subcategoryID,
-                brandID,
-                model,
-                os,
-                screen,
-                internalMemory,
-                ram,
-                frontCamera,
-                chipset,
-                mainCamera,
-                video,
-                dimensions,
-                battery,
-                weight,
-                cardSlot,
-                description,
-                categoriesID,
-            }, {
-                where: {
-                    id: productId,
-                },
+            Product.findByPk(productId, {
+                include: [
+                    {
+                        association: "subcategories",
+                        include: {
+                            association: "categories",
+                        },
+                    },
+                    {
+                        association: "brands",
+                    },
+                ],
             })
-                .then(() => {
+                .then((product) => {
+                    return product.update({
+                        name,
+                        discount,
+                        price,
+                        image: req.file ? req.file.filename : image,
+                        subcategoryID: req.body.subCategory,
+                        brandID: req.body.brand,
+                        model,
+                        os,
+                        screen,
+                        internalMemory,
+                        ram,
+                        frontCamera,
+                        chipset,
+                        mainCamera,
+                        video,
+                        dimensions,
+                        battery,
+                        weight,
+                        cardSlot,
+                        description,
+                    }, {
+                        where: {
+                            id: productId,
+                        },
+                    });
+                })
+                .then((product) => {
+                    return product.update(
+                        {
+                            categoriesID: req.body.category,
+                        },
+                        {
+                            where: {
+                                id: productId,
+                            },
+                        }
+                    );
+                })
+                .then((product) => {
                     return res.redirect(`/products/${productId}`);
                 })
                 .catch(error => console.log(error));
@@ -355,6 +387,7 @@ module.exports = {
                                     product,
                                     categories,
                                     subcategories,
+                                    brands,
                                     errors: errors.mapped(),
                                 });
                             } else {

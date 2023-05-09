@@ -51,8 +51,8 @@
                         <label class="label-style" for="category">Categoría</label>
                         <select name="category" id="category" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="1"<%=product.subcategories.categoriesID === 1 && "selected" %>> Celulares</option>
-                            <option value="2"<%=product.subcategories.categoriesID === 2 && "selected" %> >Accesorios</option>
+                            <option value="1" <%= product.subcategories.categoriesID === 1 && "selected" %>>Celulares</option>
+                            <option value="2" <%= product.subcategories.categoriesID === 2 && "selected" %>>Accesorios</option>
                         </select>
                     </div>
 
@@ -60,21 +60,22 @@
                         <label class="label-style" for="subCategory">Subcategoría</label>
                         <select name="subCategory" id="subCategory" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="1" <%=product.subcategoryID === 1 && "selected" %>>Nuevo</option>
-                            <option value="2" <%=product.subcategoryID === 2 && "selected" %>>Refabricado</option>
+                            <option value="1" <%= product.subcategoryID === 1 && "selected" %>>Celular Nuevo</option>
+                            <option value="2" <%= product.subcategoryID === 2 && "selected" %>>Celular Refabricado</option>
+                            <option value="3" <%= product.subcategoryID === 3 && "selected" %>>Accesorio Nuevo</option>
                         </select>
                     </div>
                     <div class="input__container">
                         <label class="label-style" for="brand">Marca</label>
                         <select name="brand" id="brand" class="input-style select-category">
                             <option hidden selected>Selecciona una opción</option>
-                            <option value="1" <%=product.brandID === 1 && "selected" %>>Samsung</option>
-                            <option value="2" <%=product.brandID === 2 && "selected" %>>Motorola</option>
-                            <option value="3" <%=product.brandID === 3 && "selected" %>>Xiaomi</option>
-                            <option value="4" <%=product.brandID === 4 && "selected" %>>Apple</option>
-                            <option value="5" <%=product.brandID === 5 && "selected" %>>Huawei</option>
-                            <option value="6" <%=product.brandID === 6 && "selected" %>>LG</option>
-                            <option value="7" <%=product.brandID === 7 && "selected" %>>Otra</option>
+                            <option value="1" <%= product.brandID === 1 && "selected" %>>Samsung</option>
+                            <option value="2" <%= product.brandID === 2 && "selected" %>>Motorola</option>
+                            <option value="3" <%= product.brandID === 3 && "selected" %>>Xiaomi</option>
+                            <option value="4" <%= product.brandID === 4 && "selected" %>>Apple</option>
+                            <option value="5" <%= product.brandID === 5 && "selected" %>>Huawei</option>
+                            <option value="6" <%= product.brandID === 6 && "selected" %>>LG</option>
+                            <option value="7" <%= product.brandID === 7 && "selected" %>>Otra</option>
                         </select>
                     </div>
 
@@ -186,6 +187,9 @@
             </div>
             <!-- </div> -->
             <%- include('../partials/footer.ejs') %>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+            <script src="/js/productCreate.js"></script>
+            <script src="http://momentjs.com/downloads/moment.min.js"></script>
     </body>
 
 </html>
