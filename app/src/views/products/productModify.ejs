@@ -36,34 +36,35 @@
                             </div>
                             <div class="input__container form__input--specification input__photo">
                                 <label class="label-style form__product--textImage" for="image">Elija su foto del producto</label>
-                                <input class="input form__product--inputImage" value="<%= product.image %>" type="file" name="image" id="">
-                                <% if (locals.errors && errors.image) { %>
-                                    <small class="text__danger--form" id="imageErrors"><%= errors.image.msg %> </small>
-                                <% } %>
+                                <input class="input form__product--inputImage" value="<%= product.image %>" type="file" name="image" id="image">
+                                    <small class="text__danger--form" id="imageErrors"><%= locals.errors && errors.image ? errors.image.msg : '' %></small>
                             </div>
                         </div>
                     </div>
                     
                     <div class="input__container">
                         <label class="label-style" for="category">Categoría</label>
-                        <select name="category" id="category" class="input-style select-category">
-                            <option hidden selected>Selecciona una opción</option>
-                            <option value="1" <%= product.subcategories && product.subcategories.categoriesID === 1 && "selected" %>>Celulares</option>
-                            <option value="2" <%= product.subcategories && product.subcategories.categoriesID === 2 && "selected" %>>Accesorios</option>
+                        <select name="category" id="category" class="input-style select-category" onChange="handleCategoryChange()">
+                          <option hidden selected>Selecciona una opción</option>
+                          <option value="1" <%= product.subcategories && product.subcategories.categoriesID === 1 && "selected" %>>Celulares</option>
+                          <option value="2" <%= product.subcategories && product.subcategories.categoriesID === 2 && "selected" %>>Accesorios</option>
                         </select>
                         <small id="categoryErrors" class="text__danger--form"><%= locals.errors && errors.category ? errors.category.msg : '' %></small>
-                    </div>
-
-                    <div class="input__container">
+                      </div>
+                      
+                      <div class="input__container">
                         <label class="label-style" for="subCategory">Subcategoría</label>
                         <select name="subCategory" id="subCategory" class="input-style select-category">
-                            <option hidden selected>Selecciona una opción</option>
+                          <option hidden selected>Selecciona una opción</option>
+                          <% if (product.subcategories && product.subcategories.categoriesID === 1) { %>
                             <option value="1" <%= product.subcategoryID === 1 && "selected" %>>Celular Nuevo</option>
                             <option value="2" <%= product.subcategoryID === 2 && "selected" %>>Celular Refabricado</option>
+                          <% } else if (product.subcategories && product.subcategories.categoriesID === 2) { %>
                             <option value="3" <%= product.subcategoryID === 3 && "selected" %>>Accesorio Nuevo</option>
+                          <% } %>
                         </select>
                         <small id="subCategoryErrors" class="text__danger--form"></small>
-                    </div>
+                      </div>
                     <div class="input__container">
                         <label class="label-style" for="brand">Marca</label>
                         <select name="brand" id="brand" class="input-style select-category">
@@ -164,8 +165,7 @@
                     <div class="input__container textarea__container--global">
                         <label for="description">Otras descripciones del producto:</label>
                         <div class="textarea__container">
-                            <textarea class="input-style textarea__descripction" name="description" id="description" cols="30"
-                                rows="10"><%= product.description %></textarea>
+                            <textarea class="input-style textarea__descripction" name="description" id="description" cols="30" rows="10"><%= product.description %></textarea>
                                     <small class="text__danger--form" id="descriptionErrors"><%= locals.errors && errors.description ? errors.description.msg : '' %></small>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
             <%- include('../partials/footer.ejs') %>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
             <script src="/js/product.js"></script>
+            <script src="/js/subCategoryOptions.js"></script>
             <script src="http://momentjs.com/downloads/moment.min.js"></script>
     </body>
-
 </html>
