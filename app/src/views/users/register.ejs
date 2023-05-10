@@ -4,7 +4,7 @@
 
     <body class="register__body">
         <%- include('../partials/header.ejs') %>
-            <form action="/users/register" method="POST" enctype="multipart/form-data">
+            <form action="/users/register" id="register" method="POST" enctype="multipart/form-data">
                 <div class="register">
                     <div class="register__general">
                         <div class="register__card">
@@ -13,45 +13,54 @@
                                 <hr class="register__hr">
                                 <div class="register__card--input">
                                     <label for="username">Nombre de usuario</label>
-                                    <input class="register__input" type="text" name="username" placeholder="Escribe aquí tu usuario" id="">
+                                    <input class="register__input" type="text" name="username"
+                                         placeholder="Escribe aquí tu usuario" id="username">
                                     <% if (locals.errors && errors.username) { %>
-                                        <p class="register__input--error">
+                                        <p class="register__input--error" id="userErrors">
                                             <%= errors.username.msg %>
                                         </p>
                                         <% } %>
                                             <label for="email">Correo electronico</label>
-                                            <input class="register__input" type="email" name="email" placeholder="Escribe aquí tu correo" id="">
+                                            <input class="register__input" type="email" name="email" 
+                                                placeholder="Escribe aquí tu correo" id="email">
                                             <% if (locals.errors && errors.email) { %>
-                                                <p class="register__input--error">
+                                                <p class="register__input--error" id="emailErrors">
                                                     <%= errors.email.msg %>
                                                 </p>
                                                 <% } %>
                                                     <label for="password">Contraseña</label>
                                                     <input class="register__input" type="password" name="password"
-                                                        placeholder="Escribe aquí tu contraseña" id="">
+                                                        placeholder="Escribe aquí tu contraseña" id="password">
                                                     <% if (locals.errors && errors.password) { %>
-                                                        <p class="register__input--error">
+                                                        <p class="register__input--error" id="passwordErrors">
                                                             <%= errors.password.msg %>
                                                         </p>
                                                         <% } %>
                                                             <label for="pass2">Confirmar contraseña</label>
                                                             <input class="register__input" type="password" name="pass2"
-                                                                placeholder="Escribe aquí tu contraseña" id="">
+                                                                placeholder="Escribe aquí tu contraseña" id="pass2">
                                                             <% if (locals.errors && errors.pass2) { %>
-                                                                <p class="register__input--error">
+                                                                <p class="register__input--error" id="pass2Errors">
                                                                     <%= errors.pass2.msg %>
                                                                 </p>
                                                                 <% } %>
-                                                                    <div class="register__input--avatar">
+                                                                    <div class="img-container" id="img-preview">        
+                                                                        </div>
+                                                                    <div class="register__input--avatar">            
                                                                         <p class="register__input--textAvatar">Agregar foto de perfil</p>
-                                                                        <input type="file" name="avatar" class="register__input--file">
+                                                                        <input type="file" id="avatar" name="avatar" class="register__input--file">                                                                       
+                                                                        <% if (locals.errors && errors.avatar) { %>
+                                                                            <p class="register__input--error" id="avatarErrors">
+                                                                        <%= errors.avatar.msg %>
+                                                                        <% } %>
+                                                        </p>
                                                                     </div>
                                 </div>
                                 <div class="register__form--check">
                                     <input type="checkbox" name="terms" id="check">
                                     <label class="register__check--terms" for="check"> Acepto <a href="">términos y condiciones</a> </label>
                                     <% if (locals.errors && errors.terms) { %>
-                                        <p class="register__input--error">
+                                        <p class="register__input--error" id="checkErrors">
                                             <%= errors.terms.msg %>
                                         </p>
                                         <% } %>
@@ -71,6 +80,9 @@
             </form>
 
             <%- include('../partials/footer.ejs') %>
+    
+            <script src="/js/register.js"></script>
+            
     </body>
 
 
