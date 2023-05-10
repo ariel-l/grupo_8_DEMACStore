@@ -38,7 +38,7 @@ window.addEventListener("load", () => {
                     $password.classList.add("is-invalid");
                     break;
                 case !regExpassword.test($password.value):
-                    $passwordErrors.innerText = "Email o contraseña inválido";
+                    $passwordErrors.innerText = "Email o contraseña invalido";
                     $password.classList.add("is-invalid");
                     break;
                 default:
