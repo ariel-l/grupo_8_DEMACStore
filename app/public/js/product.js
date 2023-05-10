@@ -21,10 +21,10 @@ window.addEventListener("load", () => {
         $brandErrors = qs('#brandErrors'),
         $inputDescription = qs('#description'),
         $descriptionErrors = qs('#descriptionErrors');
-        regExName = `^[A-Z][a-zA-Z0-9]{4,39}$`;
-        regExDiscount = `^((7[5-9])|([89][0-9])|100)%$`;
-        refExPrice = `^[1-9][0-9]*(\.[0-9]+)?$`;
-        refExDescription = /^.{20,450}$/;
+        regExName = /^[A-Z][a-zA-Z0-9]{4,39}$/;
+        regExDiscount = /^((7[5-9])|([89][0-9])|100)%$/;
+        refExPrice = /^([1-9][0-9]{2,}|[1-9][0-9]*\.[0-9]+)$/;
+        regExDescription = /^.{20,450}$/;
 
 
     /* Validaciones - Nombre */
@@ -35,7 +35,7 @@ window.addEventListener("load", () => {
                 $inputName.classList.add("is-invalid");
                 break;
             case !regExName.test($inputName.value):
-                $nameErrors.innerText = "El nombre debe empezar con mayúscula y contener menos de 40 caracteres";
+                $nameErrors.innerText = "El nombre debe empezar con mayúscula y contener entre 5 y 40 caracteres";
                 $inputName.classList.add("is-invalid");
                 break;
             default:
@@ -64,7 +64,7 @@ window.addEventListener("load", () => {
     /* Validaciones - Precio */
     $inputPrice.addEventListener("blur", () => {
         switch (true) {
-            case !$inputPrice.value || !regExPrice.test($inputPrice.value):
+            case !$inputPrice.value || !refExPrice.test($inputPrice.value) || parseFloat($inputPrice.value) <= 100:
                 $priceErrors.innerText = "El precio es inválido";
                 $inputPrice.classList.add("is-invalid");
                 break;
@@ -74,7 +74,7 @@ window.addEventListener("load", () => {
                 $priceErrors.innerText = "";
                 break;
         }
-    })
+    });
 
     /* Validaciones - Imagen */
     $inputImage.addEventListener('blur', () => {
@@ -87,6 +87,14 @@ window.addEventListener("load", () => {
                 $inputImage.classList.add('is-invalid');
                 break;
             case !allowedExtensions.includes(fileExtension):
+                $imageErrors.innerText = "Formato de imagen inválido";
+                $inputImage.classList.add('is-invalid');
+                break;
+            default:
+                $inputImage.classList.remove('is-invalid');
+                $inputImage.classList.add('is-valid');
+                $imageErrors.innerText = "";
+                break;
         }
     })
     /* Validaciones - Categoría y subcategoría */
@@ -138,22 +146,21 @@ window.addEventListener("load", () => {
 
     $inputDescription.addEventListener('blur', () => {
         switch (true) {
-          case !$inputDescription.value.trim():
-            $descriptionErrors.innerText = 'Debes escribir una descripción';
-            $inputDescription.classList.add('is-invalid');
-            break;
-          case !refExDescription.test($inputDescription.value):
-            $descriptionErrors.innerText = 'La descripción debe tener entre 20 y 450 caracteres';
-            $inputDescription.classList.add('is-invalid');
-            break;
-          default:
-            $inputDescription.classList.remove('is-invalid');
-            $inputDescription.classList.add('is-valid');
-            $descriptionErrors.innerText = '';
-            break;
+            case !$inputDescription.value.trim():
+                $descriptionErrors.innerText = 'Debes escribir una descripción';
+                $inputDescription.classList.add('is-invalid');
+                break;
+            case !regExDescription.test($inputDescription.value):
+                $descriptionErrors.innerText = 'La descripción debe tener entre 20 y 450 caracteres';
+                $inputDescription.classList.add('is-invalid');
+                break;
+            default:
+                $inputDescription.classList.remove('is-invalid');
+                $inputDescription.classList.add('is-valid');
+                $descriptionErrors.innerText = '';
+                break;
         }
-      });
-
+    });
       $form.addEventListener("submit", (event) => {
         event.preventDefault();
         let variable = "";
