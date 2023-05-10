@@ -15,11 +15,9 @@
                                     <label for="username">Nombre de usuario</label>
                                     <input class="register__input" type="text" name="username"
                                          placeholder="Escribe aquí tu usuario" id="username">
-                                    <% if (locals.errors && errors.username) { %>
                                         <p class="register__input--error" id="userErrors">
-                                            <%= errors.username.msg %>
+                                            <%= locals.errors && errors.username ? errors.username.msg : '' %>
                                         </p>
-                                        <% } %>
                                             <label for="email">Correo electronico</label>
                                             <input class="register__input" type="email" name="email" 
                                                 placeholder="Escribe aquí tu correo" id="email">

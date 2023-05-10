@@ -13,10 +13,10 @@
                         <form action="/users/login" method="POST">
                             <div class="form__start">
                                 <div class="input__login--container">
-                                    <input class="input__login--style" type="email" name="email" placeholder="Escribe aqui tu mail">
-                                    <% if (locals.errors && errors.email) { %>
-                                        <small class="text-danger"><%= errors.email.msg %> </small>
-                                    <% } %>
+                                    <input class="input__login--style" type="email" name="email" placeholder="Escribe aqui tu mail" id="email">
+                                    <small class="text__danger--form" id="emailErrors">
+                                        <%= locals.errors && errors.email ? errors.email.msg : '' %>
+                                    </small>
                                 </div>
                                 <div class="input__login--container">
                                     <input class="input__login--style" type="password" name="password" placeholder="Contraseña">
@@ -51,6 +51,7 @@
                 </div>
             </div>
             <%- include('../partials/footer') %>
+            <script src="/js/register.js"></script>
     </body>
 
 </html>
