@@ -13,7 +13,7 @@ module.exports = [
     .isInt({ min: 0, max: 75 })
     .withMessage("Solo puedes ingresar un descuento máximo del 75%").bail()
     .custom((discount) => {
-        if (discount == 100) {
+        if (discount === 100) {
             throw new Error('El descuento no puede ser del 100%');
         }
         return true;
@@ -27,29 +27,20 @@ module.exports = [
     .isNumeric()
     .withMessage("Solo puedes ingresar números"),
 
-    // body('price')
-    // .custom((price) => {
-    //     if (price === 0) {
-    //         throw new Error('El precio no puede ser de 0 pesos');
-    //     }
-    //     return true;
-    // }),
-    
-
     check("image")
-    .custom((value, { req }) => {
-        const file = req.file;
-        if (!file) {
-            return true;
-        } else {
-            const allowedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
-            const fileExtension = path.extname(file.originalname);
-            if (!allowedExtensions.includes(fileExtension)) {
-                throw new Error("El formato debe ser .jpg , .png , .jpeg , .gif");
+        .custom((value, { req }) => {
+            const file = req.file;
+            if (!file) {
+                return true;
+            } else {
+                const allowedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
+                const fileExtension = path.extname(file.originalname);
+                if (!allowedExtensions.includes(fileExtension)) {
+                    throw new Error("El formato debe ser .jpg, .png, .jpeg o .gif");
+                }
+                return true;
             }
-            return true;
-        }
-    }),
+        }),
 
     check("category")
     .notEmpty()
