@@ -8,34 +8,31 @@
             <div class="register__container--global register__first">
                 <h2 class="register__title">Modificación de productos</h2>
                 <hr>
-                <form action="/products/edit/<%= product.id  %>?_method=PUT" method="post" class="productForm__container"
+                <form action="/products/edit/<%= product.id  %>?_method=PUT" method="post" id="form" class="productForm__container"
                     enctype="multipart/form-data">
                     <div class="container__desktop">
                         <div class="box__datos input__container--boxImage">
                             <div class="input__container form__input--specification">
                                 <label class="label-style" for="name">Nombre del producto</label>
                                 <input class="input-style" value="<%= product.name%>" type="text" name="name"
-                                    placeholder="Ej: Samsung Galaxy M13" id="">
-                                    <% if (locals.errors && errors.name) { %>
-                                        <small class="text__danger--form" id="nameErrors"><%= errors.name.msg %> </small>
-                                    <% } %>
+                                    placeholder="Ej: Samsung Galaxy M13" id="name">
+                                    <small class="text__danger--form" id="nameErrors">
+                                        <%= locals.errors && errors.name ? errors.name.msg : '' %>
+                                    </small>
                                 </div>
                             <div class="input__container form__input--specification">
                                 <label class="label-style" for="discount">Descuento</label>
-                                <input class="input-style" type="text" value="<%= product.discount %>" name="discount" placeholder="Ej: 15"
-                                    id="discount">
-                                <% if (locals.errors && errors.discount) { %>
-                                    <small class="text__danger--form" id="discountErrors><%= errors.discount.msg %> </small>
-                                <% } %>
+                                <input class="input-style" type="text" value="<%= product.discount %>" name="discount" placeholder="Ej: 15" id="discount">
+                                <small class="text__danger--form" id="discountErrors">
+                                    <%= locals.errors && errors.discount ? errors.discount.msg : '' %>
+                                </small>
                             </div>
                         </div>
                         <div class="box__profile input__container--boxImage">
                             <div class="input__container form__input--specification">
                                 <label class="label-style" for="price">Precio</label>
-                                <input class="input-style" value="<%= product.price%>" name="price" placeholder="Ej:1500" id="">
-                                <% if (locals.errors && errors.price) { %>
-                                    <small class="text__danger--form" id="priceErrors"><%= errors.price.msg %> </small>
-                                <% } %>
+                                <input class="input-style" value="<%= product.price%>" name="price" placeholder="Ej:1500" id="price">
+                                    <small class="text__danger--form" id="priceErrors"><%= locals.errors && errors.price ? errors.price.msg : '' %></small>
                             </div>
                             <div class="input__container form__input--specification input__photo">
                                 <label class="label-style form__product--textImage" for="image">Elija su foto del producto</label>
@@ -54,7 +51,7 @@
                             <option value="1" <%= product.subcategories && product.subcategories.categoriesID === 1 && "selected" %>>Celulares</option>
                             <option value="2" <%= product.subcategories && product.subcategories.categoriesID === 2 && "selected" %>>Accesorios</option>
                         </select>
-                        <small id="categoryErrors" class="text__danger--form"></small>
+                        <small id="categoryErrors" class="text__danger--form"><%= locals.errors && errors.category ? errors.category.msg : '' %></small>
                     </div>
 
                     <div class="input__container">
@@ -167,13 +164,12 @@
                     <div class="input__container textarea__container--global">
                         <label for="description">Otras descripciones del producto:</label>
                         <div class="textarea__container">
-                            <textarea class="input-style textarea__descripction" name="description" id="" cols="30"
+                            <textarea class="input-style textarea__descripction" name="description" id="description" cols="30"
                                 rows="10"><%= product.description %></textarea>
-                                <% if (locals.errors && errors.description) { %>
-                                    <small class="text__danger--form" id="descriptionErrors"><%= errors.description.msg %> </small>
-                                <% } %>
+                                    <small class="text__danger--form" id="descriptionErrors"><%= locals.errors && errors.description ? errors.description.msg : '' %></small>
                         </div>
                     </div>
+                    <small id="submitErrors" class="text__danger--form"></small>
                     <button class="form__button-blue btn btn__submit" type="submit">
                         <div class="button__container btn btn__submit">
                             Modificar producto
@@ -191,10 +187,8 @@
             <!-- </div> -->
             <%- include('../partials/footer.ejs') %>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-            <script src="/js/productCreate.js"></script>
+            <script src="/js/product.js"></script>
             <script src="http://momentjs.com/downloads/moment.min.js"></script>
     </body>
 
 </html>
-
-
