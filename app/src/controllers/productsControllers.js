@@ -223,7 +223,7 @@ module.exports = {
 
             Product.create(newProduct)
                 .then((product) => {
-                    Subcategory.findByPk(req.body.subcategoryId)
+                    Subcategory.findByPk(req.body.subcategoryID)
                         .then((subcategory) => {
                             subcategory.update({ categoriesID: req.body.category })
                                 .then(() => console.log("Subcategoría actualizada con éxito"))
@@ -291,7 +291,7 @@ module.exports = {
     update: (req, res) => {
         const errors = validationResult(req);
         const productId = Number(req.params.id);
-
+    
         if (errors.isEmpty()) {
             const {
                 name,
@@ -315,7 +315,7 @@ module.exports = {
                 cardSlot,
                 description,
             } = req.body;
-
+    
             Product.findByPk(productId, {
                 include: [
                     {
@@ -358,16 +358,20 @@ module.exports = {
                     });
                 })
                 .then((product) => {
-                    return product.update(
-                        {
-                            categoriesID: req.body.category,
-                        },
-                        {
-                            where: {
-                                id: productId,
+                    if (req.body.category) {
+                        return product.update(
+                            {
+                                categoriesID: req.body.category,
                             },
-                        }
-                    );
+                            {
+                                where: {
+                                    id: productId,
+                                },
+                            }
+                        );
+                    } else {
+                        return product;
+                    }
                 })
                 .then((product) => {
                     return res.redirect(`/products/${productId}`);
@@ -376,27 +380,18 @@ module.exports = {
         } else {
             const categoriesPromise = Category.findAll();
             const subcategoriesPromise = Subcategory.findAll();
-
+    
             Promise.all([categoriesPromise, subcategoriesPromise])
                 .then(([categories, subcategories]) => {
-                    Product.findByPk(productId)
-                        .then(product => {
-                            if (product) {
-                                return res.render('products/productModify', {
-                                    session: req.session,
-                                    product,
-                                    categories,
-                                    subcategories,
-                                    brands,
-                                    errors: errors.mapped(),
-                                });
-                            } else {
-                                throw new Error('Producto no encontrado')
-                            }
-                        })
-                        .catch(error => console.log(error));
+                    return res.render('products/productModify', {
+                        session: req.session,
+                        product: req.body,
+                        categories,
+                        subcategories,
+                        errors: errors.array(),
+                    });
                 })
-                .catch(error => console.log(error));
+                .catch(error => next(error));
         }
     },
 
