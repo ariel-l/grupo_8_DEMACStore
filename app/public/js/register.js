@@ -19,7 +19,7 @@ window.addEventListener("load", () =>  {
     $imgPreview = qs('#img-preview'),
     regExAlpha = /^[a-zA-Z\sñáéíóúü ]*$/,
     regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
-    regExPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
+    regExPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/;
 
     //username
     $inputUser.addEventListener("blur", () => {
@@ -69,7 +69,7 @@ window.addEventListener("load", () =>  {
                 $pass.classList.add('is-invalid')
                 break;
             case !regExPass.test($pass.value):
-                $passErrors.innerText = 'La contraseña debe tener como mínimo 8 caracteres, al menos una mayúscula, una minúscula y un número';
+                $passErrors.innerText = 'La contraseña debe tener al menos 8 caracteres y contener letras mayúsculas, minúsculas, un número y un carácter especial';
                 $pass.classList.add('is-invalid')
                 break
             default:
