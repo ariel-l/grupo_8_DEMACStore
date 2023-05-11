@@ -20,7 +20,7 @@ window.addEventListener("load", () =>  {
     regExName = /^[a-zA-Z0-9]{1,39}$/;
     regExAlpha = /^[a-zA-Z\sñáéíóúü ]*$/,
     regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
-    regExPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
+    regExPass= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/;
 
     //username
     $inputUser.addEventListener("blur", () => {
