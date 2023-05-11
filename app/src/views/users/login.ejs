@@ -4,29 +4,36 @@
 
     <body class="login__body">
         <%- include('../partials/header.ejs') %>
-        <div class="login">
+            <div class="login">
                 <div class="login__container--general">
                     <section class="form__container--login">
+
                         <span class="login__span">INICIAR SESIÓN</span>
                         <hr class="login__hr--first">
                         <form action="/users/login" method="POST" id="form">
                             <div class="form__start">
                                 <div class="input__login--container">
-                                    <input class="input__login--style" type="email" name="email" id="email" placeholder="Escribe aquí tu correo electrónico">
-                                    <small class="text__danger--form" id="emailErrors"><%= locals.errors && errors.email ? errors.email.msg : '' %></small>
+                                    <input class="input__login--style" type="email" name="email" id="email" placeholder="Escribe aqui tu mail">
+                                    <small class="text__danger--form" id="emailErrors">
+                                        <%= locals.errors && errors.email ? errors.email.msg : '' %>
+                                    </small>
                                 </div>
                                 <div class="input__login--container">
                                     <input class="input__login--style" type="password" id="password" name="password" placeholder="Contraseña">
-                                    <small class="text__danger--form" id="passwordErrors"><%= locals.errors && errors.password ? errors.password.msg : '' %></small>
+                                    <small class="text__danger--form" id="passwordErrors">
+                                        <%= locals.errors && errors.password ? errors.password.msg : '' %>
+                                    </small>
                                     <span><a class="login__forgotYouPass" href="">¿Olvidaste tu contraseña?</a></span>
                                 </div>
+
                                 <div class="login__check">
-                                    <label class="form__input--label-remember" for="remember">Recordar sesión</label>
+                                    <label class="form__input--label-remember" for="remember"> Recordar sesión </label>
                                     <input class="login__check--remember" type="checkbox" name="remember" id="remember" value="">
+                                    <small id="rememberErrors"></small>
                                 </div>
                                 <div class="button__login--container">
                                     <small class="text__danger--form" id="submitErrors"></small>
-                                    <button type="submit" class="btn login__btn-submit" >Iniciar sesión</button>
+                                    <button type="submit" class="btn login__btn-submit">Iniciar sesión</button>
                                 </div>
                                 <label class="login__icons--loginWith" for="login_icons">Iniciar con</label>
                                 <div class="login__icons">
@@ -37,10 +44,11 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <button class="btn login__btn-submit"><a href="/users/register">Registrarme</a></button>
+                                    <button class="btn login__btn-submit"> <a href="/users/register">Registrarme</a></button>
                                 </div>
                             </div>
                         </form>
+
                     </section>
                 </div>
             </div>
