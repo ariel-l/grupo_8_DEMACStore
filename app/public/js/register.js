@@ -17,17 +17,22 @@ window.addEventListener("load", () =>  {
     $file = qs('#avatar'),
     $fileErrors = qs('#avatarErrors'),
     $imgPreview = qs('#img-preview'),
+    regExName = /^[a-zA-Z0-9]{1,39}$/;
     regExAlpha = /^[a-zA-Z\sñáéíóúü ]*$/,
     regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
-    regExPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
+    regExPass= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/;
 
     //username
     $inputUser.addEventListener("blur", () => {
         switch (true) {
             case !$inputUser.value.trim():
-                $userErrors.innerText = "El nombre de usuario es obligatorio";
+                $userErrors.innerText = " Nombre de usuario invalido";
                 $inputUser.classList.add("is-invalid");
-            
+                break;
+            case !regExName.test($inputUser.value):
+                $userErrors.innerText = "El nombre debe contener entre 2 y 40 caracteres";
+                $userErrors.classList.add("is-invalid");
+                break;
             case !regExAlpha.test($inputUser.value) :
                 $userErrors.innerText = " El nombre de usuario es obligatorio";
                 $inputUser.classList.add("is-invalid");
@@ -43,7 +48,7 @@ window.addEventListener("load", () =>  {
     })
     
     //email
-    /*$email.addEventListener('blur', () => {
+    $email.addEventListener('blur', () => {
         switch (true) {
             case !$email.value.trim(): 
                 $emailErrors.innerText = 'El email es obligatorio';
@@ -59,37 +64,7 @@ window.addEventListener("load", () =>  {
                 $emailErrors.innerText = ''
                 break;
         }
-    })*/
-    $email.addEventListener('blur', () => {
-        if (!$email.value.trim()) {
-            $emailErrors.innerText = 'El email es obligatorio';
-            $email.classList.add('is-invalid');
-        } else if (!regExEmail.test($email.value)) {
-            $emailErrors.innerText = 'Email en uso';
-            $email.classList.add('is-invalid');
-        } else {
-            // Realizar la solicitud AJAX para verificar el correo electrónico existente
-            $.ajax({
-                url: '/verificar-email',
-                method: 'POST',
-                data: { email: $email.value },
-                success: function(response) {
-                    if (response.exists) {
-                        $emailErrors.innerText = 'El correo electrónico ya está registrado';
-                        $email.classList.add('is-invalid');
-                    } else {
-                        $email.classList.remove('is-invalid');
-                        $email.classList.add('is-valid');
-                        $emailErrors.innerText = '';
-                    }
-                },
-                error: function() {
-                    // Manejar el error en caso de falla de la solicitud
-                    console.error('Error al verificar el correo electrónico existente');
-                }
-            });
-        }
-    });
+    })
 
     //password
     $pass.addEventListener('blur', () => {
@@ -137,33 +112,6 @@ window.addEventListener("load", () =>  {
          $check.classList.remove('is-invalid');
          $checkErrors.innerHTML = ""
      })
-
-     //form
-    /* $register.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const FORM_ELEMENTS = event.target.elements;
-
-        for (let index = 0; index < FORM_ELEMENTS.length - 1; index++) {
-            const element = FORM_ELEMENTS[index];
-            if(element.value === "" && element.type !== "file") {
-                element.classList.add("is-invalid")
-            }
-        }
-
-        if(!$check.checked){
-            $check.classList.add('is-invalid');
-            $checkErrors.innerHTML = "Debes aceptar las bases y condiciones"
-        }
-
-        let elementosConErrores = document.querySelectorAll(".is-invalid");
-        let errores = elementosConErrores.length > 0; 
-
-        if(errores) {
-            submitErrors.innerText = "Hay errores en el formulario"
-        } else {
-            $register.submit()
-        }
-     })*/
 
      //avatar
      $file.addEventListener('change', () => {
