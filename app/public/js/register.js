@@ -29,7 +29,7 @@ window.addEventListener("load", () =>  {
                 $inputUser.classList.add("is-invalid");
             
             case !regExAlpha.test($inputUser.value) :
-                $userErrors.innerText = " Nombre invalido";
+                $userErrors.innerText = " El nombre de usuario es obligatorio";
                 $inputUser.classList.add("is-invalid");
 
                 break;
@@ -43,7 +43,7 @@ window.addEventListener("load", () =>  {
     })
     
     //email
-    $email.addEventListener('blur', () => {
+    /*$email.addEventListener('blur', () => {
         switch (true) {
             case !$email.value.trim(): 
                 $emailErrors.innerText = 'El email es obligatorio';
@@ -59,7 +59,37 @@ window.addEventListener("load", () =>  {
                 $emailErrors.innerText = ''
                 break;
         }
-    })
+    })*/
+    $email.addEventListener('blur', () => {
+        if (!$email.value.trim()) {
+            $emailErrors.innerText = 'El email es obligatorio';
+            $email.classList.add('is-invalid');
+        } else if (!regExEmail.test($email.value)) {
+            $emailErrors.innerText = 'Email en uso';
+            $email.classList.add('is-invalid');
+        } else {
+            // Realizar la solicitud AJAX para verificar el correo electrónico existente
+            $.ajax({
+                url: '/verificar-email',
+                method: 'POST',
+                data: { email: $email.value },
+                success: function(response) {
+                    if (response.exists) {
+                        $emailErrors.innerText = 'El correo electrónico ya está registrado';
+                        $email.classList.add('is-invalid');
+                    } else {
+                        $email.classList.remove('is-invalid');
+                        $email.classList.add('is-valid');
+                        $emailErrors.innerText = '';
+                    }
+                },
+                error: function() {
+                    // Manejar el error en caso de falla de la solicitud
+                    console.error('Error al verificar el correo electrónico existente');
+                }
+            });
+        }
+    });
 
     //password
     $pass.addEventListener('blur', () => {
@@ -129,7 +159,7 @@ window.addEventListener("load", () =>  {
         let errores = elementosConErrores.length > 0; 
 
         if(errores) {
-            submitErrors.innerText = "Hay errores en el registerulario"
+            submitErrors.innerText = "Hay errores en el formulario"
         } else {
             $register.submit()
         }
