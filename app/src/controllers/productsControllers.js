@@ -1,5 +1,5 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Sequelize, Category, Subcategory } = require('../database/models');
+const { Product, Sequelize, Category, Subcategory, Brand } = require('../database/models');
 const { Op } = Sequelize;
 
 const formatNumber = number => number.toLocaleString('es-AR', { maximumFractionDigits: 0 });
@@ -167,11 +167,13 @@ module.exports = {
     create: (req, res) => {
         const CATEGORIES_PROMISE = Category.findAll();
         const SUBCATEGORIES_PROMISE = Subcategory.findAll();
+        const BRANDS_PROMISE = Brand.findAll();
 
-        Promise.all([CATEGORIES_PROMISE, SUBCATEGORIES_PROMISE])
-            .then(([categories, subcategories]) => {
+        Promise.all([CATEGORIES_PROMISE, SUBCATEGORIES_PROMISE, BRANDS_PROMISE])
+            .then(([categories, subcategories, brands]) => {
                 return res.render('products/productCreate', {
                     session: req.session,
+                    brands,
                     categories,
                     subcategories,
                 });
@@ -185,11 +187,13 @@ module.exports = {
         if (!errors.isEmpty()) {
             const CATEGORIES_PROMISE = Category.findAll();
             const SUBCATEGORIES_PROMISE = Subcategory.findAll();
+            const BRANDS_PROMISE = Brand.findAll();
 
-            Promise.all([CATEGORIES_PROMISE, SUBCATEGORIES_PROMISE])
-                .then(([categories, subcategories]) => {
+            Promise.all([CATEGORIES_PROMISE, SUBCATEGORIES_PROMISE, BRANDS_PROMISE])
+                .then(([categories, subcategories, brands]) => {
                     return res.render('products/productCreate', {
                         session: req.session,
+                        brands,
                         categories,
                         subcategories,
                         errors: errors.mapped(),
@@ -203,7 +207,7 @@ module.exports = {
                 discount: +req.body.discount,
                 price: +req.body.price,
                 image: req.file ? req.file.filename : "default-image.png",
-                subcategoryId: req.body.subcategoryId,
+                subcategoryID: req.body.subCategory,
                 brandID: req.body.brand,
                 model: req.body.model,
                 os: req.body.os,
@@ -245,7 +249,6 @@ module.exports = {
 
                     Product.update({ images: files.length ? images : [defaultImage] }, { where: { id: product.id } })
                         .then(() => {
-                            res.send(newProduct)
                             return res.redirect('/products');
                         })
                         .catch((error) => console.log(error));
@@ -394,6 +397,7 @@ module.exports = {
                 .catch(error => next(error));
         }
     },
+
 
     destroy: (req, res) => {
 
