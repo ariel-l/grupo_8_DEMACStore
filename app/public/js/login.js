@@ -1,5 +1,5 @@
-let qs = (elemento) => {
-    return document.querySelector(elemento);
+let qs = (element) => {
+    return document.querySelector(element);
 };
 
 window.addEventListener("load", () => {
@@ -7,11 +7,8 @@ window.addEventListener("load", () => {
         $emailErrors = qs("#emailErrors"),
         $password = qs("#password"),
         $passwordErrors = qs("#passwordErrors"),
-        $remember = qs('#remember'),
-        $rememberErrors = qs('#rememberErrors'),
         $form = qs("#form"),
-        regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i, 
-    regExpassword = /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{6,12}$/;
+        regExEmail = `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`;
 
     $email.addEventListener("blur", () => {
         switch (true) {
@@ -37,10 +34,6 @@ window.addEventListener("load", () => {
                 $passwordErrors.innerText = "La contraseña es obligatoria";
                 $password.classList.add("is-invalid");
                 break;
-            case !regExPassword.test($password.value):
-                $passwordErrors.innerText = "Email o contraseña inválido";
-                $password.classList.add("is-invalid");
-                break;
             default:
                 $password.classList.remove("is-invalid");
                 $password.classList.add("is-valid");
@@ -49,14 +42,24 @@ window.addEventListener("load", () => {
         }
     });
 
-    $remember.addEventListener('click', () => {
-        $rememberErrors.innerHTML = "";
-    });
-
     $form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if ($email.value.trim() && $password.value.trim()) {
-            $form.submit();
+        const FORM_ELEMENTS = event.target.elements;
+
+        for (let index = 0; index < FORM_ELEMENTS.length - 1; index++) {
+              const element = FORM_ELEMENTS[index];
+              if (element.value === "" && element.type !== "file") {
+                    element.classList.add("is-invalid");
+              }
+        }
+
+        let elementosConErrores = document.querySelectorAll(".is-invalid");
+        let errores = elementosConErrores.length > 0;
+
+        if (errores) {
+              submitErrors.innerText = "Hay errores en el formulario";
+        } else {
+              $form.submit();
         }
     });
 });
