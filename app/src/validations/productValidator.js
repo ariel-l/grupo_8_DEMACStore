@@ -1,5 +1,5 @@
 let { check, body } = require('express-validator');
-const { Product } = require("../database/models");
+const { Product, Subcategory, Category } = require("../database/models");
 const path = require("path");
 
 module.exports = [
@@ -10,8 +10,12 @@ module.exports = [
     .withMessage("Por favor ingrese más de 5 caracteres, y menos de 40"),
 
     check('discount')
+    .notEmpty()
+    .withMessage('Por favor ingrese un descuento').bail()
     .isInt({ min: 0, max: 75 })
-    .withMessage("Solo puedes ingresar un descuento máximo del 75%").bail()
+    .withMessage("Solo puedes ingresar un descuento máximo del 75%").bail(),
+    
+    body('discount')
     .custom((discount) => {
         if (discount === 100) {
             throw new Error('El descuento no puede ser del 100%');
@@ -23,9 +27,17 @@ module.exports = [
     .notEmpty()
     .withMessage('Por favor ingrese un precio').bail()
     .isFloat({ min: 100 })
-    .withMessage('Por favor ingrese un precio mayor en pesos')
+    .withMessage('Por favor ingrese un precio mayor a 100 pesos')
     .isNumeric()
     .withMessage("Solo puedes ingresar números"),
+
+    body('price')
+    .custom((price) => {
+        if (price === 0) {
+            throw new Error('El precio no puede ser de 0 pesos');
+        }
+        return true;
+    }),
 
     check("image")
         .custom((value, { req }) => {

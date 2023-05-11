@@ -1,17 +1,14 @@
-let qy = (elemento) => {
+let qs = (elemento) => {
     return document.querySelector(elemento);
 };
 
 window.addEventListener("load", () => {
-    let $email = qy("#email"),
-        $emailErrors = qy("#emailErrors"),
-        $password = qy("#password"),
-        $passwordErrors = qy("#passwordErrors"),
-        $remember = qs('#remember'),
-        $rememberErrors = qs('#rememberErrors'),
-        $form = qy("#form"),
-        regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i, 
-    regExpassword = /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{6,12}$/;
+    let $email = qs("#email"),
+        $emailErrors = qs("#emailErrors"),
+        $password = qs("#password"),
+        $passwordErrors = qs("#passwordErrors"),
+        $form = qs("#form"),
+        regExEmail = `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`;
 
     $email.addEventListener("blur", () => {
         switch (true) {
@@ -37,23 +34,12 @@ window.addEventListener("load", () => {
                     $passwordErrors.innerText = "La contraseña es obligatoria";
                     $password.classList.add("is-invalid");
                     break;
-                case !regExpassword.test($password.value):
-                    $passwordErrors.innerText = "Email o contraseña invalido";
-                    $password.classList.add("is-invalid");
-                    break;
                 default:
                     $password.classList.remove("is-invalid");
                     $password.classList.add("is-valid");
                     $passwordErrors.innerText = "";
                     break;
         }
-    });
-
-    $remember.addEventListener('click', () => {
-        $remember.value = 'on'
-        $remember.classList.toggle('is-valid');
-        $remember.classList.remove('is-invalid');
-        $rememberErrors.innerHTML = ""
     });
 
     $form.addEventListener("submit", (event) => {
@@ -74,11 +60,6 @@ window.addEventListener("load", () => {
             submitErrors.innerText = "Hay errores en el formulario";
         } else {
             $form.submit();
-        }
-
-        if(!$remember.checked){
-            $remember.classList.add('is-invalid');
-            $rememberErrors.innerHTML = "Debes aceptar el recordatorio"
         }
     });
 });
