@@ -12,12 +12,17 @@
                             <section class="admin__section--container">
                                 <h2 class="admin__title">Usuarios</h2>
                                 <article class="col-12">
-                                    <table class="table-responsive">
+                                    <div class="scroll-navigation">
+                                        <button class="scroll-button scroll-left">
+                                          <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                    <div class="scroll-content">
+                                    <table>
                                         <thead>
                                             <tr>
-                                                <th scope="col" class="control__admin-responsive">Id</th>
-                                                <th scope="col" class="control__admin-responsive">Nombre</th>
-                                                <th scope="col" class="control__admin-responsive">Apellido</th>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Apellido</th>
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Rol</th>
                                                 <th scope="col">Borrar</th>
@@ -26,9 +31,9 @@
                                         <tbody>
                                             <% users.forEach(({id, name, lastName, email, role}) => { %>
                                                 <tr class="<%= id % 2 == 0 ? 'even' : 'odd' %>">
-                                                    <td class="control__admin-responsive"><%= id %> </td>
-                                                    <td class="control__admin-responsive"><%= name %> </td>
-                                                    <td class="control__admin-responsive"><%= lastName %></td>
+                                                    <td><%= id %> </td>
+                                                    <td><%= name %> </td>
+                                                    <td><%= lastName %></td>
                                                     <td><%= email %> </td>
                                                     <td><%= role %> </td>
                                                     <td><form action="/users/admin/"<%= id %>?_method=PUT method="POST">
@@ -37,7 +42,12 @@
                                                 </tr>
                                                 <% }); %>
                                               </tbody>
-                                            </table> 
+                                            </table>
+                                        </div>
+                                        <button class="scroll-button scroll-right">
+                                          <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                      </div>  
                                           </article>       
                                         </section>
                                         <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>

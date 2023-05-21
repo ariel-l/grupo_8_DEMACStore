@@ -7,8 +7,7 @@
 
 .admin__section--container {
     min-width: 140px;
-    padding-right: 1rem;
-    padding-left: 0.5rem;
+    padding-top: 1rem;
     padding-bottom: 3rem;
     width: 100%;
 }
@@ -19,12 +18,49 @@
     justify-content: center;
 }
 
-article.col-12 {
+.col-12 {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
+}
+
+.table-container {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.scroll-navigation {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scroll-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: background-color 0.3s ease;
+    color: var(--azul);
+}
+
+.scroll-button:hover {
+    background-color: #e6e6e6;
+}
+
+.scroll-content {
+    flex-grow: 1;
+    overflow-x: auto;
+}
+
+.scroll-content table {
+    width: 100%;
+}
+
+.scroll-button i {
+    font-size: 16px;
 }
 
 .admin___btn--add {
@@ -43,14 +79,10 @@ article.col-12 {
     align-items: center;
 }
 
-.table-responsive{
+.table-responsive {
     width: 100%;
     margin: 0 auto;
     min-width: 100px;
-}
-
-.control__admin-responsive{
-    display: none;
 }
 
 tr.even {
@@ -75,16 +107,12 @@ article.col-12 {
 
 @media(min-width:820px) {
 
-    .control__admin-responsive{
-        display: table-cell;
-    }
-
-
     .admin___btn--add {
         height: 40px;
         width: 120px;
         font-size: 1.2rem;
     }
+
     td {
         padding: 10px;
     }
