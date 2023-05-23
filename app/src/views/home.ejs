@@ -5,26 +5,20 @@
 
         <body>
             <%- include('partials/header') %>
-
-
                 <!-- HOME -->
                 <main class="home__body-container">
-
                     <%- include('partials/banner') %>
-
                         <section class="home__oferts--container">
                             <article class="home__oferts">
                                 <a href="" class="home__btn-off">
                                     <span class="home__OFF"> HASTA <span class="home__text-green">50%OFF</span></span>
                                 </a>
                             </article>
-
                             <article class="home__oferts">
                                 <a href="" class="home__btn-off">
                                     <span class="home__btn">12 <span class="home__text-green">SIN INTERES</span></span>
                                 </a>
                             </article>
-
                             <article class="home__oferts">
                                 <a href="" class="home__btn-off" id="home__interest--free--fees">
                                     <i class="fa-brands fa-cc-visa" id="home__icons--creditCard"></i>
@@ -33,77 +27,65 @@
                                     12 CUOTAS SIN INTERES EN TARJETAS SELECCIONADAS
                                 </a>
                             </article>
-
                             <article class="home__oferts">
                                 <a href="" class="home__btn-off">
                                     <span class="home__text-green">ENVIO GRATIS A TODO EL PAIS</span>
                                 </a>
                             </article>
-
                         </section>
-
                         <section class="home__phones--container--global">
-
                             <article class="home__products--phones">
-
                                 <div class="home__phone--container--1">
-                                    <img class="home__img--cardProducts" src="images/home/samsung-galaxy-a13 2.svg" alt="">
+                                    <a href="/products/subcategory/1" class="home__second--title">
+                                    <img class="home__img--cardProducts" src="images/home/samsung-galaxy-a13 2.svg"
+                                        alt="">
                                 </div>
-                                <a href="/products/subcategory/1" class="home__second--title"><span>CELULARES NUEVOS</span></a>
-
+                                <span>CELULARES
+                                        NUEVOS</span></a>
                             </article>
-
                             <article class="home__products--phones">
-
                                 <div class="home__phone--container--1">
-                                    <img class="home__img--cardProducts" src="images/home/samsung-galaxy-m13 2.svg" alt="">
+                                    <a href="/products/subcategory/2" class="home__second--title">
+                                    <img class="home__img--cardProducts" src="images/home/samsung-galaxy-m13 2.svg"
+                                        alt="">
                                 </div>
-                                <a href="/products/subcategory/2" class="home__second--title"><span>CELULARES REFABRICADOS</span></a>
-
+                                <span>CELULARES
+                                        REFABRICADOS</span></a>
                             </article>
-
                             <article class="home__products--phones">
-
                                 <div class="home__phone--container--1">
-                                    <img class="home__img--cardProducts" src="images/products/auriculares-inalambricos-jbl-.jpg" alt="">
+                                    <a href="/products/subcategory/3" class="home__second--title">
+                                    <img class="home__img--cardProducts"
+                                        src="images/products/auriculares-inalambricos-jbl-.jpg" alt="">
                                 </div>
-                                <a href="/products/subcategory/3" class="home__second--title"><span class="home__accessories">ACCESORIOS NUEVOS</span></a>
-
+                                <span
+                                        class="home__accessories">ACCESORIOS NUEVOS</span></a>
                             </article>
-
                         </section>
-                        
-
                         <section class="home__phones--container--global">
                             <a href="" class="home__second--title">
                                 <div class="home__title--principal">
                                     <h2>Productos en OFERTA</h2>
                                 </div>
                             </a>
-
-                            
-                            <%- include('partials/cardProducts') %>
-                            
-                            
+                            <%- include('partials/carouselOffers') %>
                         </section>
-
                         <section class="home__phones--container--global">
                             <a href="" class="home__second--title">
                                 <div class="home__title--principal">
                                     <h2>RECOMENDADOS</h2>
                                 </div>
                             </a>
-
-
-                                <%- include('partials/cardProducts') %>
-
-                                
+                            <script>
+                            // Llama a la función initCarousel una vez el DOM haya cargado
+                            document.addEventListener('DOMContentLoaded', function() {
+                                initCarousel();
+                            });
+                            </script>
+                            <%- include('partials/carouselRecommended') %>
                         </section>
-
                 </main>
-
                 <!-- fin HOME -->
-
                 <%- include('partials/footer') %>
         </body>
 

@@ -1,0 +1,39 @@
+.carousel__container {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel,
+.carousel2 {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-prev,
+.carousel-next,
+.carousel-prev2,
+.carousel-next2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    color: var(--azul);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.carousel-prev,
+.carousel-prev2 {
+    left: 10px;
+}
+
+.carousel-next,
+.carousel-next2 {
+    right: 10px;
+}

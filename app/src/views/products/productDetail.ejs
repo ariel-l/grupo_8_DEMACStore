@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head.ejs', {title: product.name}) %>
-
+    <%- include('../partials/scripts.ejs') %>
     <body>
         <%- include('../partials/header.ejs') %>
 
@@ -134,10 +134,23 @@
             <article class="detail___technical--specifications">
                 <div class="detail__tittle--characteristics " style="color:#004AAD">Descripción:</div>
                 <div class="detail___description"><%= product.description %></div>
-                
-            </article>
+            </article> 
+            <section class="detail__phones--container--global">
+                <a href="" class="detail__second--title">
+                    <div class="home__title--principal">
+                        <h2>RECOMENDADOS</h2>
+                    </div>
+                </a>
+                <script>
+                // Llama a la función initCarousel una vez el DOM haya cargado
+                // Esto evita errores relacionados con la manipulación de elementos que aún no se han cargado.
+                document.addEventListener('DOMContentLoaded', function() {
+                    initCarousel();
+                });
+                </script>
+                <%- include('../partials/carouselRecommended') %>
+            </section>
             
-
             <%- include('../partials/footer.ejs') %>
     </body>
 

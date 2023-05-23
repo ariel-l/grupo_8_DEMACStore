@@ -258,6 +258,27 @@
     font-size: 1.2rem;
 }
 
+a.detail__second--title {
+        display: flex;
+        width: 90%;
+        max-width: 865px;
+        margin: 0 auto;
+        padding-top: 0.5;
+        text-align: center;
+}
+
+section.detail__phones--container--global {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 0.5vh;
+    padding-bottom: 2rem;
+    width: 90%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    font-size: var(--descripcion);
+  }
+
 .detail__more {
     color: var(--destacado);
 }

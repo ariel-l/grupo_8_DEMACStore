@@ -1,6 +1,7 @@
 const { check, validationResult } = require('express-validator');
 const { Product, Sequelize, Category, Subcategory, Brand } = require('../database/models');
 const { Op } = Sequelize;
+const { productsRecommended } = require('../../public/js/carouselRecommended');
 
 const formatNumber = number => number.toLocaleString('es-AR', { maximumFractionDigits: 0 });
 
@@ -81,29 +82,54 @@ module.exports = {
 
     productDetail: async (req, res) => {
         const productId = Number(req.params.id);
-
-        Product.findByPk(productId, {
+      
+        try {
+          const product = await Product.findByPk(productId, {
             include: [
-                {
-                    association: "subcategories",
-                    include: {
-                        association: "categories",
-                    }
+              {
+                association: "subcategories",
+                include: {
+                  association: "categories",
                 },
-                {
-                    association: "brands"
-                }
-            ]
-        })
-            .then(product => {
-                res.render("products/productDetail", {
-                    product,
-                    formatNumber,
-                    session: req.session
-                })
-            })
-            .catch((error) => console.log(error));
-    },
+              },
+              {
+                association: "brands",
+              },
+            ],
+          });
+      
+          const productsRecommended = await Category.findByPk(2, {
+            include: [
+              {
+                model: Subcategory,
+                as: "subcategories",
+                include: {
+                  model: Product,
+                  as: "products",
+                },
+              },
+            ],
+          });
+      
+          if (!productsRecommended) {
+            return res.status(404).send("Categoría no encontrada");
+          }
+      
+          const recommendedProducts = productsRecommended.subcategories
+            .map((subcategory) => subcategory.products)
+            .flat();
+      
+          res.render("products/productDetail", {
+            product,
+            productsRecommended: recommendedProducts,
+            formatNumber,
+            session: req.session,
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      
     category: (req, res) => {
         const categoryID = req.params.id;
 

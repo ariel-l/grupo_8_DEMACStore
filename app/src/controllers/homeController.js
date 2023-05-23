@@ -20,73 +20,60 @@ function shuffle(array) {
   }
   
 module.exports = {
-    index: async (req, res) => {
-        try {
-          const productsInSale = await Product.findAll({
-            where: {
-              discount: {
-                [Op.gte]: 0,
-              },
+  index: async (req, res) => {
+    try {
+      const productsInSale = await Product.findAll({
+        where: {
+          discount: {
+            [Op.gte]: 0,
+          },
+        },
+        order: sequelize.literal('RAND()'),
+      });
+
+      const productsRecommended = await Category.findByPk(2, {
+        include: [
+          {
+            model: Subcategory,
+            as: 'subcategories',
+            include: {
+              model: Product,
+              as: 'products',
             },
-            order: sequelize.random(),
-          });
-    
-          const productsRecommended = await Product.findAll({
-            include: [
-              {
-                association: 'subcategories',
-                include: {
-                  association: 'categories',
-                  where: {
-                    name: 'Accessories',
-                  },
-                },
-              },
-            ],
-            order: sequelize.random(),
-            limit: 10,
-          });
-    
-          const productsAccessories = await Product.findAll({
-            include: [
-              {
-                association: 'subcategories',
-                include: {
-                  association: 'categories',
-                  where: {
-                    name: 'Accessories',
-                  },
-                },
-              },
-            ],
-            order: sequelize.random(),
-            limit: 10,
-          });
-    
-          const products = await Product.findAll({
-            include: [
-              {
-                association: 'subcategories',
-                include: {
-                  association: 'categories',
-                },
-              },
-            ],
-            distinct: true,
-          });
-    
-          return res.render('home', {
-            productsInSale,
-            productsRecommended,
-            products,
-            productsAccessories,
-            formatNumber,
-            session: req.session,
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      },
+          },
+        ],
+      });
+      
+      if (!productsRecommended) {
+        return res.status(404).send('Categoría no encontrada');
+      }
+      
+      const recommendedProducts = productsRecommended.subcategories
+        .map((subcategory) => subcategory.products)
+        .flat();
+
+      const products = await Product.findAll({
+        include: [
+          {
+            association: 'subcategories',
+            include: {
+              association: 'categories',
+            },
+          },
+        ],
+      });
+
+      return res.render('home', {
+        productsInSale,
+        productsRecommended: recommendedProducts,
+        products,
+        formatNumber,
+        session: req.session,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
     search: async (req, res) => {
         const { keywords } = req.query;

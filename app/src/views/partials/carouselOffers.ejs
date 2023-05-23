@@ -1,0 +1,21 @@
+<div class="carousel__container">
+    <div class="carousel">
+        <% productsInSale.forEach(product => { %>
+        <article class="home__products--phones carousel-item">
+            <div class="home__phone--container--1">
+              <img class="home__img--cardProducts" src="/images/products/<%= product.image %>" alt="">
+            </div>
+            <div class="home__product--descripction">
+              <p><%= product.name %></p>
+              <p class="home__strikethrough">$<%= product.price %></p>
+              <p class="home__price">$<%= formatNumber(product.price - (product.price * product.discount / 100)) %></p>
+            </div>
+            <a href="/products/<%= product.id %>" class="home__btn--details">Ver detalle</a>
+      </article>
+        <% }) %>
+    </div>
+    <button class="carousel-prev">&#10094;</button>
+    <button class="carousel-next">&#10095;</button>
+    </div>
+        </div>
+</div>
