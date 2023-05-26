@@ -44,43 +44,47 @@ module.exports = {
 
     processLogin: (req, res) => {
         const errors = validationResult(req);
-      
+
         if (errors.isEmpty()) {
-          User.findOne({
-            where: {
-              email: req.body.email,
-            },
-          })
-            .then((user) => {
-              req.session.user = {
-                id: user.id,
-                name: user.name,
-                avatar: user.avatar,
-                role: user.role,
-              };
-      
-              const token = generateToken(user);
-      
-              const cookieLifeTime = new Date(Date.now() + 6000000);
-      
-              if (req.body.remember) {
-                res.cookie("userDemac", req.session.user, {
-                  expires: cookieLifeTime,
-                  httpOnly: true,
-                });
-              }
-      
-              res.locals.user = req.session.user;
-              res.status(200).json({ token }); // Enviar el token en la respuesta al cliente
+            User.findOne({
+                where: {
+                    email: req.body.email,
+                }
             })
-            .catch((error) => console.log());
+                .then((user) => {
+                    req.session.user = {
+                        id: user.id,
+                        name: user.name,
+                        avatar: user.avatar,
+                        role: user.role
+                    }
+
+                    const token = generateToken(user);
+
+                    const cookieLifeTime = new Date(Date.now() + 6000000);
+
+                    if (req.body.remember) {
+                        res.cookie(
+                            "userDemac",
+                            req.session.user,
+                            {
+                                expires: cookieLifeTime,
+                                httpOnly: true
+                            })
+                    }
+
+                    res.locals.user = req.session.user;
+                    res.redirect(`/?token=${token}`);
+                    console.log(token)
+                })
+                .catch(error => console.log())
         } else {
-          return res.render("users/login", {
-            errors: errors.mapped(),
-            session: req.session,
-          });
+            return res.render('users/login', {
+                errors: errors.mapped(),
+                session: req.session
+            })
         }
-      },
+    },
 
     profile: (req, res) => {
 

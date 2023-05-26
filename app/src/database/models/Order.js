@@ -16,17 +16,17 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: {
             type: dataTypes.DATE,
         },
-        userId: {
+        userID: {
             type: dataTypes.INTEGER(11),
             allowNull: false,
         },
         finalQuantity: {
             type: dataTypes.INTEGER(20),
-            allowNull: false,
+            allowNull: true,
         },
         finalPrice: {
             type: dataTypes.INTEGER(20),
-            allowNull: false,
+            allowNull: true,
         },
     }
 
@@ -43,7 +43,7 @@ module.exports = (sequelize, dataTypes) => {
         });
         Order.belongsTo(models.User, {
             as: "users",
-            foreignKey: "userId"
+            foreignKey: "userID"
         });
     }
 
