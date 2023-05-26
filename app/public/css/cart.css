@@ -15,6 +15,14 @@
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
+.cart__title, 
+.cart__subtitle {
+    color: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .table__title {
     display: block;
     text-align: left;

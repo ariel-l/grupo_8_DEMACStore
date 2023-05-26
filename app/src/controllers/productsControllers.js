@@ -1,5 +1,5 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Sequelize, Category, Subcategory, Brand } = require('../database/models');
+const { Product, Sequelize, Category, Subcategory, Brand, Order, OrderProduct } = require('../database/models');
 const { Op } = Sequelize;
 const { productsRecommended } = require('../../public/js/carouselRecommended');
 
@@ -124,6 +124,7 @@ module.exports = {
             productsRecommended: recommendedProducts,
             formatNumber,
             session: req.session,
+            user: req.session.user?.id || null, 
           });
         } catch (error) {
           console.log(error);
@@ -185,10 +186,27 @@ module.exports = {
     },
 
     cart: (req, res) => {
-        return res.render('products/cart', {
-            session: req.session
+        let userID = req.session.user.id;
+        Order.findOne({
+          where: {
+            userID: userID
+          }
         })
-    },
+          .then((order) => {
+            let products = order?.order_products.map((item) => {
+              return {
+                ...item.product,
+                productQuantity: item.productQuantity,
+              };
+            });
+            res.render("products/cart", {
+              session: req.session,
+              products: products !== undefined ? products : [],
+              user: req.session.user?.id || null,
+            });
+          })
+          .catch((error) => res.send(error));
+      },      
 
     create: (req, res) => {
         const CATEGORIES_PROMISE = Category.findAll();

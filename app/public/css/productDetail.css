@@ -126,7 +126,10 @@
     padding: 15px 0;
 }
 
-
+.detail__selects {
+    color: var(--azul);
+    font-weight: bold;
+}
 
 .detail__button--colour {
     display: flex;
@@ -192,19 +195,19 @@
     margin: 5px;
 }
 
-.detail___number--product {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.detail___form--count {
-    display: flex;
-    padding-top: 15px;
-    padding-bottom: 30px;
-}
-
 .detail__input--false {
     display: none;
+}
+
+.counter {
+    padding: 5px 10px;
+    width: 7rem;
+    border: 1px solid var(--primary);
+    border: 1px solid rgba(220, 220, 220, 0.300);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.781);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 10px;
 }
 
 .detail___button--cart {
@@ -356,6 +359,10 @@ section.detail__phones--container--global {
 /* DESKTOP PRODUCT DETAIL */
 
 @media (min-width: 769px) {
+
+    .detail__phones--container--global {
+        max-width: 865px;
+    }
 
     .detail___product--container {
         padding-top: 50px;

@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const { User, Address } = require("../database/models");
+const {generateToken} = require("../helpers/jwt.helper");
 
 module.exports = {
 
@@ -43,45 +44,43 @@ module.exports = {
 
     processLogin: (req, res) => {
         const errors = validationResult(req);
-
+      
         if (errors.isEmpty()) {
-            User.findOne({
-                where: {
-                    email: req.body.email,
-                }
+          User.findOne({
+            where: {
+              email: req.body.email,
+            },
+          })
+            .then((user) => {
+              req.session.user = {
+                id: user.id,
+                name: user.name,
+                avatar: user.avatar,
+                role: user.role,
+              };
+      
+              const token = generateToken(user);
+      
+              const cookieLifeTime = new Date(Date.now() + 6000000);
+      
+              if (req.body.remember) {
+                res.cookie("userDemac", req.session.user, {
+                  expires: cookieLifeTime,
+                  httpOnly: true,
+                });
+              }
+      
+              res.locals.user = req.session.user;
+              res.status(200).json({ token }); // Enviar el token en la respuesta al cliente
             })
-                .then((user) => {
-                    req.session.user = {
-                        id: user.id,
-                        name: user.name,
-                        avatar: user.avatar,
-                        role: user.role
-                    }
-
-                    const cookieLifeTime = new Date(Date.now() + 6000000);
-
-                    if (req.body.remember) {
-                        res.cookie(
-                            "userDemac",
-                            req.session.user,
-                            {
-                                expires: cookieLifeTime,
-                                httpOnly: true
-                            })
-                    }
-
-                    res.locals.user = req.session.user;
-
-                    res.redirect("/users/profile");
-                })
-                .catch(error => console.log())
+            .catch((error) => console.log());
         } else {
-            return res.render('users/login', {
-                errors: errors.mapped(),
-                session: req.session
-            })
+          return res.render("users/login", {
+            errors: errors.mapped(),
+            session: req.session,
+          });
         }
-    },
+      },
 
     profile: (req, res) => {
 

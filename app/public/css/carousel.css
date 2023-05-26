@@ -7,6 +7,7 @@
 .carousel2 {
     display: flex;
     transition: transform 0.5s ease;
+    white-space: nowrap;
 }
 
 .carousel-prev,
