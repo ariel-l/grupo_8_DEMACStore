@@ -1,7 +1,7 @@
 const { check, body } = require('express-validator');
 const { User } = require("../database/models");
 const path = require("path");
-const regExPass = /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{6,12}$/;
+regExPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/;
 
 module.exports = [
     check('username')
@@ -25,18 +25,19 @@ module.exports = [
     .withMessage("El email es obligatorio").bail()
     .isEmail()
     .withMessage("Email invalido"),
-    body("email")
-    .custom((value) => {
-       return User.findOne({
-            where:{
-                email:value
+    body('email')
+    .custom(value => {
+        return User.findOne({
+            where: {
+                email: value
             }
         })
-    .then(user => {
-        if(user) return Promise.reject("email ya registrado")
-    })
-    .catch(error => console.log(error))
-}),
+        .then(user => {
+            if(user) {
+                return Promise.reject('El email ya está registrado')
+            }
+        })
+    }),
     
     check('password')
     .notEmpty()
@@ -61,16 +62,19 @@ module.exports = [
     .withMessage('Las contraseñas no coinciden'),
 
     check("avatar")
-    .notEmpty()
-    .withMessage('Debe agregar una imagen')
-    .custom((value, { req }) => {
-        let file = req.file;
-        let acceptedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
-        if (file && !acceptedExtensions.includes(path.extname(file.originalname))) {
-              throw new Error("El avatar tiene que tener extension .jpg .png .jpeg .gif");
-        }
-        return true;
-    }),
+        .custom((value, { req }) => {
+            const file = req.file;
+            if (!file) {
+                return true;
+            } else {
+                const allowedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
+                const fileExtension = path.extname(file.originalname);
+                if (!allowedExtensions.includes(fileExtension)) {
+                    throw new Error("El formato debe ser .jpg, .png, .jpeg o .gif");
+                }
+                return true;
+            }
+        }),
 
     check('terms')
     .isString('on')
