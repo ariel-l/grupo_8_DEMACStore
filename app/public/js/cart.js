@@ -60,45 +60,32 @@ const deleteData = async (url, token) => {
 
 const addToCart = async (productID) => {
   const ENDPOINT = `${API_BASE_URL}/orders`;
-  const selectElement = document.getElementById("number");
-  const productQuantity = parseInt(selectElement.value);
-
-  if (productQuantity > 0) {
-    const data = {
-      productID,
-      productQuantity,
-    };
-
-    // Verificar si token está definido y no es null
-    if (typeof token !== "undefined" && token !== null) {
-      const response = await postData(ENDPOINT, data, token);
-      alert(response);
-      window.location.reload();
-    } else {
-      alert("Token no está definido");
-    }
-  } else {
-    alert("Selecciona una cantidad válida");
-  }
+  const data = {
+    productID,
+    productQuantity: 0,
+  };
+  const response = await postData(ENDPOINT, data, token);
+  alert(JSON.stringify(response));
+  window.location.reload();
 };
 
 const removeOneProduct = async (itemId) => {
-  const ENDPOINT = `${API_BASE_URL}/orders/${itemId}`;
-  const response = await putData(ENDPOINT, token);
-  alert(response)
-  window.location.reload();
+    const ENDPOINT = `${API_BASE_URL}/orders/${itemId}`;
+    const response = await  putData(ENDPOINT, token);
+    alert(response)
+    window.location.reload();
 };
 
 const removeAllOfOneProduct = async (itemId) => {
-  const ENDPOINT = `${API_BASE_URL}/orders/${itemId}`;
-  const response = await deleteData(ENDPOINT, token);
-  alert(response)
-  window.location.reload();
+    const ENDPOINT = `${API_BASE_URL}/orders/${itemId}`;
+    const response = await  deleteData(ENDPOINT, token);
+    alert(response)
+    window.location.reload();
 };
 
-const clearCart = async (orderId) => {
-  const ENDPOINT = `${API_BASE_URL}/orders/clear/${orderId}`;
-  const response = await deleteData(ENDPOINT, token);
-  alert(response)
-  window.location.reload();
+const clearCart = async (orderID) => {
+    const ENDPOINT = `${API_BASE_URL}/orders/clear/${orderID}`;
+    const response = await  deleteData(ENDPOINT, token);
+    alert(response)
+    window.location.reload();
 };

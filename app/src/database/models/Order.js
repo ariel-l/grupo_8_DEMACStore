@@ -38,14 +38,14 @@ module.exports = (sequelize, dataTypes) => {
 
     Order.associate = function (models) {
         Order.hasMany(models.OrderProduct, {
-            as: "orders_products",
+            as: "orderProducts",
             foreignKey: "orderID"
         });
         Order.belongsTo(models.User, {
-            as: "users",
+            as: "user",
             foreignKey: "userID"
         });
-    }
+    }    
 
     return Order;
 }

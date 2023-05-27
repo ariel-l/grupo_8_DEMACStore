@@ -1,6 +1,6 @@
+require('dotenv').config();
 const jwt = require("jsonwebtoken");
 const process = require("process");
-require('dotenv').config();
 const secret = process.env.JWT_SECRET;
 
 const generateToken = (user) => {
@@ -9,6 +9,7 @@ const generateToken = (user) => {
     const USER_DATA = {
         id: user.id,
         name: user.name,
+        email: user.email,
     }
     const payload = {
         user: USER_DATA,
@@ -20,7 +21,6 @@ const generateToken = (user) => {
     return token;
   } catch (error) {
     console.error("Error al generar el token:", error);
-    // Manejar el error de acuerdo a tus necesidades
     throw new Error("Error al generar el token");
   }
 };

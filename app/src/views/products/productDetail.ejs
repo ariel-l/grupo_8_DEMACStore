@@ -79,17 +79,17 @@
                                 </div>
                                 <div class="detail___add--cart">
                                     <input class="detail__input--false" />
-                                <% if (session.user !== undefined) { %>
+                                    <% if (session.user !== undefined) { %>
                                     <div class="btn btn-ad-primary detail___button--cart" onclick="addToCart('<%= product.id %>')" style="color: #004AAD; font-weight: bold;">
                                         Agregar al carrito 
                                         <i class="fas fa-shopping-cart"></i>
                                     </div>
-                            <% } else { %>
-                                <div class="detail___button--cart">
-                                    <a href="/users/login" class="detail___btn--add--to--cart">Agregar al carrito</a>
-                                </div>
-                            </div>
-                            <% } %>
+                                    <% } else { %>
+                                    <div class="detail___button--cart">
+                                        <a href="/users/login" class="detail___btn--add--to--cart">Agregar al carrito</a>
+                                    </div>
+                                    <% } %>
+                                </div>                                
                     </article>
                 </section>
                 <hr class="detail__hr--product">

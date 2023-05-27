@@ -60,7 +60,7 @@ module.exports = {
                     }
 
                     const token = generateToken(user);
-
+                    console.log(token)
                     const cookieLifeTime = new Date(Date.now() + 6000000);
 
                     if (req.body.remember) {

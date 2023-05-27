@@ -184,28 +184,41 @@ module.exports = {
             console.log(error);
         }
     },
-
     cart: (req, res) => {
         let userID = req.session.user.id;
         Order.findOne({
           where: {
-            userID: userID
-          }
+            userID
+          },
+          include: [
+            {
+              association: "orderProducts",
+              include: [
+                {
+                  association: "products",
+                  include: [{ association: "brands" }]
+                }
+              ]
+            }
+          ]
         })
           .then((order) => {
-            let products = order?.order_products.map((item) => {
+            let products = order?.orderProducts.map((item) => {
               return {
-                ...item.product,
-                productQuantity: item.productQuantity,
+                product: item.products,
+                quantity: item.productQuantity,
+                id: item.id
               };
             });
+      
             res.render("products/cart", {
               session: req.session,
+              order,
               products: products !== undefined ? products : [],
               user: req.session.user?.id || null,
             });
           })
-          .catch((error) => res.send(error));
+          .catch((error) => console.log(error));
       },      
 
     create: (req, res) => {

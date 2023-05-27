@@ -15,21 +15,21 @@
                   <article class="home__products--phones">
                     <div class="home__phone--container--1">
                       <a href="/products/subcategory/1" class="home__second--title">
-                        <img class="home__img--cardProducts" src="images/home/samsung-galaxy-a13 2.svg" alt="">
+                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-a13 2.svg" alt="">
                     </div>
                     <span>CELULARES NUEVOS</span></a>
                   </article>
                   <article class="home__products--phones">
                     <div class="home__phone--container--1">
                       <a href="/products/subcategory/2" class="home__second--title">
-                        <img class="home__img--cardProducts" src="images/home/samsung-galaxy-m13 2.svg" alt="">
+                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-m13 2.svg" alt="">
                     </div>
                     <span>CELULARES REFABRICADOS</span></a>
                   </article>
                   <article class="home__products--phones">
                     <div class="home__phone--container--1">
                       <a href="/products/subcategory/3" class="home__second--title">
-                        <img class="home__img--cardProducts" src="images/products/auriculares-inalambricos-jbl-.jpg"
+                        <img class="home__img--cardProducts" src="/images/products/auriculares-inalambricos-jbl-.jpg"
                           alt="">
                     </div>
                     <span class="home__accessories">ACCESORIOS NUEVOS</span></a>
@@ -47,17 +47,17 @@
                       </button>
                     </div>
                     <section class="productos" id="contenedor-productos">
-                      <% products.forEach(product=> { %>
+                      <% products.forEach(product => { %>
                         <div class="producto">
                           <div class="imagen">
-                            <img src="/images/productos/<%- product.image %>" alt="">
+                            <img src="/images/products/<%= product.product.image %>" alt="">
                           </div>
                           <div class="detalles">
-                            <h3><%- product.name %></h3>
+                            <h3><%- product.product.name %></h3>
                             <div>
                               <div class="precio">
-                                <span class="precio-unitario">Precio unitario: $<%- product.price %></span>
-                                <span class="precio-sumado">Precio total: $<%- (Number(product.price) *
+                                <span class="precio-unitario">Precio unitario: $<%- product.product.price %></span>
+                                <span class="precio-sumado">Precio total: $<%- (Number(product.product.price) *
                                     Number(product.productQuantity)) %></span>
                               </div>
                               <div>
@@ -73,9 +73,9 @@
                                     onclick="removeOne('<%- product.id %>', '<%= session.user.id %>')">
                                     -
                                   </button>
-                                  <div><%- product.quantity %></div>
+                                  <div><%- product.productQuantity %></div>
                                   <button type="button" id="btn-add"
-                                    onclick="addToCart('<%= product.id %>', 1, '<%= session.user.id %>')">
+                                    onclick="addToCart('<%= product.product.id %>', 1, '<%= session.user.id %>')">
                                     +
                                   </button>
                                 </div>
@@ -83,8 +83,8 @@
                             </div>
                           </div>
                         </div>
-                        <% }) %>
-                    </section>
+                      <% }) %>
+                    </section>                    
                     <div class="total-desc-ship-pay__container">
                       <div class="sub-desc-total__main--container">
                         <div class="sdt__container">
