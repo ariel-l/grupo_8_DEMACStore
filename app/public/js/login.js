@@ -1,5 +1,5 @@
-let qs = (elemento) => {
-    return document.querySelector(elemento);
+let qs = (element) => {
+    return document.querySelector(element);
 };
 
 window.addEventListener("load", () => {
@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
         $password = qs("#password"),
         $passwordErrors = qs("#passwordErrors"),
         $form = qs("#form"),
-        regExEmail = `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`;
+        regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
     $email.addEventListener("blur", () => {
         switch (true) {
