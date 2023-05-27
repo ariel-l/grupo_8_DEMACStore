@@ -13,7 +13,7 @@ window.addEventListener("load", () =>  {
     $pass2Errors = qs("#pass2Errors"),
     $check = qs("#check"),
     $checkErrors = qs("#checkErrors"),
-    $register = qs("#register"),
+    $form = qs("#form"),
     $file = qs('#avatar'),
     $fileErrors = qs('#avatarErrors'),
     $imgPreview = qs('#img-preview'),
@@ -86,32 +86,52 @@ window.addEventListener("load", () =>  {
     })
 
     //password 2
-    $pass2.addEventListener('blur', () => {
+    $pass2.addEventListener("blur", () => {
         switch (true) {
-            case !$pass2.value.trim():
-                $pass2Errors.innerText = 'Debe reingresar la contraseña';
-                $pass2.classList.add('is-invalid')
-                break;
-            case $pass2.value != $pass.value:
-                $pass2Errors.innerText = 'Las contraseñas no coinciden';
-                $pass2.classList.add('is-invalid')
-                break;
-            default:
-                $pass2.classList.remove('is-invalid');
-                $pass2.classList.add('is-valid');
-                $pass2Errors.innerText = ''
-                break;
+          case !$pass2.value.trim():
+            $pass2Errors.innerText = "Debes reingresar la contraseña";
+            $pass2.classList.add("is-invalid");
+            break;
+          case $pass2.value != $pass.value:
+            $pass2Errors.innerText = "Las contraseñas no coinciden";
+            $pass2.classList.add("is-invalid");
+            break;
+          default:
+            $pass2.classList.remove("is-invalid");
+            $pass2.classList.add("is-valid");
+            $pass2Errors.innerText = "";
+            break;
         }
-    })
+      });
     
 
-    //terms
-     $check.addEventListener('click',() => {
-         $check.value = 'on'
-         $check.classList.toggle('is-valid');
-         $check.classList.remove('is-invalid');
-         $checkErrors.innerHTML = ""
-     })
+    //register
+    $form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const FORM_ELEMENTS = event.target.elements;
+
+        for (let index = 0; index < FORM_ELEMENTS.length - 2; index++) {
+                const element = FORM_ELEMENTS[index];
+                console.log(element.value, element.type)
+                if (element.value.trim() === "") {
+                    element.classList.add("is-invalid");
+                }
+        }
+
+        if (!$check.checked) {
+            $check.classList.add("is-invalid");
+            $checkErrors.innerHTML = "Debes aceptar los terminos y condiciones";
+          }
+
+        let elementosConErrores = document.querySelectorAll(".is-invalid");
+        let errores = elementosConErrores.length > 0;
+        console.log(errores)
+        if (errores) {
+            submitErrors.innerText = "Hay errores en el formulario";
+        } else {
+            $form.submit();
+        }
+    });
 
      //avatar
      $file.addEventListener('change', () => {

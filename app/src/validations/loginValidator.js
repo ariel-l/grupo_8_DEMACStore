@@ -25,6 +25,6 @@ module.exports = [
                 return Promise.reject();
             }
         })
-        .catch(() => Promise.reject("Email o contraseña incorrecto"))
+        .catch(() => Promise.reject("Email y/o contraseña inválidos"))
     }),
 ]

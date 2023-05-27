@@ -28,12 +28,11 @@
 
                                 <div class="login__check">
                                     <label class="form__input--label-remember" for="remember"> Recordar sesión </label>
-                                    <input class="login__check--remember" type="checkbox" name="remember" id="remember" value="remember" required>
-                                    <small id="rememberErrors"></small>
+                                    <input class="login__check--remember" type="checkbox" name="remember" id="remember" value="remember">
                                 </div>
                                 <div class="button__login--container">
-                                    <small class="text__danger--form" id="submitErrors"></small>
                                     <button type="submit" class="btn login__btn-submit">Iniciar sesión</button>
+                                    <small class="text__danger--form" id="submitErrors"></small>
                                 </div>
                                 <label class="login__icons--loginWith" for="login_icons">Iniciar con</label>
                                 <div class="login__icons">
@@ -44,7 +43,9 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <button class="btn login__btn-submit"> <a href="/users/register">Registrarme</a></button>
+                                    <button class="btn login__btn-submit">
+                                         <a href="/users/register">Registrarme</a>
+                                    </button>
                                 </div>
                             </div>
                         </form>

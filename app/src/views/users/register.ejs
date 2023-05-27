@@ -4,7 +4,7 @@
 
     <body class="register__body">
         <%- include('../partials/header.ejs') %>
-            <form action="/users/register" id="register" method="POST" enctype="multipart/form-data">
+            <form action="/users/register" id="form" method="POST" enctype="multipart/form-data">
                 <div class="register">
                     <div class="register__general">
                         <div class="register__card">
@@ -40,12 +40,11 @@
                                                                         </div>
                                                                     <div class="register__input--avatar">            
                                                                         <p class="register__input--textAvatar">Agregar foto de perfil</p>
-                                                                        <input type="file" id="avatar" name="avatar" class="register__input--file">                                                                       
-                                                                        <p class="register__input--error" id="avatarErrors">
+                                                                        <input type="file" id="avatar" name="avatar" class="register__input--file register__input">                                                                                                                                           
+                                                                    </div>
+                                                                    <p class="register__input--error--avatar" id="avatarErrors">
                                                                             <%= locals.errors && errors.avatar? errors.avatar.msg : '' %>
                                                                         </p>
-                                                        </p>
-                                                                    </div>
                                 </div>
                                 <div class="register__form--check">
                                     <input type="checkbox" name="terms" id="check">
@@ -55,6 +54,7 @@
                                     </p>
                                             <div class="register__form--btn">
                                                 <button type="submit" class="register__btn">Registrarme</button>
+                                                <small class="text-danger" id="termsErrors"></small>
                                             </div>
                                             <div class="register__p--span">
                                                 <p class="register__form">Registrarme con</p>
@@ -73,6 +73,5 @@
             <script src="/js/register.js"></script>
             
     </body>
-
 
 </html>

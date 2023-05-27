@@ -29,7 +29,7 @@
 }
 
 .register {
-  box-sizing: border-box;
+  box-sizing: content-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,6 +86,12 @@
 }
 
 .register__input--error {
+  color: red;
+  margin-top: -3px;
+  padding-left: 5px;
+}
+
+.register__input--error--avatar {
   color: red;
   margin-top: -3px;
   padding-left: 5px;
