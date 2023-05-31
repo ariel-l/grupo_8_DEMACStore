@@ -203,7 +203,7 @@ module.exports = {
           ]
         })
           .then((order) => {
-            let products = order?.orderProducts.map((item) => {
+            let products = order?.order_products.map((item) => {
               return {
                 product: item.products,
                 quantity: item.productQuantity,

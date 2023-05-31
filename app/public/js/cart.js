@@ -65,7 +65,7 @@ const addToCart = async (productID) => {
     productQuantity: 0,
   };
   const response = await postData(ENDPOINT, data, token);
-  alert(JSON.stringify(response));
+  alert(response);
   window.location.reload();
 };
 
