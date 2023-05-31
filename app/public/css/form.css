@@ -44,10 +44,6 @@ hr {
     margin-top: 1rem;
 }
 
-.form__input--specification{
-    max-width: 272px;
-}
-
 .input__photo{
     display: flex;
     text-align: center;
