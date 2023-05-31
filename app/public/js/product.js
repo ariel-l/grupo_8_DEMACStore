@@ -49,14 +49,19 @@ window.addEventListener("load", () => {
     /* Validaciones - Descuento */
     $inputDiscount.addEventListener("blur", () => {
         switch (true) {
-            case $inputDiscount.value && !regExDiscount.test($inputDiscount.value):
-                $discountErrors.innerText = "El descuento es inválido";
-                $inputDiscount.classList.add("is-invalid");
+            case $inputDiscount.value < 0:
+                    $inputDiscount.classList.add("is-invalid");
+                    $discountErrors.innerText = "no puede poner descuentos negativos";
                 break;
+            case $inputDiscount.value > 100:
+                    $inputDiscount.classList.add("is-invalid");
+                    $discountErrors.innerText = "El descuento no puede ser del 100%";
+                break;
+        
             default:
-                $inputDiscount.classList.remove("is-invalid");
-                $inputDiscount.classList.add("is-valid");
-                $discountErrors.innerText = "";
+                    $inputDiscount.classList.remove("is-invalid");
+                    $inputDiscount.classList.add("is-valid");
+                    $discountErrors.innerText = "";
                 break;
         }
     })
@@ -102,7 +107,7 @@ window.addEventListener("load", () => {
     $selectCategory.addEventListener('change', () => {
         switch (true) {
             case $selectCategory.value === '':
-                $categoryErrors.innerText = 'Debes seleccionar una categoría';
+                $categoryErrors.innerText = 'Por favor seleccione una categoría';
                 $selectCategory.classList.add('is-invalid');
                 break;
             default:
@@ -115,7 +120,7 @@ window.addEventListener("load", () => {
     $selectSubCategory.addEventListener('change', () => {
         switch (true) {
             case $selectSubCategory.value === '':
-                $subCategoryErrors.innerText = 'Debes seleccionar una subcategoría';
+                $subCategoryErrors.innerText = 'Por favor seleccione una subcategoría';
                 $selectSubCategory.classList.add('is-invalid');
                 break;
             default:
@@ -131,7 +136,7 @@ window.addEventListener("load", () => {
     $inputBrand.addEventListener('blur', () => {
         switch (true) {
             case $inputBrand.value:
-                $brandErrors.innerText = 'Debes seleccionar una marca';
+                $brandErrors.innerText = 'Por favor seleccione una marca';
                 $inputBrand.classList.add('is-invalid');
                 break;
             default:
@@ -151,7 +156,7 @@ window.addEventListener("load", () => {
                 $inputDescription.classList.add('is-invalid');
                 break;
             case !regExDescription.test($inputDescription.value):
-                $descriptionErrors.innerText = 'La descripción debe tener entre 20 y 450 caracteres';
+                $descriptionErrors.innerText = 'Por favor ingrese como máximo 450 caracteres, y como minimo 20';
                 $inputDescription.classList.add('is-invalid');
                 break;
             default:

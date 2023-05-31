@@ -12,7 +12,7 @@ module.exports = [
     check('discount')
     .notEmpty()
     .withMessage('Por favor ingrese un descuento').bail()
-    .isInt({ min: 0, max: 75 })
+    .isInt({ min: 1, max: 75 })
     .withMessage("Solo puedes ingresar un descuento máximo del 75%").bail(),
     
     body('discount')
