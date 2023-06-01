@@ -52,8 +52,8 @@
                                 <% } %>
                             </div>
                             <div class="input__container input__photo">
-                                <label class="label-style" for="avatar">Elija su foto de perfil</label>
-                                <input class="input" value="<%= user.avatar %>" type="file" name="avatar">
+                                <p class="register__input--textAvatar">Agregar foto de perfil</p>
+                                                                        <input type="file" id="avatar" name="avatar" class="register__input--file register__input">
                                 <% if (locals.errors && errors.avatar) { %>
                                     <small class="text-danger"><%= errors.avatar.msg %> </small>
                                 <% } %>

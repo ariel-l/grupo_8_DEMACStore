@@ -351,6 +351,10 @@ section.detail__phones--container--global {
         width: 90%;
     }
 
+    .detail__phones--container--global {
+        max-width: 865px;
+    }
+
 }
 
 /* DESKTOP PRODUCT DETAIL */
