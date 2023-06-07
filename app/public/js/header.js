@@ -1,11 +1,31 @@
-let burgerMenu = document.querySelector(".burger-menu");
-let btnClose = document.querySelector("#btn__close");
-let navCategories = document.querySelector(".header__nav--categories");
+let navBar = document.getElementById("navigation-bar-mobile");
+let menuUser = document.querySelector(".menu-user");
+let userAvatar = document.querySelector(".user-avatar");
 
-burgerMenu.addEventListener("click", () => {
-    navCategories.classList.add("active");
-})
+function dropMenu() {
+  menuUser.classList.toggle("active");
+  if (menuUser.classList.contains("active")) {
+    navBar.style.display = "block";
+  }
+}
 
-btnClose.addEventListener("click", () => {
-    navCategories.classList.remove("active");
-})
+function closeWindow() {
+  if (menuUser.classList.contains("active")) {
+    menuUser.classList.remove("active");
+  }
+}
+
+userAvatar.addEventListener("click", dropMenu);
+window.addEventListener("click", function (event) {
+  if (!userAvatar.contains(event.target)) {
+    closeWindow();
+  }
+});
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY >= 100) {
+    document.querySelector(".header__container").classList.add("header-opacity");
+  } else {
+    document.querySelector(".header__container").classList.remove("header-opacity");
+  }
+});

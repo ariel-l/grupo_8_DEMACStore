@@ -4,17 +4,20 @@
     <nav class="header__nav--userdesign">
         <ul class="nav__container--gray">
             <li>
-                <a href="https://www.oca.com.ar/Busquedas/Envios" class="nav__icon--link"><i class="fa-solid fa-truck-fast nav__icon--gray"></i>Seguí
+                <a href="https://www.oca.com.ar/Busquedas/Envios" class="nav__icon--link"><i
+                        class="fa-solid fa-truck-fast nav__icon--gray"></i>Seguí
                     tu compra</a>
             </li>
             <li class="nav__btn--gray">
                 <a href="" class="nav__icon--link"><i class="fa-regular fa-building nav__icon--gray"></i>Sucursales</a>
             </li>
             <li class="nav__btn--gray">
-                <a href="" class="nav__icon--link"><i class="fa-brands fa-whatsapp nav__icon--gray"></i>Comunicate por WhatsApp</a>
+                <a href="" class="nav__icon--link"><i class="fa-brands fa-whatsapp nav__icon--gray"></i>Comunicate por
+                    WhatsApp</a>
             </li>
             <li class="nav__btn--gray">
-                <a href="" class="nav__icon--link"><i class="fa-solid fa-headset nav__icon--gray"></i>Centro de ayuda</a>
+                <a href="" class="nav__icon--link"><i class="fa-solid fa-headset nav__icon--gray"></i>Centro de
+                    ayuda</a>
             </li>
             <li>
                 <a href="" class="nav__icon--link"><i class="fa-solid fa-circle-down nav__icon--gray"></i>Garantía</a>
@@ -48,7 +51,8 @@
         <!-- SEARCH-BAR -->
         <div class="header__search--container">
             <form class="header__search--form" action="/search" method="GET">
-                <input class="header__search--bar" type="text" placeholder="Buscar productos, marcas..." name="keywords">
+                <input class="header__search--bar" type="text" placeholder="Buscar productos"
+                    name="keywords">
                 <button class="search__bar--btn" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -59,19 +63,23 @@
         <div class="header__acc__cart--container">
 
             <!-- MY-ACCOUNT -->
-            <div class="header__acc--container">
-                <% if (typeof session.user !="undefined" ) { %>
-                    <a class="acc__links" href="/users/profile"><i class="fa-solid fa-circle-user"></i></a>
-                    <a class="acc__links" href="/users/logout"><span class="text__acc">Cerrar sesión</span></a>
-                    <% } else { %>
-                        <a href="/users/login" class="acc__links">
-                            <i class="fa-solid fa-circle-user"></i>
-                            <span class="text__acc">Mi cuenta</span>
-                        </a>
-                    <% } %>      
-            </div>
-
-
+            <div class="header__acc--container" id="navigation-bar-mobile">
+                <% if (typeof session.user !== "undefined") { %>
+                  <div class="user-avatar">
+                    <img src="/images/users/<%= session.user.avatar %>" class="rounded-circle" height="30" width="30" alt="avatar" />
+                    <span class="session"></span>
+                  </div>
+                  <div class="menu-user">
+                    <a href="/users/profile">Mis datos</a>
+                    <a href="/users/logout">Cerrar sesión</a>
+                    <% if (session.user.role === "admin") { %>
+                      <a href="/products/adminList">ADMIN</a>
+                    <% } %>
+                  </div>
+                <% } else { %>
+                  <a href="/users/login"><i class="fas fa-user" style="color: white; font-size: 1.5rem; margin-right: 0.5rem; margin-top: 0.3rem;"></i></a>
+                <% } %>
+              </div>
             <!-- CARRT -->
             <div class="header__cart--container">
                 <a href="/products/cart" class="acc__links">
@@ -87,10 +95,14 @@
     <nav class="header__nav--categories">
         <ul class="header__container--sections">
             <li class="header__name--sections"><a class="header__name--link" href="/products">Productos</a></li>
-            <li class="header__name--sections"><a class="header__name--link" href="/products/subcategory/1">Celulares Nuevos</a></li>
-            <li class="header__name--sections"><a class="header__name--link" href="/products/subcategory/2">Celulares Refubrished (Renovados)</a></li>
-            <li class="header__name--sections"><a class="header__name--link" href="/products/category/2">Accesorios</a></li>
+            <li class="header__name--sections"><a class="header__name--link" href="/products/subcategory/1">Celulares
+                    Nuevos</a></li>
+            <li class="header__name--sections"><a class="header__name--link" href="/products/subcategory/2">Celulares
+                    Refubrished (Renovados)</a></li>
+            <li class="header__name--sections"><a class="header__name--link" href="/products/category/2">Accesorios</a>
+            </li>
         </ul>
     </nav>
 
+    <script src="/js/header.js" defer></script>
 </header>
