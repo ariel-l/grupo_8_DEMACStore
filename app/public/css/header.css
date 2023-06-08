@@ -9,7 +9,7 @@
   z-index: 999;
 }
 .header-opacity {
-  opacity: 0.8; 
+  opacity: 0.9; 
 }
 /* GRAY HEADER */
 .nav__container--gray {
@@ -113,7 +113,7 @@
     border-radius: 0.5rem;
     margin-left: -3rem;
     z-index: 2;
-    opacity: 0.8; 
+    opacity: 0.9; 
   }
 
   .user-avatar:hover + .menu-user,
