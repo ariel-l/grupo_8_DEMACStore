@@ -38,7 +38,13 @@
             <div class="header__burger--menu">
                 <i class="fas fa-bars"></i>
             </div>
-
+            <!-- LIST MENU CATEGORIES -->
+                <div class="subCategoryMenu">
+                    <li><a href="/products/subcategory/1">Celulares Nuevos</a></li>
+                    <li><a href="/products/subcategory/2">Celulares Refabricados</a></li>
+                    <li><a href="/products/subcategory/3">Accesorios</a></li>
+                    <li><a href="https://wa.me/541172021122">Contacto</a></li>
+                </div>
             <!-- LOGO -->
             <div class="header__logo--container">
                 <a href="/">
@@ -63,7 +69,7 @@
         <div class="header__acc__cart--container">
 
             <!-- MY-ACCOUNT -->
-            <div class="header__acc--container" id="navigation-bar-mobile">
+            <div class="header__acc--container">
                 <% if (typeof session.user !== "undefined") { %>
                   <div class="user-avatar">
                     <img src="/images/users/<%= session.user.avatar %>" class="rounded-circle" height="30" width="30" alt="avatar" />

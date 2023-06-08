@@ -1,4 +1,5 @@
-let navBar = document.getElementById("navigation-bar-mobile");
+let subCategoryMenu = document.querySelector(".subCategoryMenu");
+let burgerMenu = document.querySelector(".header__burger--menu");
 let menuUser = document.querySelector(".menu-user");
 let userAvatar = document.querySelector(".user-avatar");
 
@@ -30,6 +31,30 @@ function closeWindow() {
 userAvatar.addEventListener("click", dropMenu);
 window.addEventListener("click", function (event) {
   if (!userAvatar.contains(event.target)) {
+    closeWindow();
+  }
+});
+
+function dropMenuSubcategories() {
+  subCategoryMenu.classList.toggle("active");
+  if (subCategoryMenu.classList.contains("active")) {
+    subCategoryMenu.style.display = "block";
+  } else {
+    subCategoryMenu.style.display = "none";
+  }
+}
+
+function closeWindow() {
+  if (subCategoryMenu.classList.contains("active")) {
+    subCategoryMenu.classList.remove("active");
+    subCategoryMenu.style.display = "none";
+  }
+}
+
+burgerMenu.addEventListener("click", dropMenuSubcategories);
+
+window.addEventListener("click", function (event) {
+  if (!burgerMenu.contains(event.target) && !subCategoryMenu.contains(event.target)) {
     closeWindow();
   }
 });

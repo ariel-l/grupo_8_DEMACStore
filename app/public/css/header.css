@@ -90,18 +90,20 @@
   font-size: 1.2rem;
 }
 
+/* BURGER MENU */
+
 /* USER MENU */
 
 .header__acc--container {
   position: relative;
 }
 
-.user-avatar {
+.user-avatar, .burgerMenu {
   position: relative;
   z-index: 1;
 }
 
-.menu-user {
+.menu-user, .subCategoryMenu {
     display: none;
     position: absolute;
     top: 100%;
@@ -121,6 +123,10 @@
     display: block;
   }
 
+  .burgerMenu:hover + .subCategoryMenu,
+  .subCategoryMenu:hover {
+    display: block;
+  }
   .session {
     display: inline-block;
     width: 2.2rem;
