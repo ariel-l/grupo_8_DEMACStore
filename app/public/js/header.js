@@ -4,15 +4,27 @@ let userAvatar = document.querySelector(".user-avatar");
 
 function dropMenu() {
   menuUser.classList.toggle("active");
+  /*Alterna la clase CSS "active" en el elemento menuUser. 
+  Si la clase ya está presente, la quita; de lo contrario, la agrega. */
   if (menuUser.classList.contains("active")) {
-    navBar.style.display = "block";
+    menuUser.style.display = "block";
+  /* Si menuUser tiene la clase "active" después de la acción anterior, se establece la propiedad 
+  display del elemento navBar en "block" (visible). D*/
+  } else {
+    menuUser.style.display = "none";
+  /* De lo contrario, se establece en "none" (oculto).*/
   }
 }
 
 function closeWindow() {
-  if (menuUser.classList.contains("active")) {
-    menuUser.classList.remove("active");
-  }
+    if (menuUser.classList.contains("active")) {
+      /* Comprueba si menuUser tiene la clase "active". */
+      menuUser.classList.remove("active");
+      /* Si lo tiene, la quita. */
+      menuUser.style.display = "none";
+      /* y se establece la propiedad display del elemento 
+      navBar en "none" (oculto). */
+    }
 }
 
 userAvatar.addEventListener("click", dropMenu);
