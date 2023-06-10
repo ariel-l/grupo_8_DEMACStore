@@ -185,168 +185,23 @@ module.exports = {
         }
     },
 
-    cart: async (req, res) => {
-        try {
-          const userID = req.session.user.id;
-      
-          // Buscar la orden del usuario actual con los productos asociados
-          const order = await Order.findOne({
-            where: {
-              userID
-            },
-            include: [
-              {
-                model: OrderProduct,
-                as: "orderProducts",
-                include: {
-                  model: Product,
-                  as: "products"
-                }
-              }
-            ]
-          });
-          const productsRecommended = await Category.findByPk(2, {
-            include: [
-              {
-                model: Subcategory,
-                as: "subcategories",
-                include: {
-                  model: Product,
-                  as: "products",
-                },
-              },
-            ],
-          });
-      
-          if (!productsRecommended) {
-            return res.status(404).send("Categoría no encontrada");
-          }
-      
-          const recommendedProducts = productsRecommended.subcategories
-            .map((subcategory) => subcategory.products)
-            .flat();
-          // Obtener los productos de la orden y sus cantidades
-          let products = [];
-          let orderProducts = []; // Agregamos esta línea
-          if (order) {
-            orderProducts = order.orderProducts; // Modificamos esta línea
-            products = order.orderProducts.map((item) => {
-              return {
-                product: item.products,
-                productQuantity: item.productQuantity,
-                id: item.id
-              };
-            });
-          }
-      
-          // Renderizar la vista del carrito con los datos necesarios
+    cart: (req, res) => {
+      let userID = req.session.user.id;
+      Order.findOne({
+        where: {
+          userID
+        },
+        include: [{association: "orderProducts", include: [{association: "products", include: [{association: "brands"}]}]}]
+      })
+        .then((order) => {
           res.render("products/cart", {
             session: req.session,
             order,
-            products,
-            productsRecommended: recommendedProducts,
-            formatNumber,
-            orderProducts // Agregamos esta línea
+            user: req.session.user?.id || null,
           });
-        } catch (error) {
-          console.log(error);
-        }
-      },
-    
-      addToCart: async (req, res) => {
-        try {
-          const userID = req.session.user.id
-          const { productID } = req.body;
-          // Buscar la orden del usuario actual
-          let order = await Order.findOne({
-            where: {
-              userID
-            },
-            include: [
-              {
-                model: OrderProduct,
-                as: 'orderProducts',
-                where: {
-                  productID
-                },
-                required: false // Establecer en false para una búsqueda LEFT JOIN
-              }
-            ]
-          });        
-      
-          if (!order) {
-            // Si no existe una orden para el usuario, crear una nueva orden
-            order = await Order.create({
-              userID
-            });
-          }
-      
-          // Verificar si el producto ya está en la orden
-          const existingProduct = order.orderProducts[0];
-      
-          if (existingProduct) {
-            // Si el producto ya está en la orden, actualizar la cantidad
-            existingProduct.productQuantity += 1;
-            await existingProduct.save();
-          } else {
-            // Si el producto no está en la orden, agregarlo
-            await OrderProduct.create({
-              orderID: order.id,
-              productID,
-              productQuantity: 1
-            });
-          }
-      
-          res.sendStatus(200);
-        } catch (error) {
-          console.log(error);
-          res.sendStatus(500);
-        }
-      },      
-      
-      removeFromCart: async (req, res) => {
-        try {
-          const orderProductId = req.params.id;
-      
-          // Buscar el producto de la orden por ID
-          const orderProduct = await OrderProduct.findByPk(orderProductId);
-      
-          if (orderProduct) {
-            // Eliminar el producto de la orden
-            await orderProduct.destroy();
-          }
-      
-          res.redirect("/products/cart");
-        } catch (error) {
-          console.log(error);
-        }
-      },
-      
-      removeAllFromCart: async (req, res) => {
-        try {
-          const userID = req.session.user.id;
-      
-          // Buscar la orden del usuario actual
-          const order = await Order.findOne({
-            where: {
-              userID
-            }
-          });
-      
-          if (order) {
-            // Eliminar todos los productos de la orden
-            await OrderProduct.destroy({
-              where: {
-                orderID: order.id
-              }
-            });
-          }
-      
-          res.redirect("/products/cart");
-        } catch (error) {
-          console.log(error);
-        }
-      },
+        })
+        .catch((error) => console.log(error));
+    },
 
     create: (req, res) => {
         const CATEGORIES_PROMISE = Category.findAll();

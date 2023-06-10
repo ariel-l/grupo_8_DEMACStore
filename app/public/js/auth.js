@@ -5,5 +5,4 @@ window.addEventListener("load", () => {
       localStorage.setItem('token', token);
       window.location.href = "/"
   }
-  
 })

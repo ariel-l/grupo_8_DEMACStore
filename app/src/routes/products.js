@@ -20,12 +20,6 @@ router
 /* GET CART PAGE */
 router
     .get('/cart', userInSessionCheck, productsControllers.cart)
-    /* AGREGAR PRODUCTO AL CARRITO */
-    .post("/cart/add/:id", userInSessionCheck, productsControllers.addToCart)
-
-/* ELIMINAR PRODUCTO DEL CARRITO */
-    .delete("/cart/remove/:id", userInSessionCheck, productsControllers.removeFromCart)
-
 /* GET PRODUCT ADMIN PAGE */
 router
      .get('/adminList', adminInSessionCheck, productsControllers.productsList)

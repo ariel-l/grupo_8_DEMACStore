@@ -22,32 +22,32 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table__body">
-                                        <% products.forEach(product => { %>
+                                        <% order.orderProducts.forEach((orderProduct) => { %>
                                         <tr class="table__row--individual">
                                             <td>
                                                 <div class="table__item--img-container">
-                                                    <img src="/images/products/<%= product.product.image %>" class="table__item--img" alt="Celular Samsung">
+                                                    <img src="/images/products/<%= orderProduct.products.image %>" class="table__item--img" alt="Celular Samsung">
                                                 </div>
                                             </td>
                                             <td class="table__item--prod">
-                                                <span class="item__desc"><%- product.product.name %></span>
-                                                <span class="item__price">$ <%= formatNumber(product.product.price) %> x1 un.</span>
+                                                <span class="item__desc"><%- orderProduct.products.name %></span>
+                                                <span class="item__price">$ <%= (orderProduct.products.price) %> x1 un.</span>
                                             </td>
                                             <td class="table__item--qua">
                                                 <div class="btns__container">
-                                                    <button type="button" class="btn__mp incr" onclick="location.href='/products/remove-from-cart/<%- product.id %>'">
+                                                    <button type="button" class="btn__mp incr" onclick="location.href='/products/remove-from-cart/<%- orderProduct.productQuantity.id %>'">
                                                       -
                                                     </button>
-                                                    <div class="count__input" style="color:black"><%- product.productQuantity %></div>
-                                                    <button class="btn__mp incr" type="button" id="btn-add" onclick="location.href='/products/add-to-cart?productID=<%- product.product.id %>'">
+                                                    <div class="count__input" style="color:black"><%- orderProduct.productQuantity %></div>
+                                                    <button class="btn__mp incr" type="button" id="btn-add" onclick="location.href='/products/add-to-cart?productID=<%- orderProduct.productQuantity %>'">
                                                       +
                                                     </button>
                                                   </div>
                                             </td>
                                             <td class="table__item--sub">
-                                                <span>$ <%- (Number(product.product.price) * Number(product.productQuantity)) %></span>
+                                                <span>$ <%- (Number(orderProduct.products.price) * Number(orderProduct.productQuantity)) %></span>
                                             </td>
-                                            <td class="table__item--del"><a href="/products/remove-all-from-cart/<%- product.id %>" class="clear-cart"><i class="fa-solid fa-trash del__icon"></i></a></td>
+                                            <td class="table__item--del"><a href="/products/remove-all-from-cart/" class="clear-cart"><i class="fa-solid fa-trash del__icon"></i></a></td>
                                         </tr>
                                         <% }) %>
                                     </tbody>
@@ -71,25 +71,24 @@
                                             initCarousel();
                                         });
                                         </script>
-                                        <%- include('../partials/carouselRecommended') %>
                                 </div>
                             </section>
                         </div>
                         <div class="total-desc-ship-pay__container">
                             <div class="sub-desc-total__main--container">
                                 <div class="sdt__container">
-                                    <% products.forEach(product => { %>
+                                    <% order.orderProducts.forEach((orderProduct) => { %>
                                     <div class="sdt__individual--container">
                                         <span class="sub__price">Subtotal</span>
-                                        <span class="sub__price">$ <%- (Number(product.product.price) * Number(product.productQuantity)) %></span>
+                                        <span class="sub__price">$ <%- (Number(orderProduct.price) * Number(orderProduct.productQuantity)) %></span>
                                     </div>
                                     <div class="sdt__individual--container">
                                         <span class="desc__price">Descuentos</span>
-                                        <span class="desc__price">% <%- product.product.discount %></span>
+                                        <span class="desc__price">% <%- orderProduct.discount %></span>
                                     </div>
                                     <div class="sdt__individual--container">
                                         <span class="total__price">TOTAL</span>
-                                        <span class="total__price">$ 167.998</span>
+                                        <span class="total__price">$ <%  %></span>
                                     </div>
                                     <% }) %>
                                 </div>
