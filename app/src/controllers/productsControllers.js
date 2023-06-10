@@ -1,5 +1,5 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Sequelize, Category, Subcategory, Brand, Order, OrderProduct } = require('../database/models');
+const { Product, Sequelize, Category, Subcategory, Brand, Order, OrderProduct, User, Address } = require('../database/models');
 const { Op } = Sequelize;
 const { productsRecommended } = require('../../public/js/carouselRecommended');
 
@@ -255,9 +255,8 @@ module.exports = {
     
       addToCart: async (req, res) => {
         try {
+          const userID = req.session.user.id
           const { productID } = req.body;
-          const userID = req.session.user.id;
-      
           // Buscar la orden del usuario actual
           let order = await Order.findOne({
             where: {
@@ -273,7 +272,7 @@ module.exports = {
                 required: false // Establecer en false para una búsqueda LEFT JOIN
               }
             ]
-          });
+          });        
       
           if (!order) {
             // Si no existe una orden para el usuario, crear una nueva orden

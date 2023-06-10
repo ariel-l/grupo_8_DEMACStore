@@ -18,6 +18,7 @@ function addProductToCart(productID) {
     headers: {
       "Content-Type": "application/json"
     },
+    credentials: "same-origin", // Incluye las cookies en la solicitud
     body: JSON.stringify(data)
   })
     .then(response => {
