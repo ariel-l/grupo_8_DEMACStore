@@ -30,6 +30,8 @@
     padding-right: 1rem;
     padding-left: 0.5rem;
     padding-bottom: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .profile__main--title {
