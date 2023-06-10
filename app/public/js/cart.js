@@ -11,7 +11,6 @@ function addProductToCart(productID) {
     productID: productID,
     productQuantity: productQuantity
   };
-  console.log(data)
 
   fetch(`/cart/add/${productID}`, {
     method: "POST",
