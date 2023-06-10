@@ -1,168 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head', {title: 'Finalizá tu compra' }) %>
-  <%- include('../partials/scripts') %>
+    <%- include('../partials/scripts') %>
 
-    <body>
-      <%- include('../partials/header') %>
-        <main>
-          <article class="body__container">
-            <span class="table__title">Mi Carrito</span>
-
-                <form action="#">
-                  <div class="row">
-            <% if (order && order.orderProducts.length > 0) { %>
-            <!-- PRODUCTOS -->
-            <div>
-                <button class="clear-cart" onclick="clearCart('<%= session.user.id %>')">
-                  Vaciar carrito
-                </button>
-              </div>
-              <section class="productos" id="contenedor-productos">
-                <% products.forEach(product => { %>
-                  <div class="producto">
-                    <div class="imagen">
-                      <img src="/images/products/<%= product.product.image %>" alt="">
-                    </div>
-                    <div class="detalles">
-                      <h3><%- product.product.name %></h3>
-                      <div>
-                        <div class="precio">
-                          <span class="precio-unitario">Precio unitario: $<%- product.product.price %></span>
-                          <span class="precio-sumado">Precio total: $<%- (Number(product.product.price) * Number(product.productQuantity)) %></span>
+        <body>
+            <%- include('../partials/header') %>
+                <main>
+                    <article class="body__container">
+                        <% if (order && order.orderProducts.length > 0) { %>
+                        <div class="cart-recom__container">
+                            <section class="cart__container">
+                                <span class="table__title">Mi Carrito</span>
+                                <table class="cart__table">
+                                    <thead class="table__header">
+                                        <tr>
+                                            <th>ImgProd</th>
+                                            <th>Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table__body">
+                                        <% products.forEach(product => { %>
+                                        <tr class="table__row--individual">
+                                            <td>
+                                                <div class="table__item--img-container">
+                                                    <img src="/images/products/<%= product.product.image %>" class="table__item--img" alt="Celular Samsung">
+                                                </div>
+                                            </td>
+                                            <td class="table__item--prod">
+                                                <span class="item__desc"><%- product.product.name %></span>
+                                                <span class="item__price">$ <%= formatNumber(product.product.price) %> x1 un.</span>
+                                            </td>
+                                            <td class="table__item--qua">
+                                                <div class="btns__container">
+                                                    <button type="button" class="btn__mp incr" onclick="location.href='/products/remove-from-cart/<%- product.id %>'">
+                                                      -
+                                                    </button>
+                                                    <div class="count__input" style="color:black"><%- product.productQuantity %></div>
+                                                    <button class="btn__mp incr" type="button" id="btn-add" onclick="location.href='/products/add-to-cart?productID=<%- product.product.id %>'">
+                                                      +
+                                                    </button>
+                                                  </div>
+                                            </td>
+                                            <td class="table__item--sub">
+                                                <span>$ <%- (Number(product.product.price) * Number(product.productQuantity)) %></span>
+                                            </td>
+                                            <td class="table__item--del"><a href="/products/remove-all-from-cart/<%- product.id %>" class="clear-cart"><i class="fa-solid fa-trash del__icon"></i></a></td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                                <div class="cart__addProd">
+                                    <a href="/" class="cart__addProd--link">Agregar más productos</a>
+                                </div>
+                                <div>
+                                    <button class="clear-cart" onclick="clearCart('<%= session.user.id %>')">
+                                      Vaciar carrito
+                                    </button>
+                                  </div>
+                            </section>
+                            <section class="recom__container">
+                                <span class="recom__title">Llevate también:</span>
+                                <div class="recom__items--container">
+                                    <script>
+                                        // Llama a la función initCarousel una vez el DOM haya cargado
+                                        // Esto evita errores relacionados con la manipulación de elementos que aún no se han cargado.
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            initCarousel();
+                                        });
+                                        </script>
+                                        <%- include('../partials/carouselRecommended') %>
+                                </div>
+                            </section>
                         </div>
-                        <div>
-                          <a href="/products/remove-all-from-cart/<%- product.id %>" class="clear-cart">
-                            Quitar del carrito
-                          </a>
+                        <div class="total-desc-ship-pay__container">
+                            <div class="sub-desc-total__main--container">
+                                <div class="sdt__container">
+                                    <% products.forEach(product => { %>
+                                    <div class="sdt__individual--container">
+                                        <span class="sub__price">Subtotal</span>
+                                        <span class="sub__price">$ <%- (Number(product.product.price) * Number(product.productQuantity)) %></span>
+                                    </div>
+                                    <div class="sdt__individual--container">
+                                        <span class="desc__price">Descuentos</span>
+                                        <span class="desc__price">% <%- product.product.discount %></span>
+                                    </div>
+                                    <div class="sdt__individual--container">
+                                        <span class="total__price">TOTAL</span>
+                                        <span class="total__price">$ 167.998</span>
+                                    </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                            <div class="inputs__container">
+                                <div class="inputs__individuals--container">
+                                    <div class="input__title--container">
+                                        <span class="input__title">Cupón de Descuento</span>
+                                    </div>
+                                    <div class="input__coup--container">
+                                        <input class="input__text" type="text" placeholder="Ingresar cupón">
+                                        <button class="input__btn"></button>
+                                    </div>
+                                </div>
+                                <div class="inputs__individuals--container">
+                                    <div class="input__title--container">
+                                        <span class="input__title">Métodos de Envío</span>
+                                    </div>
+                                    <div class="checks__ship-pay--container">
+                                        <label class="checks__container" for="cp">
+                                            <input type="radio" name="envio" id="cp">
+                                            Ingresar C.P
+                                        </label>
+                                        <label class="checks__container" for="retiro">
+                                            <input type="radio" name="envio" id="retiro">
+                                            Retiro en Local
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs__individuals--container">
+                                    <div class="input__title--container">
+                                        <span class="input__title">Medios de Pago</span>
+                                    </div>
+                                    <div class="checks__ship-pay--container">
+                                        <label class="checks__container" for="efec">
+                                            <input type="radio" name="pago" id="efec">
+                                            Efectivo/Transferencia
+                                            <span class="text__prom-desc">(10% de <span class="text__prom-desc--blue">Descuento)</span></span>
+                                        </label>
+                                        <label class="checks__container" for="tarjeta">
+                                            <input type="radio" name="pago" id="tarjeta">
+                                            Tarjetas de Crédito
+                                            <span class="text__prom-desc">(Selecciona para ver <span
+                                                    class="text__prom-desc--blue">Promociones)</span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pay__btn--container">
+                                <button class="pay__btn">Pagar</button>
+                            </div>
+                            <div class="login__register--container">
+                                <span class="login--register"><a href="/users/login" class="log__reg--link">Ingresar</a> a mi cuenta</span>
+                                <span class="login--register"><a href="/users/register" class="log__reg--link">Registrarme</a></span>
+                            </div>
                         </div>
-                        <div class="productNumber">
-                          <label for="cantidad">Cantidad</label>
-                          <div class="counter">
-                            <button type="button" class="btn-subtract" onclick="location.href='/products/remove-from-cart/<%- product.id %>'">
-                              -
-                            </button>
-                            <div><%- product.productQuantity %></div>
-                            <button type="button" id="btn-add" onclick="location.href='/products/add-to-cart?productID=<%- product.product.id %>'">
-                              +
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <% }) %>
-              </section>
-                                    
-            <div class="total-desc-ship-pay__container">
-              <div class="sub-desc-total__main--container">
-                <div class="sdt__container">
-                  <div class="sdt__individual--container">
-                    <span class="sub__price">Subtotal</span>
-                    <span class="sub__price">$ 167.998</span>
-                  </div>
-                  <div class="sdt__individual--container">
-                    <span class="desc__price">Descuentos</span>
-                    <span class="desc__price">$ 0</span>
-                  </div>
-                  <div class="sdt__individual--container">
-                    <span class="total__price">TOTAL</span>
-                    <span class="total__price">$ 167.998</span>
-                  </div>
-                </div>
-              </div>
-              <div class="inputs__container">
-                <div class="inputs__individuals--container">
-                  <div class="input__title--container">
-                    <span class="input__title">Cupón de Descuento</span>
-                  </div>
-                  <div class="input__coup--container">
-                    <input class="input__text" type="text" placeholder="Ingresar cupón">
-                    <button class="input__btn"></button>
-                  </div>
-                </div>
-                <div class="inputs__individuals--container">
-                  <div class="input__title--container">
-                    <span class="input__title">Métodos de Envío</span>
-                  </div>
-                  <div class="checks__ship-pay--container">
-                    <label class="checks__container" for="cp">
-                      <input type="radio" name="envio" id="cp">
-                      Ingresar C.P
-                    </label>
-                    <label class="checks__container" for="retiro">
-                      <input type="radio" name="envio" id="retiro">
-                      Retiro en Local
-                    </label>
-                  </div>
-                </div>
-                <div class="inputs__individuals--container">
-                  <div class="input__title--container">
-                    <span class="input__title">Medios de Pago</span>
-                  </div>
-                  <div class="checks__ship-pay--container">
-                    <label class="checks__container" for="efec">
-                      <input type="radio" name="pago" id="efec">
-                      Efectivo/Transferencia
-                      <span class="text__prom-desc">(10% de <span
-                          class="text__prom-desc--blue">Descuento)</span></span>
-                    </label>
-                    <label class="checks__container" for="tarjeta">
-                      <input type="radio" name="pago" id="tarjeta">
-                      Tarjetas de Crédito
-                      <span class="text__prom-desc">(Selecciona para ver <span
-                          class="text__prom-desc--blue">Promociones)</span></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="pay__btn--container">
-                <button class="pay__btn">Pagar</button>
-              </div>
-              <div class="login__register--container">
-                <span class="login--register"><a href="/users/login" class="log__reg--link">Ingresar</a> a mi
-                  cuenta</span>
-                <span class="login--register"><a href="/users/register"
-                    class="log__reg--link">Registrarme</a></span>
-              </div>
-            </div>
-
-            <% } else { %>
+                        <% } else { %>
             
-            <div class="cart-recom__container">
-              <section class="cart__container">
-                <h2 class="cart__title">No hay productos en su carrito</h2>
-                <h4 class="cart__subtitle">Selecciona alguna de nuestras categorías para encontrar los mejores productos:</h4>
-                <section class="home__phones--container--global">
-                  <article class="home__products--phones">
-                    <div class="home__phone--container--1">
-                      <a href="/products/subcategory/1" class="home__second--title">
-                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-a13 2.svg" alt="">
-                    </div>
-                    <span>CELULARES NUEVOS</span></a>
-                  </article>
-                  <article class="home__products--phones">
-                    <div class="home__phone--container--1">
-                      <a href="/products/subcategory/2" class="home__second--title">
-                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-m13 2.svg" alt="">
-                    </div>
-                    <span>CELULARES REFABRICADOS</span></a>
-                  </article>
-                  <article class="home__products--phones">
-                    <div class="home__phone--container--1">
-                      <a href="/products/subcategory/3" class="home__second--title">
-                        <img class="home__img--cardProducts" src="/images/products/auriculares-inalambricos-jbl-.jpg"
-                          alt="">
-                    </div>
-                    <span class="home__accessories">ACCESORIOS NUEVOS</span></a>
-                  </article>
-                </section>
-                <% } %>
-
-                    
-          </article>
-        </main>
-        <%- include('../partials/footer') %>
-    </body>
+                            <div class="cart-recom__container">
+                              <section class="cart__container">
+                                <h2 class="cart__title">No hay productos en su carrito</h2>
+                                <h4 class="cart__subtitle">Selecciona alguna de nuestras categorías para encontrar los mejores productos:</h4>
+                                <section class="home__phones--container--global">
+                                  <article class="home__products--phones">
+                                    <div class="home__phone--container--1">
+                                      <a href="/products/subcategory/1" class="home__second--title">
+                                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-a13 2.svg" alt="">
+                                    </div>
+                                    <span>CELULARES NUEVOS</span></a>
+                                  </article>
+                                  <article class="home__products--phones">
+                                    <div class="home__phone--container--1">
+                                      <a href="/products/subcategory/2" class="home__second--title">
+                                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-m13 2.svg" alt="">
+                                    </div>
+                                    <span>CELULARES REFABRICADOS</span></a>
+                                  </article>
+                                  <article class="home__products--phones">
+                                    <div class="home__phone--container--1">
+                                      <a href="/products/subcategory/3" class="home__second--title">
+                                        <img class="home__img--cardProducts" src="/images/products/auriculares-inalambricos-jbl-.jpg"
+                                          alt="">
+                                    </div>
+                                    <span class="home__accessories">ACCESORIOS NUEVOS</span></a>
+                                  </article>
+                                </section>
+                                <% } %>
+                    </article>
+                </main>
+                <%- include('../partials/footer') %>
+        </body>
 
 </html>

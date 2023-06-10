@@ -205,7 +205,26 @@ module.exports = {
               }
             ]
           });
+          const productsRecommended = await Category.findByPk(2, {
+            include: [
+              {
+                model: Subcategory,
+                as: "subcategories",
+                include: {
+                  model: Product,
+                  as: "products",
+                },
+              },
+            ],
+          });
       
+          if (!productsRecommended) {
+            return res.status(404).send("Categoría no encontrada");
+          }
+      
+          const recommendedProducts = productsRecommended.subcategories
+            .map((subcategory) => subcategory.products)
+            .flat();
           // Obtener los productos de la orden y sus cantidades
           let products = [];
           let orderProducts = []; // Agregamos esta línea
@@ -225,6 +244,8 @@ module.exports = {
             session: req.session,
             order,
             products,
+            productsRecommended: recommendedProducts,
+            formatNumber,
             orderProducts // Agregamos esta línea
           });
         } catch (error) {
