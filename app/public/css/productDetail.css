@@ -232,6 +232,12 @@
     align-items: center;
 }
 
+.error-message-detail {
+    color: red;
+    margin-top: 10px;
+  }
+  
+
 .detail___technical--specifications {
     margin-top: 20px;
     background-color: white;

@@ -1,91 +1,35 @@
-const API_BASE_URL = "http://localhost:3000/api";
-const token = localStorage.getItem("token");
+function addProductToCart(productID) {
+  const productQuantity = document.getElementById("number").value;
 
-const getData = async (url, token) => {
-  const result = await fetch(url, {
-    method: "GET",
-    headers: {
-      authorization: "Bearer " + token,
-    },
-  });
-  const data = await result.json();
-  return data;
-};
+  if (productQuantity === "Unidades") {
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.innerText = "Por favor, selecciona una cantidad.";
+    return;
+  }
 
-const postData = async (url, data, token) => {
-  return await fetch(url, {
+  const data = {
+    productID: productID,
+    productQuantity: productQuantity
+  };
+  console.log(data)
+
+  fetch(`/cart/add/${productID}`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      authorization: "Bearer " + token,
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data)
   })
-    .then((response) => response.json())
-    .then((result) => result)
-    .catch((error) => {
-      console.error("Error:", error);
+    .then(response => {
+      if (response.ok) {
+        console.log("Producto agregado al carrito");
+      } else {
+        throw new Error(`Error al agregar el producto al carrito. Código de estado: ${response.status}`);
+      }
+    })
+    .catch(error => {
+      console.log("Error en la solicitud: ", error);
+      console.log("Error al agregar el producto al carrito. Código de estado: Desconocido");
+      throw error; // Relanza el error para que pueda ser capturado en otro lugar si es necesario
     });
-};
-
-const putData = async (url, token) => {
-  return await fetch(url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: "Bearer " + token,
-    },
-  })
-    .then((response) => response.json())
-    .then((result) => result)
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-};
-
-const deleteData = async (url, token) => {
-  return await fetch(url, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: "Bearer " + token,
-    },
-  })
-    .then((response) => response.json())
-    .then((result) => result)
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-};
-
-const addToCart = async (productID) => {
-  const ENDPOINT = `${API_BASE_URL}/orders`;
-  const data = {
-    productID,
-    productQuantity: 0,
-  };
-  const response = await postData(ENDPOINT, data, token);
-  alert(response);
-  window.location.reload();
-};
-
-const removeOneProduct = async (itemId) => {
-    const ENDPOINT = `${API_BASE_URL}/orders/${itemId}`;
-    const response = await  putData(ENDPOINT, token);
-    alert(response)
-    window.location.reload();
-};
-
-const removeAllOfOneProduct = async (itemId) => {
-    const ENDPOINT = `${API_BASE_URL}/orders/${itemId}`;
-    const response = await  deleteData(ENDPOINT, token);
-    alert(response)
-    window.location.reload();
-};
-
-const clearCart = async (orderID) => {
-    const ENDPOINT = `${API_BASE_URL}/orders/clear/${orderID}`;
-    const response = await  deleteData(ENDPOINT, token);
-    alert(response)
-    window.location.reload();
-};
+}

@@ -68,28 +68,30 @@
 
                                 <div class="detail___number--product">
                                     <div class="detail___number--product">
-                                        <label class="detail__selects" for="number">Cantidad:</label>
-                                        <select class="counter" name="number" id="number">
-                                          <option class="counter" hidden selected>Unidades</option>
-                                          <option value="1">1 unidad</option>
-                                          <option value="2">2 unidades</option>
-                                          <option value="3">3 unidades</option>
-                                        </select>
-                                      </div>                                      
-                                </div>
-                                <div class="detail___add--cart">
+                                      <label class="detail__selects" for="number">Cantidad:</label>
+                                      <select class="counter" name="number" id="number">
+                                        <option class="counter" hidden selected>Unidades</option>
+                                        <option value="1">1 unidad</option>
+                                        <option value="2">2 unidades</option>
+                                        <option value="3">3 unidades</option>
+                                      </select>
+                                    </div>                                      
+                                  </div>
+                                  <div id="errorMessage" class="error-message-detail"></div>   
+                                  <div class="detail___add--cart">
                                     <input class="detail__input--false" />
                                     <% if (session.user !== undefined) { %>
-                                    <div class="btn btn-ad-primary detail___button--cart" onclick="addToCart('<%= product.id %>')" style="color: #004AAD; font-weight: bold;">
-                                        Agregar al carrito 
-                                        <i class="fas fa-shopping-cart"></i>
+                                    <div class="btn btn-ad-primary detail___button--cart" onclick="addProductToCart('<%= product.id %>')" style="color: #004AAD; font-weight: bold;">
+                                      Agregar al carrito 
+                                      <i class="fas fa-shopping-cart"></i>
                                     </div>
                                     <% } else { %>
                                     <div class="detail___button--cart">
-                                        <a href="/users/login" class="detail___btn--add--to--cart">Agregar al carrito</a>
+                                      <a href="/users/login" class="detail___btn--add--to--cart">Agregar al carrito</a>
                                     </div>
                                     <% } %>
-                                </div>                                
+                                  </div>    
+                                                                               
                     </article>
                 </section>
                 <hr class="detail__hr--product">

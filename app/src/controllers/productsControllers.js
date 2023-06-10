@@ -184,42 +184,149 @@ module.exports = {
             console.log(error);
         }
     },
-    cart: (req, res) => {
-        let userID = req.session.user.id;
-        Order.findOne({
-          where: {
-            userID
-          },
-          include: [
-            {
-              association: "orderProducts",
-              include: [
-                {
-                  association: "products",
-                  include: [{ association: "brands" }]
+
+    cart: async (req, res) => {
+        try {
+          const userID = req.session.user.id;
+      
+          // Buscar la orden del usuario actual con los productos asociados
+          const order = await Order.findOne({
+            where: {
+              userID
+            },
+            include: [
+              {
+                model: OrderProduct,
+                as: "orderProducts",
+                include: {
+                  model: Product,
+                  as: "products"
                 }
-              ]
-            }
-          ]
-        })
-          .then((order) => {
-            let products = order?.order_products.map((item) => {
+              }
+            ]
+          });
+      
+          // Obtener los productos de la orden y sus cantidades
+          let products = [];
+          let orderProducts = []; // Agregamos esta línea
+          if (order) {
+            orderProducts = order.orderProducts; // Modificamos esta línea
+            products = order.orderProducts.map((item) => {
               return {
                 product: item.products,
-                quantity: item.productQuantity,
+                productQuantity: item.productQuantity,
                 id: item.id
               };
             });
+          }
       
-            res.render("products/cart", {
-              session: req.session,
-              order,
-              products: products !== undefined ? products : [],
-              user: req.session.user?.id || null,
+          // Renderizar la vista del carrito con los datos necesarios
+          res.render("products/cart", {
+            session: req.session,
+            order,
+            products,
+            orderProducts // Agregamos esta línea
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    
+      addToCart: async (req, res) => {
+        try {
+          const { productID } = req.body;
+          const userID = req.session.user.id;
+      
+          // Buscar la orden del usuario actual
+          let order = await Order.findOne({
+            where: {
+              userID
+            },
+            include: [
+              {
+                model: OrderProduct,
+                as: 'orderProducts',
+                where: {
+                  productID
+                },
+                required: false // Establecer en false para una búsqueda LEFT JOIN
+              }
+            ]
+          });
+      
+          if (!order) {
+            // Si no existe una orden para el usuario, crear una nueva orden
+            order = await Order.create({
+              userID
             });
-          })
-          .catch((error) => console.log(error));
+          }
+      
+          // Verificar si el producto ya está en la orden
+          const existingProduct = order.orderProducts[0];
+      
+          if (existingProduct) {
+            // Si el producto ya está en la orden, actualizar la cantidad
+            existingProduct.productQuantity += 1;
+            await existingProduct.save();
+          } else {
+            // Si el producto no está en la orden, agregarlo
+            await OrderProduct.create({
+              orderID: order.id,
+              productID,
+              productQuantity: 1
+            });
+          }
+      
+          res.sendStatus(200);
+        } catch (error) {
+          console.log(error);
+          res.sendStatus(500);
+        }
       },      
+      
+      removeFromCart: async (req, res) => {
+        try {
+          const orderProductId = req.params.id;
+      
+          // Buscar el producto de la orden por ID
+          const orderProduct = await OrderProduct.findByPk(orderProductId);
+      
+          if (orderProduct) {
+            // Eliminar el producto de la orden
+            await orderProduct.destroy();
+          }
+      
+          res.redirect("/products/cart");
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      
+      removeAllFromCart: async (req, res) => {
+        try {
+          const userID = req.session.user.id;
+      
+          // Buscar la orden del usuario actual
+          const order = await Order.findOne({
+            where: {
+              userID
+            }
+          });
+      
+          if (order) {
+            // Eliminar todos los productos de la orden
+            await OrderProduct.destroy({
+              where: {
+                orderID: order.id
+              }
+            });
+          }
+      
+          res.redirect("/products/cart");
+        } catch (error) {
+          console.log(error);
+        }
+      },
 
     create: (req, res) => {
         const CATEGORIES_PROMISE = Category.findAll();

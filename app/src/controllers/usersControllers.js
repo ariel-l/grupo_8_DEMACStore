@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const { User, Address } = require("../database/models");
-const {generateToken} = require("../helpers/jwt.helper");
 
 module.exports = {
 
@@ -59,8 +58,6 @@ module.exports = {
                         role: user.role
                     }
 
-                    const token = generateToken(user);
-                    console.log(token)
                     const cookieLifeTime = new Date(Date.now() + 6000000);
 
                     if (req.body.remember) {
@@ -74,8 +71,7 @@ module.exports = {
                     }
 
                     res.locals.user = req.session.user;
-                    res.redirect(`/?token=${token}`);
-                    console.log(token)
+                    res.redirect('/users/profile');
                 })
                 .catch(error => console.log())
         } else {
