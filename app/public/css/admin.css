@@ -13,34 +13,26 @@
 }
 
 .admin__title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 2rem;
 }
 
 .admin__filters {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 4px;
-    margin: 0 10px;
+    margin: 0 5px;
 }
-
-.admin__filters label {
-    margin-right: 3rem;
-  }
 
 .admin__filters select {
     border-radius: 10px;
     border-color: var(--azul);
+    width: 116px;
+    margin-left: 1.5rem;
 }
 
 .col-12 {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+    justify-content:flex-end;
+    padding-right: 2rem;
 }
 
 .table-container {
