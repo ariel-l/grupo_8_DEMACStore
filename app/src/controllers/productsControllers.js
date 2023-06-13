@@ -1,5 +1,5 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Sequelize, Category, Subcategory, Brand } = require('../database/models');
+const { Product, Sequelize, Category, Subcategory, Brand, Order, OrderProduct } = require('../database/models');
 const { Op } = Sequelize;
 const { productsRecommended } = require('../../public/js/carouselRecommended');
 
@@ -184,11 +184,158 @@ module.exports = {
         }
     },
 
-    cart: (req, res) => {
-        return res.render('products/cart', {
-            session: req.session
-        })
-    },
+    cart: async (req, res) => {
+        try {
+          const userID = req.session.user.id;
+      
+          const order = await Order.findOne({
+            where: {
+              userID
+            },
+            include: [
+              {
+                model: OrderProduct,
+                as: "orderProducts",
+                include: {
+                  model: Product,
+                  as: "products"
+                }
+              }
+            ]
+          });
+          const productsRecommended = await Category.findByPk(2, {
+            include: [
+              {
+                model: Subcategory,
+                as: "subcategories",
+                include: {
+                  model: Product,
+                  as: "products",
+                },
+              },
+            ],
+          });
+      
+          if (!productsRecommended) {
+            return res.status(404).send("Categoría no encontrada");
+          }
+      
+          const recommendedProducts = productsRecommended.subcategories
+            .map((subcategory) => subcategory.products)
+            .flat();
+          let products = [];
+          let orderProducts = []; 
+          if (order) {
+            orderProducts = order.orderProducts; 
+            products = order.orderProducts.map((item) => {
+              return {
+                product: item.products,
+                productQuantity: item.productQuantity,
+                id: item.id
+              };
+            });
+          }
+      
+          res.render("products/cart", {
+            session: req.session,
+            order,
+            products,
+            productsRecommended: recommendedProducts,
+            formatNumber,
+            orderProducts
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    
+      addToCart: async (req, res) => {
+        try {
+          const userID = req.session.user.id
+          const { productID } = req.body;
+
+          let order = await Order.findOne({
+            where: {
+              userID
+            },
+            include: [
+              {
+                model: OrderProduct,
+                as: 'orderProducts',
+                where: {
+                  productID
+                },
+                required: false 
+              }
+            ]
+          });        
+      
+          if (!order) {
+            order = await Order.create({
+              userID
+            });
+          }
+      
+          const existingProduct = order.orderProducts[0];
+      
+          if (existingProduct) {
+            existingProduct.productQuantity += 1;
+            await existingProduct.save();
+          } else {
+            await OrderProduct.create({
+              orderID: order.id,
+              productID,
+              productQuantity: 1
+            });
+          }
+      
+          res.sendStatus(200);
+        } catch (error) {
+          console.log(error);
+          res.sendStatus(500);
+        }
+      },      
+      
+      removeFromCart: async (req, res) => {
+        try {
+          const orderProductId = req.params.id;
+      
+          const orderProduct = await OrderProduct.findByPk(orderProductId);
+      
+          if (orderProduct) {
+            await orderProduct.destroy();
+          }
+      
+          res.redirect("/products/cart");
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      
+      removeAllFromCart: async (req, res) => {
+        try {
+          const userID = req.session.user.id;
+      
+          const order = await Order.findOne({
+            where: {
+              userID
+            }
+          });
+      
+          if (order) {
+            await OrderProduct.destroy({
+              where: {
+                orderID: order.id
+              }
+            });
+          }
+      
+          res.redirect("/products/cart");
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
 
     create: (req, res) => {
         const CATEGORIES_PROMISE = Category.findAll();

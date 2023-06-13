@@ -18,6 +18,23 @@
     justify-content: center;
 }
 
+.admin__filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    margin: 0 10px;
+}
+
+.admin__filters label {
+    margin-right: 3rem;
+  }
+
+.admin__filters select {
+    border-radius: 10px;
+    border-color: var(--azul);
+}
+
 .col-12 {
     width: 100%;
     display: flex;

@@ -12,36 +12,37 @@
                     <%- include('../partials/navUsers') %>
                     <section class="admin__section--container">
                       <h2 class="admin__title">Productos</h2>
-                      <div>
-                        <label for="brandFilter">Filtrar por marca:</label>
-                        <select class="brand-filter" id="brandFilter">
-                          <option value="">Todas</option>
-                          <option value="Apple">Apple</option>
-                          <option value="Huawei">Huawei</option>
-                          <option value="LG">LG</option>
-                          <option value="Motorola">Motorola</option>
-                          <option value="Samsung">Samsung</option>
-                          <option value="Xiaomi">Xiaomi</option>
-                          <option value="Otras">otras</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label for="categoryFilter">Filtrar por categoría:</label>
-                        <select class="category-filter" id="categoryFilter">
-                          <option value="">Todas</option>
-                          <option value="Phones">Phones</option>
-                          <option value="Accessories">Accessories</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label for="subcategoryFilter">Filtrar por subcategoría:</label>
-                        <select class="subcategory-filter" id="subcategoryFilter">
-                          <option value="">Todas</option>
-                          <option value="1">News</option>
-                          <option value="2">Refubrishes</option>
-                        </select>
-                      </div>                                                           
+                      <div class="admin__filters-container">
+                        <div class="admin__filters">
+                          <label for="brandFilter">Filtrar por marca:</label>
+                          <select class="brand-filter" id="brandFilter">
+                            <option value="">Todas</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Huawei">Huawei</option>
+                            <option value="LG">LG</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Xiaomi">Xiaomi</option>
+                            <option value="Otras">otras</option>
+                          </select>
+                        </div>
+                        <div class="admin__filters">
+                          <label for="categoryFilter">Filtrar por categoría:</label>
+                          <select class="category-filter" id="categoryFilter">
+                            <option value="">Todas</option>
+                            <option value="Phones">Phones</option>
+                            <option value="Accessories">Accessories</option>
+                          </select>
+                        </div>
+                        <div class="admin__filters">
+                          <label for="subcategoryFilter">Filtrar por subcategoría:</label>
+                          <select class="subcategory-filter" id="subcategoryFilter">
+                            <option value="">Todas</option>
+                            <option value="1">News</option>
+                            <option value="2">Refubrishes</option>
+                          </select>
+                        </div>
+                      </div>                                                    
                       <div class="col-12">
                         <a href="/products/create"><button type="button" class="admin___btn--add">Agregar</button></a>
                       </div>

@@ -7,6 +7,7 @@
             <%- include('../partials/header') %>
                 <main>
                     <article class="body__container">
+                        <% if (order && order.orderProducts.length > 0) { %>
                         <div class="cart-recom__container">
                             <section class="cart__container">
                                 <span class="table__title">Mi Carrito</span>
@@ -21,48 +22,34 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table__body">
+                                        <% products.forEach(product => { %>
                                         <tr class="table__row--individual">
                                             <td>
                                                 <div class="table__item--img-container">
-                                                    <img src="/images/cart-imgs/galaxys20.svg" class="table__item--img" alt="Celular Samsung">
+                                                    <img src="/images/products/<%= product.product.image %>" class="table__item--img" alt="Celular Samsung">
                                                 </div>
                                             </td>
                                             <td class="table__item--prod">
-                                                <span class="item__desc">Celular Samsung Galaxy S20</span>
-                                                <span class="item__price">$ 50.000 x1 un.</span>
+                                                <span class="item__desc"><%- product.product.name %></span>
+                                                <span class="item__price">$ <%= formatNumber(product.product.price) %></span>
                                             </td>
                                             <td class="table__item--qua">
-                                                <div class="btns__container"><button class="btn__mp decr">-</button>
-                                                    <input type="text" value="0" class="count__input" />
-                                                    <button class="btn__mp incr">+</button>
-                                                </div>
+                                                <div class="btns__container">
+                                                    <button type="button" class="btn__mp incr" onclick="location.href='/products/remove-from-cart/<%- product.id %>'">
+                                                      -
+                                                    </button>
+                                                    <div class="count__input" style="color:black"><%- product.productQuantity %></div>
+                                                    <button class="btn__mp incr" type="button" id="btn-add" onclick="location.href='/products/add-to-cart?productID=<%- product.product.id %>'">
+                                                      +
+                                                    </button>
+                                                  </div>
                                             </td>
                                             <td class="table__item--sub">
-                                                <span>$50.000</span>
+                                                <span>$ <%- (Number(product.product.price) * Number(product.productQuantity)) %></span>
                                             </td>
-                                            <td class="table__item--del"><i class="fa-solid fa-trash del__icon"></i></td>
+                                            <td class="table__item--del"><a href="/products/remove-all-from-cart/<%- product.id %>" class="clear-cart"><i class="fa-solid fa-trash del__icon"></i></a></td>
                                         </tr>
-                                        <tr class="table__row--individual">
-                                            <td>
-                                                <div class="table__item--img-container">
-                                                    <img src="/images/cart-imgs/motog42.svg" class="table__item--img" alt="Celular Motorola">
-                                                </div>
-                                            </td>
-                                            <td class="table__item--prod">
-                                                <span class="item__desc">Celular Motorola G42</span>
-                                                <span class="item__price">$ 58.999 x1 un.</span>
-                                            </td>
-                                            <td class="table__item--qua">
-                                                <div class="btns__container"><button class="btn__mp decr">-</button>
-                                                    <input type="text" value="0" class="count__input" />
-                                                    <button class="btn__mp incr">+</button>
-                                                </div>
-                                            </td>
-                                            <td class="table__item--sub">
-                                                <span>$58.999</span>
-                                            </td>
-                                            <td class="table__item--del"><i class="fa-solid fa-trash del__icon"></i></td>
-                                        </tr>
+                                        <% }) %>
                                     </tbody>
                                 </table>
                                 <div class="cart__addProd">
@@ -72,56 +59,34 @@
                             <section class="recom__container">
                                 <span class="recom__title">Llevate también:</span>
                                 <div class="recom__items--container">
-                                    <ul class="list__items">
-                                        <li class="list__items--individual">
-                                            <div class="item__img--container">
-                                                <img class="recom__item--img" src="/images/cart-imgs/galaxys20rojo.svg" alt="Celular Samsung">
-                                            </div>
-                                            <span class="recom__item--prod"><a href="/products/detail">Celular Samsung Galaxy S20 FE</a>
-                                                <span class="recom__item--desc">$ 90.000</span>
-                                            </span>
-                                            <span class="recom__item--price">$50.000</span>
-                                            <button class="recom__item--btn">Agregar</button>
-                                        </li>
-                                        <li class="list__items--individual">
-                                            <div class="item__img--container">
-                                                <img class="recom__item--img" src="/images/cart-imgs/galaxya13.svg" alt="Celular Samsung">
-                                            </div>
-                                            <span class="recom__item--prod"><a href="/products/detail">Celular Samsung Galaxy A13</a>
-                                                <span class="recom__item--desc no-desc">$ 90.000</span>
-                                            </span>
-                                            <span class="recom__item--price">$67.999</span>
-                                            <button class="recom__item--btn">Agregar</button>
-                                        </li>
-                                        <li class="list__items--individual-wea">
-                                            <div class="item__img--container">
-                                                <img class="recom__item--img" src="/images/cart-imgs/galaxys20rojo.svg" alt="Celular Samsung">
-                                            </div>
-                                            <span class="recom__item--prod"><a href="/products/detail">Celular Samsung Galaxy S20 FE</a>
-                                                <span class="recom__item--desc">$ 90.000</span>
-                                            </span>
-                                            <span class="recom__item--price">$50.000</span>
-                                            <button class="recom__item--btn">Agregar</button>
-                                        </li>
-                                    </ul>
+                                    <script>
+                                        // Llama a la función initCarousel una vez el DOM haya cargado
+                                        // Esto evita errores relacionados con la manipulación de elementos que aún no se han cargado.
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            initCarousel();
+                                        });
+                                        </script>
+                                        <%- include('../partials/carouselRecommended') %>
                                 </div>
                             </section>
                         </div>
                         <div class="total-desc-ship-pay__container">
                             <div class="sub-desc-total__main--container">
                                 <div class="sdt__container">
+                                    <% products.forEach(product => { %>
                                     <div class="sdt__individual--container">
                                         <span class="sub__price">Subtotal</span>
-                                        <span class="sub__price">$ 167.998</span>
+                                        <span class="sub__price">$ <%- (Number(product.product.price) * Number(product.productQuantity)) %></span>
                                     </div>
                                     <div class="sdt__individual--container">
                                         <span class="desc__price">Descuentos</span>
-                                        <span class="desc__price">$ 0</span>
+                                        <span class="desc__price">% <%- product.product.discount %></span>
                                     </div>
                                     <div class="sdt__individual--container">
                                         <span class="total__price">TOTAL</span>
-                                        <span class="total__price">$ 167.998</span>
+                                        <span class="total__price">$ <%- (Number(product.product.price) * Number(product.productQuantity)) - (Number(product.product.price) * Number(product.productQuantity) * (product.product.discount / 100)) %></span>
                                     </div>
+                                    <% }) %>
                                 </div>
                             </div>
                             <div class="inputs__container">
@@ -171,11 +136,37 @@
                             <div class="pay__btn--container">
                                 <button class="pay__btn">Pagar</button>
                             </div>
-                            <div class="login__register--container">
-                                <span class="login--register"><a href="/users/login" class="log__reg--link">Ingresar</a> a mi cuenta</span>
-                                <span class="login--register"><a href="/users/register" class="log__reg--link">Registrarme</a></span>
-                            </div>
-                        </div>
+                        <% } else { %>
+            
+                            <div class="cart-recom__container">
+                              <section class="cart__container">
+                                <h2 class="cart__title">No hay productos en su carrito</h2>
+                                <h4 class="cart__subtitle">Selecciona alguna de nuestras categorías para encontrar los mejores productos:</h4>
+                                <section class="home__phones--container--global">
+                                  <article class="home__products--phones">
+                                    <div class="home__phone--container--1">
+                                      <a href="/products/subcategory/1" class="home__second--title">
+                                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-a13 2.svg" alt="">
+                                    </div>
+                                    <span>CELULARES NUEVOS</span></a>
+                                  </article>
+                                  <article class="home__products--phones">
+                                    <div class="home__phone--container--1">
+                                      <a href="/products/subcategory/2" class="home__second--title">
+                                        <img class="home__img--cardProducts" src="/images/home/samsung-galaxy-m13 2.svg" alt="">
+                                    </div>
+                                    <span>CELULARES REFABRICADOS</span></a>
+                                  </article>
+                                  <article class="home__products--phones">
+                                    <div class="home__phone--container--1">
+                                      <a href="/products/subcategory/3" class="home__second--title">
+                                        <img class="home__img--cardProducts" src="/images/products/auriculares-inalambricos-jbl-.jpg"
+                                          alt="">
+                                    </div>
+                                    <span class="home__accessories">ACCESORIOS NUEVOS</span></a>
+                                  </article>
+                                </section>
+                                <% } %>
                     </article>
                 </main>
                 <%- include('../partials/footer') %>

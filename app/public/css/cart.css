@@ -127,7 +127,7 @@
 
 .recom__container {
     width: 90%;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 
 .recom__title {
@@ -213,6 +213,7 @@
 
 .recom__item--btn:hover,
 .pay__btn:hover {
+    padding-top: 1rem;
     cursor: pointer;
     background-color: var(--azul);
 }
@@ -378,6 +379,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.4s ease-in 0s;
+    margin-bottom: 3rem;
 }
 
 .login__register--container {
