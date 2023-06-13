@@ -9,7 +9,7 @@
             <div class="register__container--global register__first">
                 <h2 class="register__title">Creación de productos</h2>
                 <hr>
-                <form action="/products/create" method="POST" class="productForm__container" enctype="multipart/form-data">
+                <form action="/products/create" id="form" method="POST" class="productForm__container" enctype="multipart/form-data">
                     <div class="container__desktop">
                         <div class="box__datos input__container--boxImage">
                             <div class="input__container form__input--specification">
@@ -36,14 +36,15 @@
                                 </small>
                                 <small id="priceErrors" class="text__danger--form"></small>
                             </div>
-                            <div class="input__container input__photo form__input--specification">
-                                <label class="label-style form__product--textImage" for="image">Elija la imagen del producto</label>
-                                <input class="input form__product--inputImage" type="file" name="image" id="image">
+                            <div class="img-container" id="img-preview">        
                             </div>
+                        <div class="input-style">            
+                            <p class="register__input--textAvatar">Agregar foto de perfil</p>
+                            <input type="file" id="inputImage" name="image" class="input-style input__photo">                                                                                                                                           
+                        </div>
                             <small class="text__danger--form" id="imageErrors">
                                 <%= locals.errors && errors.image ? errors.image.msg : '' %>
                             </small>
-                            <small id="imageErrors" class="text__danger--form"></small>
                         </div>
                     </div>
                     <div class="input__container">

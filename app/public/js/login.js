@@ -52,7 +52,7 @@ $form.addEventListener("submit", (event) => {
   event.preventDefault();
   const FORM_ELEMENTS = event.target.elements;
     console.log(FORM_ELEMENTS)
-  for (let index = 0; index < FORM_ELEMENTS.length - 3; index++) {
+  for (let index = 0; index < FORM_ELEMENTS.length - 6; index++) {
       const element = FORM_ELEMENTS[index];
       if(element.value === "" ) {
           element.classList.add("is-invalid")
@@ -66,7 +66,7 @@ $form.addEventListener("submit", (event) => {
   if(errores) {
       submitErrors.innerText = "Hay errores en el formulario"
   } else {
-       form.submit()
+       $form.submit()
   }
 })
     });

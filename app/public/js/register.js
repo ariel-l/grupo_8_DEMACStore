@@ -107,32 +107,26 @@ window.addEventListener("load", () =>  {
 
     //register
     $form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const FORM_ELEMENTS = event.target.elements;
+        event.preventDefault()
 
-        for (let index = 0; index < FORM_ELEMENTS.length - 2; index++) {
-                const element = FORM_ELEMENTS[index];
-                console.log(element.value, element.type)
-                if (element.value.trim() === "") {
-                    element.classList.add("is-invalid");
-                }
+        const  FORM_ELEMENTS =  event.target.elements;
+
+        for (let i = 0; i < FORM_ELEMENTS.length - 7 ; i++) {
+            const element = FORM_ELEMENTS[i];
+            if (element.value === "" && element.type != "file") {
+                element.classList.add("is-invalid")
+            }
         }
-
-        if (!$check.checked) {
-            $check.classList.add("is-invalid");
-            $checkErrors.innerHTML = "Debes aceptar los terminos y condiciones";
-          }
 
         let elementosConErrores = document.querySelectorAll(".is-invalid");
         let errores = elementosConErrores.length > 0;
-        console.log(errores)
-        if (errores) {
-            submitErrors.innerText = "Hay errores en el formulario";
-        } else {
-            $form.submit();
-        }
-    });
 
+        if(errores){
+            $submitErrors.innerText = "hay errores en el formulario"
+        }else{
+            $form.submit()
+        }
+     })
      //avatar
      $file.addEventListener('change', () => {
         let filePath = $file.value, 

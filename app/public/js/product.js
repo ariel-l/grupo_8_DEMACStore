@@ -21,6 +21,7 @@ window.addEventListener("load", () => {
         $brandErrors = qs('#brandErrors'),
         $inputDescription = qs('#description'),
         $descriptionErrors = qs('#descriptionErrors');
+        $form = qs("#form");
         regExName = /^[A-Z][a-zA-Z0-9]{4,39}$/;
         regExDiscount = /^((7[5-9])|([89][0-9])|100)%$/;
         refExPrice = /^([1-9][0-9]{2,}|[1-9][0-9]*\.[0-9]+)$/;
@@ -166,20 +167,26 @@ window.addEventListener("load", () => {
                 break;
         }
     });
-      $form.addEventListener("submit", (event) => {
+    $form.addEventListener("submit", (event) => {
         event.preventDefault();
-        let variable = "";
         const FORM_ELEMENTS = event.target.elements;
-        for (let i = 0; i < FORM_ELEMENTS.length - 2; i++) {
-            const element = FORM_ELEMENTS[i];
-            if((element.value === "" || element.value === "0" && element.id === "price") && element.type != "file"){
-                element.classList.add("is-invalid")
-                console.log(element.value)
-                variable += element.value
-            }
+
+        for (let index = 0; index < FORM_ELEMENTS.length - 7; index++) {
+              const element = FORM_ELEMENTS[index];
+              if (element.value === "" && element.type !== "file") {
+                    element.classList.add("is-invalid");
+                    element.dispatchEvent(new Event("blur"));
+              }
         }
+
+
         let elementosConErrores = document.querySelectorAll(".is-invalid");
         let errores = elementosConErrores.length > 0;
-        errores ? $submitErrors.innerText = "Hay errores en su formulario, por favor verifique que todos los valores sean correctos" : $form.submit()
-    })
+
+        if (errores) {
+              $submitErrors.innerText = "Hay errores en el formulario";
+        } else {
+              $form.submit();
+        }
+  });
 })

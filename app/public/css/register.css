@@ -90,6 +90,12 @@
   margin-top: -3px;
   padding-left: 5px;
 }
+.register__input--error--terms {
+  color: red;
+  margin-top: -3px;
+  position: inherit;
+  right: 15px;
+}
 
 .register__input--error--avatar {
   color: red;
@@ -161,16 +167,26 @@
   top: 8px;
 }
 
+#submitErrors {
+  position: relative;
+  top: 10px;
+  color: red;
+}
+
 .register__p--span {
   position: relative;
   top: 15px;
 }
 
-@media (max-width: 325px) {
+@media (max-width: 300px) {
   .register__card {
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    width: 200px;
+  }
+  .register-container {
+    box-sizing: content-box;
   }
 }

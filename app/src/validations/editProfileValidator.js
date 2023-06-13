@@ -70,20 +70,5 @@ module.exports = [
         }
     }),
 
-    check("address")
-    .notEmpty()
-    .withMessage("Por favor indique su dirección "),
-
-    check("postal_code")
-    .notEmpty()
-    .withMessage("Por favor indique su código postal"),
-
-    check("province")
-    .notEmpty()
-    .withMessage("Por favor indique su provincia"),
-
-    check("city")
-    .notEmpty()
-    .withMessage("Por favor indique su ciudad"),
 
 ]

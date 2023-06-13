@@ -62,6 +62,7 @@ module.exports = [
     .withMessage('Las contraseñas no coinciden'),
 
     check("avatar")
+        .notEmpty()
         .custom((value, { req }) => {
             const file = req.file;
             if (!file) {
