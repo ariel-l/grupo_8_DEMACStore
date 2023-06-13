@@ -1,7 +1,14 @@
-let subCategoryMenu = document.querySelector(".subCategoryMenu");
 let burgerMenu = document.querySelector(".header__burger--menu");
+let menuContainer = document.querySelector(".menu-container");
 let menuUser = document.querySelector(".menu-user");
 let userAvatar = document.querySelector(".user-avatar");
+
+burgerMenu.addEventListener("click", () => {
+  menuContainer.classList.toggle("active");
+});
+btnClose.addEventListener("click", () => {
+  menuContainer.classList.remove("active");
+});
 
 function dropMenu() {
   menuUser.classList.toggle("active");
@@ -35,29 +42,7 @@ window.addEventListener("click", function (event) {
   }
 });
 
-function dropMenuSubcategories() {
-  subCategoryMenu.classList.toggle("active");
-  if (subCategoryMenu.classList.contains("active")) {
-    subCategoryMenu.style.display = "block";
-  } else {
-    subCategoryMenu.style.display = "none";
-  }
-}
 
-function closeWindow() {
-  if (subCategoryMenu.classList.contains("active")) {
-    subCategoryMenu.classList.remove("active");
-    subCategoryMenu.style.display = "none";
-  }
-}
-
-burgerMenu.addEventListener("click", dropMenuSubcategories);
-
-window.addEventListener("click", function (event) {
-  if (!burgerMenu.contains(event.target) && !subCategoryMenu.contains(event.target)) {
-    closeWindow();
-  }
-});
 
 window.addEventListener("scroll", () => {
   if (window.scrollY >= 100) {
