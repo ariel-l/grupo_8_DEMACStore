@@ -92,7 +92,7 @@
 
 /* BURGER MENU */
 
-header nav {
+.menu-container {
   display: none;
 }
 

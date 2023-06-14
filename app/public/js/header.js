@@ -6,9 +6,6 @@ let userAvatar = document.querySelector(".user-avatar");
 burgerMenu.addEventListener("click", () => {
   menuContainer.classList.toggle("active");
 });
-btnClose.addEventListener("click", () => {
-  menuContainer.classList.remove("active");
-});
 
 function dropMenu() {
   menuUser.classList.toggle("active");

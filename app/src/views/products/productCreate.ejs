@@ -9,7 +9,7 @@
             <div class="register__container--global register__first">
                 <h2 class="register__title">Creación de productos</h2>
                 <hr>
-                <form action="/products/create" method="POST" id="form" class="productForm__container" enctype="multipart/form-data">
+                <form action="/products/create" id="form" method="POST" class="productForm__container" enctype="multipart/form-data">
                     <div class="container__desktop">
                         <div class="box__datos input__container--boxImage">
                             <div class="input__container form__input--specification">
@@ -76,12 +76,12 @@
                                             <% } %>
                                                 <% }); %>
                         </select>
-                        <small id="categoryErrors" class="text__danger--form">
+                        <small id="subCategoryErrors" class="text__danger--form">
                             <%= locals.errors && errors.subCategory ? errors.subCategory.msg : '' %>
                         </small>
                         </div>
                         <div class="input__container">
-                            <label class="label-style" for="brand">Categoría</label>
+                            <label class="label-style" for="brand">Marca</label>
                             <select name="brand" id="brand" class="input-style select-category">
                                 <option hidden value="">Selecciona una opción</option>
                                 <% brands.forEach(brand=> { %>
@@ -94,6 +94,17 @@
                                 <%= locals.errors && errors.brand ? errors.brand.msg : '' %>
                             </small>
                             </select>
+                        </div>
+
+                        <div class="input__container textarea__container--global">
+                            <label for="">Descripción:</label>
+                            <div class="textarea__container">
+                                <textarea class="input-style textarea__descripction" name="description" id="description" cols="30"
+                                    rows="10"></textarea>
+                            </div>
+                            <small id="brandErrors" class="text__danger--form">
+                                <%= locals.errors && errors.description ? errors.description.msg : '' %>
+                            </small>
                         </div>
 
                         <div class="container__desktop">
@@ -170,16 +181,7 @@
                             <input class="input-style" type="text" name="cardSlot" placeholder="Ej: 1" id="">
                         </div>
 
-                        <div class="input__container textarea__container--global">
-                            <label for="">Otras descripciones del producto:</label>
-                            <div class="textarea__container">
-                                <textarea class="input-style textarea__descripction" name="description" id="description" cols="30"
-                                    rows="10"></textarea>
-                            </div>
-                            <small id="brandErrors" class="text__danger--form">
-                                <%= locals.errors && errors.description ? errors.description.msg : '' %>
-                            </small>
-                        </div>
+                        
 
                         <small id="submitErrors" class="text__danger--form"></small>
                         <button class="form__button-blue btn btn__submit" type="submit">

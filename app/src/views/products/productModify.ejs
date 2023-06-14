@@ -80,6 +80,14 @@
                         <small id="brandErrors" class="text__danger--form"></small>
                     </div>
 
+                    <div class="input__container textarea__container--global">
+                        <label for="description">Descripción:</label>
+                        <div class="textarea__container">
+                            <textarea class="input-style textarea__descripction" name="description" id="description" cols="30" rows="10"><%= product.description %></textarea>
+                                    <small class="text__danger--form" id="descriptionErrors"><%= locals.errors && errors.description ? errors.description.msg : '' %></small>
+                        </div>
+                    </div>
+
                     <div class="container__desktop">
                         <div class="box__datos">
                             <div class="input__container">
@@ -162,13 +170,7 @@
                         <label class="label-style" for="cardSlot">Expandible</label>
                         <input class="input-style" type="text" name="cardSlot" placeholder="Ej: 1 gb " id="">
                     </div>
-                    <div class="input__container textarea__container--global">
-                        <label for="description">Otras descripciones del producto:</label>
-                        <div class="textarea__container">
-                            <textarea class="input-style textarea__descripction" name="description" id="description" cols="30" rows="10"><%= product.description %></textarea>
-                                    <small class="text__danger--form" id="descriptionErrors"><%= locals.errors && errors.description ? errors.description.msg : '' %></small>
-                        </div>
-                    </div>
+                    
                     <small id="submitErrors" class="text__danger--form"></small>
                     <button class="form__button-blue btn btn__submit" type="submit">
                         <div class="button__container btn btn__submit">
