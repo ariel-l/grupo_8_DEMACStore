@@ -149,7 +149,7 @@
 
 .detail__button--colour1 {
     font-size: 30px;
-    color: rgba(216, 57, 67, 1);
+    color: rgb(41, 49, 51);
     border: 1px solid rgba(220, 220, 220, 0.300);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.781);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
@@ -164,7 +164,7 @@
 
 .detail__button--colour2 {
     font-size: 30px;
-    color: rgba(25, 11, 107, 1);
+    color: rgb(192, 192, 192);
     border: 1px solid rgba(220, 220, 220, 0.300);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.781);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
@@ -179,7 +179,7 @@
 
 .detail__button--colour3 {
     font-size: 30px;
-    color: rgba(190, 36, 126, 1);
+    color: rgb(202,192,182);
     border: 1px solid rgba(220, 220, 220, 0.300);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.781);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
