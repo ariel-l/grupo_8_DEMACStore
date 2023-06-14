@@ -45,10 +45,10 @@ module.exports = [
             if (!file) {
                 return true;
             } else {
-                const allowedExtensions = [".jpg", ".png", ".jpeg", ".gif"];
+                const allowedExtensions = [".jpg", ".png", ".jpeg", ".gif", '.svg'];
                 const fileExtension = path.extname(file.originalname);
                 if (!allowedExtensions.includes(fileExtension)) {
-                    throw new Error("El formato debe ser .jpg, .png, .jpeg o .gif");
+                    throw new Error("El formato debe ser .jpg, .png, .jpeg, .svg o .gif");
                 }
                 return true;
             }

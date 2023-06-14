@@ -85,7 +85,7 @@ window.addEventListener("load", () => {
     /* Validaciones - Imagen */
     $inputImage.addEventListener('blur', () => {
         const filePath = $inputImage.value,
-              allowedExtensions = ['.jpg', '.png', '.jpeg', '.gif'];
+              allowedExtensions = ['.jpg', '.png', '.jpeg', '.gif', '.svg'];
         const fileExtension = filePath.substring(filePath.lastIndexOf('.')).toLowerCase();
         switch (true) {
             case !$inputImage.value:
