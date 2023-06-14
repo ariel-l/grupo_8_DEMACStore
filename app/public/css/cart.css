@@ -1,5 +1,32 @@
 /* BODY MOBILE */
 
+.cart-recom__container--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.cart__container--empty {
+    width: 100%;
+}
+
+.cart__container--empty h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+.cart__container--empty h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+    color: var(--azul);
+    width: 100%;
+}
+
 /* PRODUCTOS EN EL CARRITO */
 .body__container {
     box-sizing: border-box;
@@ -588,13 +615,6 @@
         color: var(--azul);
         text-decoration: underline;
         font-weight: 400;
-    }
-}
-
-/* CORECCIÓN CAJA LOGIN/REGISTER */
-@media (min-width: 867px) {
-    .login__register--container {
-        font-size: 0.9rem;
     }
 }
 

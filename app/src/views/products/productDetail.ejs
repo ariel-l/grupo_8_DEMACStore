@@ -8,8 +8,13 @@
             <div class="back">
                 <ul>
                     <li><a class="detail__a" href="/products">Volver al listado <i class="fa-solid fa-chevron-right"></i></a></li>
-                    <li><a class="detail__a" href="/products">Celulares <i class="fa-solid fa-chevron-right"></i></a></li>
-                    <li>Celulares Nuevos</li>
+                        <% if (product.subcategoryID===1) { %>
+                    <li><a class="detail__a" href="/products/subcategory/1">Celulares Nuevos <i class="fa-solid fa-chevron-right"></i></a></li>
+                    <% } else if (product.subcategoryID===2) { %>
+                    <li><a class="detail__a" href="/products/subcategory/2">Celulares Refabricados <i class="fa-solid fa-chevron-right"></i></a></li>
+                    <% } else { %>
+                        <li><a class="detail__a" href="/products/subcategory/3">Accesorios <i class="fa-solid fa-chevron-right"></i></a></li>
+<% } %>
                 </ul>
             </div>
             <main class="detail__main--product">
