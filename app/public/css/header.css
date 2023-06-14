@@ -110,7 +110,6 @@ header nav.active {
 }
 
 /* USER MENU */
-
 .header__acc--container {
   position: relative;
 }
@@ -118,29 +117,27 @@ header nav.active {
 .user-avatar {
   position: relative;
   z-index: 1;
+  top: 0.1rem;
 }
 
 .menu-user {
-    display: none;
+  display: none;
+  position: absolute;
+  font-size: 1rem;
+  width: 9rem;
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  z-index: 2;
+  opacity: 0.9; 
+}
+
+.menu-user user-avatar.active {
+    display: flex;
     position: absolute;
-    top: 3rem;
-    left: 0;
-    font-size: 1rem;
-    width: 9rem;
-    background-color: white;
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    margin-left: -3rem;
-    z-index: 2;
-    opacity: 0.9; 
-  }
+}
 
-  .user-avatar:hover + .menu-user,
-  .menu-user:hover {
-    display: block;
-  }
-
-  .session {
+.session {
     display: inline-block;
     width: 2.2rem;
     height: 2.2rem;
@@ -152,7 +149,7 @@ header nav.active {
     right: 0.5rem;
   }
 
-  .rounded-circle {
+.rounded-circle {
     border-radius: 50%;
     position: relative;
     z-index: 1;
@@ -245,6 +242,10 @@ header nav.active {
   header nav.active {
     margin-left: -10px;
 }
+}
+
+header nav.menu-user.active {
+  margin-left: -3rem;
 }
 
 

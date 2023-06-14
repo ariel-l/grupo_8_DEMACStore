@@ -70,29 +70,31 @@
         <div class="header__acc__cart--container">
 
             <!-- MY-ACCOUNT -->
-            <div class="header__acc--container">
                 <% if (typeof session.user !== "undefined") { %>
                   <div class="user-avatar">
                     <img src="/images/users/<%= session.user.avatar %>" class="rounded-circle" height="30" width="30" alt="avatar" />
                     <span class="session"></span>
                   </div>
-                  <div class="menu-user">
-                    <a href="/users/profile">Mis datos</a>
-                    <a href="/users/logout">Cerrar sesión</a>
-                    <% if (session.user.role === "admin") { %>
-                      <a href="/products/adminList">ADMIN</a>
-                    <% } %>
-                  </div>
+                  <nav class="menu-user">
+                        <ul class="menu">
+                            <li><a href="/users/profile">Mis datos</a></li>
+                            <li><a href="/users/logout">Cerrar sesión</a></li>
+                            <% if (session.user.role === "admin") { %>
+                            <li><a href="/products/adminList">ADMIN</a></li>
+                            <% } %>
+                        </ul>
+                    </nav>
                 <% } else { %>
                   <a href="/users/login"><i class="fa-solid fa-circle-user" style="color: white; font-size: 1.7rem; margin-right: 0.5rem; margin-top: 0.5rem;"></i></a>
                 <% } %>
-              </div>
-            <!-- CARRT -->
+                <!-- CARRT -->
             <div class="header__cart--container">
                 <a href="/products/cart" class="acc__links">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
             </div>
+              </div>
+            
         </div>
 
     </div>
