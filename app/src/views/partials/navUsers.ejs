@@ -1,9 +1,11 @@
 <div class="profile__nav--container">
     <nav class="profile__nav">
         <ul class="profile__container--sections">
+            <% if ( session.user.role==="user" ) { %>
             <li class="profile__container--sections"><a href="/products"><i class="fa-solid fa-bag-shopping"></a></i>
                 <span><a href="/products">Comprar</a></span>
             </li>
+            <% } %>
             <% if ( session.user.role==="admin" ) { %>
                 <li class="profile__container--sections"><a href="/products/adminList"><i class="fa-solid fa-tags"></a></i>
                     <span><a href="/products/adminList">Productos</a></span>
