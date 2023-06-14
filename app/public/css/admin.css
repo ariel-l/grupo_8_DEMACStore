@@ -13,26 +13,30 @@
 }
 
 .admin__title {
-    margin-left: 2rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .admin__filters {
     padding: 4px;
     margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .admin__filters select {
     border-radius: 10px;
     border-color: var(--azul);
     width: 116px;
-    margin-left: 1.5rem;
 }
 
 .col-12 {
     width: 100%;
     display: flex;
-    justify-content:flex-end;
-    padding-right: 2rem;
+    justify-content: center;
 }
 
 .table-container {
@@ -78,7 +82,6 @@
     padding: 5px;
     margin: 0.5rem 0;
     height: 30px;
-    width: 100px;
     border-radius: 10px;
     font-weight: bold;
     font-size: 1rem;
@@ -118,12 +121,21 @@ article.col-12 {
 
     .admin___btn--add {
         height: 40px;
-        width: 120px;
         font-size: 1.2rem;
     }
 
     td {
         padding: 10px;
+    }
+
+    .admin__title {
+        margin-left: 2rem;
+        justify-content: flex-start;
+    }
+    
+    .admin__filters {
+        margin-left: 2rem;
+        justify-content: flex-start;
     }
 
 }
