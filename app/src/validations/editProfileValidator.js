@@ -41,7 +41,7 @@ module.exports = [
     .withMessage("El email es obligatorio").bail()
     .isEmail()
     .withMessage("Email inválido"),
-
+/* 
     check("name")
     .notEmpty()
     .withMessage("Por favor indique su nombre"),
@@ -54,7 +54,7 @@ module.exports = [
     .notEmpty()
     .withMessage("Por favor indique su número de celular")
     .isLength({ min: 10 }),
-
+*/
     check("avatar")
     .custom((value, { req }) => {
         const file = req.file;
@@ -69,6 +69,4 @@ module.exports = [
             return true;
         }
     }),
-
-
 ]

@@ -21,7 +21,8 @@ window.addEventListener("load", () => {
         $brandErrors = qs('#brandErrors'),
         $inputDescription = qs('#description'),
         $descriptionErrors = qs('#descriptionErrors');
-        regExName = /^[A-Z][a-zA-Z0-9]{4,39}$/;
+        regExName = /^[A-Z0-9][A-Za-z0-9\s]{4,49}$/;
+
         regExDiscount = /^((7[5-9])|([89][0-9])|100)%$/;
         refExPrice = /^([1-9][0-9]{2,}|[1-9][0-9]*\.[0-9]+)$/;
         regExDescription = /^.{20,450}$/;
