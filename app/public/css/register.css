@@ -150,7 +150,7 @@
   top: 5px;
 }
 
-#recordar {
+#check {
   position: relative;
   top: 2px;
 }
@@ -189,4 +189,40 @@
   .register-container {
     box-sizing: content-box;
   }
+}
+
+@media (min-width: 800px) {
+  .register__card{
+    width: 250px;
+    margin: 20px;
+  }
+
+  .register__card--input{
+    position: relative;
+    align-items: center;
+  }
+
+  .register__form--check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 20px;
+  }
+  .register__hr {
+    left: 80px;
+  }
+
+  .register__check{
+    width: auto;
+  }
+
+  .register_card--input .register_check--terms{
+    font-size: medium;
+    align-items: center;
+  } 
+
+  .span__register{
+    font-size: xx-large;
+  }
+  
 }
