@@ -9,7 +9,7 @@
                     <div class="register__general">
                         <div class="register__card">
                             <div class="register-container">
-                                <span class="span__register">registro</span>
+                                <span class="span__register">Registro</span>
                                 <hr class="register__hr">
                                 <div class="register__card--input">
                                     <label for="username">Nombre de usuario</label>
@@ -47,11 +47,13 @@
                                                                         </p>
                                 </div>
                                 <div class="register__form--check">
-                                    <input type="checkbox" name="terms" id="check">
-                                    <label class="register__check--terms" for="check"> Acepto <a href="">términos y condiciones</a> </label>
-                                    <p class="register__input--error--terms" id="checkErrors">
-                                        <%= locals.errors && errors.check? errors.check.msg : '' %>
-                                    </p>
+                                    <div class="register__check">
+                                        <input type="checkbox" name="terms" id="check">
+                                        <label class="register__check--terms" for="check"> Acepto <a href="">términos y condiciones</a> </label>
+                                        <p class="register__input--error--terms" id="checkErrors">
+                                            <%= locals.errors && errors.check? errors.check.msg : '' %>
+                                        </p>
+                                    </div>
                                             <div class="register__form--btn">
                                                 <button type="submit" class="register__btn">Registrarme</button>
                                             </div>
